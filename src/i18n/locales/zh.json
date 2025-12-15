@@ -40,36 +40,237 @@
     "certText2": "我们不断投资于质量和控制流程，确保每一件出厂产品都符合最高国际标准。",
     "anvisaCert": "已认证",
     "missionTitle": "我们的使命",
-    "missionText": "为足疗、美甲和牙科领域开发和生产高质量产品，为人们的健康和福祉做出贡献。我们在所有流程中不断追求创新和卓越，以效率和安全满足客户需求。",
+    "missionText": "为足疗、美甲和牙科领域开发和生产高质量产品，为人们的健康和福祉做出贡献。",
     "valuesTitle": "我们的价值观",
-    "valuesText": "在所有商业关系中保持道德和透明。致力于产品质量和安全。尊重环境和可持续发展。重视人才和团队合作。不断创新和追求卓越。社会责任和社区贡献。",
+    "valuesText": "在所有商业关系中保持道德和透明。致力于产品质量和安全。尊重环境和可持续发展。重视人才和团队合作。",
     "visionTitle": "我们的愿景",
-    "visionText": "成为巴西足疗和美甲器械市场的领先参考，并将业务扩展到国际市场。我们的目标是成为质量、创新和可靠性的代名词，始终走在市场趋势和需求的前沿。"
+    "visionText": "成为巴西足疗和美甲器械市场的领先参考，并将业务扩展到国际市场。"
   },
   "products": {
-    "title": "金刚石钻头",
-    "subtitle": "了解我们完整的足疗金刚石钻头产品线",
-    "qualityTitle": "质量与精度",
-    "qualityText1": "我们的金刚石钻头采用最高质量标准制造，使用一流的工业金刚石。生产工艺确保粒度均匀和卓越的耐用性。",
-    "qualityText2": "适用于足疗，钻头非常适合指甲打磨、去除老茧和各种治疗。提供各种形状和粒度，以满足每种程序的特定需求。",
-    "qualityText3": "所有钻头都经过严格的质量控制，确保专业使用的安全性和效率。产品已在ANVISA注册。",
-    "feature1": "高耐久性和抗性",
-    "feature2": "一流工业金刚石",
-    "feature3": "多种粒度可选",
-    "feature4": "适合各种程序的特定形状",
-    "feature5": "ANVISA注册",
-    "feature6": "100%国产制造",
-    "productImage": "金刚石钻头图片",
-    "downloadCatalog": "下载我们的金刚石钻头目录，获取最新信息",
-    "otherProducts": "其他产品",
-    "prod1": "一次性锉刀",
-    "prod2": "钨钢钻头",
-    "prod3": "芯轴和适配器",
-    "prod4": "专业套装",
-    "prod5": "抛光海绵",
-    "prod6": "安装头",
-    "prod7": "切割片",
-    "prod8": "配件"
+    "pageTitle": "产品",
+    "pageSubtitle": "了解我们完整的足疗、美甲和牙科产品线",
+    "downloadCatalog": "下载完整目录",
+    "sections": {
+      "diamondBurs": "金刚石钻头",
+      "tungstenBurs": "钨钢磨头",
+      "ceramicBurs": "陶瓷磨头",
+      "sandpaper": "砂纸锉刀",
+      "boomerang": "回旋镖锉刀",
+      "tubularAdhesive": "管状/粘性锉刀",
+      "polishers": "抛光器",
+      "brushes": "清洁刷",
+      "fiberMandril": "纤维/去核器/芯轴",
+      "supportSharpening": "支架/磨削"
+    },
+    "diamondBurs": {
+      "title": "金刚石钻头",
+      "subtitle": "Diamond Burs",
+      "description": "我们的金刚石钻头采用高品质工业金刚石制造，提供卓越的耐久性和切割精度。非常适合足疗程序，为专业人员提供完美的修整和安全性。",
+      "features": [
+        "一流工业金刚石",
+        "高耐久性和抗性",
+        "多种粒度可选",
+        "适合各种程序的特定形状",
+        "ANVISA注册",
+        "100%国产制造"
+      ],
+      "goldLineTitle": "黄金系列",
+      "goldLineDesc": "采用特殊金色涂层的先进技术，具有更高的耐久性和卓越的性能。黄金系列代表了金刚石钻头中最现代化的产品。",
+      "tableHeaders": {
+        "model": "型号",
+        "code": "代码",
+        "iso": "ISO",
+        "grain": "粒度",
+        "diameter": "直径"
+      },
+      "models": {
+        "spherical": "球形",
+        "wheel": "轮形",
+        "conical": "锥形",
+        "flame": "火焰形",
+        "cylindrical": "圆柱形",
+        "torpedo": "鱼雷形"
+      },
+      "grains": {
+        "extraFine": "超细",
+        "fine": "细",
+        "medium": "中",
+        "coarse": "粗",
+        "extraCoarse": "超粗"
+      }
+    },
+    "tungstenBurs": {
+      "title": "钨钢磨头",
+      "subtitle": "Tungsten Carbide Burs",
+      "description": "高性能钨钢磨头，用于研磨和精修。提供Maxi Cut和Mini Cut版本，多种切割类型可满足每种程序的特定需求。",
+      "maxiCut": "Maxi Cut",
+      "miniCut": "Mini Cut",
+      "cuts": {
+        "crossMedium": "交叉中切",
+        "crossFine": "交叉细切",
+        "crossExtraFine": "交叉超细切",
+        "crossCoarse": "交叉粗切",
+        "straight": "直切"
+      },
+      "tableHeaders": {
+        "model": "型号",
+        "code": "代码",
+        "iso": "ISO",
+        "cut": "切割",
+        "diameter": "直径"
+      }
+    },
+    "ceramicBurs": {
+      "title": "陶瓷磨头",
+      "subtitle": "Ceramic Burs",
+      "description": "具有高抗性和耐久性的陶瓷磨头。非常适合需要精度和精细修整的工作。提供各种形状和粒度。",
+      "tableHeaders": {
+        "model": "型号",
+        "code": "代码",
+        "iso": "ISO",
+        "cut": "切割",
+        "diameter": "直径"
+      }
+    },
+    "sandpaper": {
+      "title": "砂纸锉刀",
+      "subtitle": "Abrasive Files",
+      "description": "完整的一次性足疗锉刀产品线。提供片状和足底版本，具有不同的粒度和Norton和Alcar等优质品牌。",
+      "types": {
+        "laminarPremium": "片状优质锉刀（Norton）",
+        "plantarPremium": "足底优质锉刀（Norton）",
+        "extraLarge": "超大锉刀",
+        "laminarAlcar": "片状锉刀（Alcar）",
+        "plantarAlcar": "足底锉刀（Alcar）"
+      },
+      "tableHeaders": {
+        "type": "类型",
+        "code": "代码",
+        "diameter": "直径",
+        "grain": "粒度",
+        "package": "包装"
+      }
+    },
+    "boomerang": {
+      "title": "回旋镖锉刀",
+      "subtitle": "Boomerang Sandpaper",
+      "description": "回旋镖形状和其他美甲专用形状的特殊锉刀。高品质和耐久性，可获得专业效果。",
+      "types": {
+        "nailsGreen": "绿色指甲锉刀",
+        "highPerformance": "高性能锉刀",
+        "whiteFine": "白色细型回旋镖2mm",
+        "disposableWhite": "白色一次性指甲锉",
+        "stainlessBase": "不锈钢底座"
+      },
+      "shapes": {
+        "boomerang": "回旋镖形",
+        "square": "方形",
+        "coffin": "棺材形",
+        "drop": "水滴形"
+      },
+      "tableHeaders": {
+        "type": "类型",
+        "code": "代码",
+        "shape": "形状",
+        "grain": "粒度",
+        "material": "材料"
+      }
+    },
+    "tubularAdhesive": {
+      "title": "管状砂纸/粘性圆形锉刀",
+      "subtitle": "Tubular Sand / Adhesive Circular File",
+      "description": "用于不同应用的管状和圆形粘性锉刀。高粘附性和耐久性，适合专业使用。",
+      "tableHeaders": {
+        "type": "类型",
+        "code": "代码",
+        "grain": "粒度",
+        "diameter": "直径",
+        "package": "包装",
+        "abrasive": "磨料类型"
+      }
+    },
+    "polishers": {
+      "title": "抛光器",
+      "subtitle": "Polishers",
+      "description": "完整的抛光器产品线，可实现完美修整。提供各种形状（鱼雷形、卵形、圆柱形、火焰形）和研磨等级（超粗到超细）。",
+      "types": {
+        "torpedoOgival": "鱼雷卵形抛光器",
+        "torpedoLarge": "大型鱼雷抛光器",
+        "torpedoMedium": "中型鱼雷抛光器",
+        "cylindrical": "圆柱形抛光器",
+        "flameSmall": "小火焰抛光器"
+      },
+      "grindLevels": {
+        "extraCoarse": "超粗",
+        "coarse": "粗",
+        "medium": "中",
+        "fine": "细",
+        "extraFine": "超细",
+        "ultraFine": "超精细"
+      },
+      "tableHeaders": {
+        "model": "型号",
+        "code": "代码",
+        "diameter": "直径",
+        "grind": "研磨",
+        "color": "颜色"
+      }
+    },
+    "brushes": {
+      "title": "清洁刷",
+      "subtitle": "Cleaning Brushes",
+      "description": "专业清洁刷，配有聚酰胺刷毛。提供不同颜色和尺寸，用于清洁器械和钻头。",
+      "types": {
+        "polyamidePink": "粉色聚酰胺刷毛",
+        "polyamideLilac": "淡紫色聚酰胺刷毛",
+        "polisherCleaning": "抛光器清洁钻头",
+        "sponge": "海绵",
+        "felt": "毛毡"
+      },
+      "tableHeaders": {
+        "type": "类型",
+        "code": "代码",
+        "diameter": "直径",
+        "bristles": "刷毛"
+      }
+    },
+    "fiberMandril": {
+      "title": "纤维/去核器/芯轴",
+      "subtitle": "Fiber / Shell Enucleator / Mandril",
+      "description": "专业产品线，包括用于特定治疗的分子纤维、不锈钢老茧去核器和用于固定锉刀的PM Church芯轴。",
+      "types": {
+        "molecularFiber": "分子纤维",
+        "callusEnucleator": "不锈钢老茧去核器",
+        "mandrilPMChurch": "PM Church芯轴"
+      },
+      "tableHeaders": {
+        "type": "类型",
+        "code": "代码",
+        "model": "型号",
+        "diameter": "直径",
+        "material": "材料"
+      }
+    },
+    "supportSharpening": {
+      "title": "锉刀支架/器械磨削",
+      "subtitle": "Support for Files / Instrument Sharpening",
+      "description": "专业人员必备配件：刚性和柔性锉刀支架、用于磨削的皮革和磨料盘、抛光膏和标准芯轴。",
+      "types": {
+        "rigidSupport": "刚性支架（足底/片状）",
+        "flexSupport": "柔性支架（足底/片状）",
+        "leatherDisc": "皮革盘",
+        "abrasiveDisc": "磨料盘",
+        "polishingPaste": "抛光膏",
+        "mandrilStandard": "标准芯轴"
+      },
+      "tableHeaders": {
+        "type": "类型",
+        "code": "代码",
+        "diameter": "直径",
+        "thickness": "厚度",
+        "package": "包装"
+      }
+    }
   },
   "contact": {
     "title": "联系我们",
@@ -142,8 +343,8 @@
     "contact": "联系我们",
     "brilhoNails": "美甲系列",
     "company": "Metalúrgica Brilho",
-    "address": "Rua Frei Gaspar, 1095 - Mooca",
-    "city": "巴西圣保罗 - SP, 03164-001",
+    "address": "R. Cel. Botelho, 58 - Bela Aliança",
+    "city": "巴西圣保罗 - SP",
     "cnpj": "税号: 60.749.736/0001-90",
     "contactTitle": "联系方式",
     "copyright": "© {year} Metalúrgica Brilho。版权所有。"

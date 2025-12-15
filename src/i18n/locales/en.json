@@ -40,36 +40,237 @@
     "certText2": "We constantly invest in quality and control processes, ensuring that every product leaving our factory meets the highest international standards.",
     "anvisaCert": "Certified",
     "missionTitle": "OUR MISSION",
-    "missionText": "To develop and manufacture high-quality products for podiatry, manicure, and dentistry segments, contributing to people's health and well-being. We constantly seek innovation and excellence in all our processes, offering solutions that meet our customers' needs with efficiency and safety.",
+    "missionText": "To develop and manufacture high-quality products for podiatry, manicure, and dentistry segments, contributing to people's health and well-being.",
     "valuesTitle": "OUR VALUES",
-    "valuesText": "Ethics and transparency in all business relationships. Commitment to product quality and safety. Respect for the environment and sustainability. Appreciation of people and teamwork. Constant innovation and pursuit of excellence. Social responsibility and community contribution.",
+    "valuesText": "Ethics and transparency in all business relationships. Commitment to product quality and safety. Respect for the environment and sustainability. Appreciation of people and teamwork.",
     "visionTitle": "OUR VISION",
-    "visionText": "To be recognized as the leading reference in the Brazilian market for podiatry and manicure instruments, expanding our operations to international markets. We aim to be synonymous with quality, innovation, and reliability, always staying ahead of market trends and needs."
+    "visionText": "To be recognized as the leading reference in the Brazilian market for podiatry and manicure instruments, expanding our operations to international markets."
   },
   "products": {
-    "title": "DIAMOND DRILL BITS",
-    "subtitle": "Discover our complete line of diamond drill bits for podiatry",
-    "qualityTitle": "Quality and Precision",
-    "qualityText1": "Our diamond drill bits are manufactured with the highest quality standards, using first-class industrial diamonds. The manufacturing process ensures uniformity in granulometry and exceptional durability.",
-    "qualityText2": "Suitable for podiatry use, the drill bits are ideal for nail grinding, callus removal, and various treatments. Available in various shapes and grits to meet the specific needs of each procedure.",
-    "qualityText3": "All drill bits undergo rigorous quality control, ensuring safety and efficiency in professional use. Product registered with ANVISA.",
-    "feature1": "High durability and resistance",
-    "feature2": "First-class industrial diamonds",
-    "feature3": "Various grits available",
-    "feature4": "Specific shapes for each procedure",
-    "feature5": "ANVISA registration",
-    "feature6": "100% national manufacturing",
-    "productImage": "Diamond drill bits image",
-    "downloadCatalog": "DOWNLOAD OUR DIAMOND DRILL BITS CATALOG AND STAY UPDATED",
-    "otherProducts": "OTHER PRODUCTS",
-    "prod1": "Disposable Files",
-    "prod2": "Tungsten Drill Bits",
-    "prod3": "Mandrels and Adapters",
-    "prod4": "Professional Kits",
-    "prod5": "Polishing Sponges",
-    "prod6": "Mounted Points",
-    "prod7": "Cutting Discs",
-    "prod8": "Accessories"
+    "pageTitle": "PRODUCTS",
+    "pageSubtitle": "Discover our complete line of products for podiatry, manicure and dentistry",
+    "downloadCatalog": "DOWNLOAD COMPLETE CATALOG",
+    "sections": {
+      "diamondBurs": "Diamond Burs",
+      "tungstenBurs": "Tungsten Carbide Burs",
+      "ceramicBurs": "Ceramic Burs",
+      "sandpaper": "Sandpaper Files",
+      "boomerang": "Boomerang Files",
+      "tubularAdhesive": "Tubular / Adhesive Files",
+      "polishers": "Polishers",
+      "brushes": "Cleaning Brushes",
+      "fiberMandril": "Fiber / Enucleator / Mandril",
+      "supportSharpening": "Support / Sharpening"
+    },
+    "diamondBurs": {
+      "title": "DIAMOND BURS",
+      "subtitle": "Brocas Diamantadas",
+      "description": "Our diamond burs are manufactured with high-quality industrial diamonds, providing exceptional durability and cutting precision. Ideal for podiatry procedures, offering perfect finish and safety for the professional.",
+      "features": [
+        "First-class industrial diamonds",
+        "High durability and resistance",
+        "Various grits available",
+        "Specific shapes for each procedure",
+        "ANVISA registration",
+        "100% national manufacturing"
+      ],
+      "goldLineTitle": "GOLD LINE",
+      "goldLineDesc": "Advanced technology with special gold coating for greater durability and superior performance. The Gold line represents the most modern in diamond burs.",
+      "tableHeaders": {
+        "model": "Model",
+        "code": "Code",
+        "iso": "ISO",
+        "grain": "Grit",
+        "diameter": "Diameter"
+      },
+      "models": {
+        "spherical": "Spherical",
+        "wheel": "Wheel",
+        "conical": "Conical",
+        "flame": "Flame",
+        "cylindrical": "Cylindrical",
+        "torpedo": "Torpedo"
+      },
+      "grains": {
+        "extraFine": "Extra Fine",
+        "fine": "Fine",
+        "medium": "Medium",
+        "coarse": "Coarse",
+        "extraCoarse": "Extra Coarse"
+      }
+    },
+    "tungstenBurs": {
+      "title": "TUNGSTEN CARBIDE BURS",
+      "subtitle": "Fresas de Tungstênio",
+      "description": "High-performance tungsten carbide burs for grinding and finishing. Available in Maxi Cut and Mini Cut versions, with various cut types to meet the specific needs of each procedure.",
+      "maxiCut": "Maxi Cut",
+      "miniCut": "Mini Cut",
+      "cuts": {
+        "crossMedium": "Cross Medium",
+        "crossFine": "Cross Fine",
+        "crossExtraFine": "Cross Extra Fine",
+        "crossCoarse": "Cross Coarse",
+        "straight": "Straight"
+      },
+      "tableHeaders": {
+        "model": "Model",
+        "code": "Code",
+        "iso": "ISO",
+        "cut": "Cut",
+        "diameter": "Diameter"
+      }
+    },
+    "ceramicBurs": {
+      "title": "CERAMIC BURS",
+      "subtitle": "Fresas de Cerâmica",
+      "description": "Ceramic burs with high resistance and durability. Ideal for work requiring precision and delicate finishing. Available in various shapes and grits.",
+      "tableHeaders": {
+        "model": "Model",
+        "code": "Code",
+        "iso": "ISO",
+        "cut": "Cut",
+        "diameter": "Diameter"
+      }
+    },
+    "sandpaper": {
+      "title": "SANDPAPER FILES",
+      "subtitle": "Lixas Abrasivas",
+      "description": "Complete line of disposable files for podiatry. Available in Laminar and Plantar versions, with different grits and premium brands like Norton and Alcar.",
+      "types": {
+        "laminarPremium": "Laminar Premium File (Norton)",
+        "plantarPremium": "Plantar Premium File (Norton)",
+        "extraLarge": "Extra Large File",
+        "laminarAlcar": "Laminar File (Alcar)",
+        "plantarAlcar": "Plantar File (Alcar)"
+      },
+      "tableHeaders": {
+        "type": "Type",
+        "code": "Code",
+        "diameter": "Diameter",
+        "grain": "Grit",
+        "package": "Package"
+      }
+    },
+    "boomerang": {
+      "title": "BOOMERANG FILES",
+      "subtitle": "Lixas Boomerang",
+      "description": "Special files in boomerang shape and other exclusive shapes for manicure and nail design. High quality and durability for professional results.",
+      "types": {
+        "nailsGreen": "Nails Green File",
+        "highPerformance": "High Performance File",
+        "whiteFine": "Boomerang White Fine 2mm",
+        "disposableWhite": "Disposable White Nails",
+        "stainlessBase": "Stainless Steel Base"
+      },
+      "shapes": {
+        "boomerang": "Boomerang",
+        "square": "Square",
+        "coffin": "Coffin",
+        "drop": "Drop"
+      },
+      "tableHeaders": {
+        "type": "Type",
+        "code": "Code",
+        "shape": "Shape",
+        "grain": "Grit",
+        "material": "Material"
+      }
+    },
+    "tubularAdhesive": {
+      "title": "TUBULAR SAND / ADHESIVE CIRCULAR FILE",
+      "subtitle": "Lixa Tubular / Adesiva Circular",
+      "description": "Tubular and circular adhesive files for different applications. High adhesion and durability for professional use.",
+      "tableHeaders": {
+        "type": "Type",
+        "code": "Code",
+        "grain": "Grit",
+        "diameter": "Diameter",
+        "package": "Package",
+        "abrasive": "Abrasive Type"
+      }
+    },
+    "polishers": {
+      "title": "POLISHERS",
+      "subtitle": "Polidoras",
+      "description": "Complete line of polishers for perfect finishing. Available in various shapes (Torpedo, Ogival, Cylindrical, Flame) and grinding levels (Extra Coarse to Ultra Fine).",
+      "types": {
+        "torpedoOgival": "Torpedo Ogival Polisher",
+        "torpedoLarge": "Large Torpedo Polisher",
+        "torpedoMedium": "Medium Torpedo Polisher",
+        "cylindrical": "Cylindrical Polisher",
+        "flameSmall": "Small Flame Polisher"
+      },
+      "grindLevels": {
+        "extraCoarse": "Extra Coarse",
+        "coarse": "Coarse",
+        "medium": "Medium",
+        "fine": "Fine",
+        "extraFine": "Extra Fine",
+        "ultraFine": "Ultra Fine"
+      },
+      "tableHeaders": {
+        "model": "Model",
+        "code": "Code",
+        "diameter": "Diameter",
+        "grind": "Grinding",
+        "color": "Color"
+      }
+    },
+    "brushes": {
+      "title": "CLEANING BRUSHES",
+      "subtitle": "Escovas de Limpeza",
+      "description": "Professional cleaning brushes with polyamide bristles. Available in different colors and sizes for cleaning instruments and burs.",
+      "types": {
+        "polyamidePink": "Pink Polyamide Bristles",
+        "polyamideLilac": "Lilac Polyamide Bristles",
+        "polisherCleaning": "Polisher Cleaning Burs",
+        "sponge": "Sponge",
+        "felt": "Felt"
+      },
+      "tableHeaders": {
+        "type": "Type",
+        "code": "Code",
+        "diameter": "Diameter",
+        "bristles": "Bristles"
+      }
+    },
+    "fiberMandril": {
+      "title": "FIBER / SHELL ENUCLEATOR / MANDRIL",
+      "subtitle": "Fibras / Enucleadora / Mandril",
+      "description": "Specialized line including Molecular Fiber for specific treatments, Stainless Steel Callus Enucleator and PM Church Mandril for file mounting.",
+      "types": {
+        "molecularFiber": "Molecular Fiber",
+        "callusEnucleator": "Stainless Steel Callus Enucleator",
+        "mandrilPMChurch": "PM Church Mandril"
+      },
+      "tableHeaders": {
+        "type": "Type",
+        "code": "Code",
+        "model": "Model",
+        "diameter": "Diameter",
+        "material": "Material"
+      }
+    },
+    "supportSharpening": {
+      "title": "FILE SUPPORT / INSTRUMENT SHARPENING",
+      "subtitle": "Apoio para Lixas / Afiação de Instrumentos",
+      "description": "Essential accessories for professionals: rigid and flexible file supports, leather and abrasive discs for sharpening, polishing paste and standard mandril.",
+      "types": {
+        "rigidSupport": "Rigid Support (Plantar/Laminar)",
+        "flexSupport": "Flexible Support (Plantar/Laminar)",
+        "leatherDisc": "Leather Disc",
+        "abrasiveDisc": "Abrasive Disc",
+        "polishingPaste": "Polishing Paste",
+        "mandrilStandard": "Standard Mandril"
+      },
+      "tableHeaders": {
+        "type": "Type",
+        "code": "Code",
+        "diameter": "Diameter",
+        "thickness": "Thickness",
+        "package": "Package"
+      }
+    }
   },
   "contact": {
     "title": "CONTACT",
@@ -142,8 +343,8 @@
     "contact": "Contact",
     "brilhoNails": "Brilho-Nails",
     "company": "Metalúrgica Brilho",
-    "address": "Rua Frei Gaspar, 1095 - Mooca",
-    "city": "São Paulo - SP, Brazil, 03164-001",
+    "address": "R. Cel. Botelho, 58 - Bela Aliança",
+    "city": "São Paulo - SP, Brazil",
     "cnpj": "Tax ID: 60.749.736/0001-90",
     "contactTitle": "Contact",
     "copyright": "© {year} Metalúrgica Brilho. All rights reserved."
