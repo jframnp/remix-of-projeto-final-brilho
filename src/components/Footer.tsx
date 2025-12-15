@@ -1,7 +1,18 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { useTranslation } from "react-i18next";
+import { useLanguage } from "@/hooks/useLanguage";
 
 const Footer = () => {
+  const { t } = useTranslation();
+  const { currentLang } = useLanguage();
+
+  const getLocalizedPath = (path: string) => {
+    if (currentLang === "en") return `/en${path === "/" ? "" : path}`;
+    if (currentLang === "zh") return `/zh${path === "/" ? "" : path}`;
+    return path;
+  };
+
   return (
     <footer className="bg-brilho-gray-dark min-h-[400px] pt-16 pb-8">
       <div className="container mx-auto px-4">
@@ -33,38 +44,38 @@ const Footer = () => {
           {/* Column 1 - Menu */}
           <div>
             <h3 className="text-brilho-text-light font-montserrat font-bold text-lg mb-6 uppercase">
-              Menu
+              {t("footer.menu")}
             </h3>
             <nav className="flex flex-col gap-3">
               <Link
-                to="/"
+                to={getLocalizedPath("/")}
                 className="text-brilho-text-light/80 font-inter text-sm hover:text-brilho-text-light transition-colors"
               >
-                Home
+                {t("footer.home")}
               </Link>
               <Link
-                to="/institucional"
+                to={getLocalizedPath("/institucional")}
                 className="text-brilho-text-light/80 font-inter text-sm hover:text-brilho-text-light transition-colors"
               >
-                Institucional
+                {t("footer.institutional")}
               </Link>
               <Link
-                to="/produtos"
+                to={getLocalizedPath("/produtos")}
                 className="text-brilho-text-light/80 font-inter text-sm hover:text-brilho-text-light transition-colors"
               >
-                Produtos
+                {t("footer.products")}
               </Link>
               <Link
-                to="/contato"
+                to={getLocalizedPath("/contato")}
                 className="text-brilho-text-light/80 font-inter text-sm hover:text-brilho-text-light transition-colors"
               >
-                Contato
+                {t("footer.contact")}
               </Link>
               <Link
-                to="/brilho-nails"
+                to={getLocalizedPath("/brilho-nails")}
                 className="text-brilho-text-light/80 font-inter text-sm hover:text-brilho-text-light transition-colors"
               >
-                Brilho-Nails
+                {t("footer.brilhoNails")}
               </Link>
             </nav>
           </div>
@@ -72,19 +83,19 @@ const Footer = () => {
           {/* Column 2 - Company Info */}
           <div>
             <h3 className="text-brilho-text-light font-montserrat font-bold text-lg mb-6 uppercase">
-              Metalúrgica Brilho
+              {t("footer.company")}
             </h3>
             <div className="flex flex-col gap-4 text-brilho-text-light/80 font-inter text-sm">
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 mt-0.5 flex-shrink-0 text-brilho-red-vivid" />
                 <p>
-                  Rua Frei Gaspar, 1095 - Mooca
+                  {t("footer.address")}
                   <br />
-                  São Paulo - SP, 03164-001
+                  {t("footer.city")}
                 </p>
               </div>
               <p className="text-brilho-text-light/60">
-                CNPJ: 60.749.736/0001-90
+                {t("footer.cnpj")}
               </p>
             </div>
           </div>
@@ -92,18 +103,18 @@ const Footer = () => {
           {/* Column 3 - Contact */}
           <div>
             <h3 className="text-brilho-text-light font-montserrat font-bold text-lg mb-6 uppercase">
-              Contato
+              {t("footer.contactTitle")}
             </h3>
             <div className="flex flex-col gap-4">
               <a
-                href="tel:+551139916943"
+                href="tel:+551139316343"
                 className="flex items-center gap-3 text-brilho-text-light/80 font-inter text-sm hover:text-brilho-text-light transition-colors"
               >
                 <Phone className="w-5 h-5 text-brilho-red-vivid" />
-                <span>(11) 3991-6943</span>
+                <span>(11) 3931-6343</span>
               </a>
               <a
-                href="https://wa.me/5511999999999"
+                href="https://wa.me/5511940101807"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-3 text-brilho-text-light/80 font-inter text-sm hover:text-brilho-text-light transition-colors"
@@ -115,14 +126,29 @@ const Footer = () => {
                 >
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                 </svg>
-                <span>WhatsApp</span>
+                <span>(11) 94010-1807</span>
               </a>
               <a
-                href="mailto:contato@metalurgicabrilho.com.br"
+                href="https://wa.me/5511983304765"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-brilho-text-light/80 font-inter text-sm hover:text-brilho-text-light transition-colors"
+              >
+                <svg
+                  className="w-5 h-5 text-brilho-whatsapp"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                <span>(11) 98330-4765</span>
+              </a>
+              <a
+                href="mailto:metalurgicabrilho@gmail.com"
                 className="flex items-center gap-3 text-brilho-text-light/80 font-inter text-sm hover:text-brilho-text-light transition-colors"
               >
                 <Mail className="w-5 h-5 text-brilho-red-vivid" />
-                <span>contato@metalurgicabrilho.com.br</span>
+                <span>metalurgicabrilho@gmail.com</span>
               </a>
             </div>
           </div>
@@ -191,8 +217,7 @@ const Footer = () => {
         {/* Copyright */}
         <div className="text-center">
           <p className="text-brilho-text-light/60 font-inter text-sm">
-            © {new Date().getFullYear()} Metalúrgica Brilho. Todos os direitos
-            reservados.
+            {t("footer.copyright", { year: new Date().getFullYear() })}
           </p>
         </div>
       </div>

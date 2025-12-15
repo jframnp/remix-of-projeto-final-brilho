@@ -40,36 +40,237 @@
     "certText2": "Investimos constantemente em processos de qualidade e controle, assegurando que cada produto que sai de nossa fábrica atenda aos mais elevados padrões internacionais.",
     "anvisaCert": "Certificado",
     "missionTitle": "NOSSA MISSÃO",
-    "missionText": "Desenvolver e fabricar produtos de alta qualidade para os segmentos de podologia, manicure e odontologia, contribuindo para a saúde e bem-estar das pessoas. Buscamos constantemente a inovação e excelência em todos os nossos processos, oferecendo soluções que atendam às necessidades de nossos clientes com eficiência e segurança.",
+    "missionText": "Desenvolver e fabricar produtos de alta qualidade para os segmentos de podologia, manicure e odontologia, contribuindo para a saúde e bem-estar das pessoas.",
     "valuesTitle": "NOSSOS VALORES",
-    "valuesText": "Ética e transparência em todas as relações comerciais. Compromisso com a qualidade e segurança dos produtos. Respeito ao meio ambiente e sustentabilidade. Valorização das pessoas e trabalho em equipe. Inovação constante e busca pela excelência. Responsabilidade social e contribuição para a comunidade.",
+    "valuesText": "Ética e transparência em todas as relações comerciais. Compromisso com a qualidade e segurança dos produtos. Respeito ao meio ambiente e sustentabilidade. Valorização das pessoas e trabalho em equipe.",
     "visionTitle": "NOSSA VISÃO",
-    "visionText": "Ser reconhecida como a principal referência no mercado brasileiro de instrumentos para podologia e manicure, expandindo nossa atuação para mercados internacionais. Almejamos ser sinônimo de qualidade, inovação e confiabilidade, mantendo-nos sempre à frente das tendências e necessidades do mercado."
+    "visionText": "Ser reconhecida como a principal referência no mercado brasileiro de instrumentos para podologia e manicure, expandindo nossa atuação para mercados internacionais."
   },
   "products": {
-    "title": "BROCAS DIAMANTADAS",
-    "subtitle": "Conheça nossa linha completa de brocas diamantadas para podologia",
-    "qualityTitle": "Qualidade e Precisão",
-    "qualityText1": "Nossas brocas diamantadas são fabricadas com os mais altos padrões de qualidade, utilizando diamantes industriais de primeira linha. O processo de fabricação garante uniformidade na granulometria e durabilidade excepcional.",
-    "qualityText2": "Indicadas para uso em podologia, as brocas são ideais para desbaste de unhas, remoção de calosidades e tratamentos diversos. Disponíveis em diversos formatos e granulometrias para atender às necessidades específicas de cada procedimento.",
-    "qualityText3": "Todas as brocas passam por rigoroso controle de qualidade, garantindo segurança e eficiência no uso profissional. Produto registrado na ANVISA.",
-    "feature1": "Alta durabilidade e resistência",
-    "feature2": "Diamantes industriais de primeira linha",
-    "feature3": "Diversas granulometrias disponíveis",
-    "feature4": "Formatos específicos para cada procedimento",
-    "feature5": "Registro ANVISA",
-    "feature6": "Fabricação 100% nacional",
-    "productImage": "Imagem das brocas diamantadas",
-    "downloadCatalog": "BAIXE AQUI O CATÁLOGO DAS NOSSAS BROCAS DIAMANTADAS E FIQUE ATUALIZADO",
-    "otherProducts": "OUTROS PRODUTOS",
-    "prod1": "Lixas Descartáveis",
-    "prod2": "Brocas de Tungstênio",
-    "prod3": "Mandris e Adaptadores",
-    "prod4": "Kits Profissionais",
-    "prod5": "Esponjas Polidoras",
-    "prod6": "Pontas Montadas",
-    "prod7": "Discos de Corte",
-    "prod8": "Acessórios"
+    "pageTitle": "PRODUTOS",
+    "pageSubtitle": "Conheça nossa linha completa de produtos para podologia, manicure e odontologia",
+    "downloadCatalog": "BAIXE O CATÁLOGO COMPLETO",
+    "sections": {
+      "diamondBurs": "Brocas Diamantadas",
+      "tungstenBurs": "Fresas de Tungstênio",
+      "ceramicBurs": "Fresas de Cerâmica",
+      "sandpaper": "Lixas Sandpaper",
+      "boomerang": "Lixas Boomerang",
+      "tubularAdhesive": "Lixa Tubular / Adesiva",
+      "polishers": "Polidoras",
+      "brushes": "Escovas de Limpeza",
+      "fiberMandril": "Fibras / Enucleadora / Mandril",
+      "supportSharpening": "Apoio / Afiação"
+    },
+    "diamondBurs": {
+      "title": "BROCAS DIAMANTADAS",
+      "subtitle": "Diamond Burs",
+      "description": "Nossas brocas diamantadas são fabricadas com diamantes industriais de alta qualidade, proporcionando durabilidade excepcional e precisão no corte. Ideais para procedimentos de podologia, oferecendo acabamento perfeito e segurança ao profissional.",
+      "features": [
+        "Diamantes industriais de primeira linha",
+        "Alta durabilidade e resistência",
+        "Diversas granulometrias disponíveis",
+        "Formatos específicos para cada procedimento",
+        "Registro ANVISA",
+        "Fabricação 100% nacional"
+      ],
+      "goldLineTitle": "LINHA GOLD",
+      "goldLineDesc": "Tecnologia avançada com revestimento especial dourado para maior durabilidade e performance superior. A linha Gold representa o que há de mais moderno em brocas diamantadas.",
+      "tableHeaders": {
+        "model": "Modelo",
+        "code": "Código",
+        "iso": "ISO",
+        "grain": "Grão",
+        "diameter": "Diâmetro"
+      },
+      "models": {
+        "spherical": "Esférica",
+        "wheel": "Roda",
+        "conical": "Cônica",
+        "flame": "Chama",
+        "cylindrical": "Cilíndrica",
+        "torpedo": "Torpedo"
+      },
+      "grains": {
+        "extraFine": "Extra Fino",
+        "fine": "Fino",
+        "medium": "Médio",
+        "coarse": "Grosso",
+        "extraCoarse": "Extra Grosso"
+      }
+    },
+    "tungstenBurs": {
+      "title": "FRESAS DE TUNGSTÊNIO",
+      "subtitle": "Tungsten Carbide Burs",
+      "description": "Fresas de tungstênio de alta performance para desbaste e acabamento. Disponíveis nas versões Maxi Cut e Mini Cut, com diversos tipos de corte para atender às necessidades específicas de cada procedimento.",
+      "maxiCut": "Maxi Cut",
+      "miniCut": "Mini Cut",
+      "cuts": {
+        "crossMedium": "Cruzado Médio",
+        "crossFine": "Cruzado Fino",
+        "crossExtraFine": "Cruzado Extra Fino",
+        "crossCoarse": "Cruzado Grosso",
+        "straight": "Reto"
+      },
+      "tableHeaders": {
+        "model": "Modelo",
+        "code": "Código",
+        "iso": "ISO",
+        "cut": "Corte",
+        "diameter": "Diâmetro"
+      }
+    },
+    "ceramicBurs": {
+      "title": "FRESAS DE CERÂMICA",
+      "subtitle": "Ceramic Burs",
+      "description": "Fresas de cerâmica de alta resistência e durabilidade. Ideais para trabalhos que exigem precisão e acabamento delicado. Disponíveis em diversos formatos e granulometrias.",
+      "tableHeaders": {
+        "model": "Modelo",
+        "code": "Código",
+        "iso": "ISO",
+        "cut": "Corte",
+        "diameter": "Diâmetro"
+      }
+    },
+    "sandpaper": {
+      "title": "LIXAS SANDPAPER",
+      "subtitle": "Abrasive Files",
+      "description": "Linha completa de lixas descartáveis para podologia. Disponíveis em versões Laminar e Plantar, com diferentes granulações e marcas premium como Norton e Alcar.",
+      "types": {
+        "laminarPremium": "Lixa Laminar Premium (Norton)",
+        "plantarPremium": "Lixa Plantar Premium (Norton)",
+        "extraLarge": "Lixa Extra Grande",
+        "laminarAlcar": "Lixa Laminar (Alcar)",
+        "plantarAlcar": "Lixa Plantar (Alcar)"
+      },
+      "tableHeaders": {
+        "type": "Tipo",
+        "code": "Código",
+        "diameter": "Diâmetro",
+        "grain": "Granulação",
+        "package": "Embalagem"
+      }
+    },
+    "boomerang": {
+      "title": "LIXAS BOOMERANG",
+      "subtitle": "Boomerang Sandpaper",
+      "description": "Lixas especiais em formato boomerang e outros shapes exclusivos para manicure e nail design. Alta qualidade e durabilidade para resultados profissionais.",
+      "types": {
+        "nailsGreen": "Lixa Nails Verde",
+        "highPerformance": "Lixa Alta Performance",
+        "whiteFine": "Boomerang White Fina 2mm",
+        "disposableWhite": "Nails Descartável Branca",
+        "stainlessBase": "Base Inox"
+      },
+      "shapes": {
+        "boomerang": "Boomerang",
+        "square": "Quadrada",
+        "coffin": "Caixão",
+        "drop": "Gota"
+      },
+      "tableHeaders": {
+        "type": "Tipo",
+        "code": "Código",
+        "shape": "Formato",
+        "grain": "Granulação",
+        "material": "Material"
+      }
+    },
+    "tubularAdhesive": {
+      "title": "LIXA TUBULAR SEND / LIXA ADESIVA CIRCULAR",
+      "subtitle": "Tubular Sand / Adhesive Circular File",
+      "description": "Lixas tubulares e adesivas circulares para diferentes aplicações. Alta aderência e durabilidade para uso profissional.",
+      "tableHeaders": {
+        "type": "Tipo",
+        "code": "Código",
+        "grain": "Grão",
+        "diameter": "Diâmetro",
+        "package": "Embalagem",
+        "abrasive": "Tipo Abrasivo"
+      }
+    },
+    "polishers": {
+      "title": "POLIDORAS",
+      "subtitle": "Polishers",
+      "description": "Linha completa de polidoras para acabamento perfeito. Disponíveis em diversos formatos (Torpedo, Ogival, Cilíndrica, Chama) e níveis de desbaste (Extra Grosso a Ultra Fino).",
+      "types": {
+        "torpedoOgival": "Polidora Torpedo Ogival",
+        "torpedoLarge": "Polidora Torpedo Grande",
+        "torpedoMedium": "Polidora Torpedo Média",
+        "cylindrical": "Polidora Cilíndrica",
+        "flameSmall": "Polidora Chama Pequena"
+      },
+      "grindLevels": {
+        "extraCoarse": "Extra Grosso",
+        "coarse": "Grosso",
+        "medium": "Médio",
+        "fine": "Fino",
+        "extraFine": "Extra Fino",
+        "ultraFine": "Ultra Fino"
+      },
+      "tableHeaders": {
+        "model": "Modelo",
+        "code": "Código",
+        "diameter": "Diâmetro",
+        "grind": "Desbaste",
+        "color": "Cor"
+      }
+    },
+    "brushes": {
+      "title": "ESCOVAS DE LIMPEZA",
+      "subtitle": "Cleaning Brushes",
+      "description": "Escovas de limpeza profissional com cerdas de poliamida. Disponíveis em diferentes cores e tamanhos para limpeza de instrumentos e brocas.",
+      "types": {
+        "polyamidePink": "Cerdas Poliamida Rosa",
+        "polyamideLilac": "Cerdas Poliamida Lilás",
+        "polisherCleaning": "Brocas Polidoras Limpeza",
+        "sponge": "Esponja",
+        "felt": "Feltro"
+      },
+      "tableHeaders": {
+        "type": "Tipo",
+        "code": "Código",
+        "diameter": "Diâmetro",
+        "bristles": "Cerdas"
+      }
+    },
+    "fiberMandril": {
+      "title": "FIBRAS / ENUCLEADORA / MANDRIL",
+      "subtitle": "Fiber / Shell Enucleator / Mandril",
+      "description": "Linha especializada incluindo Fibra Molecular para tratamentos específicos, Enucleadora de Calos em Aço Inoxidável e Mandril PM Church para fixação de lixas.",
+      "types": {
+        "molecularFiber": "Fibra Molecular",
+        "callusEnucleator": "Enucleadora de Calos Aço Inoxidável",
+        "mandrilPMChurch": "Mandril PM Church"
+      },
+      "tableHeaders": {
+        "type": "Tipo",
+        "code": "Código",
+        "model": "Modelo",
+        "diameter": "Diâmetro",
+        "material": "Material"
+      }
+    },
+    "supportSharpening": {
+      "title": "APOIO PARA LIXAS / AFIAÇÃO DE INSTRUMENTOS",
+      "subtitle": "Support for Files / Instrument Sharpening",
+      "description": "Acessórios essenciais para o profissional: apoios rígidos e flexíveis para lixas, discos de couro e abrasivo para afiação, pasta de polimento e mandril standard.",
+      "types": {
+        "rigidSupport": "Apoio Rígido (Plantar/Laminar)",
+        "flexSupport": "Apoio Flexível (Plantar/Laminar)",
+        "leatherDisc": "Disco Couro",
+        "abrasiveDisc": "Disco Abrasivo",
+        "polishingPaste": "Pasta Polimento",
+        "mandrilStandard": "Mandril Standard"
+      },
+      "tableHeaders": {
+        "type": "Tipo",
+        "code": "Código",
+        "diameter": "Diâmetro",
+        "thickness": "Espessura",
+        "package": "Embalagem"
+      }
+    }
   },
   "contact": {
     "title": "CONTATO",
@@ -142,8 +343,8 @@
     "contact": "Contato",
     "brilhoNails": "Brilho-Nails",
     "company": "Metalúrgica Brilho",
-    "address": "Rua Frei Gaspar, 1095 - Mooca",
-    "city": "São Paulo - SP, 03164-001",
+    "address": "R. Cel. Botelho, 58 - Bela Aliança",
+    "city": "São Paulo - SP",
     "cnpj": "CNPJ: 60.749.736/0001-90",
     "contactTitle": "Contato",
     "copyright": "© {year} Metalúrgica Brilho. Todos os direitos reservados."
