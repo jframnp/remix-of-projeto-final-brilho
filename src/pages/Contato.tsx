@@ -2,9 +2,11 @@ import { useState } from "react";
 import Layout from "@/components/Layout";
 import { Phone, Mail, MapPin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "react-i18next";
 
 const Contato = () => {
   const { toast } = useToast();
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -16,8 +18,8 @@ const Contato = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
-      title: "Mensagem enviada!",
-      description: "Entraremos em contato em breve.",
+      title: t("contact.successTitle"),
+      description: t("contact.successDesc"),
     });
     setFormData({
       nome: "",
@@ -43,10 +45,10 @@ const Contato = () => {
       <section className="bg-brilho-red-dark py-16 md:py-24">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-brilho-text-light font-montserrat font-bold text-4xl md:text-5xl lg:text-6xl mb-6">
-            CONTATO
+            {t("contact.title")}
           </h1>
           <p className="text-brilho-text-light/80 font-inter text-lg max-w-2xl mx-auto">
-            Entre em contato conosco. Estamos prontos para atendê-lo!
+            {t("contact.subtitle")}
           </p>
         </div>
       </section>
@@ -58,7 +60,7 @@ const Contato = () => {
             {/* Form */}
             <div className="lg:w-1/2">
               <h2 className="text-brilho-red font-montserrat font-bold text-2xl mb-8">
-                Envie sua mensagem
+                {t("contact.formTitle")}
               </h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
@@ -66,7 +68,7 @@ const Contato = () => {
                     htmlFor="nome"
                     className="block text-foreground font-inter font-medium mb-2"
                   >
-                    Nome completo *
+                    {t("contact.nameLabel")}
                   </label>
                   <input
                     type="text"
@@ -76,7 +78,7 @@ const Contato = () => {
                     value={formData.nome}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground font-inter focus:outline-none focus:border-brilho-red-vivid focus:ring-2 focus:ring-brilho-red-vivid/20 transition-all"
-                    placeholder="Seu nome"
+                    placeholder={t("contact.namePlaceholder")}
                   />
                 </div>
 
@@ -86,7 +88,7 @@ const Contato = () => {
                       htmlFor="email"
                       className="block text-foreground font-inter font-medium mb-2"
                     >
-                      E-mail *
+                      {t("contact.emailLabel")}
                     </label>
                     <input
                       type="email"
@@ -96,7 +98,7 @@ const Contato = () => {
                       value={formData.email}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground font-inter focus:outline-none focus:border-brilho-red-vivid focus:ring-2 focus:ring-brilho-red-vivid/20 transition-all"
-                      placeholder="seu@email.com"
+                      placeholder={t("contact.emailPlaceholder")}
                     />
                   </div>
                   <div>
@@ -104,7 +106,7 @@ const Contato = () => {
                       htmlFor="telefone"
                       className="block text-foreground font-inter font-medium mb-2"
                     >
-                      Telefone
+                      {t("contact.phoneLabel")}
                     </label>
                     <input
                       type="tel"
@@ -113,7 +115,7 @@ const Contato = () => {
                       value={formData.telefone}
                       onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground font-inter focus:outline-none focus:border-brilho-red-vivid focus:ring-2 focus:ring-brilho-red-vivid/20 transition-all"
-                      placeholder="(11) 99999-9999"
+                      placeholder={t("contact.phonePlaceholder")}
                     />
                   </div>
                 </div>
@@ -123,7 +125,7 @@ const Contato = () => {
                     htmlFor="assunto"
                     className="block text-foreground font-inter font-medium mb-2"
                   >
-                    Assunto *
+                    {t("contact.subjectLabel")}
                   </label>
                   <select
                     id="assunto"
@@ -133,12 +135,12 @@ const Contato = () => {
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground font-inter focus:outline-none focus:border-brilho-red-vivid focus:ring-2 focus:ring-brilho-red-vivid/20 transition-all"
                   >
-                    <option value="">Selecione um assunto</option>
-                    <option value="orcamento">Solicitar Orçamento</option>
-                    <option value="catalogo">Solicitar Catálogo</option>
-                    <option value="representante">Falar com Representante</option>
-                    <option value="suporte">Suporte Técnico</option>
-                    <option value="outro">Outro</option>
+                    <option value="">{t("contact.subjectPlaceholder")}</option>
+                    <option value="orcamento">{t("contact.subjectQuote")}</option>
+                    <option value="catalogo">{t("contact.subjectCatalog")}</option>
+                    <option value="representante">{t("contact.subjectRep")}</option>
+                    <option value="suporte">{t("contact.subjectSupport")}</option>
+                    <option value="outro">{t("contact.subjectOther")}</option>
                   </select>
                 </div>
 
@@ -147,7 +149,7 @@ const Contato = () => {
                     htmlFor="mensagem"
                     className="block text-foreground font-inter font-medium mb-2"
                   >
-                    Mensagem *
+                    {t("contact.messageLabel")}
                   </label>
                   <textarea
                     id="mensagem"
@@ -157,7 +159,7 @@ const Contato = () => {
                     value={formData.mensagem}
                     onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground font-inter focus:outline-none focus:border-brilho-red-vivid focus:ring-2 focus:ring-brilho-red-vivid/20 transition-all resize-none"
-                    placeholder="Digite sua mensagem..."
+                    placeholder={t("contact.messagePlaceholder")}
                   />
                 </div>
 
@@ -166,7 +168,7 @@ const Contato = () => {
                   className="w-full md:w-auto inline-flex items-center justify-center gap-3 bg-brilho-red-vivid text-brilho-text-light font-montserrat font-bold text-lg px-12 py-4 rounded-lg hover:scale-105 hover:shadow-button-hover transition-all duration-300"
                 >
                   <Send size={20} />
-                  ENVIAR
+                  {t("contact.sendBtn")}
                 </button>
               </form>
             </div>
@@ -174,7 +176,7 @@ const Contato = () => {
             {/* Contact Info */}
             <div className="lg:w-1/2 lg:pl-12">
               <h2 className="text-brilho-red font-montserrat font-bold text-2xl mb-8">
-                Informações de contato
+                {t("contact.infoTitle")}
               </h2>
 
               <div className="space-y-8">
@@ -184,13 +186,13 @@ const Contato = () => {
                   </div>
                   <div>
                     <h3 className="text-foreground font-montserrat font-bold text-lg mb-1">
-                      Telefone
+                      {t("contact.phone")}
                     </h3>
                     <a
-                      href="tel:+551139916943"
+                      href="tel:+551139316343"
                       className="text-foreground/70 font-inter hover:text-brilho-red transition-colors"
                     >
-                      (11) 3991-6943
+                      (11) 3931-6343
                     </a>
                   </div>
                 </div>
@@ -207,15 +209,15 @@ const Contato = () => {
                   </div>
                   <div>
                     <h3 className="text-foreground font-montserrat font-bold text-lg mb-1">
-                      WhatsApp
+                      {t("contact.whatsapp")}
                     </h3>
                     <a
-                      href="https://wa.me/5511999999999"
+                      href="https://wa.me/5511940101807"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-foreground/70 font-inter hover:text-brilho-whatsapp transition-colors"
                     >
-                      (11) 99999-9999
+                      (11) 94010-1807
                     </a>
                   </div>
                 </div>
@@ -226,13 +228,13 @@ const Contato = () => {
                   </div>
                   <div>
                     <h3 className="text-foreground font-montserrat font-bold text-lg mb-1">
-                      E-mail
+                      {t("contact.email")}
                     </h3>
                     <a
-                      href="mailto:contato@metalurgicabrilho.com.br"
+                      href="mailto:metalurgicabrilho@gmail.com"
                       className="text-foreground/70 font-inter hover:text-brilho-red transition-colors"
                     >
-                      contato@metalurgicabrilho.com.br
+                      metalurgicabrilho@gmail.com
                     </a>
                   </div>
                 </div>
@@ -243,12 +245,12 @@ const Contato = () => {
                   </div>
                   <div>
                     <h3 className="text-foreground font-montserrat font-bold text-lg mb-1">
-                      Endereço
+                      {t("contact.address")}
                     </h3>
                     <p className="text-foreground/70 font-inter">
-                      Rua Frei Gaspar, 1095 - Mooca
+                      {t("footer.address")}
                       <br />
-                      São Paulo - SP, 03164-001
+                      {t("footer.city")}
                     </p>
                   </div>
                 </div>
@@ -259,7 +261,7 @@ const Contato = () => {
                 <div className="text-center">
                   <MapPin className="w-12 h-12 text-muted-foreground mx-auto mb-2" />
                   <p className="text-muted-foreground font-inter">
-                    Mapa de localização
+                    {t("contact.mapPlaceholder")}
                   </p>
                 </div>
               </div>

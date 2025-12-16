@@ -1,16 +1,19 @@
 import Layout from "@/components/Layout";
+import { useTranslation } from "react-i18next";
 
 const Institucional = () => {
+  const { t } = useTranslation();
+
   return (
     <Layout>
       {/* Hero Section */}
       <section className="bg-brilho-red-dark py-16 md:py-24">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-brilho-text-light font-montserrat font-bold text-4xl md:text-5xl lg:text-6xl mb-6">
-            INSTITUCIONAL
+            {t("institutional.title")}
           </h1>
           <p className="text-brilho-text-light/80 font-inter text-lg max-w-2xl mx-auto">
-            Conheça nossa história, valores e compromisso com a qualidade
+            {t("institutional.subtitle")}
           </p>
         </div>
       </section>
@@ -21,18 +24,13 @@ const Institucional = () => {
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="lg:w-1/2">
               <h2 className="text-brilho-red font-montserrat font-bold text-3xl md:text-4xl mb-6">
-                CERTIFICAÇÕES
+                {t("institutional.certTitle")}
               </h2>
               <p className="text-foreground/80 font-inter text-base md:text-lg leading-relaxed mb-6">
-                A Metalúrgica Brilho possui todas as certificações necessárias
-                para garantir a qualidade e segurança de seus produtos. Nossa
-                empresa é registrada na ANVISA e segue rigorosamente as normas
-                de fabricação de produtos para saúde.
+                {t("institutional.certText1")}
               </p>
               <p className="text-foreground/80 font-inter text-base md:text-lg leading-relaxed">
-                Investimos constantemente em processos de qualidade e controle,
-                assegurando que cada produto que sai de nossa fábrica atenda
-                aos mais elevados padrões internacionais.
+                {t("institutional.certText2")}
               </p>
             </div>
             <div className="lg:w-1/2 flex justify-center">
@@ -56,7 +54,7 @@ const Institucional = () => {
                       ANVISA
                     </p>
                     <p className="text-muted-foreground font-inter text-sm">
-                      Certificado
+                      {t("institutional.anvisaCert")}
                     </p>
                   </div>
                 </div>
@@ -88,15 +86,10 @@ const Institucional = () => {
                     />
                   </svg>
                 </span>
-                NOSSA MISSÃO
+                {t("institutional.missionTitle")}
               </h3>
               <p className="text-foreground/80 font-inter text-base leading-relaxed text-justify">
-                Desenvolver e fabricar produtos de alta qualidade para os
-                segmentos de podologia, manicure e odontologia, contribuindo
-                para a saúde e bem-estar das pessoas. Buscamos constantemente
-                a inovação e excelência em todos os nossos processos, oferecendo
-                soluções que atendam às necessidades de nossos clientes com
-                eficiência e segurança.
+                {t("institutional.missionText")}
               </p>
             </div>
 
@@ -118,15 +111,10 @@ const Institucional = () => {
                     />
                   </svg>
                 </span>
-                NOSSOS VALORES
+                {t("institutional.valuesTitle")}
               </h3>
               <p className="text-foreground/80 font-inter text-base leading-relaxed text-justify">
-                Ética e transparência em todas as relações comerciais.
-                Compromisso com a qualidade e segurança dos produtos.
-                Respeito ao meio ambiente e sustentabilidade. Valorização
-                das pessoas e trabalho em equipe. Inovação constante e
-                busca pela excelência. Responsabilidade social e
-                contribuição para a comunidade.
+                {t("institutional.valuesText")}
               </p>
             </div>
 
@@ -154,15 +142,10 @@ const Institucional = () => {
                     />
                   </svg>
                 </span>
-                NOSSA VISÃO
+                {t("institutional.visionTitle")}
               </h3>
               <p className="text-foreground/80 font-inter text-base leading-relaxed text-justify">
-                Ser reconhecida como a principal referência no mercado
-                brasileiro de instrumentos para podologia e manicure,
-                expandindo nossa atuação para mercados internacionais.
-                Almejamos ser sinônimo de qualidade, inovação e
-                confiabilidade, mantendo-nos sempre à frente das
-                tendências e necessidades do mercado.
+                {t("institutional.visionText")}
               </p>
             </div>
           </div>
