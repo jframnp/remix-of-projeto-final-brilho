@@ -1,7 +1,10 @@
 import Layout from "@/components/Layout";
 import { ArrowDown, Download } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const Index = () => {
+  const { t } = useTranslation();
+
   return (
     <Layout>
       {/* Hero Section */}
@@ -18,15 +21,15 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brilho-red-dark/80" />
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
           <h1 className="text-brilho-text-light font-montserrat font-bold text-3xl md:text-5xl lg:text-6xl mb-6 text-shadow max-w-4xl animate-fade-in">
-            Excelência em Brocas Diamantadas e Produtos para Podologia
+            {t("home.heroTitle")}
           </h1>
           <p className="text-brilho-text-light/90 font-inter text-lg md:text-xl max-w-2xl mb-8 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            Qualidade certificada ANVISA há mais de 35 anos no mercado
+            {t("home.heroSubtitle")}
           </p>
           <a
             href="#quem-somos"
             className="text-brilho-text-light animate-bounce mt-4"
-            aria-label="Rolar para baixo"
+            aria-label="Scroll down"
           >
             <ArrowDown size={32} />
           </a>
@@ -39,18 +42,13 @@ const Index = () => {
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="lg:w-1/2">
               <h2 className="text-brilho-red font-montserrat font-bold text-3xl md:text-4xl mb-6">
-                QUEM SOMOS NÓS
+                {t("home.aboutTitle")}
               </h2>
               <p className="text-foreground/80 font-inter text-base md:text-lg leading-relaxed mb-6">
-                A Metalúrgica Brilho é uma empresa brasileira com mais de 35 anos de experiência
-                na fabricação de instrumentos de alta precisão para as áreas de podologia,
-                manicure e odontologia. Nossa trajetória é marcada pela busca constante
-                da excelência e inovação.
+                {t("home.aboutText1")}
               </p>
               <p className="text-foreground/80 font-inter text-base md:text-lg leading-relaxed">
-                Contamos com uma equipe altamente qualificada e um parque fabril moderno,
-                permitindo-nos oferecer produtos que atendem aos mais rigorosos padrões
-                de qualidade e segurança, com certificação ANVISA.
+                {t("home.aboutText2")}
               </p>
             </div>
             <div className="lg:w-1/2">
@@ -78,7 +76,7 @@ const Index = () => {
                     </svg>
                   </div>
                   <p className="text-muted-foreground font-inter text-lg">
-                    Vídeo institucional da empresa
+                    {t("home.videoPlaceholder")}
                   </p>
                 </div>
               </div>
@@ -93,21 +91,18 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                title: "Qualidade Certificada",
-                description:
-                  "Todos os nossos produtos possuem certificação ANVISA, garantindo segurança e qualidade para profissionais e pacientes.",
+                title: t("home.card1Title"),
+                description: t("home.card1Desc"),
                 icon: "🏆",
               },
               {
-                title: "Tecnologia Avançada",
-                description:
-                  "Utilizamos equipamentos de última geração e processos de fabricação modernos para entregar produtos de alta precisão.",
+                title: t("home.card2Title"),
+                description: t("home.card2Desc"),
                 icon: "⚙️",
               },
               {
-                title: "Atendimento Especializado",
-                description:
-                  "Nossa equipe está pronta para atender suas necessidades com expertise e dedicação em cada projeto.",
+                title: t("home.card3Title"),
+                description: t("home.card3Desc"),
                 icon: "🤝",
               },
             ].map((card, index) => (
@@ -134,18 +129,17 @@ const Index = () => {
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="lg:w-1/2 text-center lg:text-left">
               <h2 className="text-brilho-text-light font-montserrat font-bold text-3xl md:text-4xl lg:text-5xl mb-6">
-                CATÁLOGO DOS PRODUTOS
+                {t("home.catalogTitle")}
               </h2>
               <p className="text-brilho-text-light/80 font-inter text-lg mb-8">
-                Conheça nossa linha completa de produtos. Baixe nosso catálogo
-                e descubra as melhores soluções para seu negócio.
+                {t("home.catalogDesc")}
               </p>
               <a
                 href="#"
                 className="inline-flex items-center gap-3 bg-brilho-red-vivid text-brilho-text-light font-montserrat font-bold text-lg px-10 py-5 rounded-lg hover:scale-105 hover:shadow-button-hover transition-all duration-300"
               >
                 <Download size={24} />
-                BAIXE AQUI
+                {t("home.downloadBtn")}
               </a>
             </div>
             <div className="lg:w-1/2">
@@ -167,7 +161,7 @@ const Index = () => {
                     </svg>
                   </div>
                   <p className="text-brilho-text-light/70 font-inter">
-                    Imagem do catálogo
+                    {t("home.catalogImage")}
                   </p>
                 </div>
               </div>
@@ -180,13 +174,13 @@ const Index = () => {
       <section className="bg-brilho-bg-light py-16 md:py-24">
         <div className="container mx-auto px-4">
           <h2 className="text-brilho-red font-montserrat font-bold text-3xl md:text-4xl text-center mb-12">
-            PRODUTOS DESTAQUE
+            {t("home.featuredTitle")}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              { name: "Brocas Diamantadas", category: "Podologia" },
-              { name: "Lixas Descartáveis", category: "Manicure" },
-              { name: "Instrumentos Cirúrgicos", category: "Odontologia" },
+              { name: t("home.product1"), category: t("home.product1Cat") },
+              { name: t("home.product2"), category: t("home.product2Cat") },
+              { name: t("home.product3"), category: t("home.product3Cat") },
             ].map((product, index) => (
               <div
                 key={index}
@@ -210,7 +204,7 @@ const Index = () => {
                       </svg>
                     </div>
                     <p className="text-muted-foreground font-inter">
-                      Imagem do produto
+                      {t("home.productImage")}
                     </p>
                   </div>
                 </div>
