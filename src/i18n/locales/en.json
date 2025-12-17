@@ -4,7 +4,11 @@
     "institutional": "INSTITUTIONAL",
     "products": "PRODUCTS",
     "contact": "CONTACT",
-    "brilhoNails": "BRILHO-NAILS"
+    "brilhoNails": "BRILHO-NAILS",
+    "odontoDentaria": "Dental Dentistry",
+    "podologia": "Podiatry",
+    "esmalteriaNails": "Nail Design & Enamel",
+    "diversos": "Miscellaneous"
   },
   "home": {
     "heroTitle": "Excellence in Diamond Drill Bits and Podiatry Products",
