@@ -342,11 +342,16 @@
     "products": "产品",
     "contact": "联系我们",
     "brilhoNails": "美甲系列",
+    "about": "关于",
     "company": "Metalúrgica Brilho",
     "address": "R. Cel. Botelho, 58 - Bela Aliança",
     "city": "巴西圣保罗 - SP",
     "cnpj": "税号: 60.749.736/0001-90",
     "contactTitle": "联系方式",
+    "addressTitle": "地址",
+    "phonesTitle": "电话",
+    "companyTitle": "公司",
+    "allRights": "保留所有权利",
     "copyright": "© {year} Metalúrgica Brilho。版权所有。"
   },
   "meta": {

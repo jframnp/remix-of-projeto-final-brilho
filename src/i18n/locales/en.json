@@ -342,11 +342,16 @@
     "products": "Products",
     "contact": "Contact",
     "brilhoNails": "Brilho-Nails",
+    "about": "About",
     "company": "Metalúrgica Brilho",
     "address": "R. Cel. Botelho, 58 - Bela Aliança",
     "city": "São Paulo - SP, Brazil",
     "cnpj": "Tax ID: 60.749.736/0001-90",
     "contactTitle": "Contact",
+    "addressTitle": "ADDRESS",
+    "phonesTitle": "PHONES",
+    "companyTitle": "COMPANY",
+    "allRights": "ALL RIGHTS RESERVED",
     "copyright": "© {year} Metalúrgica Brilho. All rights reserved."
   },
   "meta": {
