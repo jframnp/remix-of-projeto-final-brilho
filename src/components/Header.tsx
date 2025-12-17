@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Phone, Mail, Menu, X } from "lucide-react";
+import { Phone, Mail, Menu, X, ChevronDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "@/hooks/useLanguage";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isProductsOpen, setIsProductsOpen] = useState(false);
   const location = useLocation();
   const { t } = useTranslation();
   const { currentLang, changeLanguage } = useLanguage();
@@ -16,12 +17,19 @@ const Header = () => {
     return path;
   };
 
-  const menuItems = [
+  const mainMenuItems = [
     { label: t("nav.home"), path: "/" },
     { label: t("nav.institutional"), path: "/institucional" },
-    { label: t("nav.products"), path: "/produtos" },
+    { label: t("nav.products"), path: "/produtos", hasSubmenu: true },
     { label: t("nav.contact"), path: "/contato" },
     { label: t("nav.brilhoNails"), path: "/brilho-nails" },
+  ];
+
+  const productSubMenuItems = [
+    { label: t("nav.odontoDentaria", "Odonto Dentária"), path: "/odonto-dentaria" },
+    { label: t("nav.podologia", "Podologia"), path: "/podologia" },
+    { label: t("nav.esmalteriaNails", "Esmalteria e Nails"), path: "/esmalteria-nails" },
+    { label: t("nav.diversos", "Diversos"), path: "/diversos" },
   ];
 
   const isActive = (path: string) => {
@@ -35,8 +43,8 @@ const Header = () => {
       <div className="bg-[#E02020] h-[70px] md:h-[90px]">
         <div className="container mx-auto h-full px-4 md:px-[5%] flex items-center justify-between">
           {/* Logo */}
-          <Link to={getLocalizedPath("/")} className="flex items-center gap-3">
-            <div className="relative w-10 h-10 md:w-14 md:h-14">
+          <Link to={getLocalizedPath("/")} className="flex items-center gap-3 group">
+            <div className="relative w-10 h-10 md:w-14 md:h-14 transition-transform duration-300 group-hover:scale-110">
               <svg viewBox="0 0 60 60" className="w-full h-full drop-shadow-lg">
                 <defs>
                   <linearGradient id="metalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -71,14 +79,14 @@ const Header = () => {
           <div className="hidden md:flex items-center gap-8">
             <a
               href="tel:+551139316343"
-              className="flex items-center gap-2 text-white font-montserrat font-bold text-xl md:text-2xl"
+              className="flex items-center gap-2 text-white font-montserrat font-bold text-xl md:text-2xl hover:scale-105 transition-transform"
             >
               <Phone className="w-6 h-6" />
               <span>(11) 3931-6343</span>
             </a>
             <a
               href="mailto:metalurgicabrilho@gmail.com"
-              className="flex items-center gap-2 text-white font-inter text-base md:text-lg"
+              className="flex items-center gap-2 text-white font-inter text-base md:text-lg hover:scale-105 transition-transform"
             >
               <Mail className="w-5 h-5" />
               <span>metalurgicabrilho@gmail.com</span>
@@ -100,17 +108,49 @@ const Header = () => {
       <div className="hidden md:block bg-[#8B0000] h-[50px]">
         <div className="container mx-auto h-full px-4 md:px-[5%] flex items-center justify-between">
           {/* Centered Navigation */}
-          <nav className="flex-1 flex items-center justify-center gap-[50px]">
-            {menuItems.map((item) => (
-              <Link
-                key={item.path}
-                to={getLocalizedPath(item.path)}
-                className={`text-white font-inter text-lg font-medium transition-all duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[3px] after:bg-[#FF6B6B] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 ${
-                  isActive(item.path) ? "after:scale-x-100" : ""
-                }`}
-              >
-                {item.label}
-              </Link>
+          <nav className="flex-1 flex items-center justify-center gap-[40px]">
+            {mainMenuItems.map((item) => (
+              <div key={item.path} className="relative group">
+                {item.hasSubmenu ? (
+                  <div
+                    className="flex items-center gap-1 cursor-pointer"
+                    onMouseEnter={() => setIsProductsOpen(true)}
+                    onMouseLeave={() => setIsProductsOpen(false)}
+                  >
+                    <Link
+                      to={getLocalizedPath(item.path)}
+                      className={`text-white font-inter text-lg font-medium transition-all duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[3px] after:bg-[#FF6B6B] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 ${
+                        isActive(item.path) ? "after:scale-x-100" : ""
+                      }`}
+                    >
+                      {item.label}
+                    </Link>
+                    <ChevronDown className="w-4 h-4 text-white transition-transform duration-300 group-hover:rotate-180" />
+                    
+                    {/* Submenu */}
+                    <div className={`absolute top-full left-0 mt-2 bg-white rounded-lg shadow-xl min-w-[220px] transition-all duration-300 ${isProductsOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}>
+                      {productSubMenuItems.map((subItem) => (
+                        <Link
+                          key={subItem.path}
+                          to={getLocalizedPath(subItem.path)}
+                          className="block px-4 py-3 text-gray-700 font-inter text-base hover:bg-red-50 hover:text-[#8B0000] transition-colors first:rounded-t-lg last:rounded-b-lg"
+                        >
+                          {subItem.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    to={getLocalizedPath(item.path)}
+                    className={`text-white font-inter text-lg font-medium transition-all duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[3px] after:bg-[#FF6B6B] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 ${
+                      isActive(item.path) ? "after:scale-x-100" : ""
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                )}
+              </div>
             ))}
           </nav>
 
@@ -119,7 +159,7 @@ const Header = () => {
             {/* Brazil - Portuguese */}
             <button 
               onClick={() => changeLanguage("pt")}
-              className={`w-6 h-[18px] rounded-sm overflow-hidden transition-all ${
+              className={`w-6 h-[18px] rounded-sm overflow-hidden transition-all hover:scale-110 ${
                 currentLang === "pt" ? "opacity-100 ring-2 ring-white" : "opacity-60 hover:opacity-100"
               }`} 
               aria-label="Português"
@@ -132,7 +172,7 @@ const Header = () => {
             {/* China - Chinese */}
             <button 
               onClick={() => changeLanguage("zh")}
-              className={`w-6 h-[18px] rounded-sm overflow-hidden transition-all ${
+              className={`w-6 h-[18px] rounded-sm overflow-hidden transition-all hover:scale-110 ${
                 currentLang === "zh" ? "opacity-100 ring-2 ring-white" : "opacity-60 hover:opacity-100"
               }`}
               aria-label="中文"
@@ -144,7 +184,7 @@ const Header = () => {
             {/* USA - English */}
             <button 
               onClick={() => changeLanguage("en")}
-              className={`w-6 h-[18px] rounded-sm overflow-hidden transition-all ${
+              className={`w-6 h-[18px] rounded-sm overflow-hidden transition-all hover:scale-110 ${
                 currentLang === "en" ? "opacity-100 ring-2 ring-white" : "opacity-60 hover:opacity-100"
               }`}
               aria-label="English"
@@ -163,19 +203,34 @@ const Header = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-[#8B0000] border-t border-white/20">
+        <div className="md:hidden bg-[#8B0000] border-t border-white/20 animate-fade-in">
           <nav className="container mx-auto px-4 py-4 flex flex-col gap-4">
-            {menuItems.map((item) => (
-              <Link
-                key={item.path}
-                to={getLocalizedPath(item.path)}
-                onClick={() => setIsMenuOpen(false)}
-                className={`text-white font-inter text-base font-medium py-2 border-b border-white/20 ${
-                  isActive(item.path) ? "text-[#FF6B6B]" : ""
-                }`}
-              >
-                {item.label}
-              </Link>
+            {mainMenuItems.map((item) => (
+              <div key={item.path}>
+                <Link
+                  to={getLocalizedPath(item.path)}
+                  onClick={() => !item.hasSubmenu && setIsMenuOpen(false)}
+                  className={`text-white font-inter text-base font-medium py-2 border-b border-white/20 block ${
+                    isActive(item.path) ? "text-[#FF6B6B]" : ""
+                  }`}
+                >
+                  {item.label}
+                </Link>
+                {item.hasSubmenu && (
+                  <div className="pl-4 mt-2 space-y-2">
+                    {productSubMenuItems.map((subItem) => (
+                      <Link
+                        key={subItem.path}
+                        to={getLocalizedPath(subItem.path)}
+                        onClick={() => setIsMenuOpen(false)}
+                        className="text-white/80 font-inter text-sm py-1 block hover:text-white"
+                      >
+                        • {subItem.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
             <a
               href="tel:+551139316343"

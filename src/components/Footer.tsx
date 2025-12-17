@@ -26,34 +26,46 @@ const Footer = () => {
             <nav className="flex flex-col gap-4">
               <Link
                 to={getLocalizedPath("/")}
-                className="text-white/90 font-inter text-base hover:text-white transition-colors leading-relaxed"
+                className="text-white/90 font-inter text-base hover:text-white hover:translate-x-1 transition-all leading-relaxed"
               >
                 Metalúrgica Brilho
               </Link>
               <Link
                 to={getLocalizedPath("/institucional")}
-                className="text-white/90 font-inter text-base hover:text-white transition-colors leading-relaxed"
+                className="text-white/90 font-inter text-base hover:text-white hover:translate-x-1 transition-all leading-relaxed"
               >
                 {t("footer.about", "Sobre")}
               </Link>
               <Link
                 to={getLocalizedPath("/produtos")}
-                className="text-white/90 font-inter text-base hover:text-white transition-colors leading-relaxed"
+                className="text-white/90 font-inter text-base hover:text-white hover:translate-x-1 transition-all leading-relaxed"
               >
                 {t("footer.products")}
               </Link>
-              <span className="text-white/90 font-inter text-base leading-relaxed">
-                Odonto Dentária
-              </span>
-              <span className="text-white/90 font-inter text-base leading-relaxed">
-                Podologia
-              </span>
-              <span className="text-white/90 font-inter text-base leading-relaxed">
-                Esmalteria e Nails Designer
-              </span>
-              <span className="text-white/90 font-inter text-base leading-relaxed">
-                Diversos
-              </span>
+              <Link
+                to={getLocalizedPath("/odonto-dentaria")}
+                className="text-white/90 font-inter text-base hover:text-white hover:translate-x-1 transition-all leading-relaxed"
+              >
+                {t("nav.odontoDentaria", "Odonto Dentária")}
+              </Link>
+              <Link
+                to={getLocalizedPath("/podologia")}
+                className="text-white/90 font-inter text-base hover:text-white hover:translate-x-1 transition-all leading-relaxed"
+              >
+                {t("nav.podologia", "Podologia")}
+              </Link>
+              <Link
+                to={getLocalizedPath("/esmalteria-nails")}
+                className="text-white/90 font-inter text-base hover:text-white hover:translate-x-1 transition-all leading-relaxed"
+              >
+                {t("nav.esmalteriaNails", "Esmalteria e Nails Designer")}
+              </Link>
+              <Link
+                to={getLocalizedPath("/diversos")}
+                className="text-white/90 font-inter text-base hover:text-white hover:translate-x-1 transition-all leading-relaxed"
+              >
+                {t("nav.diversos", "Diversos")}
+              </Link>
             </nav>
           </div>
 
@@ -61,7 +73,7 @@ const Footer = () => {
           <div className="flex flex-col items-center text-center">
             {/* Logo */}
             <div className="flex flex-col items-center mb-8">
-              <div className="relative w-20 h-20 mb-4">
+              <div className="relative w-20 h-20 mb-4 hover:scale-110 transition-transform duration-300">
                 <svg viewBox="0 0 80 80" className="w-full h-full">
                   <polygon
                     points="40,4 72,22 72,58 40,76 8,58 8,22"
@@ -98,7 +110,7 @@ const Footer = () => {
             </div>
 
             {/* ANVISA Seal */}
-            <div className="bg-white rounded-lg px-6 py-4 mb-6 flex items-center gap-3">
+            <div className="bg-white rounded-lg px-6 py-4 mb-6 flex items-center gap-3 hover:shadow-lg hover:scale-105 transition-all duration-300">
               <div className="flex items-center gap-2">
                 <svg viewBox="0 0 40 40" className="w-10 h-10">
                   <circle cx="20" cy="20" r="18" fill="#006341" />
@@ -129,7 +141,7 @@ const Footer = () => {
               de diversos setores. Nossa empresa está localizada em São Paulo e 
               oferece soluções completas em fabricação de instrumentos para podologia, 
               manicure e odontologia.{" "}
-              <Link to={getLocalizedPath("/institucional")} className="text-white underline hover:text-white/80">
+              <Link to={getLocalizedPath("/institucional")} className="text-white underline hover:text-white/80 transition-colors">
                 saiba mais
               </Link>
             </p>
@@ -153,12 +165,12 @@ const Footer = () => {
             </h3>
             <div className="text-white/90 font-inter text-base leading-relaxed mb-8 space-y-2">
               <p>
-                <a href="tel:+551139316343" className="hover:text-white transition-colors">
+                <a href="tel:+551139316343" className="hover:text-white transition-colors hover:underline">
                   (11) 3931-6343
                 </a>
               </p>
               <p>
-                <a href="tel:+551138316943" className="hover:text-white transition-colors">
+                <a href="tel:+551138316943" className="hover:text-white transition-colors hover:underline">
                   (11) 3831-6943
                 </a>
               </p>
@@ -168,7 +180,7 @@ const Footer = () => {
                   href="https://wa.me/5511940101807" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-white transition-colors hover:underline"
                 >
                   (11) 94010-1807
                 </a>
@@ -183,7 +195,7 @@ const Footer = () => {
               <p>E-mail:</p>
               <a 
                 href="mailto:metalurgicabrilho@gmail.com"
-                className="hover:text-white transition-colors"
+                className="hover:text-white transition-colors hover:underline"
               >
                 metalurgicabrilho@gmail.com
               </a>
@@ -197,7 +209,7 @@ const Footer = () => {
             href="https://facebook.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-10 h-10 bg-[#1877F2] rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
+            className="w-10 h-10 bg-[#1877F2] rounded-full flex items-center justify-center hover:opacity-80 hover:scale-110 transition-all duration-300"
             aria-label="Facebook"
           >
             <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -208,7 +220,7 @@ const Footer = () => {
             href="https://instagram.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-10 h-10 bg-gradient-to-tr from-[#FCAF45] via-[#E1306C] to-[#833AB4] rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
+            className="w-10 h-10 bg-gradient-to-tr from-[#FCAF45] via-[#E1306C] to-[#833AB4] rounded-full flex items-center justify-center hover:opacity-80 hover:scale-110 transition-all duration-300"
             aria-label="Instagram"
           >
             <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -219,7 +231,7 @@ const Footer = () => {
             href="https://youtube.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-10 h-10 bg-[#FF0000] rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
+            className="w-10 h-10 bg-[#FF0000] rounded-full flex items-center justify-center hover:opacity-80 hover:scale-110 transition-all duration-300"
             aria-label="YouTube"
           >
             <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
@@ -230,7 +242,7 @@ const Footer = () => {
             href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-10 h-10 bg-[#0A66C2] rounded-full flex items-center justify-center hover:opacity-80 transition-opacity"
+            className="w-10 h-10 bg-[#0A66C2] rounded-full flex items-center justify-center hover:opacity-80 hover:scale-110 transition-all duration-300"
             aria-label="LinkedIn"
           >
             <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">

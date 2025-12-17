@@ -4,7 +4,11 @@
     "institutional": "INSTITUCIONAL",
     "products": "PRODUTOS",
     "contact": "CONTATO",
-    "brilhoNails": "BRILHO-NAILS"
+    "brilhoNails": "BRILHO-NAILS",
+    "odontoDentaria": "Odonto Dentária",
+    "podologia": "Podologia",
+    "esmalteriaNails": "Esmalteria e Nails Designer",
+    "diversos": "Diversos"
   },
   "home": {
     "heroTitle": "Excelência em Brocas Diamantadas e Produtos para Podologia",
