@@ -54,6 +54,10 @@
     "pageTitle": "PRODUTOS",
     "pageSubtitle": "Conheça nossa linha completa de produtos para podologia, manicure e odontologia",
     "downloadCatalog": "BAIXE O CATÁLOGO COMPLETO",
+    "introText": "Conheça nossa linha completa de brocas diamantadas, fresas de tungstênio, cerâmica, lixas e acessórios para podologia, odontologia e nails. Qualidade premium com certificação ANVISA.",
+    "productImage": "Imagem dos Produtos",
+    "downloadButtonLong": "BAIXE AQUI O CATÁLOGO COMPLETO DAS NOSSAS BROCAS DIAMANTADAS",
+    "scanQR": "Escaneie para baixar o catálogo",
     "sections": {
       "diamondBurs": "Brocas Diamantadas",
       "tungstenBurs": "Fresas de Tungstênio",

@@ -43,28 +43,10 @@ const Footer = () => {
                 {t("footer.products")}
               </Link>
               <Link
-                to={getLocalizedPath("/odonto-dentaria")}
+                to={getLocalizedPath("/contato")}
                 className="text-white/90 font-inter text-base hover:text-white hover:translate-x-1 transition-all leading-relaxed"
               >
-                {t("nav.odontoDentaria", "Odonto Dentária")}
-              </Link>
-              <Link
-                to={getLocalizedPath("/podologia")}
-                className="text-white/90 font-inter text-base hover:text-white hover:translate-x-1 transition-all leading-relaxed"
-              >
-                {t("nav.podologia", "Podologia")}
-              </Link>
-              <Link
-                to={getLocalizedPath("/esmalteria-nails")}
-                className="text-white/90 font-inter text-base hover:text-white hover:translate-x-1 transition-all leading-relaxed"
-              >
-                {t("nav.esmalteriaNails", "Esmalteria e Nails Designer")}
-              </Link>
-              <Link
-                to={getLocalizedPath("/diversos")}
-                className="text-white/90 font-inter text-base hover:text-white hover:translate-x-1 transition-all leading-relaxed"
-              >
-                {t("nav.diversos", "Diversos")}
+                {t("footer.contact", "Contato")}
               </Link>
             </nav>
           </div>
