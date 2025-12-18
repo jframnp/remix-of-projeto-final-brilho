@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Phone, Mail, Menu, X, ChevronDown } from "lucide-react";
+import { Phone, Mail, Menu, X } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "@/hooks/useLanguage";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isProductsOpen, setIsProductsOpen] = useState(false);
   const location = useLocation();
   const { t } = useTranslation();
   const { currentLang, changeLanguage } = useLanguage();
@@ -20,16 +19,9 @@ const Header = () => {
   const mainMenuItems = [
     { label: t("nav.home"), path: "/" },
     { label: t("nav.institutional"), path: "/institucional" },
-    { label: t("nav.products"), path: "/produtos", hasSubmenu: true },
+    { label: t("nav.products"), path: "/produtos" },
     { label: t("nav.contact"), path: "/contato" },
     { label: t("nav.brilhoNails"), path: "/brilho-nails" },
-  ];
-
-  const productSubMenuItems = [
-    { label: t("nav.odontoDentaria", "Odonto Dentária"), path: "/odonto-dentaria" },
-    { label: t("nav.podologia", "Podologia"), path: "/podologia" },
-    { label: t("nav.esmalteriaNails", "Esmalteria e Nails"), path: "/esmalteria-nails" },
-    { label: t("nav.diversos", "Diversos"), path: "/diversos" },
   ];
 
   const isActive = (path: string) => {
@@ -110,47 +102,15 @@ const Header = () => {
           {/* Centered Navigation */}
           <nav className="flex-1 flex items-center justify-center gap-[40px]">
             {mainMenuItems.map((item) => (
-              <div key={item.path} className="relative group">
-                {item.hasSubmenu ? (
-                  <div
-                    className="flex items-center gap-1 cursor-pointer"
-                    onMouseEnter={() => setIsProductsOpen(true)}
-                    onMouseLeave={() => setIsProductsOpen(false)}
-                  >
-                    <Link
-                      to={getLocalizedPath(item.path)}
-                      className={`text-white font-inter text-lg font-medium transition-all duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[3px] after:bg-[#FF6B6B] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 ${
-                        isActive(item.path) ? "after:scale-x-100" : ""
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
-                    <ChevronDown className="w-4 h-4 text-white transition-transform duration-300 group-hover:rotate-180" />
-                    
-                    {/* Submenu */}
-                    <div className={`absolute top-full left-0 mt-2 bg-white rounded-lg shadow-xl min-w-[220px] transition-all duration-300 ${isProductsOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2'}`}>
-                      {productSubMenuItems.map((subItem) => (
-                        <Link
-                          key={subItem.path}
-                          to={getLocalizedPath(subItem.path)}
-                          className="block px-4 py-3 text-gray-700 font-inter text-base hover:bg-red-50 hover:text-[#8B0000] transition-colors first:rounded-t-lg last:rounded-b-lg"
-                        >
-                          {subItem.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                ) : (
-                  <Link
-                    to={getLocalizedPath(item.path)}
-                    className={`text-white font-inter text-lg font-medium transition-all duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[3px] after:bg-[#FF6B6B] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 ${
-                      isActive(item.path) ? "after:scale-x-100" : ""
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                )}
-              </div>
+              <Link
+                key={item.path}
+                to={getLocalizedPath(item.path)}
+                className={`text-white font-inter text-lg font-medium transition-all duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[3px] after:bg-[#FF6B6B] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 ${
+                  isActive(item.path) ? "after:scale-x-100" : ""
+                }`}
+              >
+                {item.label}
+              </Link>
             ))}
           </nav>
 
@@ -206,31 +166,16 @@ const Header = () => {
         <div className="md:hidden bg-[#8B0000] border-t border-white/20 animate-fade-in">
           <nav className="container mx-auto px-4 py-4 flex flex-col gap-4">
             {mainMenuItems.map((item) => (
-              <div key={item.path}>
-                <Link
-                  to={getLocalizedPath(item.path)}
-                  onClick={() => !item.hasSubmenu && setIsMenuOpen(false)}
-                  className={`text-white font-inter text-base font-medium py-2 border-b border-white/20 block ${
-                    isActive(item.path) ? "text-[#FF6B6B]" : ""
-                  }`}
-                >
-                  {item.label}
-                </Link>
-                {item.hasSubmenu && (
-                  <div className="pl-4 mt-2 space-y-2">
-                    {productSubMenuItems.map((subItem) => (
-                      <Link
-                        key={subItem.path}
-                        to={getLocalizedPath(subItem.path)}
-                        onClick={() => setIsMenuOpen(false)}
-                        className="text-white/80 font-inter text-sm py-1 block hover:text-white"
-                      >
-                        • {subItem.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
+              <Link
+                key={item.path}
+                to={getLocalizedPath(item.path)}
+                onClick={() => setIsMenuOpen(false)}
+                className={`text-white font-inter text-base font-medium py-2 border-b border-white/20 block ${
+                  isActive(item.path) ? "text-[#FF6B6B]" : ""
+                }`}
+              >
+                {item.label}
+              </Link>
             ))}
             <a
               href="tel:+551139316343"

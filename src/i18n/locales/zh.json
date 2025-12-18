@@ -54,6 +54,10 @@
     "pageTitle": "产品",
     "pageSubtitle": "了解我们完整的足疗、美甲和牙科产品线",
     "downloadCatalog": "下载完整目录",
+    "introText": "了解我们完整的金刚石钻头、钨钢磨头、陶瓷磨头、砂纸和足疗、牙科、美甲配件产品线。具有ANVISA认证的优质产品。",
+    "productImage": "产品图片",
+    "downloadButtonLong": "点击下载我们金刚石钻头的完整目录",
+    "scanQR": "扫描下载目录",
     "sections": {
       "diamondBurs": "金刚石钻头",
       "tungstenBurs": "钨钢磨头",
