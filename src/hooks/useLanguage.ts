@@ -17,7 +17,7 @@ export const useLanguage = () => {
     
     // Get current path without language prefix
     const pathParts = location.pathname.split("/").filter(Boolean);
-    const currentLangInPath = ["en", "zh"].includes(pathParts[0]) ? pathParts[0] : null;
+    const currentLangInPath = ["en", "es"].includes(pathParts[0]) ? pathParts[0] : null;
     
     let newPath = currentLangInPath 
       ? "/" + pathParts.slice(1).join("/")
@@ -26,8 +26,8 @@ export const useLanguage = () => {
     // Add new language prefix if not Portuguese
     if (lang === "en") {
       newPath = "/en" + (newPath === "/" ? "" : newPath);
-    } else if (lang === "zh") {
-      newPath = "/zh" + (newPath === "/" ? "" : newPath);
+    } else if (lang === "es") {
+      newPath = "/es" + (newPath === "/" ? "" : newPath);
     }
     
     // Navigate to new path if it changed
