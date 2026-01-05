@@ -7,9 +7,9 @@ const Index = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
+      {/* Hero Section - Welcome */}
       <section className="relative h-[400px] md:h-[600px] overflow-hidden">
-        <div className="absolute inset-0 bg-brilho-red-dark">
+        <div className="absolute inset-0 bg-[#720000]">
           <div
             className="absolute inset-0 bg-cover bg-center opacity-30"
             style={{
@@ -18,17 +18,17 @@ const Index = () => {
             }}
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-brilho-red-dark/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#720000]/80" />
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
-          <h1 className="text-brilho-text-light font-montserrat font-bold text-3xl md:text-5xl lg:text-6xl mb-6 text-shadow max-w-4xl animate-fade-in">
-            {t("home.heroTitle")}
+          <h1 className="text-[#EEEEEE] font-montserrat font-bold text-3xl md:text-5xl lg:text-6xl mb-6 drop-shadow-lg max-w-4xl animate-fade-in">
+            {t("home.welcomeTitle", "Bem-vindo à Metalúrgica Brilho!")}
           </h1>
-          <p className="text-brilho-text-light/90 font-inter text-lg md:text-xl max-w-2xl mb-8 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-            {t("home.heroSubtitle")}
+          <p className="text-[#EEEEEE]/90 font-inter text-lg md:text-xl max-w-2xl mb-8 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+            {t("home.welcomeSubtitle", "Descubra nossa linha de produtos de alta qualidade para podologia, odontologia e mais. Estamos aqui para brilhar com você!")}
           </p>
           <a
             href="#quem-somos"
-            className="text-brilho-text-light animate-bounce mt-4"
+            className="text-[#EEEEEE] animate-bounce mt-4"
             aria-label="Scroll down"
           >
             <ArrowDown size={32} />
@@ -37,11 +37,11 @@ const Index = () => {
       </section>
 
       {/* Quem Somos Section */}
-      <section id="quem-somos" className="bg-brilho-bg-light py-16 md:py-24">
+      <section id="quem-somos" className="bg-[#FAFAFA] py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="lg:w-1/2">
-              <h2 className="text-brilho-red font-montserrat font-bold text-3xl md:text-4xl mb-6">
+              <h2 className="text-[#9B0000] font-montserrat font-bold text-3xl md:text-4xl mb-6">
                 {t("home.aboutTitle")}
               </h2>
               <p className="text-foreground/80 font-inter text-base md:text-lg leading-relaxed mb-6">
@@ -52,11 +52,11 @@ const Index = () => {
               </p>
             </div>
             <div className="lg:w-1/2">
-              <div className="bg-muted rounded-lg overflow-hidden shadow-card aspect-video flex items-center justify-center">
+              <div className="bg-muted rounded-lg overflow-hidden shadow-lg aspect-video flex items-center justify-center">
                 <div className="text-center p-8">
-                  <div className="w-20 h-20 mx-auto mb-4 bg-brilho-red/10 rounded-full flex items-center justify-center">
+                  <div className="w-20 h-20 mx-auto mb-4 bg-[#9B0000]/10 rounded-full flex items-center justify-center">
                     <svg
-                      className="w-10 h-10 text-brilho-red"
+                      className="w-10 h-10 text-[#9B0000]"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -86,7 +86,7 @@ const Index = () => {
       </section>
 
       {/* Info Cards Section */}
-      <section className="bg-brilho-bg-light py-16">
+      <section className="bg-[#FAFAFA] py-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -108,10 +108,10 @@ const Index = () => {
             ].map((card, index) => (
               <div
                 key={index}
-                className="bg-card rounded-lg p-8 border border-border shadow-card h-[280px] flex flex-col hover:shadow-lg transition-shadow duration-300"
+                className="bg-white rounded-lg p-8 border border-gray-200 shadow-lg h-[280px] flex flex-col hover:shadow-xl hover:scale-105 transition-all duration-300"
               >
                 <div className="text-4xl mb-4">{card.icon}</div>
-                <h3 className="text-brilho-red font-montserrat font-bold text-xl mb-4">
+                <h3 className="text-[#9B0000] font-montserrat font-bold text-xl mb-4">
                   {card.title}
                 </h3>
                 <p className="text-foreground/70 font-inter text-sm leading-relaxed flex-1">
@@ -124,30 +124,32 @@ const Index = () => {
       </section>
 
       {/* Catálogo Section */}
-      <section className="bg-brilho-red-dark py-16 md:py-24">
+      <section className="bg-[#720000] py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center gap-12">
             <div className="lg:w-1/2 text-center lg:text-left">
-              <h2 className="text-brilho-text-light font-montserrat font-bold text-3xl md:text-4xl lg:text-5xl mb-6">
+              <h2 className="text-[#EEEEEE] font-montserrat font-bold text-3xl md:text-4xl lg:text-5xl mb-6">
                 {t("home.catalogTitle")}
               </h2>
-              <p className="text-brilho-text-light/80 font-inter text-lg mb-8">
+              <p className="text-[#EEEEEE]/80 font-inter text-lg mb-8">
                 {t("home.catalogDesc")}
               </p>
               <a
-                href="#"
-                className="inline-flex items-center gap-3 bg-brilho-red-vivid text-brilho-text-light font-montserrat font-bold text-lg px-10 py-5 rounded-lg hover:scale-105 hover:shadow-button-hover transition-all duration-300"
+                href="/catalogo-brilho.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-[#D32F2F] text-[#EEEEEE] font-montserrat font-bold text-lg px-10 py-5 rounded-lg hover:scale-105 hover:shadow-xl transition-all duration-300"
               >
                 <Download size={24} />
                 {t("home.downloadBtn")}
               </a>
             </div>
             <div className="lg:w-1/2">
-              <div className="bg-brilho-text-light/10 rounded-lg p-8 flex items-center justify-center aspect-[4/3]">
+              <div className="bg-[#EEEEEE]/10 rounded-lg p-8 flex items-center justify-center aspect-[4/3]">
                 <div className="text-center">
-                  <div className="w-24 h-32 mx-auto mb-4 bg-brilho-text-light/20 rounded flex items-center justify-center">
+                  <div className="w-24 h-32 mx-auto mb-4 bg-[#EEEEEE]/20 rounded flex items-center justify-center">
                     <svg
-                      className="w-12 h-12 text-brilho-text-light"
+                      className="w-12 h-12 text-[#EEEEEE]"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -160,7 +162,7 @@ const Index = () => {
                       />
                     </svg>
                   </div>
-                  <p className="text-brilho-text-light/70 font-inter">
+                  <p className="text-[#EEEEEE]/70 font-inter">
                     {t("home.catalogImage")}
                   </p>
                 </div>
@@ -171,9 +173,9 @@ const Index = () => {
       </section>
 
       {/* Produtos Destaque Section */}
-      <section className="bg-brilho-bg-light py-16 md:py-24">
+      <section className="bg-[#FAFAFA] py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <h2 className="text-brilho-red font-montserrat font-bold text-3xl md:text-4xl text-center mb-12">
+          <h2 className="text-[#9B0000] font-montserrat font-bold text-3xl md:text-4xl text-center mb-12">
             {t("home.featuredTitle")}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -186,11 +188,11 @@ const Index = () => {
                 key={index}
                 className="group cursor-pointer"
               >
-                <div className="bg-muted rounded-lg overflow-hidden shadow-card aspect-[4/3] flex items-center justify-center mb-4 group-hover:shadow-lg transition-shadow duration-300">
+                <div className="bg-white rounded-lg overflow-hidden shadow-lg aspect-[4/3] flex items-center justify-center mb-4 group-hover:shadow-xl group-hover:shadow-[#9B0000]/20 transition-all duration-300">
                   <div className="text-center p-8">
-                    <div className="w-16 h-16 mx-auto mb-4 bg-brilho-red/10 rounded-full flex items-center justify-center group-hover:bg-brilho-red/20 transition-colors">
+                    <div className="w-16 h-16 mx-auto mb-4 bg-[#9B0000]/10 rounded-full flex items-center justify-center group-hover:bg-[#9B0000]/20 transition-colors">
                       <svg
-                        className="w-8 h-8 text-brilho-red"
+                        className="w-8 h-8 text-[#9B0000]"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"

@@ -1,0 +1,381 @@
+{
+  "nav": {
+    "home": "INICIO",
+    "institutional": "INSTITUCIONAL",
+    "products": "PRODUCTOS",
+    "contact": "CONTACTO",
+    "brilhoNails": "BRILHO-NAILS",
+    "productCategories": "Categorías de Productos",
+    "diamondBurs": "Fresas Diamantadas",
+    "goldLine": "Línea Gold",
+    "tungstenBurs": "Fresas de Tungsteno",
+    "ceramicBurs": "Fresas de Cerámica",
+    "sandpaper": "Lijas Sandpaper",
+    "boomerang": "Lijas Boomerang",
+    "tubularAdhesive": "Lija Tubular / Adhesiva",
+    "polishers": "Pulidoras",
+    "brushes": "Cepillos de Limpieza",
+    "fiberMandril": "Fibras / Enucleadora / Mandril",
+    "supportSharpening": "Apoyo / Afilado"
+  },
+  "home": {
+    "welcomeTitle": "¡Bienvenido a Metalúrgica Brilho!",
+    "welcomeSubtitle": "Descubre nuestra línea de productos de alta calidad para podología, odontología y más. ¡Estamos aquí para brillar contigo!",
+    "heroTitle": "Excelencia en Fresas Diamantadas y Productos para Podología",
+    "heroSubtitle": "Calidad certificada ANVISA con más de 35 años en el mercado",
+    "aboutTitle": "QUIÉNES SOMOS",
+    "aboutText1": "Metalúrgica Brilho es una empresa brasileña con más de 35 años de experiencia en la fabricación de instrumentos de alta precisión para las áreas de podología, manicura y odontología. Nuestra trayectoria está marcada por la búsqueda constante de la excelencia e innovación.",
+    "aboutText2": "Contamos con un equipo altamente calificado y una planta fabril moderna, permitiéndonos ofrecer productos que cumplen con los más rigurosos estándares de calidad y seguridad, con certificación ANVISA.",
+    "videoPlaceholder": "Video institucional de la empresa",
+    "card1Title": "Calidad Certificada",
+    "card1Desc": "Todos nuestros productos tienen certificación ANVISA, garantizando seguridad y calidad para profesionales y pacientes.",
+    "card2Title": "Tecnología Avanzada",
+    "card2Desc": "Utilizamos equipos de última generación y procesos de fabricación modernos para entregar productos de alta precisión.",
+    "card3Title": "Atención Especializada",
+    "card3Desc": "Nuestro equipo está listo para atender sus necesidades con experiencia y dedicación en cada proyecto.",
+    "catalogTitle": "CATÁLOGO DE PRODUCTOS",
+    "catalogDesc": "Conozca nuestra línea completa de productos. Descargue nuestro catálogo y descubra las mejores soluciones para su negocio.",
+    "downloadBtn": "DESCARGAR AQUÍ",
+    "catalogImage": "Imagen del catálogo",
+    "featuredTitle": "PRODUCTOS DESTACADOS",
+    "product1": "Fresas Diamantadas",
+    "product1Cat": "Podología",
+    "product2": "Lijas Desechables",
+    "product2Cat": "Manicura",
+    "product3": "Instrumentos Quirúrgicos",
+    "product3Cat": "Odontología",
+    "productImage": "Imagen del producto"
+  },
+  "institutional": {
+    "title": "INSTITUCIONAL",
+    "subtitle": "Conozca nuestra historia, valores y compromiso con la calidad",
+    "certTitle": "CERTIFICACIONES",
+    "certText1": "Metalúrgica Brilho posee todas las certificaciones necesarias para garantizar la calidad y seguridad de sus productos. Nuestra empresa está registrada en ANVISA y sigue rigurosamente las normas de fabricación de productos para salud.",
+    "certText2": "Invertimos constantemente en procesos de calidad y control, asegurando que cada producto que sale de nuestra fábrica cumpla con los más elevados estándares internacionales.",
+    "anvisaCert": "Certificado",
+    "missionTitle": "NUESTRA MISIÓN",
+    "missionText": "Desarrollar y fabricar productos de alta calidad para los segmentos de podología, manicura y odontología, contribuyendo a la salud y bienestar de las personas.",
+    "valuesTitle": "NUESTROS VALORES",
+    "valuesText": "Ética y transparencia en todas las relaciones comerciales. Compromiso con la calidad y seguridad de los productos. Respeto al medio ambiente y sostenibilidad. Valoración de las personas y trabajo en equipo.",
+    "visionTitle": "NUESTRA VISIÓN",
+    "visionText": "Ser reconocida como la principal referencia en el mercado brasileño de instrumentos para podología y manicura, expandiendo nuestra actuación a mercados internacionales."
+  },
+  "products": {
+    "pageTitle": "PRODUCTOS",
+    "pageSubtitle": "Conozca nuestra línea completa de productos para podología, manicura y odontología",
+    "downloadCatalog": "DESCARGAR CATÁLOGO COMPLETO",
+    "introText": "Conozca nuestra línea completa de fresas diamantadas, fresas de tungsteno, cerámica, lijas y accesorios para podología, odontología y uñas. Calidad premium con certificación ANVISA.",
+    "productImage": "Imagen de Productos",
+    "features": "Características",
+    "downloadButtonLong": "DESCARGUE AQUÍ EL CATÁLOGO COMPLETO DE NUESTRAS FRESAS DIAMANTADAS",
+    "selectCategory": "Seleccione una categoría para ver los productos",
+    "backToCategories": "Volver a Categorías",
+    "sections": {
+      "diamondBurs": "Fresas Diamantadas",
+      "tungstenBurs": "Fresas de Tungsteno",
+      "ceramicBurs": "Fresas de Cerámica",
+      "sandpaper": "Lijas Sandpaper",
+      "boomerang": "Lijas Boomerang",
+      "tubularAdhesive": "Lija Tubular / Adhesiva",
+      "polishers": "Pulidoras",
+      "brushes": "Cepillos de Limpieza",
+      "fiberMandril": "Fibras / Enucleadora / Mandril",
+      "supportSharpening": "Apoyo / Afilado"
+    },
+    "diamondBurs": {
+      "title": "FRESAS DIAMANTADAS",
+      "subtitle": "Diamond Burs",
+      "description": "Nuestras fresas diamantadas están fabricadas con diamantes industriales de alta calidad, proporcionando durabilidad excepcional y precisión en el corte. Ideales para procedimientos de podología, ofreciendo acabado perfecto y seguridad al profesional.",
+      "features": [
+        "Diamantes industriales de primera línea",
+        "Alta durabilidad y resistencia",
+        "Diversas granulometrías disponibles",
+        "Formatos específicos para cada procedimiento",
+        "Registro ANVISA",
+        "Fabricación 100% nacional"
+      ],
+      "goldLineTitle": "LÍNEA GOLD",
+      "goldLineDesc": "Tecnología avanzada con revestimiento especial dorado para mayor durabilidad y rendimiento superior. La línea Gold representa lo más moderno en fresas diamantadas.",
+      "tableHeaders": {
+        "model": "Modelo",
+        "code": "Código",
+        "iso": "ISO",
+        "grain": "Grano",
+        "diameter": "Diámetro"
+      },
+      "models": {
+        "spherical": "Esférica",
+        "wheel": "Rueda",
+        "conical": "Cónica",
+        "flame": "Llama",
+        "cylindrical": "Cilíndrica",
+        "torpedo": "Torpedo"
+      },
+      "grains": {
+        "extraFine": "Extra Fino",
+        "fine": "Fino",
+        "medium": "Medio",
+        "coarse": "Grueso",
+        "extraCoarse": "Extra Grueso"
+      }
+    },
+    "tungstenBurs": {
+      "title": "FRESAS DE TUNGSTENO",
+      "subtitle": "Tungsten Carbide Burs",
+      "description": "Fresas de tungsteno de alto rendimiento para desbaste y acabado. Disponibles en versiones Maxi Cut y Mini Cut, con diversos tipos de corte para atender las necesidades específicas de cada procedimiento.",
+      "maxiCut": "Maxi Cut",
+      "miniCut": "Mini Cut",
+      "cuts": {
+        "crossMedium": "Cruzado Medio",
+        "crossFine": "Cruzado Fino",
+        "crossExtraFine": "Cruzado Extra Fino",
+        "crossCoarse": "Cruzado Grueso",
+        "straight": "Recto"
+      },
+      "tableHeaders": {
+        "model": "Modelo",
+        "code": "Código",
+        "iso": "ISO",
+        "cut": "Corte",
+        "diameter": "Diámetro"
+      }
+    },
+    "ceramicBurs": {
+      "title": "FRESAS DE CERÁMICA",
+      "subtitle": "Ceramic Burs",
+      "description": "Fresas de cerámica de alta resistencia y durabilidad. Ideales para trabajos que exigen precisión y acabado delicado. Disponibles en diversos formatos y granulometrías.",
+      "tableHeaders": {
+        "model": "Modelo",
+        "code": "Código",
+        "iso": "ISO",
+        "cut": "Corte",
+        "diameter": "Diámetro"
+      }
+    },
+    "sandpaper": {
+      "title": "LIJAS SANDPAPER",
+      "subtitle": "Abrasive Files",
+      "description": "Línea completa de lijas desechables para podología. Disponibles en versiones Laminar y Plantar, con diferentes granulaciones y marcas premium como Norton y Alcar.",
+      "types": {
+        "laminarPremium": "Lija Laminar Premium (Norton)",
+        "plantarPremium": "Lija Plantar Premium (Norton)",
+        "extraLarge": "Lija Extra Grande",
+        "laminarAlcar": "Lija Laminar (Alcar)",
+        "plantarAlcar": "Lija Plantar (Alcar)"
+      },
+      "tableHeaders": {
+        "type": "Tipo",
+        "code": "Código",
+        "diameter": "Diámetro",
+        "grain": "Granulación",
+        "package": "Empaque"
+      }
+    },
+    "boomerang": {
+      "title": "LIJAS BOOMERANG",
+      "subtitle": "Boomerang Sandpaper",
+      "description": "Lijas especiales en formato boomerang y otros shapes exclusivos para manicura y nail design. Alta calidad y durabilidad para resultados profesionales.",
+      "types": {
+        "nailsGreen": "Lija Nails Verde",
+        "highPerformance": "Lija Alto Rendimiento",
+        "whiteFine": "Boomerang White Fina 2mm",
+        "disposableWhite": "Nails Desechable Blanca",
+        "stainlessBase": "Base Inox"
+      },
+      "shapes": {
+        "boomerang": "Boomerang",
+        "square": "Cuadrada",
+        "coffin": "Ataúd",
+        "drop": "Gota"
+      },
+      "tableHeaders": {
+        "type": "Tipo",
+        "code": "Código",
+        "shape": "Formato",
+        "grain": "Granulación",
+        "material": "Material"
+      }
+    },
+    "tubularAdhesive": {
+      "title": "LIJA TUBULAR SEND / LIJA ADHESIVA CIRCULAR",
+      "subtitle": "Tubular Sand / Adhesive Circular File",
+      "description": "Lijas tubulares y adhesivas circulares para diferentes aplicaciones. Alta adherencia y durabilidad para uso profesional.",
+      "tableHeaders": {
+        "type": "Tipo",
+        "code": "Código",
+        "grain": "Grano",
+        "diameter": "Diámetro",
+        "package": "Empaque",
+        "abrasive": "Tipo Abrasivo"
+      }
+    },
+    "polishers": {
+      "title": "PULIDORAS",
+      "subtitle": "Polishers",
+      "description": "Línea completa de pulidoras para acabado perfecto. Disponibles en diversos formatos (Torpedo, Ogival, Cilíndrica, Llama) y niveles de desbaste (Extra Grueso a Ultra Fino).",
+      "types": {
+        "torpedoOgival": "Pulidora Torpedo Ogival",
+        "torpedoLarge": "Pulidora Torpedo Grande",
+        "torpedoMedium": "Pulidora Torpedo Mediana",
+        "cylindrical": "Pulidora Cilíndrica",
+        "flameSmall": "Pulidora Llama Pequeña"
+      },
+      "grindLevels": {
+        "extraCoarse": "Extra Grueso",
+        "coarse": "Grueso",
+        "medium": "Medio",
+        "fine": "Fino",
+        "extraFine": "Extra Fino",
+        "ultraFine": "Ultra Fino"
+      },
+      "tableHeaders": {
+        "model": "Modelo",
+        "code": "Código",
+        "diameter": "Diámetro",
+        "grind": "Desbaste",
+        "color": "Color"
+      }
+    },
+    "brushes": {
+      "title": "CEPILLOS DE LIMPIEZA",
+      "subtitle": "Cleaning Brushes",
+      "description": "Cepillos de limpieza profesional con cerdas de poliamida. Disponibles en diferentes colores y tamaños para limpieza de instrumentos y fresas.",
+      "types": {
+        "polyamidePink": "Cerdas Poliamida Rosa",
+        "polyamideLilac": "Cerdas Poliamida Lila",
+        "polisherCleaning": "Fresas Pulidoras Limpieza",
+        "sponge": "Esponja",
+        "felt": "Fieltro"
+      },
+      "tableHeaders": {
+        "type": "Tipo",
+        "code": "Código",
+        "diameter": "Diámetro",
+        "bristles": "Cerdas"
+      }
+    },
+    "fiberMandril": {
+      "title": "FIBRAS / ENUCLEADORA / MANDRIL",
+      "subtitle": "Fiber / Shell Enucleator / Mandril",
+      "description": "Línea especializada incluyendo Fibra Molecular para tratamientos específicos, Enucleadora de Callos en Acero Inoxidable y Mandril PM Church para fijación de lijas.",
+      "types": {
+        "molecularFiber": "Fibra Molecular",
+        "callusEnucleator": "Enucleadora de Callos Acero Inoxidable",
+        "mandrilPMChurch": "Mandril PM Church"
+      },
+      "tableHeaders": {
+        "type": "Tipo",
+        "code": "Código",
+        "model": "Modelo",
+        "diameter": "Diámetro",
+        "material": "Material"
+      }
+    },
+    "supportSharpening": {
+      "title": "APOYO PARA LIJAS / AFILADO DE INSTRUMENTOS",
+      "subtitle": "Support for Files / Instrument Sharpening",
+      "description": "Accesorios esenciales para el profesional: apoyos rígidos y flexibles para lijas, discos de cuero y abrasivo para afilado, pasta de pulimento y mandril estándar.",
+      "types": {
+        "rigidSupport": "Apoyo Rígido (Plantar/Laminar)",
+        "flexSupport": "Apoyo Flexible (Plantar/Laminar)",
+        "leatherDisc": "Disco Cuero",
+        "abrasiveDisc": "Disco Abrasivo",
+        "polishingPaste": "Pasta Pulimento",
+        "mandrilStandard": "Mandril Estándar"
+      },
+      "tableHeaders": {
+        "type": "Tipo",
+        "code": "Código",
+        "diameter": "Diámetro",
+        "thickness": "Espesor",
+        "package": "Empaque"
+      }
+    }
+  },
+  "contact": {
+    "title": "CONTACTO",
+    "subtitle": "Póngase en contacto con nosotros. ¡Estamos listos para atenderle!",
+    "formTitle": "Envíe su mensaje",
+    "nameLabel": "Nombre completo *",
+    "namePlaceholder": "Su nombre",
+    "emailLabel": "E-mail *",
+    "emailPlaceholder": "su@email.com",
+    "phoneLabel": "Teléfono",
+    "phonePlaceholder": "(11) 99999-9999",
+    "subjectLabel": "Asunto *",
+    "subjectPlaceholder": "Seleccione un asunto",
+    "subjectQuote": "Solicitar Presupuesto",
+    "subjectCatalog": "Solicitar Catálogo",
+    "subjectRep": "Hablar con Representante",
+    "subjectSupport": "Soporte Técnico",
+    "subjectOther": "Otro",
+    "messageLabel": "Mensaje *",
+    "messagePlaceholder": "Escriba su mensaje...",
+    "sendBtn": "ENVIAR",
+    "infoTitle": "Información de contacto",
+    "phone": "Teléfono",
+    "whatsapp": "WhatsApp",
+    "email": "E-mail",
+    "address": "Dirección",
+    "mapPlaceholder": "Mapa de ubicación",
+    "successTitle": "¡Mensaje enviado!",
+    "successDesc": "Nos pondremos en contacto pronto."
+  },
+  "brilhoNails": {
+    "title": "BRILHO-NAILS",
+    "subtitle": "Línea exclusiva de productos para manicura y nail design",
+    "lineTitle": "LÍNEA BRILHO-NAILS",
+    "lineText1": "La línea Brilho-Nails fue desarrollada especialmente para profesionales de manicura y nail designers que buscan calidad y rendimiento en sus trabajos.",
+    "lineText2": "Con productos fabricados bajo los más rigurosos estándares de calidad, la línea ofrece lijas, fresas, pulidores y accesorios que garantizan resultados impecables.",
+    "lineText3": "Todos los productos son desarrollados pensando en la ergonomía, durabilidad y eficiencia, proporcionando comodidad para el profesional y satisfacción para los clientes.",
+    "lineImage": "Imagen línea Brilho-Nails",
+    "productsTitle": "NUESTROS PRODUCTOS",
+    "prod1Name": "Lijas Desechables",
+    "prod1Desc": "Diversas gramaturas para cada etapa del trabajo",
+    "prod2Name": "Fresas para Uña",
+    "prod2Desc": "Alta precisión para remoción y acabado",
+    "prod3Name": "Pulidores",
+    "prod3Desc": "Acabado perfecto y brillo intenso",
+    "prod4Name": "Esponjas Pulidoras",
+    "prod4Desc": "Textura especial para pulido delicado",
+    "prod5Name": "Removedores de Cutícula",
+    "prod5Desc": "Remoción segura y precisa de cutículas",
+    "prod6Name": "Kits Profesionales",
+    "prod6Desc": "Conjuntos completos para profesionales",
+    "catalogTitle": "CATÁLOGO BRILHO-NAILS",
+    "catalogDesc": "Conozca nuestra línea completa de productos para manicura. Descargue el catálogo y descubra las mejores soluciones para su salón.",
+    "downloadBtn": "DESCARGAR CATÁLOGO",
+    "whyTitle": "¿POR QUÉ ELEGIR BRILHO-NAILS?",
+    "benefit1Title": "Calidad Premium",
+    "benefit1Desc": "Materiales de alta calidad para resultados profesionales",
+    "benefit2Title": "Durabilidad",
+    "benefit2Desc": "Productos resistentes que duran mucho más",
+    "benefit3Title": "Ergonomía",
+    "benefit3Desc": "Diseño pensado para la comodidad del profesional",
+    "benefit4Title": "Certificación",
+    "benefit4Desc": "Todos los productos con registro ANVISA"
+  },
+  "footer": {
+    "menu": "Menú",
+    "home": "Inicio",
+    "institutional": "Institucional",
+    "products": "Productos",
+    "contact": "Contacto",
+    "brilhoNails": "Brilho-Nails",
+    "about": "Acerca de",
+    "company": "Metalúrgica Brilho",
+    "address": "R. Cel. Botelho, 58 - Bela Aliança",
+    "city": "São Paulo - SP, Brasil",
+    "cnpj": "NIF: 60.749.736/0001-90",
+    "contactTitle": "Contacto",
+    "addressTitle": "DIRECCIÓN",
+    "phonesTitle": "TELÉFONOS",
+    "companyTitle": "EMPRESA",
+    "allRights": "TODOS LOS DERECHOS RESERVADOS",
+    "copyright": "© {year} Metalúrgica Brilho. Todos los derechos reservados."
+  },
+  "meta": {
+    "title": "Metalúrgica Brilho | Fabricante de Fresas Diamantadas y Productos para Podología",
+    "description": "Metalúrgica Brilho - Fabricante líder de fresas diamantadas, productos para podología y manicura. Calidad certificada ANVISA. ¡Solicite su catálogo!"
+  }
+}

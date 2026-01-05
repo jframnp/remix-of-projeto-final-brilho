@@ -4,12 +4,12 @@ import LanguageDetector from "i18next-browser-languagedetector";
 
 import pt from "./locales/pt.json";
 import en from "./locales/en.json";
-import zh from "./locales/zh.json";
+import es from "./locales/es.json";
 
 const resources = {
   pt: { translation: pt },
   en: { translation: en },
-  zh: { translation: zh },
+  es: { translation: es },
 };
 
 i18n
@@ -18,7 +18,7 @@ i18n
   .init({
     resources,
     fallbackLng: "pt",
-    supportedLngs: ["pt", "en", "zh"],
+    supportedLngs: ["pt", "en", "es"],
     detection: {
       order: ["path", "navigator", "localStorage"],
       lookupFromPathIndex: 0,

@@ -8,46 +8,54 @@ const Footer = () => {
 
   const getLocalizedPath = (path: string) => {
     if (currentLang === "en") return `/en${path === "/" ? "" : path}`;
-    if (currentLang === "zh") return `/zh${path === "/" ? "" : path}`;
+    if (currentLang === "es") return `/es${path === "/" ? "" : path}`;
     return path;
   };
 
   return (
-    <footer className="bg-[#1a1a1a] min-h-[450px]">
+    <footer className="bg-[#111111] min-h-[400px]">
       <div className="container mx-auto px-6 lg:px-12 py-16">
         {/* 3 Columns Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
           
           {/* Column 1 - MENU */}
           <div>
-            <h3 className="text-white font-montserrat font-bold text-lg mb-8 tracking-wider">
+            <h3 className="text-[#EEEEEE] font-montserrat font-bold text-lg mb-8 tracking-wider">
               MENU
             </h3>
             <nav className="flex flex-col gap-4">
               <Link
                 to={getLocalizedPath("/")}
-                className="text-white/90 font-inter text-base hover:text-white hover:translate-x-1 transition-all leading-relaxed"
+                className="text-[#EEEEEE]/90 font-inter text-base hover:text-[#EEEEEE] hover:translate-x-1 transition-all leading-relaxed"
               >
                 Metalúrgica Brilho
               </Link>
               <Link
                 to={getLocalizedPath("/institucional")}
-                className="text-white/90 font-inter text-base hover:text-white hover:translate-x-1 transition-all leading-relaxed"
+                className="text-[#EEEEEE]/90 font-inter text-base hover:text-[#EEEEEE] hover:translate-x-1 transition-all leading-relaxed"
               >
                 {t("footer.about", "Sobre")}
               </Link>
               <Link
                 to={getLocalizedPath("/produtos")}
-                className="text-white/90 font-inter text-base hover:text-white hover:translate-x-1 transition-all leading-relaxed"
+                className="text-[#EEEEEE]/90 font-inter text-base hover:text-[#EEEEEE] hover:translate-x-1 transition-all leading-relaxed"
               >
                 {t("footer.products")}
               </Link>
               <Link
                 to={getLocalizedPath("/contato")}
-                className="text-white/90 font-inter text-base hover:text-white hover:translate-x-1 transition-all leading-relaxed"
+                className="text-[#EEEEEE]/90 font-inter text-base hover:text-[#EEEEEE] hover:translate-x-1 transition-all leading-relaxed"
               >
                 {t("footer.contact", "Contato")}
               </Link>
+              <a
+                href="https://brilho-nails.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#EEEEEE]/90 font-inter text-base hover:text-[#EEEEEE] hover:translate-x-1 transition-all leading-relaxed"
+              >
+                Brilho-Nails
+              </a>
             </nav>
           </div>
 
@@ -60,7 +68,7 @@ const Footer = () => {
                   <polygon
                     points="40,4 72,22 72,58 40,76 8,58 8,22"
                     fill="none"
-                    stroke="#FFFFFF"
+                    stroke="#EEEEEE"
                     strokeWidth="2"
                   />
                   <polygon
@@ -71,7 +79,7 @@ const Footer = () => {
                     x="40"
                     y="48"
                     textAnchor="middle"
-                    fill="white"
+                    fill="#EEEEEE"
                     fontSize="28"
                     fontWeight="bold"
                     fontFamily="serif"
@@ -80,13 +88,13 @@ const Footer = () => {
                   </text>
                 </svg>
               </div>
-              <span className="text-white font-montserrat font-bold text-xl tracking-wider">
+              <span className="text-[#EEEEEE] font-montserrat font-bold text-xl tracking-wider">
                 METALÚRGICA BRILHO<sup className="text-xs">®</sup>
               </span>
             </div>
 
             {/* CNPJ / IE */}
-            <div className="text-white/80 font-inter text-sm mb-6 space-y-1">
+            <div className="text-[#EEEEEE]/80 font-inter text-sm mb-6 space-y-1">
               <p>CNPJ: 05.411.841/0001-06</p>
               <p>INSCRIÇÃO ESTADUAL: 118.327.925.118</p>
             </div>
@@ -117,13 +125,11 @@ const Footer = () => {
             </div>
 
             {/* Company Description */}
-            <p className="text-white/70 font-inter text-sm leading-relaxed max-w-md">
+            <p className="text-[#EEEEEE]/70 font-inter text-sm leading-relaxed max-w-md">
               A Metalúrgica Brilho possui 20 anos de experiência em micro moldagem 
               por injeção e montagem de componentes de alta precisão para indústrias 
-              de diversos setores. Nossa empresa está localizada em São Paulo e 
-              oferece soluções completas em fabricação de instrumentos para podologia, 
-              manicure e odontologia.{" "}
-              <Link to={getLocalizedPath("/institucional")} className="text-white underline hover:text-white/80 transition-colors">
+              de diversos setores.{" "}
+              <Link to={getLocalizedPath("/institucional")} className="text-[#EEEEEE] underline hover:text-[#EEEEEE]/80 transition-colors">
                 saiba mais
               </Link>
             </p>
@@ -132,27 +138,26 @@ const Footer = () => {
           {/* Column 3 - ADDRESS AND CONTACT */}
           <div>
             {/* Address */}
-            <h3 className="text-white font-montserrat font-bold text-lg mb-6 tracking-wider">
+            <h3 className="text-[#EEEEEE] font-montserrat font-bold text-lg mb-6 tracking-wider">
               {t("footer.addressTitle", "ENDEREÇO")}
             </h3>
-            <div className="text-white/90 font-inter text-base leading-relaxed mb-8">
-              <p>Rua Coronel Botelho, 58</p>
-              <p>Butantã – São Paulo – SP – 05508-020</p>
-              <p className="mt-2">Cidade: São Paulo – SP</p>
+            <div className="text-[#EEEEEE]/90 font-inter text-base leading-relaxed mb-8">
+              <p>R. Cel. Botelho, 58 - Bela Aliança</p>
+              <p>São Paulo – SP – 05508-020</p>
             </div>
 
             {/* Phones */}
-            <h3 className="text-white font-montserrat font-bold text-lg mb-6 tracking-wider">
+            <h3 className="text-[#EEEEEE] font-montserrat font-bold text-lg mb-6 tracking-wider">
               {t("footer.phonesTitle", "TELEFONES")}
             </h3>
-            <div className="text-white/90 font-inter text-base leading-relaxed mb-8 space-y-2">
+            <div className="text-[#EEEEEE]/90 font-inter text-base leading-relaxed mb-8 space-y-2">
               <p>
-                <a href="tel:+551139316343" className="hover:text-white transition-colors hover:underline">
+                <a href="tel:+551139316343" className="hover:text-[#EEEEEE] transition-colors hover:underline">
                   (11) 3931-6343
                 </a>
               </p>
               <p>
-                <a href="tel:+551138316943" className="hover:text-white transition-colors hover:underline">
+                <a href="tel:+551138316943" className="hover:text-[#EEEEEE] transition-colors hover:underline">
                   (11) 3831-6943
                 </a>
               </p>
@@ -162,22 +167,33 @@ const Footer = () => {
                   href="https://wa.me/5511940101807" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="hover:text-white transition-colors hover:underline"
+                  className="hover:text-[#EEEEEE] transition-colors hover:underline"
                 >
                   (11) 94010-1807
                 </a>
               </p>
+              <p className="flex items-center gap-2">
+                <span className="text-green-500">WhatsApp:</span>
+                <a 
+                  href="https://wa.me/5511983304765" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-[#EEEEEE] transition-colors hover:underline"
+                >
+                  (11) 98330-4765
+                </a>
+              </p>
             </div>
 
-            {/* Company / Email */}
-            <h3 className="text-white font-montserrat font-bold text-lg mb-6 tracking-wider">
+            {/* Email */}
+            <h3 className="text-[#EEEEEE] font-montserrat font-bold text-lg mb-6 tracking-wider">
               {t("footer.companyTitle", "EMPRESA")}
             </h3>
-            <div className="text-white/90 font-inter text-base">
+            <div className="text-[#EEEEEE]/90 font-inter text-base">
               <p>E-mail:</p>
               <a 
                 href="mailto:metalurgicabrilho@gmail.com"
-                className="hover:text-white transition-colors hover:underline"
+                className="hover:text-[#EEEEEE] transition-colors hover:underline"
               >
                 metalurgicabrilho@gmail.com
               </a>
@@ -235,7 +251,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="text-center border-t border-white/10 pt-8">
-          <p className="text-white/60 font-inter text-sm">
+          <p className="text-[#EEEEEE]/60 font-inter text-sm">
             2023 © METALÚRGICA BRILHO – {t("footer.allRights", "TODOS DIREITOS RESERVADOS")}
           </p>
         </div>
