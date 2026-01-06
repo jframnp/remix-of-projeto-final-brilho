@@ -20,11 +20,9 @@ const Header = () => {
 
   const productSubcategories = [
     { label: t("nav.diamondBurs", "Brocas Diamantadas"), path: "/produtos/brocas-diamantadas" },
-    { label: t("nav.goldLine", "Linha Gold"), path: "/produtos/linha-gold" },
     { label: t("nav.tungstenBurs", "Fresas de Tungstênio"), path: "/produtos/fresas-tungstenio" },
     { label: t("nav.ceramicBurs", "Fresas de Cerâmica"), path: "/produtos/fresas-ceramica" },
-    { label: t("nav.sandpaper", "Lixas Sandpaper"), path: "/produtos/lixas-sandpaper" },
-    { label: t("nav.boomerang", "Lixas Boomerang"), path: "/produtos/lixas-boomerang" },
+    { label: t("nav.lixas", "Lixas"), path: "/produtos/lixas" },
     { label: t("nav.tubularAdhesive", "Lixa Tubular / Adesiva"), path: "/produtos/lixa-tubular-adesiva" },
     { label: t("nav.polishers", "Polidoras"), path: "/produtos/polidoras" },
     { label: t("nav.brushes", "Escovas de Limpeza"), path: "/produtos/escovas-limpeza" },
