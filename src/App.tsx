@@ -15,11 +15,9 @@ const queryClient = new QueryClient();
 
 const productCategories = [
   "brocas-diamantadas",
-  "linha-gold",
   "fresas-tungstenio",
   "fresas-ceramica",
-  "lixas-sandpaper",
-  "lixas-boomerang",
+  "lixas",
   "lixa-tubular-adesiva",
   "polidoras",
   "escovas-limpeza",
