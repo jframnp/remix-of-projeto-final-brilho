@@ -80,6 +80,22 @@
     "ctaRequest": "Solicite um orçamento ou entre em contato para mais informações",
     "requestQuote": "Solicitar Orçamento",
     "backToCategories": "Voltar às Categorias",
+    "ctaTitle": "Não encontrou o que procura?",
+    "ctaDesc": "Entre em contato conosco e solicite um orçamento personalizado para suas necessidades.",
+    "ctaContact": "Fale Conosco",
+    "searchPlaceholder": "Buscar produtos...",
+    "filterBy": "Filtrar por",
+    "filterAll": "Todos",
+    "noResults": "Nenhum produto encontrado",
+    "tryAnotherSearch": "Tente outro termo de busca",
+    "badge": {
+      "anvisa": "ANVISA",
+      "certified": "Certificado",
+      "shipping": "Envio",
+      "nationwide": "Todo Brasil",
+      "quality": "Qualidade",
+      "premium": "Premium"
+    },
     "sections": {
       "diamondBurs": "Brocas Diamantadas",
       "tungstenBurs": "Fresas de Tungstênio",
