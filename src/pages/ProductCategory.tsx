@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { useTranslation } from "react-i18next";
@@ -8,16 +8,11 @@ import {
   ArrowLeft, 
   MessageCircle, 
   Sparkles,
-  ChevronDown,
-  ChevronUp,
-  Search,
-  SortAsc,
-  SortDesc,
-  Star,
-  Zap
+  Star
 } from "lucide-react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ParticleBackground from "@/components/products/ParticleBackground";
+import CategoryTypeCard from "@/components/products/CategoryTypeCard";
+import CategoryTypeModal from "@/components/products/CategoryTypeModal";
 
 // Import product images
 import PM07 from "@/assets/products/PM07_AZUL.webp";
@@ -248,14 +243,11 @@ const grainColorMap: Record<string, { bg: string; text: string }> = {
 };
 
 const ProductCategory = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { currentLang } = useLanguage();
-  const [activeSubtype, setActiveSubtype] = useState<string>("all");
   const [activeGrain, setActiveGrain] = useState<string | null>(null);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [sortColumn, setSortColumn] = useState<string | null>(null);
-  const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
-  const [expandedAccordion, setExpandedAccordion] = useState<string | null>(null);
+  const [selectedType, setSelectedType] = useState<string | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   const pathParts = window.location.pathname.split("/");
   const category = pathParts[pathParts.length - 1];
@@ -284,42 +276,40 @@ const ProductCategory = () => {
     );
   }
 
-  // Filter and sort products
-  let filteredProducts = data.products;
-  
-  if (activeSubtype !== "all") {
-    filteredProducts = filteredProducts.filter(p => p.model.includes(activeSubtype));
-  }
-  
-  if (activeGrain) {
-    filteredProducts = filteredProducts.filter(p => p.grain === activeGrain);
-  }
-  
-  if (searchQuery) {
-    const query = searchQuery.toLowerCase();
-    filteredProducts = filteredProducts.filter(p => 
-      p.model.toLowerCase().includes(query) ||
-      p.code.toLowerCase().includes(query) ||
-      (p.grain && p.grain.toLowerCase().includes(query))
-    );
-  }
-
-  if (sortColumn) {
-    filteredProducts = [...filteredProducts].sort((a, b) => {
-      const aVal = (a as any)[sortColumn] || "";
-      const bVal = (b as any)[sortColumn] || "";
-      const comparison = aVal.localeCompare(bVal);
-      return sortDirection === "asc" ? comparison : -comparison;
+  // Group products by type (model name base)
+  const productsByType = useMemo(() => {
+    const groups: Record<string, typeof data.products> = {};
+    
+    data.products.forEach(product => {
+      // Extract base type from model name
+      const baseType = product.model.split(' ')[0]; // e.g., "Esférica" from "Esférica Gold"
+      if (!groups[baseType]) {
+        groups[baseType] = [];
+      }
+      groups[baseType].push(product);
     });
-  }
+    
+    return groups;
+  }, [data.products]);
 
-  const handleSort = (column: string) => {
-    if (sortColumn === column) {
-      setSortDirection(prev => prev === "asc" ? "desc" : "asc");
-    } else {
-      setSortColumn(column);
-      setSortDirection("asc");
+  // Get products for selected type, filtered by grain if active
+  const getProductsForType = (typeName: string) => {
+    let products = productsByType[typeName] || [];
+    if (activeGrain) {
+      products = products.filter(p => p.grain === activeGrain);
     }
+    return products;
+  };
+
+  // Get image for a type (use first product's image)
+  const getTypeImage = (typeName: string) => {
+    const products = productsByType[typeName];
+    return products?.[0]?.image;
+  };
+
+  const handleTypeClick = (typeName: string) => {
+    setSelectedType(typeName);
+    setIsModalOpen(true);
   };
 
 
@@ -457,274 +447,101 @@ const ProductCategory = () => {
 
       {/* Grain Legend Section - Always visible for all product categories */}
       <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-12">
-        <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-12">
-          <div className="container mx-auto px-4">
-            <div className="flex justify-center">
-              {/* Floating Grain Legend Card - width 300px, right aligned on desktop */}
-              <div 
-                className="bg-white rounded-lg p-5 shadow-lg w-full max-w-[600px] lg:max-w-[800px]"
-                style={{ 
-                  borderRadius: '8px',
-                  boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
-                  padding: '20px'
-                }}
-              >
-                <h3 className="font-montserrat font-bold text-lg text-foreground mb-4 flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-gray-800 via-red-600 to-yellow-400" />
-                  {t("products.grainLegend", "Legenda de Grãos")}
-                </h3>
-                
-                <p className="text-muted-foreground text-base mb-5" style={{ fontSize: '16px', color: '#424242' }}>
-                  {t("products.clickToFilter", "Clique para filtrar os produtos por granulometria")}
-                </p>
-                
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-                  {Object.entries(grainColorMap).map(([grain, colors]) => (
-                    <button
-                      key={grain}
-                      onClick={() => setActiveGrain(activeGrain === grain ? null : grain)}
-                      className={`
-                        flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 border
-                        ${activeGrain === grain 
-                          ? "ring-2 ring-primary ring-offset-2 scale-105 shadow-lg border-primary bg-primary/5" 
-                          : "border-gray-200 hover:border-gray-300 hover:scale-102 bg-white"
-                        }
-                      `}
-                      style={{ margin: '10px 0' }}
-                    >
-                      <div 
-                        className="w-5 h-5 rounded-full shadow-sm flex-shrink-0"
-                        style={{ 
-                          width: '20px',
-                          height: '20px',
-                          backgroundColor: colors.bg,
-                          border: colors.bg === "#FFFFFF" ? "2px solid #DDD" : "none"
-                        }} 
-                      />
-                      <span className="text-sm font-medium text-foreground" style={{ fontSize: '16px', color: '#424242' }}>
-                        {getGrainLabel(grain)}
-                      </span>
-                    </button>
-                  ))}
-                </div>
-
-                {activeGrain && (
-                  <button
-                    onClick={() => setActiveGrain(null)}
-                    className="mt-4 text-sm text-primary hover:underline flex items-center gap-1"
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                    {t("products.clearFilter", "Limpar filtro")}
-                  </button>
-                )}
-              </div>
-            </div>
-          </div>
-        </section>
-      </section>
-
-      {/* Products Grid Section - 3 columns, 350x500px cards */}
-      <section className="bg-muted/30 section-padding-lg">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10">
-            <h2 className="text-foreground font-montserrat font-bold text-2xl md:text-3xl">
-              {t("products.ourProducts", "Nossos Produtos")} 
-              <span className="text-muted-foreground text-lg ml-2">
-                ({filteredProducts.length} {t("products.items", "itens")})
-              </span>
-            </h2>
-            
-            {/* Search Box */}
-            <div className="relative w-full md:w-auto">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
-              <input
-                type="text"
-                placeholder={t("products.searchProducts", "Buscar produtos...")}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full md:w-80 pl-12 pr-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
-              />
-            </div>
-          </div>
-          
-          {/* Subtype Tabs - accordion style */}
-          {data.subtypes && data.subtypes.length > 0 && (
-            <div className="mb-8">
-              <div className="flex flex-wrap gap-3">
-                <button
-                  onClick={() => setActiveSubtype("all")}
-                  className={`filter-chip ${activeSubtype === "all" ? "active" : ""}`}
-                >
-                  {t("products.all", "Todos")}
-                </button>
-                {data.subtypes.map(subtype => (
+          <div className="flex justify-center">
+            {/* Floating Grain Legend Card */}
+            <div 
+              className="bg-white rounded-lg p-5 shadow-lg w-full max-w-[600px] lg:max-w-[800px]"
+              style={{ 
+                borderRadius: '8px',
+                boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
+                padding: '20px'
+              }}
+            >
+              <h3 className="font-montserrat font-bold text-lg text-foreground mb-4 flex items-center gap-2">
+                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-gray-800 via-red-600 to-yellow-400" />
+                {t("products.grainLegend", "Legenda de Grãos")}
+              </h3>
+              
+              <p className="text-muted-foreground text-base mb-5" style={{ fontSize: '16px', color: '#424242' }}>
+                {t("products.clickToFilter", "Clique para filtrar os produtos por granulometria")}
+              </p>
+              
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                {Object.entries(grainColorMap).map(([grain, colors]) => (
                   <button
-                    key={subtype}
-                    onClick={() => setActiveSubtype(subtype)}
-                    className={`filter-chip ${activeSubtype === subtype ? "active" : ""}`}
+                    key={grain}
+                    onClick={() => setActiveGrain(activeGrain === grain ? null : grain)}
+                    className={`
+                      flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 border
+                      ${activeGrain === grain 
+                        ? "ring-2 ring-primary ring-offset-2 scale-105 shadow-lg border-primary bg-primary/5" 
+                        : "border-gray-200 hover:border-gray-300 hover:scale-102 bg-white"
+                      }
+                    `}
+                    style={{ margin: '10px 0' }}
                   >
-                    {subtype}
+                    <div 
+                      className="w-5 h-5 rounded-full shadow-sm flex-shrink-0"
+                      style={{ 
+                        width: '20px',
+                        height: '20px',
+                        backgroundColor: colors.bg,
+                        border: colors.bg === "#FFFFFF" ? "2px solid #DDD" : "none"
+                      }} 
+                    />
+                    <span className="text-sm font-medium text-foreground" style={{ fontSize: '16px', color: '#424242' }}>
+                      {getGrainLabel(grain)}
+                    </span>
                   </button>
                 ))}
               </div>
-            </div>
-          )}
 
-          {/* 3D Product Cards Grid - 3 columns, 40px gap, 80px padding */}
-          <div className="grid-products-3 mb-16">
-            {filteredProducts.map((product, idx) => (
-              <div
-                key={idx}
-                className="perspective-1000 animate-fade-in"
-                style={{ animationDelay: `${idx * 0.1}s` }}
-              >
-                <div
-                  className={`
-                    relative rounded-2xl overflow-hidden transition-all duration-500
-                    bg-gradient-to-br from-white via-gray-50 to-gray-100 shadow-lg hover:shadow-2xl hover-lift
-                  `}
-                  style={{ height: '500px' }}
+              {activeGrain && (
+                <button
+                  onClick={() => setActiveGrain(null)}
+                  className="mt-4 text-sm text-primary hover:underline flex items-center gap-1"
                 >
-                  {/* Product Visual - 350x250px with hover zoom */}
-                  <div className="relative h-[250px] flex items-center justify-center bg-gradient-to-b from-gray-50 to-white overflow-hidden group">
-                    {/* Product Image or Placeholder */}
-                    {product.image ? (
-                      <img 
-                        src={product.image} 
-                        alt={`${product.model} - ${product.code}`}
-                        className="h-full w-full object-contain p-4 group-hover:scale-110 transition-transform duration-500"
-                      />
-                    ) : (
-                      <div className="relative w-28 h-28 rounded-full flex items-center justify-center group-hover:animate-spin-slow transition-all"
-                        style={{
-                          background: "linear-gradient(135deg, #9B0000, #720000, #9B0000)",
-                          boxShadow: "0 0 30px rgba(155, 0, 0, 0.3)",
-                        }}
-                      >
-                        <div className="absolute inset-2 rounded-full bg-white/20 backdrop-blur-sm" />
-                        <Sparkles className="w-12 h-12 text-white" />
-                      </div>
-                    )}
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                  {t("products.clearFilter", "Limpar filtro")}
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
 
-                    {/* Model Badge (Esférica, Cônica, etc.) */}
-                    <span className="absolute top-4 left-4 px-4 py-2 rounded-lg text-sm font-bold bg-primary text-white shadow-lg">
-                      {product.model}
-                    </span>
-
-                    {/* Grain Color Indicator - 20px diameter */}
-                    {product.grain && grainColorMap[product.grain] && (
-                      <div className="absolute top-4 right-4 flex items-center gap-2 bg-white/95 backdrop-blur-sm px-3 py-2 rounded-lg shadow-sm">
-                        <div 
-                          className="w-5 h-5 rounded-full shadow-sm"
-                          style={{ 
-                            backgroundColor: grainColorMap[product.grain].bg,
-                            border: grainColorMap[product.grain].bg === "#FFFFFF" ? "2px solid #DDD" : "none"
-                          }} 
-                        />
-                        <span className="text-sm font-medium text-gray-700">{getGrainLabel(product.grain)}</span>
-                      </div>
-                    )}
-                  </div>
-
-                  {/* Product Info - Code as title */}
-                  <div className="p-6 bg-white">
-                    <h3 className="font-montserrat font-bold text-xl mb-3 text-foreground" style={{ fontSize: '24px', color: '#212121' }}>
-                      {product.code}
-                    </h3>
-                    
-                    <p className="text-muted-foreground text-sm mb-4" style={{ fontSize: '14px', color: '#757575' }}>
-                      {t("products.productDesc", "Para procedimentos de precisão e acabamento profissional.")}
-                    </p>
-                    
-                    {/* Specs Badges - diameter blue #2196F3, ISO green #4CAF50 */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {product.diameter && product.diameter !== "N/A" && (
-                        <span className="badge-diameter">Ø {product.diameter}</span>
-                      )}
-                      {product.iso && (
-                        <span className="badge-iso">ISO {product.iso}</span>
-                      )}
-                      {product.activeLength && (
-                        <span className="px-3 py-1 rounded-full bg-purple-500 text-white text-xs font-semibold">
-                          Ativo: {product.activeLength}
-                        </span>
-                      )}
-                      {product.cut && (
-                        <span className="px-3 py-1 rounded-full bg-orange-500 text-white text-xs font-semibold">
-                          {product.cut}
-                        </span>
-                      )}
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-            ))}
+      {/* Products Grid Section - Microdont Style Cards */}
+      <section className="bg-muted/30 section-padding-lg">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-foreground font-montserrat font-bold text-2xl md:text-3xl mb-4">
+              {t("products.selectType", "Selecione o Tipo")}
+            </h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              {t("products.selectTypeDesc", "Clique em um tipo para ver todos os modelos disponíveis com especificações completas.")}
+            </p>
           </div>
 
-          {/* Technical Table with Sorting/Search */}
-          <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-16">
-            <div className="p-6 border-b border-gray-100">
-              <h2 className="text-foreground font-montserrat font-bold text-2xl">
-                {t("products.technicalSpecs", "Especificações Técnicas")}
-              </h2>
-            </div>
-            
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead className="bg-gray-50">
-                  <tr>
-                    {["model", "code", "diameter", "grain", "iso", "activeLength"].map((col) => (
-                      <th 
-                        key={col}
-                        className="px-6 py-4 text-left text-sm font-semibold text-gray-600 cursor-pointer hover:bg-gray-100 transition-colors"
-                        onClick={() => handleSort(col)}
-                      >
-                        <div className="flex items-center gap-2">
-                          {t(`products.table.${col}`, col)}
-                          {sortColumn === col && (
-                            sortDirection === "asc" ? <SortAsc className="w-4 h-4" /> : <SortDesc className="w-4 h-4" />
-                          )}
-                        </div>
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody className="table-striped">
-                  {filteredProducts.map((product, idx) => (
-                    <tr 
-                      key={idx} 
-                      className="border-b border-gray-100 hover:bg-primary/5 transition-colors animate-slide-in-right"
-                      style={{ animationDelay: `${idx * 0.05}s` }}
-                    >
-                      <td className="px-6 py-4 font-medium text-foreground">{product.model}</td>
-                      <td className="px-6 py-4 text-primary font-semibold">{product.code}</td>
-                      <td className="px-6 py-4 text-muted-foreground">{product.diameter || "-"}</td>
-                      <td className="px-6 py-4">
-                        {product.grain && grainColorMap[product.grain] ? (
-                          <div className="flex items-center gap-2">
-                            <div 
-                              className="w-4 h-4 rounded-full"
-                              style={{ 
-                                backgroundColor: grainColorMap[product.grain].bg,
-                                border: grainColorMap[product.grain].bg === "#FFFFFF" ? "2px solid #DDD" : "none"
-                              }} 
-                            />
-                            <span>{getGrainLabel(product.grain)}</span>
-                          </div>
-                        ) : (
-                          product.grain ? getGrainLabel(product.grain) : (product.cut || "-")
-                        )}
-                      </td>
-                      <td className="px-6 py-4 text-muted-foreground">{product.iso || "-"}</td>
-                      <td className="px-6 py-4 text-muted-foreground">{product.activeLength || "-"}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+          {/* Type Cards Grid - Microdont Style */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-16">
+            {Object.keys(productsByType).map((typeName, idx) => (
+              <div
+                key={typeName}
+                className="animate-fade-in"
+                style={{ animationDelay: `${idx * 0.1}s` }}
+              >
+                <CategoryTypeCard
+                  typeName={typeName}
+                  image={getTypeImage(typeName)}
+                  productCount={getProductsForType(typeName).length}
+                  onClick={() => handleTypeClick(typeName)}
+                  isGold={category === "linha-gold"}
+                />
+              </div>
+            ))}
           </div>
 
           {/* Testimonials Carousel - 3 slides fade */}
@@ -795,6 +612,18 @@ const ProductCategory = () => {
           </div>
         </div>
       </section>
+
+      {/* Product Type Modal */}
+      {selectedType && (
+        <CategoryTypeModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          typeName={selectedType}
+          products={getProductsForType(selectedType)}
+          typeImage={getTypeImage(selectedType)}
+          isGold={category === "linha-gold"}
+        />
+      )}
 
     </Layout>
   );
