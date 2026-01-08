@@ -44,7 +44,7 @@ const productData: Record<string, {
   };
 }> = {
   "brocas-diamantadas": {
-    hasGoldLine: true,
+    hasGoldLine: false, // Gold Line moved to separate page /produtos/linha-gold
     subtypes: ["Esférica", "Roda", "Cônica", "Chama", "Cilíndrica", "Torpedo"],
     description: {
       pt: "Indicadas para laboratórios de prótese, joalherias, indústrias em geral, hospitais, podólogos, nails designers e manicures – sempre oferecendo excelente qualidade.",
@@ -192,6 +192,31 @@ const productData: Record<string, {
       { model: "Mandril Standard", code: "AL-MS-01", diameter: "2.35mm" },
     ]
   },
+  "linha-gold": {
+    hasGoldLine: true,
+    subtypes: ["Esférica Gold", "Cônica Gold", "Chama Gold", "Cilíndrica Gold"],
+    description: {
+      pt: "Linha Gold Premium - Acabamento dourado exclusivo para Nail Designers. Qualidade superior com diamantes industriais de primeira linha.",
+      en: "Gold Line Premium - Exclusive golden finish for Nail Designers. Superior quality with first-class industrial diamonds."
+    },
+    features: [
+      "Acabamento dourado exclusivo",
+      "Especial para Nail Designers",
+      "Diamantes industriais premium",
+      "Alta durabilidade",
+      "Qualidade superior"
+    ],
+    products: [
+      { model: "Esférica Gold", code: "BD-GOLD-ESF-01", iso: "001", diameter: "1.5mm", grain: "Médio", activeLength: "1.5mm" },
+      { model: "Esférica Gold", code: "BD-GOLD-ESF-02", iso: "001", diameter: "2.0mm", grain: "Fino", activeLength: "2.0mm" },
+      { model: "Cônica Gold", code: "BD-GOLD-CON-01", iso: "012", diameter: "2.5mm", grain: "Médio", activeLength: "6.0mm" },
+      { model: "Cônica Gold", code: "BD-GOLD-CON-02", iso: "012", diameter: "3.0mm", grain: "Extra Fino", activeLength: "7.0mm" },
+      { model: "Chama Gold", code: "BD-GOLD-CHA-01", iso: "014", diameter: "2.0mm", grain: "Fino", activeLength: "5.0mm" },
+      { model: "Chama Gold", code: "BD-GOLD-CHA-02", iso: "014", diameter: "2.5mm", grain: "Médio", activeLength: "6.0mm" },
+      { model: "Cilíndrica Gold", code: "BD-GOLD-CIL-01", iso: "016", diameter: "2.5mm", grain: "Grosso", activeLength: "6.0mm" },
+      { model: "Cilíndrica Gold", code: "BD-GOLD-CIL-02", iso: "016", diameter: "3.0mm", grain: "Médio", activeLength: "7.0mm" },
+    ]
+  },
 };
 
 const categoryKeyMap: Record<string, string> = {
@@ -204,14 +229,15 @@ const categoryKeyMap: Record<string, string> = {
   "escovas-limpeza": "brushes",
   "fibras-enucleadora-mandril": "fiberMandril",
   "apoio-lixas-afiacao": "supportSharpening",
+  "linha-gold": "goldLine",
 };
 
-// Grain color map with exact hex values
+// Grain color map with exact hex values from specs
 const grainColorMap: Record<string, { bg: string; text: string }> = {
-  "Extra Grosso": { bg: "#1a1a1a", text: "#fff" },
-  "Grosso": { bg: "#1976D2", text: "#fff" },
-  "Médio": { bg: "#B71C1C", text: "#fff" },
-  "Fino": { bg: "#4CAF50", text: "#fff" },
+  "Extra Grosso": { bg: "#000000", text: "#FFFFFF" },
+  "Grosso": { bg: "#2196F3", text: "#FFFFFF" },
+  "Médio": { bg: "#B71C1C", text: "#FFFFFF" },
+  "Fino": { bg: "#4CAF50", text: "#FFFFFF" },
   "Extra Fino": { bg: "#FFEB3B", text: "#212121" },
   "Ultra Fino": { bg: "#FFFFFF", text: "#212121" },
 };
@@ -226,7 +252,7 @@ const ProductCategory = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortColumn, setSortColumn] = useState<string | null>(null);
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
-  const [hoveredShaftPart, setHoveredShaftPart] = useState<string | null>(null);
+  // Removed hoveredShaftPart state - shaft diagram no longer used
   const [expandedAccordion, setExpandedAccordion] = useState<string | null>(null);
   
   const pathParts = window.location.pathname.split("/");
@@ -307,24 +333,49 @@ const ProductCategory = () => {
 
   return (
     <Layout>
-      {/* Immersive Hero - 600px with video placeholder */}
-      <section className="relative min-h-[600px] md:min-h-[500px] bg-gradient-to-br from-primary via-[#9B0000] to-[#720000] overflow-hidden flex items-center">
-        <ParticleBackground />
+      {/* Immersive Hero - 600px with video placeholder or Gold Line special style */}
+      <section 
+        className={`relative min-h-[600px] md:min-h-[500px] overflow-hidden flex items-center ${
+          category === "linha-gold" 
+            ? "bg-gradient-to-br from-[#FFD54F] via-[#FFC107] to-[#FFA000]" 
+            : "bg-gradient-to-br from-primary via-[#9B0000] to-[#720000]"
+        }`}
+        style={category === "linha-gold" ? {
+          background: 'linear-gradient(135deg, #FFD54F 0%, #FFC107 50%, #FFA000 100%)',
+          padding: '60px 0'
+        } : {}}
+      >
+        {category !== "linha-gold" && <ParticleBackground />}
         
-        {/* Video/Image placeholder overlay */}
-        <div className="absolute inset-0 bg-black/40" />
+        {/* Gold Line glow effect */}
+        {category === "linha-gold" && (
+          <div className="absolute inset-0 animate-shimmer opacity-40" style={{
+            background: 'linear-gradient(45deg, transparent 25%, rgba(255,255,255,0.5) 50%, transparent 75%)',
+            backgroundSize: '400% 100%',
+            animation: 'shimmer 3s ease-in-out infinite'
+          }} />
+        )}
         
-        {/* Play Button for Video */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 opacity-30 hover:opacity-60 transition-opacity cursor-pointer">
-          <div className="w-24 h-24 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-            <Play className="w-12 h-12 text-white ml-2" />
+        {/* Video/Image placeholder overlay - not for Gold Line */}
+        {category !== "linha-gold" && <div className="absolute inset-0 bg-black/40" />}
+        
+        {/* Play Button for Video - not for Gold Line */}
+        {category !== "linha-gold" && (
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 opacity-30 hover:opacity-60 transition-opacity cursor-pointer">
+            <div className="w-24 h-24 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+              <Play className="w-12 h-12 text-white ml-2" />
+            </div>
           </div>
-        </div>
+        )}
         
         <div className="container mx-auto px-4 relative z-10 py-16">
           <Link
             to={getLocalizedPath("/produtos")}
-            className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors group"
+            className={`inline-flex items-center gap-2 mb-6 transition-colors group ${
+              category === "linha-gold" 
+                ? "text-yellow-900/80 hover:text-yellow-900" 
+                : "text-white/80 hover:text-white"
+            }`}
           >
             <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
             {t("products.backToCategories", "Voltar às Categorias")}
@@ -332,15 +383,31 @@ const ProductCategory = () => {
 
           <div className="max-w-4xl">
             {/* Bilingual Animated Title - 60px with text shadow */}
-            <h1 className="text-white font-montserrat font-black text-4xl md:text-5xl lg:text-6xl mb-2 animate-fade-in text-shadow-lg" style={{ fontSize: '60px' }}>
+            <h1 
+              className={`font-montserrat font-black text-4xl md:text-5xl lg:text-6xl mb-2 animate-fade-in ${
+                category === "linha-gold" 
+                  ? "text-yellow-900 flex items-center gap-4" 
+                  : "text-white text-shadow-lg"
+              }`} 
+              style={{ fontSize: '60px' }}
+            >
+              {category === "linha-gold" && <Sparkles className="w-14 h-14 animate-pulse" />}
               {t(`products.sections.${categoryKey}`).toUpperCase()}
+              {category === "linha-gold" && <Sparkles className="w-14 h-14 animate-pulse" />}
             </h1>
-            <p className="text-white/60 font-inter text-lg md:text-xl mb-6 animate-fade-in stagger-1">
+            <p className={`font-inter text-lg md:text-xl mb-6 animate-fade-in stagger-1 ${
+              category === "linha-gold" ? "text-yellow-900/80" : "text-white/60"
+            }`}>
               {currentLang === "en" ? data.description.en : data.description.pt}
             </p>
             
             {/* Description from PDF - 20px, line-height 1.8 */}
-            <p className="text-white/90 font-inter text-lg md:text-xl leading-relaxed mb-8 animate-fade-in stagger-2 max-w-3xl" style={{ fontSize: '20px', lineHeight: '1.8', padding: '0 40px 0 0' }}>
+            <p 
+              className={`font-inter text-lg md:text-xl leading-relaxed mb-8 animate-fade-in stagger-2 max-w-3xl ${
+                category === "linha-gold" ? "text-yellow-900" : "text-white/90"
+              }`} 
+              style={{ fontSize: '20px', lineHeight: '1.8', padding: '0 40px 0 0' }}
+            >
               {currentLang === "en" ? data.description.en : data.description.pt}
             </p>
 
@@ -349,7 +416,11 @@ const ProductCategory = () => {
               <a
                 href="/catalogo-brilho.pdf"
                 target="_blank"
-                className="inline-flex items-center gap-3 bg-white text-primary font-montserrat font-bold px-8 py-4 rounded-xl hover:scale-105 transition-all shadow-lg"
+                className={`inline-flex items-center gap-3 font-montserrat font-bold px-8 py-4 rounded-xl hover:scale-105 transition-all shadow-lg ${
+                  category === "linha-gold" 
+                    ? "bg-yellow-900 text-yellow-100" 
+                    : "bg-white text-primary"
+                }`}
               >
                 <Download size={20} />
                 {t("products.downloadCatalog", "Baixar Catálogo")}
@@ -368,204 +439,55 @@ const ProductCategory = () => {
         </div>
       </section>
 
-      {/* Gold Line Banner - if applicable */}
-      {data.hasGoldLine && (
-        <section className="gold-section relative overflow-hidden">
-          <div className="absolute inset-0 animate-shimmer opacity-30" />
-          <div className="container mx-auto px-4 relative">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              <div className="flex items-center gap-4">
-                <Sparkles className="w-12 h-12 text-yellow-900 animate-pulse" />
-                <div>
-                  <h3 className="text-yellow-900 font-montserrat font-black text-2xl md:text-3xl flex items-center gap-2">
-                    <Star className="w-6 h-6 fill-current" />
-                    LINHA GOLD
-                    <Star className="w-6 h-6 fill-current" />
-                  </h3>
-                  <p className="text-yellow-900/80 text-lg">
-                    Premium para Nail Designers - Qualidade Superior
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center gap-3 bg-yellow-900/20 px-6 py-3 rounded-xl">
-                <Zap className="w-6 h-6 text-yellow-900" />
-                <span className="text-yellow-900 font-bold">Acabamento Dourado Exclusivo</span>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
+      {/* Removed Gold Line Banner - Gold Line has its own dedicated page /produtos/linha-gold */}
 
-      {/* Technology Section - SVG Diagram 600px */}
-      <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-white font-montserrat font-bold text-2xl md:text-3xl mb-8 text-center">
-            {t("products.technologyDetails", "Tecnologia em Detalhes")}
-          </h2>
-          
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Interactive Shaft Diagram - 600px width */}
-            <div className="bg-gray-800/50 rounded-2xl p-8">
-              <h3 className="text-white font-montserrat font-bold text-xl mb-6 flex items-center gap-2">
-                <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-                {t("products.shaftDiagram", "Diagrama da Haste")}
-              </h3>
-
-              <div className="relative flex flex-col items-center">
-                {/* SVG with interactive parts - exact measurements */}
-                <svg viewBox="0 0 500 150" className="w-full max-w-[600px]">
-                  {/* Definitions */}
-                  <defs>
-                    <linearGradient id="shaftGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stopColor="rgba(255,255,255,0.4)" />
-                      <stop offset="50%" stopColor="rgba(255,255,255,0)" />
-                      <stop offset="100%" stopColor="rgba(0,0,0,0.3)" />
-                    </linearGradient>
-                    <linearGradient id="headGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#D32F2F" />
-                      <stop offset="50%" stopColor="#9B0000" />
-                      <stop offset="100%" stopColor="#720000" />
-                    </linearGradient>
-                  </defs>
-
-                  {/* Shaft body - interactive */}
-                  <g
-                    onMouseEnter={() => setHoveredShaftPart("shaft")}
-                    onMouseLeave={() => setHoveredShaftPart(null)}
-                    className="cursor-pointer transition-all"
-                  >
-                    <rect
-                      x="60"
-                      y="55"
-                      width="300"
-                      height="40"
-                      rx="4"
-                      fill={hoveredShaftPart === "shaft" ? "#1976D2" : "#6B7280"}
-                      className="transition-colors duration-300"
-                    />
-                    <rect
-                      x="60"
-                      y="55"
-                      width="300"
-                      height="40"
-                      rx="4"
-                      fill="url(#shaftGradient)"
-                    />
-                  </g>
-
-                  {/* Bur head (diamond tip) - interactive */}
-                  <g
-                    onMouseEnter={() => setHoveredShaftPart("head")}
-                    onMouseLeave={() => setHoveredShaftPart(null)}
-                    className="cursor-pointer"
-                  >
-                    <ellipse
-                      cx="400"
-                      cy="75"
-                      rx="35"
-                      ry="30"
-                      fill={hoveredShaftPart === "head" ? "#FFD700" : "url(#headGradient)"}
-                      className="transition-colors duration-300"
-                    />
-                    {/* Diamond sparkle effects */}
-                    <circle cx="390" cy="65" r="4" fill="rgba(255,255,255,0.8)" />
-                    <circle cx="405" cy="75" r="3" fill="rgba(255,255,255,0.6)" />
-                    <circle cx="395" cy="85" r="2" fill="rgba(255,255,255,0.4)" />
-                  </g>
-
-                  {/* Dimension lines with exact measurements */}
-                  {/* Total length - 44.5mm */}
-                  <line x1="60" y1="115" x2="435" y2="115" stroke="#9CA3AF" strokeWidth="1.5" />
-                  <line x1="60" y1="108" x2="60" y2="122" stroke="#9CA3AF" strokeWidth="1.5" />
-                  <line x1="435" y1="108" x2="435" y2="122" stroke="#9CA3AF" strokeWidth="1.5" />
-                  <text x="247" y="135" fill="#FFFFFF" textAnchor="middle" fontSize="14" fontFamily="Inter" fontWeight="600">
-                    44.5mm (Total)
-                  </text>
-
-                  {/* Shaft diameter - 2.34mm */}
-                  <line x1="35" y1="55" x2="35" y2="95" stroke="#9CA3AF" strokeWidth="1.5" />
-                  <line x1="28" y1="55" x2="42" y2="55" stroke="#9CA3AF" strokeWidth="1.5" />
-                  <line x1="28" y1="95" x2="42" y2="95" stroke="#9CA3AF" strokeWidth="1.5" />
-                  <text x="15" y="80" fill="#1976D2" textAnchor="middle" fontSize="12" fontFamily="Inter" fontWeight="600" transform="rotate(-90, 15, 80)">
-                    Ø 2.34mm
-                  </text>
-
-                  {/* Tooltips */}
-                  {hoveredShaftPart === "shaft" && (
-                    <g>
-                      <rect x="150" y="15" width="140" height="30" rx="6" fill="#1976D2" />
-                      <text x="220" y="35" fill="#FFFFFF" textAnchor="middle" fontSize="12" fontFamily="Inter">
-                        Haste: Ø 2.34mm
-                      </text>
-                    </g>
-                  )}
-                  {hoveredShaftPart === "head" && (
-                    <g>
-                      <rect x="340" y="15" width="120" height="30" rx="6" fill="#D32F2F" />
-                      <text x="400" y="35" fill="#FFFFFF" textAnchor="middle" fontSize="12" fontFamily="Inter">
-                        Ponta Diamantada
-                      </text>
-                    </g>
-                  )}
-                </svg>
-
-                {/* Legend buttons */}
-                <div className="flex flex-wrap justify-center gap-4 mt-6">
-                  <button 
-                    className={`flex items-center gap-2 px-5 py-3 rounded-xl transition-all duration-300 ${hoveredShaftPart === "shaft" ? "bg-blue-600 scale-105" : "bg-gray-700"}`}
-                    onMouseEnter={() => setHoveredShaftPart("shaft")}
-                    onMouseLeave={() => setHoveredShaftPart(null)}
-                  >
-                    <div className="w-5 h-5 rounded bg-gray-500" />
-                    <span className="text-white text-sm font-medium">Haste (Ø 2.34mm)</span>
-                  </button>
-                  <button 
-                    className={`flex items-center gap-2 px-5 py-3 rounded-xl transition-all duration-300 ${hoveredShaftPart === "head" ? "bg-yellow-500 scale-105" : "bg-gray-700"}`}
-                    onMouseEnter={() => setHoveredShaftPart("head")}
-                    onMouseLeave={() => setHoveredShaftPart(null)}
-                  >
-                    <div className="w-5 h-5 rounded bg-primary" />
-                    <span className="text-white text-sm font-medium">Ponta Ativa</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Grain Legend with clickable filters - exact colors */}
-            {data.products.some(p => p.grain) && (
-              <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <h3 className="font-montserrat font-bold text-xl text-foreground mb-6 flex items-center gap-2">
+      {/* Grain Legend Section - Clean floating card without shaft diagram */}
+      {data.products.some(p => p.grain) && (
+        <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-12">
+          <div className="container mx-auto px-4">
+            <div className="flex justify-center">
+              {/* Floating Grain Legend Card - width 300px, right aligned on desktop */}
+              <div 
+                className="bg-white rounded-lg p-5 shadow-lg w-full max-w-[600px] lg:max-w-[800px]"
+                style={{ 
+                  borderRadius: '8px',
+                  boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
+                  padding: '20px'
+                }}
+              >
+                <h3 className="font-montserrat font-bold text-lg text-foreground mb-4 flex items-center gap-2">
                   <div className="w-6 h-6 rounded-full bg-gradient-to-br from-gray-800 via-red-600 to-yellow-400" />
                   {t("products.grainLegend", "Legenda de Grãos")}
                 </h3>
                 
-                <p className="text-muted-foreground text-sm mb-4">
+                <p className="text-muted-foreground text-base mb-5" style={{ fontSize: '16px', color: '#424242' }}>
                   {t("products.clickToFilter", "Clique para filtrar os produtos por granulometria")}
                 </p>
                 
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
                   {Object.entries(grainColorMap).map(([grain, colors]) => (
                     <button
                       key={grain}
                       onClick={() => setActiveGrain(activeGrain === grain ? null : grain)}
                       className={`
-                        flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 border-2
+                        flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 border
                         ${activeGrain === grain 
-                          ? "ring-2 ring-primary ring-offset-2 scale-105 shadow-lg border-primary" 
-                          : "border-gray-200 hover:border-gray-300 hover:scale-102"
+                          ? "ring-2 ring-primary ring-offset-2 scale-105 shadow-lg border-primary bg-primary/5" 
+                          : "border-gray-200 hover:border-gray-300 hover:scale-102 bg-white"
                         }
                       `}
+                      style={{ margin: '10px 0' }}
                     >
                       <div 
-                        className="w-6 h-6 rounded-full shadow-sm flex-shrink-0"
+                        className="w-5 h-5 rounded-full shadow-sm flex-shrink-0"
                         style={{ 
+                          width: '20px',
+                          height: '20px',
                           backgroundColor: colors.bg,
                           border: colors.bg === "#FFFFFF" ? "2px solid #DDD" : "none"
                         }} 
                       />
-                      <span className="text-sm font-medium text-foreground">
+                      <span className="text-sm font-medium text-foreground" style={{ fontSize: '16px', color: '#424242' }}>
                         {grain}
                       </span>
                     </button>
@@ -584,10 +506,10 @@ const ProductCategory = () => {
                   </button>
                 )}
               </div>
-            )}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Products Grid Section - 3 columns, 350x500px cards */}
       <section className="bg-muted/30 section-padding-lg">

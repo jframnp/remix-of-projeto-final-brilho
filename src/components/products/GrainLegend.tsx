@@ -5,13 +5,14 @@ interface GrainLegendProps {
   activeGrain?: string | null;
 }
 
+// Updated grain data with exact hex colors from specs
 const grainData = [
-  { key: "extraGrosso", label: "Extra Grosso", color: "bg-gray-800", textColor: "text-white" },
-  { key: "grosso", label: "Grosso", color: "bg-blue-600", textColor: "text-white" },
-  { key: "medio", label: "Médio", color: "bg-red-500", textColor: "text-white" },
-  { key: "fino", label: "Fino", color: "bg-green-500", textColor: "text-white" },
-  { key: "extraFino", label: "Extra Fino", color: "bg-yellow-400", textColor: "text-yellow-900" },
-  { key: "ultraFino", label: "Ultra Fino", color: "bg-white border-2 border-gray-300", textColor: "text-gray-700" },
+  { key: "extraGrosso", label: "Extra Grosso", color: "bg-[#000000]", bgHex: "#000000", textColor: "text-white" },
+  { key: "grosso", label: "Grosso", color: "bg-[#2196F3]", bgHex: "#2196F3", textColor: "text-white" },
+  { key: "medio", label: "Médio", color: "bg-[#B71C1C]", bgHex: "#B71C1C", textColor: "text-white" },
+  { key: "fino", label: "Fino", color: "bg-[#4CAF50]", bgHex: "#4CAF50", textColor: "text-white" },
+  { key: "extraFino", label: "Extra Fino", color: "bg-[#FFEB3B]", bgHex: "#FFEB3B", textColor: "text-gray-900" },
+  { key: "ultraFino", label: "Ultra Fino", color: "bg-[#FFFFFF] border-2 border-gray-300", bgHex: "#FFFFFF", textColor: "text-gray-700" },
 ];
 
 const GrainLegend = ({ onFilterChange, activeGrain }: GrainLegendProps) => {

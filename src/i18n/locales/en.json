@@ -107,7 +107,14 @@
       "polishers": "Polishers",
       "brushes": "Cleaning Brushes",
       "fiberMandril": "Fiber / Enucleator / Mandril",
-      "supportSharpening": "Support / Sharpening"
+      "supportSharpening": "Support / Sharpening",
+      "goldLine": "Gold Line"
+    },
+    "goldLine": {
+      "title": "GOLD LINE",
+      "subtitle": "Gold Line Premium",
+      "description": "Gold Line Premium - Exclusive golden finish for Nail Designers. Superior quality with first-class industrial diamonds.",
+      "shortDesc": "Exclusive golden finish for Nail Designers"
     },
     "lixas": {
       "title": "SANDPAPER FILES",

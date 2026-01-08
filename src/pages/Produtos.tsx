@@ -55,6 +55,13 @@ const Produtos = () => {
       color: "from-red-600 to-red-800"
     },
     { 
+      key: "goldLine", 
+      path: "/produtos/linha-gold", 
+      badge: "PREMIUM",
+      icon: <Sparkles className="w-10 h-10" />,
+      color: "from-yellow-500 to-amber-600"
+    },
+    { 
       key: "tungstenBurs", 
       path: "/produtos/fresas-tungstenio", 
       badge: null,
@@ -157,21 +164,32 @@ const Produtos = () => {
 
   return (
     <Layout>
-      {/* Hero Section - 600px height with particles */}
-      <section className="relative hero-products overflow-hidden flex items-center justify-center">
+      {/* Hero Section - 600px height with catalog cover background */}
+      <section 
+        className="relative hero-products overflow-hidden flex items-center justify-center"
+        style={{
+          backgroundImage: 'url(/catalogo-capa.jpg)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          minHeight: '600px'
+        }}
+      >
+        {/* Dark overlay 0.6 opacity for legibility */}
+        <div className="absolute inset-0 bg-black/60" />
+        
         <ParticleBackground />
         
-        {/* Background overlay 0.7 opacity */}
-        <div className="absolute inset-0 bg-black/30" />
-        
         <div className="container mx-auto px-4 relative z-10 py-20 text-center">
-          {/* Animated Title - 72px */}
-          <h1 className="hero-title font-montserrat font-black mb-4 animate-fade-in">
+          {/* Animated Title - 48px white central */}
+          <h1 
+            className="font-montserrat font-black mb-4 animate-fade-in text-white"
+            style={{ fontSize: '48px', textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}
+          >
             CATÁLOGO / CATALOG
           </h1>
           
           {/* Subtitle - 24px with fade-in 1s delay 0.5s */}
-          <p className="hero-subtitle max-w-3xl mx-auto mb-8 animate-fade-in-slow delay-500">
+          <p className="hero-subtitle max-w-3xl mx-auto mb-8 animate-fade-in-slow delay-500 text-white/90">
             {t("products.heroSubtitle", "Explore nossa linha completa para podologia, odontologia e nails")}
           </p>
 
@@ -200,8 +218,17 @@ const Produtos = () => {
             </div>
           </div>
 
-          {/* #BORA BRILHAR - 36px italic yellow with glow animation */}
-          <p className="bora-brilhar font-montserrat mb-8 animate-fade-in stagger-4">
+          {/* #BORA BRILHAR - 36px italic yellow with glow animation infinite 2s */}
+          <p 
+            className="font-montserrat mb-8 animate-fade-in stagger-4"
+            style={{
+              fontSize: '36px',
+              fontStyle: 'italic',
+              color: '#FFEB3B',
+              animation: 'glow 2s ease-in-out infinite',
+              textShadow: '0 0 10px #FFEB3B, 0 0 20px #FFEB3B, 0 0 30px #FFEB3B'
+            }}
+          >
             #BORA BRILHAR
           </p>
 
