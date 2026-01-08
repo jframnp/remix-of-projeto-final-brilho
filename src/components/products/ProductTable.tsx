@@ -128,6 +128,36 @@ const ProductTable = ({ products, onRowClick }: ProductTableProps) => {
                   <SortIcon field="code" />
                 </div>
               </TableHead>
+              {hasColumn("diameter") && (
+                <TableHead 
+                  className="text-white font-bold cursor-pointer hover:bg-white/10 transition-colors"
+                  onClick={() => handleSort("diameter")}
+                >
+                  <div className="flex items-center gap-2">
+                    {t("products.diameter", "Diâmetro Ø")}
+                    <SortIcon field="diameter" />
+                  </div>
+                </TableHead>
+              )}
+              {hasColumn("grain") && (
+                <TableHead 
+                  className="text-white font-bold cursor-pointer hover:bg-white/10 transition-colors"
+                  onClick={() => handleSort("grain")}
+                >
+                  <div className="flex items-center gap-2">
+                    {t("products.grain", "Grão")}
+                    <SortIcon field="grain" />
+                  </div>
+                </TableHead>
+              )}
+              {hasColumn("iso") && (
+                <TableHead className="text-white font-bold">ISO</TableHead>
+              )}
+              {hasColumn("activeLength") && (
+                <TableHead className="text-white font-bold">
+                  {t("products.activeLength", "Área Ativa")}
+                </TableHead>
+              )}
               {hasColumn("iso") && (
                 <TableHead className="text-white font-bold">ISO</TableHead>
               )}
@@ -183,14 +213,8 @@ const ProductTable = ({ products, onRowClick }: ProductTableProps) => {
               >
                 <TableCell className="font-medium">{product.model}</TableCell>
                 <TableCell className="font-bold text-primary">{product.code}</TableCell>
-                {hasColumn("iso") && (
-                  <TableCell>{product.iso}</TableCell>
-                )}
                 {hasColumn("diameter") && (
                   <TableCell>{product.diameter}</TableCell>
-                )}
-                {hasColumn("activeLength") && (
-                  <TableCell>{product.activeLength}</TableCell>
                 )}
                 {hasColumn("grain") && (
                   <TableCell>
@@ -200,6 +224,12 @@ const ProductTable = ({ products, onRowClick }: ProductTableProps) => {
                       </span>
                     )}
                   </TableCell>
+                )}
+                {hasColumn("iso") && (
+                  <TableCell>{product.iso}</TableCell>
+                )}
+                {hasColumn("activeLength") && (
+                  <TableCell>{product.activeLength}</TableCell>
                 )}
                 {hasColumn("cut") && (
                   <TableCell>{product.cut}</TableCell>
