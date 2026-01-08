@@ -613,9 +613,9 @@ const ProductCategory = () => {
                       </div>
                     )}
 
-                    {/* Code Badge */}
+                    {/* Model Badge (Esférica, Cônica, etc.) */}
                     <span className="absolute top-4 left-4 px-4 py-2 rounded-lg text-sm font-bold bg-primary text-white shadow-lg">
-                      {product.code}
+                      {product.model}
                     </span>
 
                     {/* Grain Color Indicator - 20px diameter */}
@@ -633,10 +633,10 @@ const ProductCategory = () => {
                     )}
                   </div>
 
-                  {/* Product Info - 24px title */}
+                  {/* Product Info - Code as title */}
                   <div className="p-6 bg-white">
                     <h3 className="font-montserrat font-bold text-xl mb-3 text-foreground" style={{ fontSize: '24px', color: '#212121' }}>
-                      {product.model}
+                      {product.code}
                     </h3>
                     
                     <p className="text-muted-foreground text-sm mb-4" style={{ fontSize: '14px', color: '#757575' }}>
