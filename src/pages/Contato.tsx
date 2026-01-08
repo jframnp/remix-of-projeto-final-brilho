@@ -85,37 +85,6 @@ const Contato = () => {
         </div>
       </section>
 
-      {/* Contact Methods Cards */}
-      <section className="bg-[#FAFAFA] py-12 -mt-16 relative z-20">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {contactMethods.map((method, index) => (
-              <div 
-                key={index}
-                className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className={`w-14 h-14 bg-gradient-to-br ${method.color} rounded-xl flex items-center justify-center mb-4 text-white`}>
-                  {method.icon}
-                </div>
-                <h3 className="text-gray-900 font-montserrat font-bold text-lg mb-1">{method.title}</h3>
-                {method.href ? (
-                  <a 
-                    href={method.href}
-                    target={method.href.startsWith('http') ? '_blank' : undefined}
-                    rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                    className="text-gray-600 font-inter hover:text-[#D32F2F] transition-colors"
-                  >
-                    {method.value}
-                  </a>
-                ) : (
-                  <p className="text-gray-600 font-inter">{method.value}</p>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Contact Form Section */}
       <section className="bg-[#FAFAFA] py-20 md:py-32">
         <div className="container mx-auto px-4">
@@ -292,6 +261,37 @@ const Contato = () => {
                 </button>
               </form>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Methods Cards */}
+      <section className="bg-[#FAFAFA] pb-20 md:pb-32">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {contactMethods.map((method, index) => (
+              <div 
+                key={index}
+                className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+              >
+                <div className={`w-14 h-14 bg-gradient-to-br ${method.color} rounded-xl flex items-center justify-center mb-4 text-white`}>
+                  {method.icon}
+                </div>
+                <h3 className="text-gray-900 font-montserrat font-bold text-lg mb-1">{method.title}</h3>
+                {method.href ? (
+                  <a 
+                    href={method.href}
+                    target={method.href.startsWith('http') ? '_blank' : undefined}
+                    rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="text-gray-600 font-inter hover:text-[#D32F2F] transition-colors"
+                  >
+                    {method.value}
+                  </a>
+                ) : (
+                  <p className="text-gray-600 font-inter">{method.value}</p>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
