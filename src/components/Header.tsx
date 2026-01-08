@@ -64,7 +64,7 @@ const Header = () => {
             <img 
               src={logoImage} 
               alt="Metalúrgica Brilho" 
-              className="h-12 md:h-16 w-auto transition-transform duration-300 group-hover:scale-105 drop-shadow-lg"
+              className="h-16 md:h-20 w-auto transition-transform duration-300 group-hover:scale-105 drop-shadow-lg"
             />
           </Link>
 
