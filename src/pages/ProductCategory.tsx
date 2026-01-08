@@ -1,8 +1,17 @@
-import { useParams, Link } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "@/hooks/useLanguage";
-import { Download, ChevronRight, Star, Shield, Check, ArrowLeft } from "lucide-react";
+import { Download, ArrowLeft, MessageCircle, Play, Sparkles } from "lucide-react";
+import ProductCard3D from "@/components/products/ProductCard3D";
+import ProductTable from "@/components/products/ProductTable";
+import ProductModal from "@/components/products/ProductModal";
+import ShaftDiagram from "@/components/products/ShaftDiagram";
+import GrainLegend from "@/components/products/GrainLegend";
+import TestimonialSlider from "@/components/products/TestimonialSlider";
+import ParticleBackground from "@/components/products/ParticleBackground";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 // Product data based on PDF catalog
 const productData: Record<string, {
@@ -14,12 +23,15 @@ const productData: Record<string, {
     grain?: string;
     cut?: string;
     color?: string;
+    activeLength?: string;
   }>;
   features?: string[];
   hasGoldLine?: boolean;
+  subtypes?: string[];
 }> = {
   "brocas-diamantadas": {
     hasGoldLine: true,
+    subtypes: ["Esférica", "Roda", "Cônica", "Chama", "Cilíndrica", "Torpedo"],
     features: [
       "Diamantes industriais de primeira linha",
       "Alta durabilidade e resistência",
@@ -29,19 +41,20 @@ const productData: Record<string, {
       "Fabricação 100% nacional"
     ],
     products: [
-      { model: "Esférica", code: "BD-ESF-01", iso: "001", diameter: "1.0mm", grain: "Médio" },
-      { model: "Esférica", code: "BD-ESF-02", iso: "001", diameter: "1.5mm", grain: "Médio" },
-      { model: "Esférica", code: "BD-ESF-03", iso: "001", diameter: "2.0mm", grain: "Fino" },
-      { model: "Roda", code: "BD-ROD-01", iso: "010", diameter: "3.0mm", grain: "Grosso" },
-      { model: "Roda", code: "BD-ROD-02", iso: "010", diameter: "4.0mm", grain: "Médio" },
-      { model: "Cônica", code: "BD-CON-01", iso: "012", diameter: "2.5mm", grain: "Fino" },
-      { model: "Cônica", code: "BD-CON-02", iso: "012", diameter: "3.5mm", grain: "Extra Fino" },
-      { model: "Chama", code: "BD-CHA-01", iso: "014", diameter: "2.0mm", grain: "Médio" },
-      { model: "Cilíndrica", code: "BD-CIL-01", iso: "016", diameter: "3.0mm", grain: "Grosso" },
-      { model: "Torpedo", code: "BD-TOR-01", iso: "018", diameter: "4.0mm", grain: "Médio" },
+      { model: "Esférica", code: "BD-ESF-01", iso: "001", diameter: "1.0mm", grain: "Médio", activeLength: "1.0mm" },
+      { model: "Esférica", code: "BD-ESF-02", iso: "001", diameter: "1.5mm", grain: "Médio", activeLength: "1.5mm" },
+      { model: "Esférica", code: "BD-ESF-03", iso: "001", diameter: "2.0mm", grain: "Fino", activeLength: "2.0mm" },
+      { model: "Roda", code: "BD-ROD-01", iso: "010", diameter: "3.0mm", grain: "Grosso", activeLength: "1.5mm" },
+      { model: "Roda", code: "BD-ROD-02", iso: "010", diameter: "4.0mm", grain: "Médio", activeLength: "2.0mm" },
+      { model: "Cônica", code: "BD-CON-01", iso: "012", diameter: "2.5mm", grain: "Fino", activeLength: "6.0mm" },
+      { model: "Cônica", code: "BD-CON-02", iso: "012", diameter: "3.5mm", grain: "Extra Fino", activeLength: "8.0mm" },
+      { model: "Chama", code: "BD-CHA-01", iso: "014", diameter: "2.0mm", grain: "Médio", activeLength: "5.0mm" },
+      { model: "Cilíndrica", code: "BD-CIL-01", iso: "016", diameter: "3.0mm", grain: "Grosso", activeLength: "7.0mm" },
+      { model: "Torpedo", code: "BD-TOR-01", iso: "018", diameter: "4.0mm", grain: "Médio", activeLength: "10.0mm" },
     ]
   },
   "fresas-tungstenio": {
+    subtypes: ["Maxi Cut", "Mini Cut"],
     products: [
       { model: "Maxi Cut Cônica", code: "FT-MC-01", iso: "023", diameter: "2.3mm", cut: "Cruzado Médio" },
       { model: "Maxi Cut Esférica", code: "FT-MC-02", iso: "023", diameter: "3.0mm", cut: "Cruzado Grosso" },
@@ -61,6 +74,7 @@ const productData: Record<string, {
     ]
   },
   "lixas": {
+    subtypes: ["Laminar", "Plantar", "Boomerang", "Nails"],
     products: [
       { model: "Laminar Premium (Norton)", code: "LX-LP-80", diameter: "15mm", grain: "80" },
       { model: "Laminar Premium (Norton)", code: "LX-LP-100", diameter: "15mm", grain: "100" },
@@ -126,7 +140,6 @@ const productData: Record<string, {
   },
 };
 
-// Category key mapping
 const categoryKeyMap: Record<string, string> = {
   "brocas-diamantadas": "diamondBurs",
   "fresas-tungstenio": "tungstenBurs",
@@ -142,11 +155,12 @@ const categoryKeyMap: Record<string, string> = {
 const ProductCategory = () => {
   const { t } = useTranslation();
   const { currentLang } = useLanguage();
+  const [selectedProduct, setSelectedProduct] = useState<typeof productData["brocas-diamantadas"]["products"][0] | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeSubtype, setActiveSubtype] = useState<string>("all");
   
-  // Get category from URL
   const pathParts = window.location.pathname.split("/");
-  const categorySlug = pathParts[pathParts.length - 1];
-  const category = categorySlug;
+  const category = pathParts[pathParts.length - 1];
 
   const getLocalizedPath = (path: string) => {
     if (currentLang === "en") return `/en${path}`;
@@ -162,8 +176,8 @@ const ProductCategory = () => {
       <Layout>
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
-            <p className="text-gray-500 mb-4">Categoria não encontrada</p>
-            <Link to={getLocalizedPath("/produtos")} className="text-[#9B0000] underline">
+            <p className="text-muted-foreground mb-4">Categoria não encontrada</p>
+            <Link to={getLocalizedPath("/produtos")} className="text-primary underline">
               Voltar aos Produtos
             </Link>
           </div>
@@ -172,235 +186,206 @@ const ProductCategory = () => {
     );
   }
 
+  const filteredProducts = activeSubtype === "all" 
+    ? data.products 
+    : data.products.filter(p => p.model.includes(activeSubtype));
+
+  const handleViewDetails = (product: typeof data.products[0]) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  };
+
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#9B0000] via-[#720000] to-[#5a0a0a] py-16 md:py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-10" />
-        <div className="container mx-auto px-4 relative z-10">
-          {/* Back Link */}
+      {/* Immersive Hero Section */}
+      <section className="relative min-h-[50vh] bg-gradient-to-br from-primary via-[#720000] to-[#5a0a0a] overflow-hidden flex items-center">
+        <ParticleBackground />
+        
+        {/* Video placeholder overlay */}
+        <div className="absolute inset-0 bg-black/30" />
+        
+        <div className="container mx-auto px-4 relative z-10 py-16">
           <Link
             to={getLocalizedPath("/produtos")}
-            className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors"
+            className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors group"
           >
-            <ArrowLeft size={20} />
+            <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
             {t("products.backToCategories", "Voltar às Categorias")}
           </Link>
 
-          <div className="flex flex-col lg:flex-row items-start justify-between gap-8">
-            <div className="lg:max-w-2xl">
-              <h1 className="text-white font-montserrat font-black text-3xl md:text-5xl mb-4">
-                {t(`products.${categoryKey}.title`, t(`products.sections.${categoryKey}`))}
-              </h1>
-              <p className="text-white/60 font-inter text-lg mb-2">
-                {t(`products.${categoryKey}.subtitle`, "")}
-              </p>
-              <p className="text-white/90 font-inter text-base md:text-lg leading-relaxed mb-6">
-                {t(`products.${categoryKey}.description`, "")}
-              </p>
-              
-              {/* Features list if available */}
-              {data.features && (
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-6">
-                  {data.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-white/90 text-sm">
-                      <Check className="w-4 h-4 text-green-400 flex-shrink-0" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              )}
+          <div className="max-w-3xl">
+            {/* Bilingual Animated Title */}
+            <h1 className="text-white font-montserrat font-black text-4xl md:text-5xl lg:text-6xl mb-2 animate-fade-in">
+              {t(`products.${categoryKey}.title`, t(`products.sections.${categoryKey}`))}
+            </h1>
+            <p className="text-white/60 font-inter text-lg mb-4 animate-fade-in stagger-1">
+              {t(`products.${categoryKey}.titleEn`, "")}
+            </p>
+            
+            {/* Animated Benefits */}
+            <p className="text-white/90 font-inter text-lg md:text-xl leading-relaxed mb-8 animate-fade-in stagger-2">
+              {t(`products.${categoryKey}.description`, "")}
+            </p>
 
+            {/* Action Buttons */}
+            <div className="flex flex-wrap gap-4 animate-fade-in stagger-3">
               <a
                 href="/catalogo-brilho.pdf"
                 target="_blank"
-                className="inline-flex items-center gap-3 bg-white text-[#9B0000] font-montserrat font-bold px-6 py-3 rounded-xl hover:scale-105 transition-all"
+                className="inline-flex items-center gap-3 bg-white text-primary font-montserrat font-bold px-6 py-3 rounded-xl hover:scale-105 transition-all shadow-lg"
               >
                 <Download size={20} />
                 {t("products.downloadCatalog")}
               </a>
-            </div>
-
-            {/* Promo badges */}
-            <div className="flex flex-col gap-3">
-              <div className="bg-green-500 text-white px-6 py-3 rounded-lg font-montserrat font-bold text-center">
-                <Shield className="w-5 h-5 inline mr-2" />
-                {t("products.badge.anvisa", "Certificado ANVISA")}
-              </div>
-              <div className="bg-yellow-500 text-yellow-900 px-6 py-3 rounded-lg font-montserrat font-bold text-center">
-                <Star className="w-5 h-5 inline mr-2" />
-                {t("products.badge.quality", "Qualidade Premium")}
-              </div>
+              <a
+                href="https://wa.me/5511940101807"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-green-600 text-white font-montserrat font-bold px-6 py-3 rounded-xl hover:scale-105 transition-all shadow-lg"
+              >
+                <MessageCircle size={20} />
+                {t("products.requestQuote", "Orçamento")}
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Gold Line Section (only for Brocas Diamantadas) */}
+      {/* Gold Line Section */}
       {data.hasGoldLine && (
-        <section className="bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-600 py-8">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-              <div className="text-center md:text-left">
-                <h3 className="text-yellow-900 font-montserrat font-black text-2xl md:text-3xl mb-2">
-                  ★ {t("products.diamondBurs.goldLineTitle", "LINHA GOLD")}
-                </h3>
-                <p className="text-yellow-900/80 font-inter text-sm md:text-base max-w-xl">
-                  {t("products.diamondBurs.goldLineDesc", "Linha premium diamantada otimizada para manicure e nail design, com tecnologia avançada para precisão em cutículas e unhas.")}
-                </p>
+        <section className="bg-gradient-to-r from-yellow-500 via-amber-400 to-yellow-500 py-6 relative overflow-hidden">
+          <div className="absolute inset-0 animate-shimmer opacity-30" />
+          <div className="container mx-auto px-4 relative">
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <Sparkles className="w-8 h-8 text-yellow-900 animate-pulse" />
+                <div>
+                  <h3 className="text-yellow-900 font-montserrat font-black text-xl md:text-2xl">
+                    ★ {t("products.diamondBurs.goldLineTitle", "LINHA GOLD")}
+                  </h3>
+                  <p className="text-yellow-900/70 text-sm">
+                    {t("products.diamondBurs.goldLineDesc", "Premium para nail designers")}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </section>
       )}
 
-      {/* Products Grid */}
-      <section className="bg-[#FAFAFA] py-16">
+      {/* Technology Section */}
+      <section className="bg-background py-12">
         <div className="container mx-auto px-4">
-          <h2 className="text-[#212121] font-montserrat font-bold text-2xl md:text-3xl mb-8 text-center">
-            {t("products.ourProducts", "Nossos Produtos")}
-          </h2>
-          
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {data.products.map((product, idx) => (
-              <div
-                key={idx}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-[#9B0000]/10 transition-all duration-300 group"
-              >
-                {/* Product Image Placeholder */}
-                <div className="relative h-48 bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
-                  <div className="w-24 h-24 rounded-full bg-[#9B0000]/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <svg className="w-12 h-12 text-[#9B0000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
-                    </svg>
-                  </div>
-                  <span className="absolute top-3 left-3 bg-[#9B0000] text-white text-xs font-bold px-2 py-1 rounded">
-                    {product.code}
-                  </span>
-                </div>
-
-                {/* Product Info */}
-                <div className="p-5">
-                  <h3 className="font-montserrat font-bold text-lg text-[#212121] mb-2 group-hover:text-[#9B0000] transition-colors">
-                    {product.model}
-                  </h3>
-                  
-                  <div className="space-y-1 text-sm text-gray-600 mb-4">
-                    {product.iso && (
-                      <p><span className="font-semibold">ISO:</span> {product.iso}</p>
-                    )}
-                    {product.diameter && product.diameter !== "N/A" && (
-                      <p><span className="font-semibold">Diâmetro:</span> {product.diameter}</p>
-                    )}
-                    {product.grain && product.grain !== "N/A" && (
-                      <p><span className="font-semibold">Grão:</span> {product.grain}</p>
-                    )}
-                    {product.cut && (
-                      <p><span className="font-semibold">Corte:</span> {product.cut}</p>
-                    )}
-                    {product.color && (
-                      <p><span className="font-semibold">Cor:</span> {product.color}</p>
-                    )}
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <span className="text-[#9B0000] font-montserrat font-bold">
-                      {t("products.priceConsult", "Consulte")}
-                    </span>
-                    <button className="bg-[#9B0000] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#720000] transition-colors">
-                      {t("products.moreDetails", "Detalhes")}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
+          <div className="grid lg:grid-cols-2 gap-8">
+            <ShaftDiagram />
+            {data.products.some(p => p.grain) && (
+              <GrainLegend />
+            )}
           </div>
         </div>
       </section>
 
-      {/* Products Table */}
-      <section className="bg-white py-16">
+      {/* Products Grid with Subtypes */}
+      <section className="bg-muted/30 py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-[#212121] font-montserrat font-bold text-2xl md:text-3xl mb-8 text-center">
-            {t("products.technicalSpecs", "Especificações Técnicas")}
-          </h2>
-          
-          <div className="overflow-x-auto rounded-xl shadow-lg">
-            <table className="w-full bg-white">
-              <thead className="bg-[#9B0000] text-white">
-                <tr>
-                  <th className="px-4 py-4 text-left font-montserrat font-bold">Modelo</th>
-                  <th className="px-4 py-4 text-left font-montserrat font-bold">Código</th>
-                  {data.products[0]?.iso && (
-                    <th className="px-4 py-4 text-left font-montserrat font-bold">ISO</th>
-                  )}
-                  {data.products[0]?.diameter && (
-                    <th className="px-4 py-4 text-left font-montserrat font-bold">Diâmetro</th>
-                  )}
-                  {data.products[0]?.grain && (
-                    <th className="px-4 py-4 text-left font-montserrat font-bold">Grão</th>
-                  )}
-                  {data.products[0]?.cut && (
-                    <th className="px-4 py-4 text-left font-montserrat font-bold">Corte</th>
-                  )}
-                  {data.products[0]?.color && (
-                    <th className="px-4 py-4 text-left font-montserrat font-bold">Cor</th>
-                  )}
-                </tr>
-              </thead>
-              <tbody>
-                {data.products.map((product, idx) => (
-                  <tr key={idx} className={`border-b border-gray-100 hover:bg-gray-50 transition-colors ${idx % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}>
-                    <td className="px-4 py-3 font-inter">{product.model}</td>
-                    <td className="px-4 py-3 font-inter font-semibold text-[#9B0000]">{product.code}</td>
-                    {product.iso !== undefined && (
-                      <td className="px-4 py-3 font-inter">{product.iso}</td>
-                    )}
-                    {product.diameter !== undefined && (
-                      <td className="px-4 py-3 font-inter">{product.diameter}</td>
-                    )}
-                    {product.grain !== undefined && (
-                      <td className="px-4 py-3 font-inter">{product.grain}</td>
-                    )}
-                    {product.cut !== undefined && (
-                      <td className="px-4 py-3 font-inter">{product.cut}</td>
-                    )}
-                    {product.color !== undefined && (
-                      <td className="px-4 py-3 font-inter">{product.color}</td>
-                    )}
-                  </tr>
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-10">
+            <h2 className="text-foreground font-montserrat font-bold text-2xl md:text-3xl">
+              {t("products.ourProducts", "Nossos Produtos")}
+            </h2>
+            
+            {/* Subtype Tabs */}
+            {data.subtypes && data.subtypes.length > 0 && (
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => setActiveSubtype("all")}
+                  className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
+                    activeSubtype === "all" ? "bg-primary text-white" : "bg-white text-foreground hover:bg-gray-100"
+                  }`}
+                >
+                  {t("products.all", "Todos")}
+                </button>
+                {data.subtypes.map(subtype => (
+                  <button
+                    key={subtype}
+                    onClick={() => setActiveSubtype(subtype)}
+                    className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all ${
+                      activeSubtype === subtype ? "bg-primary text-white" : "bg-white text-foreground hover:bg-gray-100"
+                    }`}
+                  >
+                    {subtype}
+                  </button>
                 ))}
-              </tbody>
-            </table>
+              </div>
+            )}
           </div>
+
+          {/* 3D Product Cards Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
+            {filteredProducts.map((product, idx) => (
+              <ProductCard3D
+                key={idx}
+                product={product}
+                onViewDetails={() => handleViewDetails(product)}
+                isGold={data.hasGoldLine && product.model.toLowerCase().includes("gold")}
+              />
+            ))}
+          </div>
+
+          {/* Technical Table */}
+          <div className="mb-16">
+            <h2 className="text-foreground font-montserrat font-bold text-2xl md:text-3xl mb-8 text-center">
+              {t("products.technicalSpecs", "Especificações Técnicas")}
+            </h2>
+            <ProductTable 
+              products={filteredProducts} 
+              onRowClick={handleViewDetails}
+            />
+          </div>
+
+          {/* Testimonials */}
+          <TestimonialSlider />
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="bg-[#212121] py-12">
+      <section className="bg-gradient-to-br from-primary to-primary/90 py-16">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-white font-montserrat font-bold text-xl md:text-2xl mb-4">
-            {t("products.ctaInterested", "Interessado nesta linha de produtos?")}
+          <h2 className="text-white font-montserrat font-bold text-2xl md:text-3xl mb-4">
+            {t("products.ctaTitle", "Solicite seu Orçamento")}
           </h2>
-          <p className="text-white/70 font-inter mb-6">
-            {t("products.ctaRequest", "Solicite um orçamento ou entre em contato para mais informações")}
+          <p className="text-white/80 mb-8 max-w-xl mx-auto">
+            {t("products.ctaCategoryDesc", "Entre em contato para preços especiais e condições exclusivas.")}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              to={getLocalizedPath("/contato")}
-              className="bg-[#D32F2F] text-white font-montserrat font-bold px-8 py-3 rounded-xl hover:bg-[#B71C1C] transition-colors"
+            <a
+              href="https://wa.me/5511940101807"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-green-600 text-white font-bold px-8 py-4 rounded-xl hover:bg-green-700 transition-all"
             >
-              {t("products.requestQuote", "Solicitar Orçamento")}
-            </Link>
-            <Link
-              to={getLocalizedPath("/produtos")}
-              className="bg-white/10 text-white font-montserrat font-bold px-8 py-3 rounded-xl hover:bg-white/20 transition-colors border border-white/20"
+              <MessageCircle size={20} />
+              WhatsApp
+            </a>
+            <a
+              href="/catalogo-brilho.pdf"
+              target="_blank"
+              className="inline-flex items-center justify-center gap-2 bg-white text-primary font-bold px-8 py-4 rounded-xl hover:bg-gray-100 transition-all"
             >
-              {t("products.backToCategories", "Voltar às Categorias")}
-            </Link>
+              <Download size={20} />
+              {t("products.downloadThisLine", "Baixar Linha em PDF")}
+            </a>
           </div>
         </div>
       </section>
+
+      {/* Product Modal */}
+      <ProductModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        product={selectedProduct}
+        categoryName={t(`products.sections.${categoryKey}`)}
+        isGold={data.hasGoldLine}
+      />
     </Layout>
   );
 };
