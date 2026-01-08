@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Eye, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 interface ProductCard3DProps {
   product: {
@@ -13,11 +13,10 @@ interface ProductCard3DProps {
     color?: string;
     activeLength?: string;
   };
-  onViewDetails: () => void;
   isGold?: boolean;
 }
 
-const ProductCard3D = ({ product, onViewDetails, isGold = false }: ProductCard3DProps) => {
+const ProductCard3D = ({ product, isGold = false }: ProductCard3DProps) => {
   const { t } = useTranslation();
   const [isHovered, setIsHovered] = useState(false);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
@@ -146,21 +145,7 @@ const ProductCard3D = ({ product, onViewDetails, isGold = false }: ProductCard3D
             )}
           </div>
 
-          {/* Action Button */}
-          <button
-            onClick={onViewDetails}
-            className={`
-              w-full flex items-center justify-center gap-2 py-3 rounded-xl font-semibold transition-all duration-300
-              ${isGold 
-                ? "bg-yellow-900 text-yellow-100 hover:bg-yellow-950" 
-                : "bg-primary text-white hover:bg-primary/90"
-              }
-            `}
-          >
-            <Eye className="w-4 h-4" />
-            {t("products.viewDetails", "Ver Detalhes")}
-          </button>
-        </div>
+          </div>
 
         {/* Hover Shine Effect */}
         {isHovered && (

@@ -84,10 +84,53 @@
     "ctaDesc": "Contact us and request a personalized quote for your needs.",
     "ctaContact": "Contact Us",
     "searchPlaceholder": "Search products...",
+    "searchProducts": "Search products...",
     "filterBy": "Filter by",
     "filterAll": "All",
+    "all": "All",
+    "items": "items",
     "noResults": "No products found",
     "tryAnotherSearch": "Try another search term",
+    "grainLegend": "Grit Legend",
+    "clickToFilter": "Click to filter products by grit",
+    "clearFilter": "Clear filter",
+    "productDesc": "For precision procedures and professional finishing.",
+    "requestQuoteTitle": "Request Your Quote",
+    "ctaCategoryDesc": "Contact us for special prices and exclusive conditions for this line.",
+    "downloadThisLine": "Download This Line in PDF",
+    "specifications": "Specifications",
+    "downloadPDF": "PDF",
+    "testimonials": {
+      "title": "What our customers say",
+      "roles": {
+        "nailDesigner": "Nail Designer",
+        "podiatrist": "Podiatrist",
+        "manicurist": "Manicurist"
+      },
+      "quotes": {
+        "1": "Perfect for precise manicure! Exceptional quality.",
+        "2": "I've been using it for 5 years and it never disappointed me. I recommend!",
+        "3": "The best products on the market, without a doubt."
+      }
+    },
+    "table": {
+      "model": "Model",
+      "code": "Code",
+      "diameter": "Diameter Ø",
+      "grain": "Grit",
+      "iso": "ISO",
+      "activeLength": "Active Length",
+      "cut": "Cut",
+      "color": "Color"
+    },
+    "grains": {
+      "extraFine": "Extra Fine",
+      "fine": "Fine",
+      "medium": "Medium",
+      "coarse": "Coarse",
+      "extraCoarse": "Extra Coarse",
+      "ultraFine": "Ultra Fine"
+    },
     "badge": {
       "anvisa": "ANVISA",
       "certified": "Certified",
@@ -155,7 +198,8 @@
         "fine": "Fine",
         "medium": "Medium",
         "coarse": "Coarse",
-        "extraCoarse": "Extra Coarse"
+        "extraCoarse": "Extra Coarse",
+        "ultraFine": "Ultra Fine"
       }
     },
     "tungstenBurs": {
