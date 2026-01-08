@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import Layout from "@/components/Layout";
-import { Phone, Mail, MapPin, Send, CheckCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Send, CheckCircle, Clock, MessageCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "react-i18next";
 
@@ -22,33 +22,122 @@ const Contato = () => {
     }
   }, [searchParams, toast, t]);
 
+  const contactMethods = [
+    {
+      icon: <Phone className="w-6 h-6" />,
+      title: t("contact.phone", "Telefone"),
+      value: "(11) 3931-6343",
+      href: "tel:+551139316343",
+      color: "from-blue-500 to-blue-600"
+    },
+    {
+      icon: <MessageCircle className="w-6 h-6" />,
+      title: t("contact.whatsapp", "WhatsApp"),
+      value: "(11) 94010-1807",
+      href: "https://wa.me/5511940101807",
+      color: "from-green-500 to-green-600"
+    },
+    {
+      icon: <Mail className="w-6 h-6" />,
+      title: t("contact.email", "E-mail"),
+      value: "metalurgicabrilho@gmail.com",
+      href: "mailto:metalurgicabrilho@gmail.com",
+      color: "from-red-500 to-red-600"
+    },
+    {
+      icon: <Clock className="w-6 h-6" />,
+      title: t("contact.hours", "Horário"),
+      value: t("contact.hoursValue", "Seg-Sex: 8h-18h"),
+      href: null,
+      color: "from-purple-500 to-purple-600"
+    },
+  ];
+
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-brilho-red-dark py-16 md:py-24">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-brilho-text-light font-montserrat font-bold text-4xl md:text-5xl lg:text-6xl mb-6">
-            {t("contact.title")}
+      <section className="relative min-h-[50vh] overflow-hidden flex items-center">
+        {/* Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1a0a0a] via-[#3d0f0f] to-[#720000]">
+          <div className="absolute top-20 right-20 w-96 h-96 bg-[#D32F2F]/20 rounded-full blur-[120px]" />
+          <div className="absolute bottom-20 left-20 w-72 h-72 bg-[#9B0000]/30 rounded-full blur-[100px]" />
+        </div>
+        
+        {/* Grid Pattern */}
+        <div 
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage: 'linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)',
+            backgroundSize: '50px 50px'
+          }}
+        />
+
+        <div className="container mx-auto px-4 relative z-10 py-24 text-center">
+          <span className="inline-block text-[#FFEB3B] font-montserrat font-bold text-sm tracking-widest uppercase mb-4 animate-fade-in">
+            {t("contact.label", "Fale Conosco")}
+          </span>
+          <h1 className="text-white font-montserrat font-black text-4xl md:text-6xl lg:text-7xl mb-6 animate-fade-in">
+            {t("contact.title", "Contato")}
           </h1>
-          <p className="text-brilho-text-light/80 font-inter text-lg max-w-2xl mx-auto">{t("contact.subtitle")}</p>
+          <p className="text-white/80 font-inter text-lg md:text-xl max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            {t("contact.subtitle", "Estamos prontos para atender você. Entre em contato conosco!")}
+          </p>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="bg-brilho-bg-light py-16 md:py-24">
+      {/* Contact Methods Cards */}
+      <section className="bg-[#FAFAFA] py-12 -mt-16 relative z-20">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row gap-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {contactMethods.map((method, index) => (
+              <div 
+                key={index}
+                className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
+              >
+                <div className={`w-14 h-14 bg-gradient-to-br ${method.color} rounded-xl flex items-center justify-center mb-4 text-white`}>
+                  {method.icon}
+                </div>
+                <h3 className="text-gray-900 font-montserrat font-bold text-lg mb-1">{method.title}</h3>
+                {method.href ? (
+                  <a 
+                    href={method.href}
+                    target={method.href.startsWith('http') ? '_blank' : undefined}
+                    rel={method.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                    className="text-gray-600 font-inter hover:text-[#D32F2F] transition-colors"
+                  >
+                    {method.value}
+                  </a>
+                ) : (
+                  <p className="text-gray-600 font-inter">{method.value}</p>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section className="bg-[#FAFAFA] py-20 md:py-32">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col lg:flex-row gap-16">
             {/* Form */}
             <div className="lg:w-1/2">
-              <h2 className="text-brilho-red font-montserrat font-bold text-2xl mb-8">{t("contact.formTitle")}</h2>
+              <span className="inline-block text-[#D32F2F] font-montserrat font-bold text-sm tracking-widest uppercase mb-4">
+                {t("contact.formLabel", "Envie sua mensagem")}
+              </span>
+              <h2 className="text-gray-900 font-montserrat font-bold text-3xl md:text-4xl mb-8">
+                {t("contact.formTitle", "Entre em Contato")}
+              </h2>
 
               {/* Success Message */}
               {showSuccess && (
-                <div className="mb-8 p-6 bg-green-50 border border-green-200 rounded-lg flex items-center gap-4">
-                  <CheckCircle className="w-8 h-8 text-green-600 flex-shrink-0" />
+                <div className="mb-8 p-6 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-2xl flex items-center gap-4 animate-fade-in">
+                  <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <CheckCircle className="w-6 h-6 text-white" />
+                  </div>
                   <div>
-                    <h3 className="text-green-800 font-montserrat font-bold text-lg">{t("contact.successTitle")}</h3>
-                    <p className="text-green-700 font-inter">{t("contact.successDesc")}</p>
+                    <h3 className="text-green-800 font-montserrat font-bold text-lg">{t("contact.successTitle", "Mensagem Enviada!")}</h3>
+                    <p className="text-green-700 font-inter">{t("contact.successDesc", "Retornaremos em breve.")}</p>
                   </div>
                 </div>
               )}
@@ -63,156 +152,143 @@ const Contato = () => {
                 <input type="hidden" name="_template" value="table" />
 
                 <div>
-                  <label htmlFor="nome" className="block text-foreground font-inter font-medium mb-2">
-                    {t("contact.nameLabel")}
+                  <label htmlFor="nome" className="block text-gray-900 font-inter font-medium mb-2">
+                    {t("contact.nameLabel", "Nome")} *
                   </label>
                   <input
                     type="text"
                     id="nome"
                     name="nome"
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground font-inter focus:outline-none focus:border-brilho-red-vivid focus:ring-2 focus:ring-brilho-red-vivid/20 transition-all"
-                    placeholder={t("contact.namePlaceholder")}
+                    className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-white text-gray-900 font-inter focus:outline-none focus:border-[#D32F2F] focus:ring-2 focus:ring-[#D32F2F]/20 transition-all"
+                    placeholder={t("contact.namePlaceholder", "Seu nome completo")}
                   />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="email" className="block text-foreground font-inter font-medium mb-2">
-                      {t("contact.emailLabel")}
+                    <label htmlFor="email" className="block text-gray-900 font-inter font-medium mb-2">
+                      {t("contact.emailLabel", "E-mail")} *
                     </label>
                     <input
                       type="email"
                       id="email"
                       name="email"
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground font-inter focus:outline-none focus:border-brilho-red-vivid focus:ring-2 focus:ring-brilho-red-vivid/20 transition-all"
-                      placeholder={t("contact.emailPlaceholder")}
+                      className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-white text-gray-900 font-inter focus:outline-none focus:border-[#D32F2F] focus:ring-2 focus:ring-[#D32F2F]/20 transition-all"
+                      placeholder={t("contact.emailPlaceholder", "seu@email.com")}
                     />
                   </div>
                   <div>
-                    <label htmlFor="telefone" className="block text-foreground font-inter font-medium mb-2">
-                      {t("contact.phoneLabel")}
+                    <label htmlFor="telefone" className="block text-gray-900 font-inter font-medium mb-2">
+                      {t("contact.phoneLabel", "Telefone")}
                     </label>
                     <input
                       type="tel"
                       id="telefone"
                       name="telefone"
-                      className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground font-inter focus:outline-none focus:border-brilho-red-vivid focus:ring-2 focus:ring-brilho-red-vivid/20 transition-all"
-                      placeholder={t("contact.phonePlaceholder")}
+                      className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-white text-gray-900 font-inter focus:outline-none focus:border-[#D32F2F] focus:ring-2 focus:ring-[#D32F2F]/20 transition-all"
+                      placeholder={t("contact.phonePlaceholder", "(00) 00000-0000")}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="assunto" className="block text-foreground font-inter font-medium mb-2">
-                    {t("contact.subjectLabel")}
+                  <label htmlFor="assunto" className="block text-gray-900 font-inter font-medium mb-2">
+                    {t("contact.subjectLabel", "Assunto")} *
                   </label>
                   <select
                     id="assunto"
                     name="assunto"
                     required
-                    className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground font-inter focus:outline-none focus:border-brilho-red-vivid focus:ring-2 focus:ring-brilho-red-vivid/20 transition-all"
+                    className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-white text-gray-900 font-inter focus:outline-none focus:border-[#D32F2F] focus:ring-2 focus:ring-[#D32F2F]/20 transition-all"
                   >
-                    <option value="">{t("contact.subjectPlaceholder")}</option>
-                    <option value="orcamento">{t("contact.subjectQuote")}</option>
-                    <option value="catalogo">{t("contact.subjectCatalog")}</option>
-                    <option value="representante">{t("contact.subjectRep")}</option>
-                    <option value="suporte">{t("contact.subjectSupport")}</option>
-                    <option value="outro">{t("contact.subjectOther")}</option>
+                    <option value="">{t("contact.subjectPlaceholder", "Selecione um assunto")}</option>
+                    <option value="orcamento">{t("contact.subjectQuote", "Orçamento")}</option>
+                    <option value="catalogo">{t("contact.subjectCatalog", "Catálogo")}</option>
+                    <option value="representante">{t("contact.subjectRep", "Representante")}</option>
+                    <option value="suporte">{t("contact.subjectSupport", "Suporte Técnico")}</option>
+                    <option value="outro">{t("contact.subjectOther", "Outro")}</option>
                   </select>
                 </div>
 
                 <div>
-                  <label htmlFor="mensagem" className="block text-foreground font-inter font-medium mb-2">
-                    {t("contact.messageLabel")}
+                  <label htmlFor="mensagem" className="block text-gray-900 font-inter font-medium mb-2">
+                    {t("contact.messageLabel", "Mensagem")} *
                   </label>
                   <textarea
                     id="mensagem"
                     name="mensagem"
                     required
                     rows={5}
-                    className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground font-inter focus:outline-none focus:border-brilho-red-vivid focus:ring-2 focus:ring-brilho-red-vivid/20 transition-all resize-none"
-                    placeholder={t("contact.messagePlaceholder")}
+                    className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-white text-gray-900 font-inter focus:outline-none focus:border-[#D32F2F] focus:ring-2 focus:ring-[#D32F2F]/20 transition-all resize-none"
+                    placeholder={t("contact.messagePlaceholder", "Digite sua mensagem...")}
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full md:w-auto inline-flex items-center justify-center gap-3 bg-brilho-red-vivid text-brilho-text-light font-montserrat font-bold text-lg px-12 py-4 rounded-lg hover:scale-105 hover:shadow-button-hover transition-all duration-300"
+                  className="w-full md:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#D32F2F] to-[#9B0000] text-white font-montserrat font-bold text-lg px-10 py-4 rounded-full hover:scale-105 hover:shadow-[0_10px_40px_rgba(211,47,47,0.3)] transition-all duration-300"
                 >
                   <Send size={20} />
-                  {t("contact.sendBtn")}
+                  {t("contact.sendBtn", "Enviar Mensagem")}
                 </button>
               </form>
             </div>
 
-            {/* Contact Info */}
-            <div className="lg:w-1/2 lg:pl-12">
-              <h2 className="text-brilho-red font-montserrat font-bold text-2xl mb-8">{t("contact.infoTitle")}</h2>
+            {/* Map & Info */}
+            <div className="lg:w-1/2">
+              <span className="inline-block text-[#D32F2F] font-montserrat font-bold text-sm tracking-widest uppercase mb-4">
+                {t("contact.locationLabel", "Nossa Localização")}
+              </span>
+              <h2 className="text-gray-900 font-montserrat font-bold text-3xl md:text-4xl mb-8">
+                {t("contact.infoTitle", "Onde Estamos")}
+              </h2>
 
-              <div className="space-y-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 bg-brilho-red/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-brilho-red" />
-                  </div>
-                  <div>
-                    <h3 className="text-foreground font-montserrat font-bold text-lg mb-1">{t("contact.phone")}</h3>
-                    <a
-                      href="tel:+551139316343"
-                      className="text-foreground/70 font-inter hover:text-brilho-red transition-colors"
-                    >
-                      (11) 3931-6343
-                    </a>
-                  </div>
+              {/* Map Placeholder */}
+              <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl h-64 mb-8 flex items-center justify-center overflow-hidden relative">
+                <div className="absolute inset-0 bg-[#720000]/5" />
+                <div className="text-center z-10">
+                  <MapPin className="w-12 h-12 text-[#D32F2F] mx-auto mb-3" />
+                  <p className="text-gray-600 font-inter">São Paulo - SP</p>
                 </div>
+              </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 bg-brilho-whatsapp/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <svg className="w-6 h-6 text-brilho-whatsapp" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-                    </svg>
+              {/* Address Card */}
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="w-12 h-12 bg-[#D32F2F]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-[#D32F2F]" />
                   </div>
                   <div>
-                    <h3 className="text-foreground font-montserrat font-bold text-lg mb-1">{t("contact.whatsapp")}</h3>
-                    <a
-                      href="https://wa.me/5511940101807"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground/70 font-inter hover:text-brilho-whatsapp transition-colors"
-                    >
-                      (11) 94010-1807
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 bg-brilho-red/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-brilho-red" />
-                  </div>
-                  <div>
-                    <h3 className="text-foreground font-montserrat font-bold text-lg mb-1">{t("contact.email")}</h3>
-                    <a
-                      href="mailto:metalurgicabrilho@gmail.com"
-                      className="text-foreground/70 font-inter hover:text-brilho-red transition-colors"
-                    >
-                      metalurgicabrilho@gmail.com
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 bg-brilho-red/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-brilho-red" />
-                  </div>
-                  <div>
-                    <h3 className="text-foreground font-montserrat font-bold text-lg mb-1">{t("contact.address")}</h3>
-                    <p className="text-foreground/70 font-inter">
-                      {t("footer.address")}
-                      <br />
-                      {t("footer.city")}
+                    <h3 className="text-gray-900 font-montserrat font-bold text-lg mb-1">
+                      {t("contact.address", "Endereço")}
+                    </h3>
+                    <p className="text-gray-600 font-inter">
+                      R. Cel. Botelho, 58 - Bela Aliança<br />
+                      São Paulo – SP – 05508-020
                     </p>
                   </div>
+                </div>
+
+                {/* Quick Contact Links */}
+                <div className="grid grid-cols-2 gap-4">
+                  <a
+                    href="https://wa.me/5511940101807"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-green-600 text-white font-montserrat font-bold py-3 px-4 rounded-xl hover:scale-105 transition-all duration-300"
+                  >
+                    <MessageCircle className="w-5 h-5" />
+                    WhatsApp
+                  </a>
+                  <a
+                    href="tel:+551139316343"
+                    className="flex items-center justify-center gap-2 bg-gradient-to-r from-[#D32F2F] to-[#9B0000] text-white font-montserrat font-bold py-3 px-4 rounded-xl hover:scale-105 transition-all duration-300"
+                  >
+                    <Phone className="w-5 h-5" />
+                    {t("contact.callNow", "Ligar")}
+                  </a>
                 </div>
               </div>
             </div>
