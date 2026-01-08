@@ -7,7 +7,6 @@ import {
   Download, 
   ArrowLeft, 
   MessageCircle, 
-  Play, 
   Sparkles,
   Eye,
   ChevronDown,
@@ -333,8 +332,8 @@ const ProductCategory = () => {
 
   return (
     <Layout>
-      {/* Immersive Hero - 600px with video placeholder or Gold Line special style */}
-      <section 
+      {/* Immersive Hero - 600px with clean static background */}
+      <section
         className={`relative min-h-[600px] md:min-h-[500px] overflow-hidden flex items-center ${
           category === "linha-gold" 
             ? "bg-gradient-to-br from-[#FFD54F] via-[#FFC107] to-[#FFA000]" 
@@ -356,17 +355,10 @@ const ProductCategory = () => {
           }} />
         )}
         
-        {/* Video/Image placeholder overlay - not for Gold Line */}
+        {/* Overlay for non-Gold Line pages */}
         {category !== "linha-gold" && <div className="absolute inset-0 bg-black/40" />}
         
-        {/* Play Button for Video - not for Gold Line */}
-        {category !== "linha-gold" && (
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 opacity-30 hover:opacity-60 transition-opacity cursor-pointer">
-            <div className="w-24 h-24 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-              <Play className="w-12 h-12 text-white ml-2" />
-            </div>
-          </div>
-        )}
+        {/* No play button - clean hero layout */}
         
         <div className="container mx-auto px-4 relative z-10 py-16">
           <Link
@@ -734,7 +726,7 @@ const ProductCategory = () => {
           </div>
 
           {/* Testimonials Carousel - 3 slides fade */}
-          <div className="mb-16">
+          <div className="mt-16">
             <h2 className="text-foreground font-montserrat font-bold text-2xl md:text-3xl mb-8 text-center">
               {t("products.testimonials", "O que dizem nossos clientes")}
             </h2>
@@ -743,8 +735,11 @@ const ProductCategory = () => {
               {testimonials.map((testimonial, idx) => (
                 <div 
                   key={idx}
-                  className="bg-white rounded-2xl p-6 shadow-lg hover-lift transition-all animate-fade-in"
-                  style={{ animationDelay: `${idx * 0.2}s` }}
+                  className="bg-white rounded-xl p-6 shadow-lg hover-lift transition-all animate-fade-in"
+                  style={{ 
+                    animationDelay: `${idx * 0.2}s`,
+                    borderRadius: '12px'
+                  }}
                 >
                   <div className="flex items-center gap-1 mb-4">
                     {[...Array(5)].map((_, i) => (
@@ -763,23 +758,6 @@ const ProductCategory = () => {
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-
-          {/* Video Section - 560x315px placeholder */}
-          <div className="mb-16">
-            <h2 className="text-foreground font-montserrat font-bold text-2xl md:text-3xl mb-8 text-center">
-              {t("products.inAction", "Em Ação")}
-            </h2>
-            
-            <div className="flex justify-center">
-              <div className="video-container relative group cursor-pointer">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <Play className="w-16 h-16 text-white opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all" />
-                <p className="absolute bottom-4 left-0 right-0 text-center text-white/70 text-sm">
-                  {t("products.watchDemo", "Assista à demonstração")}
-                </p>
-              </div>
             </div>
           </div>
         </div>
