@@ -31,10 +31,10 @@ const ProductTable = ({ products, onRowClick }: ProductTableProps) => {
   const [grainFilter, setGrainFilter] = useState<string>("");
 
   const grainColorMap: Record<string, string> = {
-    "Extra Grosso": "bg-gray-800 text-white",
-    "Grosso": "bg-blue-600 text-white",
-    "Médio": "bg-red-500 text-white",
-    "Fino": "bg-green-500 text-white",
+    "Extra Grosso": "bg-black text-white",
+    "Grosso": "bg-green-500 text-white",      // Verde
+    "Médio": "bg-blue-500 text-white",        // Azul
+    "Fino": "bg-red-500 text-white",          // Vermelho
     "Extra Fino": "bg-yellow-400 text-yellow-900",
     "Ultra Fino": "bg-white border border-gray-300 text-gray-700",
   };
