@@ -237,12 +237,12 @@ const categoryKeyMap: Record<string, string> = {
   "linha-gold": "goldLine",
 };
 
-// Grain color map with exact hex values from specs
+// Grain color map with correct colors from catalog
 const grainColorMap: Record<string, { bg: string; text: string }> = {
   "Extra Grosso": { bg: "#000000", text: "#FFFFFF" },
-  "Grosso": { bg: "#2196F3", text: "#FFFFFF" },
-  "Médio": { bg: "#B71C1C", text: "#FFFFFF" },
-  "Fino": { bg: "#4CAF50", text: "#FFFFFF" },
+  "Grosso": { bg: "#4CAF50", text: "#FFFFFF" },  // Verde
+  "Médio": { bg: "#2196F3", text: "#FFFFFF" },   // Azul
+  "Fino": { bg: "#F44336", text: "#FFFFFF" },    // Vermelho
   "Extra Fino": { bg: "#FFEB3B", text: "#212121" },
   "Ultra Fino": { bg: "#FFFFFF", text: "#212121" },
 };
@@ -455,8 +455,8 @@ const ProductCategory = () => {
 
       {/* Removed Gold Line Banner - Gold Line has its own dedicated page /produtos/linha-gold */}
 
-      {/* Grain Legend Section - Clean floating card without shaft diagram */}
-      {data.products.some(p => p.grain) && (
+      {/* Grain Legend Section - Always visible for all product categories */}
+      <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-12">
         <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-12">
           <div className="container mx-auto px-4">
             <div className="flex justify-center">
@@ -523,7 +523,7 @@ const ProductCategory = () => {
             </div>
           </div>
         </section>
-      )}
+      </section>
 
       {/* Products Grid Section - 3 columns, 350x500px cards */}
       <section className="bg-muted/30 section-padding-lg">
