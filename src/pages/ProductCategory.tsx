@@ -414,15 +414,10 @@ const ProductCategory = () => {
               {t(`products.sections.${categoryKey}`).toUpperCase()}
               {category === "linha-gold" && <Sparkles className="w-14 h-14 animate-pulse" />}
             </h1>
-            <p className={`font-inter text-lg md:text-xl mb-6 animate-fade-in stagger-1 ${
-              category === "linha-gold" ? "text-yellow-900/80" : "text-white/60"
-            }`}>
-              {currentLang === "en" ? data.description.en : data.description.pt}
-            </p>
             
             {/* Description from PDF - 20px, line-height 1.8 */}
             <p 
-              className={`font-inter text-lg md:text-xl leading-relaxed mb-8 animate-fade-in stagger-2 max-w-3xl ${
+              className={`font-inter text-lg md:text-xl leading-relaxed mb-8 animate-fade-in stagger-1 max-w-3xl ${
                 category === "linha-gold" ? "text-yellow-900" : "text-white/90"
               }`} 
               style={{ fontSize: '20px', lineHeight: '1.8', padding: '0 40px 0 0' }}
