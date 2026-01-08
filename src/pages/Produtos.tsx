@@ -458,21 +458,6 @@ const Produtos = () => {
         </div>
       </section>
 
-      {/* Floating Download Button - 60px round, bottom-right */}
-      <a
-        href="/catalogo-brilho.pdf"
-        target="_blank"
-        className="fixed bottom-24 right-6 btn-round-download z-40 group"
-        title={t("products.downloadCatalog", "Baixar Catálogo Completo")}
-      >
-        <Download className="w-6 h-6" />
-        {/* Tooltip */}
-        <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-900 text-white text-sm px-3 py-2 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
-          {t("products.downloadTooltip", "Acesse nosso catálogo completo")}
-          <br />
-          <span className="text-xs text-primary">{downloadCount.toLocaleString()} downloads</span>
-        </span>
-      </a>
 
       {/* QR Code Modal */}
       <Dialog open={qrModalOpen} onOpenChange={setQrModalOpen}>
