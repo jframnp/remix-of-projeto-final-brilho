@@ -164,18 +164,14 @@ const Produtos = () => {
 
   return (
     <Layout>
-      {/* Hero Section - 600px height with catalog cover background */}
-      <section 
-        className="relative hero-products overflow-hidden flex items-center justify-center"
-        style={{
-          backgroundImage: 'url(/catalogo-capa.jpg)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          minHeight: '600px'
-        }}
-      >
-        {/* Dark overlay 0.6 opacity for legibility */}
-        <div className="absolute inset-0 bg-black/60" />
+      {/* Hero Section - Red gradient matching other pages */}
+      <section className="relative hero-products overflow-hidden flex items-center justify-center" style={{ minHeight: '600px' }}>
+        {/* Red gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1a0a0a] via-[#3d0f0f] to-[#720000]">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-[#D32F2F]/30 rounded-full blur-[100px] animate-pulse" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#9B0000]/40 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#ff4444]/10 rounded-full blur-[150px]" />
+        </div>
         
         <ParticleBackground />
         
