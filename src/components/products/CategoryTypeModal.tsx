@@ -1,7 +1,6 @@
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { X, Search, Download, MessageCircle } from "lucide-react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { X, Download, MessageCircle } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader } from "@/components/ui/dialog";
 
 interface Product {
   model: string;
@@ -25,217 +24,223 @@ interface CategoryTypeModalProps {
 }
 
 // Grain color map with correct colors from catalog
-const grainColorMap: Record<string, { bg: string; text: string }> = {
-  "Extra Grosso": { bg: "#000000", text: "#FFFFFF" },
-  "Grosso": { bg: "#4CAF50", text: "#FFFFFF" },  // Verde
-  "Médio": { bg: "#2196F3", text: "#FFFFFF" },   // Azul
-  "Fino": { bg: "#F44336", text: "#FFFFFF" },    // Vermelho
-  "Extra Fino": { bg: "#FFEB3B", text: "#212121" },
-  "Ultra Fino": { bg: "#FFFFFF", text: "#212121" },
+const grainColorMap: Record<string, string> = {
+  "Extra Grosso": "#000000",
+  "Grosso": "#4CAF50",    // Verde
+  "Médio": "#2196F3",     // Azul
+  "Fino": "#F44336",      // Vermelho
+  "Extra Fino": "#FFEB3B",
+  "Ultra Fino": "#FFFFFF",
+};
+
+// Get unique grain colors for a product (can have multiple)
+const getProductGrains = (product: Product): string[] => {
+  if (!product.grain) return [];
+  // For now, just return the single grain, but could expand for multiple
+  return [product.grain];
 };
 
 const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isGold = false }: CategoryTypeModalProps) => {
   const { t } = useTranslation();
-  const [searchQuery, setSearchQuery] = useState("");
-  const [itemsPerPage, setItemsPerPage] = useState(10);
-  const [currentPage, setCurrentPage] = useState(1);
 
-  // Filter products by search
-  const filteredProducts = products.filter(p => {
-    if (!searchQuery) return true;
-    const query = searchQuery.toLowerCase();
-    return (
-      p.model.toLowerCase().includes(query) ||
-      p.code.toLowerCase().includes(query) ||
-      (p.iso && p.iso.toLowerCase().includes(query)) ||
-      (p.grain && p.grain.toLowerCase().includes(query))
-    );
-  });
-
-  // Pagination
-  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
-  const paginatedProducts = filteredProducts.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
-
-  // Get grain label
-  const getGrainLabel = (grain: string): string => {
-    const grainKey = grain.toLowerCase().replace(' ', '');
-    const grainMap: Record<string, string> = {
-      'extragrosso': 'extraCoarse',
-      'grosso': 'coarse',
-      'médio': 'medium',
-      'medio': 'medium',
-      'fino': 'fine',
-      'extrafino': 'extraFine',
-      'ultrafino': 'ultraFine',
-    };
-    const key = grainMap[grainKey] || grainKey;
-    return t(`products.grains.${key}`, grain);
-  };
+  // Catalog-style table design matching the PDF reference
+  const headerBgColor = isGold ? "#FFC107" : "#C62828";
+  const headerTextColor = isGold ? "#795548" : "#FFFFFF";
+  const rowBgLight = isGold ? "#FFF8E1" : "#FFEBEE";
+  const rowBgWhite = "#FFFFFF";
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-5xl max-h-[90vh] p-0 overflow-hidden">
-        <DialogHeader className={`p-6 ${isGold ? "bg-gradient-to-r from-yellow-400 to-amber-500" : "bg-gradient-to-r from-primary to-primary/80"}`}>
-          <DialogTitle className="text-white font-montserrat text-2xl">
-            {typeName}
-          </DialogTitle>
+      <DialogContent className="max-w-[95vw] max-h-[90vh] p-0 overflow-hidden">
+        <DialogHeader className="p-0">
+          {/* Title Header - Catalog Style */}
+          <div className="p-6 pb-4">
+            <h2 
+              className="font-montserrat font-black text-4xl md:text-5xl tracking-tight"
+              style={{ color: isGold ? "#FFC107" : "#C62828" }}
+            >
+              {typeName.toUpperCase()}
+            </h2>
+            <p className="text-muted-foreground font-light text-lg mt-1">
+              {t(`products.types.${typeName.toLowerCase()}`, typeName)}
+            </p>
+          </div>
         </DialogHeader>
 
-        <div className="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
-          {/* Controls Row */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
-            <div className="flex items-center gap-2">
-              <select
-                value={itemsPerPage}
-                onChange={(e) => {
-                  setItemsPerPage(Number(e.target.value));
-                  setCurrentPage(1);
-                }}
-                className="border border-gray-200 rounded-lg px-3 py-2 text-sm"
-              >
-                <option value={10}>10</option>
-                <option value={25}>25</option>
-                <option value={50}>50</option>
-              </select>
-              <span className="text-sm text-muted-foreground">resultados por página</span>
-            </div>
-            
-            <div className="relative w-full sm:w-auto">
-              <span className="text-sm text-muted-foreground mr-2">Pesquisar</span>
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => {
-                  setSearchQuery(e.target.value);
-                  setCurrentPage(1);
-                }}
-                className="border border-gray-200 rounded-lg px-3 py-2 text-sm w-full sm:w-48"
-              />
-            </div>
-          </div>
-
-          {/* Products Table */}
-          <div className="overflow-x-auto border border-gray-200 rounded-lg">
-            <table className="w-full">
-              <thead className="bg-gray-100">
-                <tr>
-                  <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">G</th>
-                  <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Ø</th>
-                  <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">L1</th>
-                  <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">ISO/FIG</th>
-                  <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Código</th>
-                  <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Modelo</th>
-                  <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700">Ilustração</th>
-                </tr>
-              </thead>
-              <tbody>
-                {paginatedProducts.map((product, idx) => (
-                  <tr 
-                    key={idx} 
-                    className="border-b border-gray-100 hover:bg-gray-50 transition-colors"
+        <div className="px-6 pb-6 overflow-x-auto">
+          {/* Catalog-Style Horizontal Table */}
+          <div className="min-w-max">
+            {/* Product Silhouettes Row - Images on top */}
+            <div className="flex">
+              {/* Left column - Main product image */}
+              <div className="w-[140px] flex-shrink-0 flex items-end justify-center pb-4">
+                {typeImage ? (
+                  <img 
+                    src={typeImage} 
+                    alt={typeName}
+                    className="max-h-[180px] w-auto object-contain"
+                  />
+                ) : (
+                  <div 
+                    className="w-24 h-32 rounded-lg flex items-center justify-center"
+                    style={{ 
+                      background: isGold 
+                        ? 'linear-gradient(135deg, #FFD54F, #FFC107, #FFA000)' 
+                        : 'linear-gradient(135deg, #C62828, #B71C1C, #8B0000)'
+                    }}
                   >
-                    {/* Grain Indicator */}
-                    <td className="px-4 py-3">
-                      {product.grain && grainColorMap[product.grain] ? (
-                        <div className="flex items-center gap-1">
+                    <span className="text-white text-4xl">◆</span>
+                  </div>
+                )}
+              </div>
+              
+              {/* Product silhouettes */}
+              {products.map((product, idx) => (
+                <div 
+                  key={idx} 
+                  className="flex-1 min-w-[100px] flex items-end justify-center pb-2"
+                >
+                  {product.image ? (
+                    <img 
+                      src={product.image} 
+                      alt={product.code}
+                      className="max-h-[120px] w-auto object-contain"
+                    />
+                  ) : (
+                    // Silhouette placeholder based on diameter
+                    <div className="flex flex-col items-center">
+                      <div 
+                        className="rounded-full bg-black"
+                        style={{ 
+                          width: `${Math.max(16, Math.min(48, parseFloat(product.diameter || "2") * 12))}px`,
+                          height: `${Math.max(16, Math.min(48, parseFloat(product.diameter || "2") * 12))}px`
+                        }}
+                      />
+                      <div className="w-[2px] h-16 bg-black mt-1" />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Table Rows - Catalog Style */}
+            <table className="w-full border-collapse">
+              <tbody>
+                {/* MODELOS Row */}
+                <tr style={{ backgroundColor: headerBgColor }}>
+                  <td 
+                    className="w-[140px] px-4 py-3 font-bold text-sm tracking-wider"
+                    style={{ color: headerTextColor }}
+                  >
+                    MODELOS
+                  </td>
+                  {products.map((product, idx) => (
+                    <td 
+                      key={idx}
+                      className="px-2 py-3 text-center font-bold min-w-[100px]"
+                      style={{ color: headerTextColor }}
+                    >
+                      {product.code.replace(/^PM-?|^BD-GOLD-|^FT-|^FC-|^LX-|^LT-|^LA-|^PO-|^EC-|^FE-|^AL-/i, '')}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* DIÂMETRO Row */}
+                <tr style={{ backgroundColor: rowBgLight }}>
+                  <td className="px-4 py-3 font-bold text-sm" style={{ color: headerBgColor }}>
+                    DIÂMETRO ∅
+                  </td>
+                  {products.map((product, idx) => (
+                    <td key={idx} className="px-2 py-3 text-center text-sm">
+                      {product.diameter?.replace('mm', '') || '—'}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* COMPRIMENTO ÁREA ATIVA Row */}
+                <tr style={{ backgroundColor: rowBgWhite }}>
+                  <td className="px-4 py-2 text-xs font-medium" style={{ color: headerBgColor }}>
+                    <span className="block text-[10px] leading-tight">COMPRIMENTO</span>
+                    <span className="block text-[10px] leading-tight">ÁREA ATIVA</span>
+                  </td>
+                  {products.map((product, idx) => (
+                    <td key={idx} className="px-2 py-2 text-center text-sm">
+                      {product.activeLength?.replace('mm', '') || '—'}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* GRÃO Row - Colored circles */}
+                <tr style={{ backgroundColor: rowBgLight }}>
+                  <td className="px-4 py-3 font-bold text-sm" style={{ color: headerBgColor }}>
+                    GRÃO
+                  </td>
+                  {products.map((product, idx) => (
+                    <td key={idx} className="px-2 py-3 text-center">
+                      <div className="flex items-center justify-center gap-1">
+                        {product.grain && grainColorMap[product.grain] ? (
                           <div 
-                            className="w-3 h-3 rounded-full"
+                            className="w-5 h-5 rounded-full"
                             style={{ 
-                              backgroundColor: grainColorMap[product.grain].bg,
-                              border: grainColorMap[product.grain].bg === "#FFFFFF" ? "2px solid #DDD" : "none"
-                            }} 
+                              backgroundColor: grainColorMap[product.grain],
+                              border: grainColorMap[product.grain] === "#FFFFFF" ? "2px solid #DDD" : "none"
+                            }}
                           />
-                        </div>
-                      ) : product.cut ? (
-                        <span className="text-xs text-muted-foreground">-</span>
-                      ) : (
-                        <span className="text-xs text-muted-foreground">-</span>
-                      )}
-                    </td>
-                    {/* Diameter */}
-                    <td className="px-4 py-3 text-sm text-foreground">
-                      {product.diameter?.replace("mm", "") || "-"}
-                    </td>
-                    {/* Active Length */}
-                    <td className="px-4 py-3 text-sm text-foreground">
-                      {product.activeLength?.replace("mm", "") || "-"}
-                    </td>
-                    {/* ISO */}
-                    <td className="px-4 py-3 text-sm text-foreground">
-                      {product.iso || "-"}
-                    </td>
-                    {/* Code */}
-                    <td className="px-4 py-3 text-sm font-semibold text-primary">
-                      {product.code}
-                    </td>
-                    {/* Model */}
-                    <td className="px-4 py-3 text-sm text-foreground">
-                      {product.model}
-                    </td>
-                    {/* Product Image */}
-                    <td className="px-4 py-3">
-                      <div className="flex justify-center">
-                        {product.image ? (
-                          <img 
-                            src={product.image} 
-                            alt={product.model}
-                            className="h-10 w-auto object-contain"
-                          />
+                        ) : product.cut ? (
+                          <span className="text-xs text-muted-foreground">{product.cut}</span>
                         ) : (
-                          <div className="w-24 h-10 bg-gray-100 rounded flex items-center justify-center">
-                            <div className="w-20 h-6 bg-gradient-to-r from-gray-300 via-gray-400 to-gray-500 rounded-full relative">
-                              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-gray-700 rounded-full" />
-                            </div>
-                          </div>
+                          <span className="text-muted-foreground">—</span>
                         )}
                       </div>
                     </td>
-                  </tr>
-                ))}
+                  ))}
+                </tr>
+
+                {/* ISO Row */}
+                <tr style={{ backgroundColor: rowBgWhite }}>
+                  <td className="px-4 py-3 font-bold text-sm" style={{ color: headerBgColor }}>
+                    ISO
+                  </td>
+                  {products.map((product, idx) => (
+                    <td key={idx} className="px-2 py-3 text-center text-xs text-muted-foreground">
+                      {product.iso || '—'}
+                    </td>
+                  ))}
+                </tr>
+
+                {/* CÓDIGO Row */}
+                <tr style={{ backgroundColor: rowBgLight }}>
+                  <td className="px-4 py-3 font-bold text-sm" style={{ color: headerBgColor }}>
+                    CÓDIGO
+                  </td>
+                  {products.map((product, idx) => (
+                    <td 
+                      key={idx} 
+                      className="px-2 py-3 text-center text-xs font-semibold"
+                      style={{ color: headerBgColor }}
+                    >
+                      {product.code}
+                    </td>
+                  ))}
+                </tr>
               </tbody>
             </table>
           </div>
 
-          {/* Pagination */}
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-4">
-            <p className="text-sm text-muted-foreground">
-              Mostrando de {((currentPage - 1) * itemsPerPage) + 1} até {Math.min(currentPage * itemsPerPage, filteredProducts.length)} de {filteredProducts.length} registros
-            </p>
-            
-            {totalPages > 1 && (
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => setCurrentPage(p => Math.max(1, p - 1))}
-                  disabled={currentPage === 1}
-                  className="px-3 py-1 border border-gray-200 rounded-lg text-sm disabled:opacity-50 hover:bg-gray-50"
-                >
-                  ‹
-                </button>
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                  <button
-                    key={page}
-                    onClick={() => setCurrentPage(page)}
-                    className={`px-3 py-1 border rounded-lg text-sm ${
-                      currentPage === page 
-                        ? "bg-primary text-white border-primary" 
-                        : "border-gray-200 hover:bg-gray-50"
-                    }`}
-                  >
-                    {page}
-                  </button>
-                ))}
-                <button
-                  onClick={() => setCurrentPage(p => Math.min(totalPages, p + 1))}
-                  disabled={currentPage === totalPages}
-                  className="px-3 py-1 border border-gray-200 rounded-lg text-sm disabled:opacity-50 hover:bg-gray-50"
-                >
-                  ›
-                </button>
+          {/* Grain Legend */}
+          <div className="mt-6 flex flex-wrap items-center gap-4 justify-center">
+            {Object.entries(grainColorMap).map(([grain, color]) => (
+              <div key={grain} className="flex items-center gap-2">
+                <div 
+                  className="w-4 h-4 rounded-full"
+                  style={{ 
+                    backgroundColor: color,
+                    border: color === "#FFFFFF" ? "2px solid #DDD" : "none"
+                  }}
+                />
+                <span className="text-xs text-muted-foreground">{grain}</span>
               </div>
-            )}
+            ))}
           </div>
 
           {/* Action Buttons */}
