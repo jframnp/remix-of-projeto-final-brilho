@@ -181,48 +181,35 @@ const Header = () => {
             {/* Brazil - Portuguese */}
             <button
               onClick={() => changeLanguage("pt")}
-              className={`w-6 h-[18px] rounded-sm overflow-hidden transition-all hover:scale-110 ${
-                currentLang === "pt" ? "opacity-100 ring-2 ring-white" : "opacity-60 hover:opacity-100"
+              className={`text-2xl transition-all hover:scale-110 ${
+                currentLang === "pt" ? "opacity-100 drop-shadow-[0_0_4px_rgba(255,255,255,0.8)]" : "opacity-60 hover:opacity-100"
               }`}
               aria-label="Português"
+              title="Português"
             >
-              <div className="w-full h-full bg-[#009C3B] flex items-center justify-center relative">
-                <div
-                  className="w-4 h-3 bg-[#FFDF00] rotate-45 absolute"
-                  style={{ clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" }}
-                ></div>
-                <div className="w-2 h-2 rounded-full bg-[#002776] absolute"></div>
-              </div>
+              🇧🇷
             </button>
             {/* Spain - Spanish */}
             <button
               onClick={() => changeLanguage("es")}
-              className={`w-6 h-[18px] rounded-sm overflow-hidden transition-all hover:scale-110 ${
-                currentLang === "es" ? "opacity-100 ring-2 ring-white" : "opacity-60 hover:opacity-100"
+              className={`text-2xl transition-all hover:scale-110 ${
+                currentLang === "es" ? "opacity-100 drop-shadow-[0_0_4px_rgba(255,255,255,0.8)]" : "opacity-60 hover:opacity-100"
               }`}
               aria-label="Español"
+              title="Español"
             >
-              <div className="w-full h-full flex flex-col">
-                <div className="h-[25%] bg-[#AA151B]"></div>
-                <div className="h-[50%] bg-[#F1BF00]"></div>
-                <div className="h-[25%] bg-[#AA151B]"></div>
-              </div>
+              🇪🇸
             </button>
             {/* USA - English */}
             <button
               onClick={() => changeLanguage("en")}
-              className={`w-6 h-[18px] rounded-sm overflow-hidden transition-all hover:scale-110 ${
-                currentLang === "en" ? "opacity-100 ring-2 ring-white" : "opacity-60 hover:opacity-100"
+              className={`text-2xl transition-all hover:scale-110 ${
+                currentLang === "en" ? "opacity-100 drop-shadow-[0_0_4px_rgba(255,255,255,0.8)]" : "opacity-60 hover:opacity-100"
               }`}
               aria-label="English"
+              title="English"
             >
-              <div className="w-full h-full flex flex-col">
-                <div className="flex-1 bg-[#B22234]"></div>
-                <div className="flex-1 bg-white"></div>
-                <div className="flex-1 bg-[#B22234]"></div>
-                <div className="flex-1 bg-white"></div>
-                <div className="flex-1 bg-[#B22234]"></div>
-              </div>
+              🇺🇸
             </button>
           </div>
         </div>
@@ -312,17 +299,12 @@ const Header = () => {
                   changeLanguage("pt");
                   setIsMenuOpen(false);
                 }}
-                className={`w-8 h-5 rounded-sm overflow-hidden transition-all ${
-                  currentLang === "pt" ? "opacity-100 ring-2 ring-white" : "opacity-60"
+                className={`text-3xl transition-all ${
+                  currentLang === "pt" ? "opacity-100 drop-shadow-[0_0_4px_rgba(255,255,255,0.8)]" : "opacity-60"
                 }`}
+                title="Português"
               >
-                <div className="w-full h-full bg-[#009C3B] flex items-center justify-center relative">
-                  <div
-                    className="w-5 h-3 bg-[#FFDF00] rotate-45 absolute"
-                    style={{ clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" }}
-                  ></div>
-                  <div className="w-2 h-2 rounded-full bg-[#002776] absolute"></div>
-                </div>
+                🇧🇷
               </button>
               {/* Spain */}
               <button
@@ -330,15 +312,12 @@ const Header = () => {
                   changeLanguage("es");
                   setIsMenuOpen(false);
                 }}
-                className={`w-8 h-5 rounded-sm overflow-hidden transition-all ${
-                  currentLang === "es" ? "opacity-100 ring-2 ring-white" : "opacity-60"
+                className={`text-3xl transition-all ${
+                  currentLang === "es" ? "opacity-100 drop-shadow-[0_0_4px_rgba(255,255,255,0.8)]" : "opacity-60"
                 }`}
+                title="Español"
               >
-                <div className="w-full h-full flex flex-col">
-                  <div className="h-[25%] bg-[#AA151B]"></div>
-                  <div className="h-[50%] bg-[#F1BF00]"></div>
-                  <div className="h-[25%] bg-[#AA151B]"></div>
-                </div>
+                🇪🇸
               </button>
               {/* USA */}
               <button
@@ -346,17 +325,12 @@ const Header = () => {
                   changeLanguage("en");
                   setIsMenuOpen(false);
                 }}
-                className={`w-8 h-5 rounded-sm overflow-hidden transition-all ${
-                  currentLang === "en" ? "opacity-100 ring-2 ring-white" : "opacity-60"
+                className={`text-3xl transition-all ${
+                  currentLang === "en" ? "opacity-100 drop-shadow-[0_0_4px_rgba(255,255,255,0.8)]" : "opacity-60"
                 }`}
+                title="English"
               >
-                <div className="w-full h-full flex flex-col">
-                  <div className="flex-1 bg-[#B22234]"></div>
-                  <div className="flex-1 bg-white"></div>
-                  <div className="flex-1 bg-[#B22234]"></div>
-                  <div className="flex-1 bg-white"></div>
-                  <div className="flex-1 bg-[#B22234]"></div>
-                </div>
+                🇺🇸
               </button>
             </div>
           </nav>
