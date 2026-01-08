@@ -8,7 +8,6 @@ import {
   ArrowLeft, 
   MessageCircle, 
   Sparkles,
-  Eye,
   ChevronDown,
   ChevronUp,
   Search,
@@ -18,7 +17,6 @@ import {
   Zap
 } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import ParticleBackground from "@/components/products/ParticleBackground";
 
 // Product data based on PDF catalog - exact specs
@@ -244,14 +242,11 @@ const grainColorMap: Record<string, { bg: string; text: string }> = {
 const ProductCategory = () => {
   const { t, i18n } = useTranslation();
   const { currentLang } = useLanguage();
-  const [selectedProduct, setSelectedProduct] = useState<any>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeSubtype, setActiveSubtype] = useState<string>("all");
   const [activeGrain, setActiveGrain] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortColumn, setSortColumn] = useState<string | null>(null);
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
-  // Removed hoveredShaftPart state - shaft diagram no longer used
   const [expandedAccordion, setExpandedAccordion] = useState<string | null>(null);
   
   const pathParts = window.location.pathname.split("/");
@@ -319,15 +314,39 @@ const ProductCategory = () => {
     }
   };
 
-  const handleViewDetails = (product: any) => {
-    setSelectedProduct(product);
-    setIsModalOpen(true);
+
+  // Get translated grain label
+  const getGrainLabel = (grain: string): string => {
+    const grainKey = grain.toLowerCase().replace(' ', '');
+    const grainMap: Record<string, string> = {
+      'extragrosso': 'extraCoarse',
+      'grosso': 'coarse',
+      'médio': 'medium',
+      'medio': 'medium',
+      'fino': 'fine',
+      'extrafino': 'extraFine',
+      'ultrafino': 'ultraFine',
+    };
+    const key = grainMap[grainKey] || grainKey;
+    return t(`products.grains.${key}`, grain);
   };
 
   const testimonials = [
-    { name: "Maria S.", role: "Nail Designer", text: "Perfeito para manicure precisa! Qualidade excepcional." },
-    { name: "Dr. Carlos M.", role: "Podólogo", text: "Uso há 5 anos e nunca me decepcionou. Recomendo!" },
-    { name: "Ana Paula R.", role: "Manicure", text: "Os melhores produtos do mercado, sem dúvida." },
+    { 
+      name: "Maria S.", 
+      role: t("products.testimonials.roles.nailDesigner", "Nail Designer"), 
+      text: t("products.testimonials.quotes.1", "Perfeito para manicure precisa! Qualidade excepcional.") 
+    },
+    { 
+      name: "Dr. Carlos M.", 
+      role: t("products.testimonials.roles.podiatrist", "Podólogo"), 
+      text: t("products.testimonials.quotes.2", "Uso há 5 anos e nunca me decepcionou. Recomendo!") 
+    },
+    { 
+      name: "Ana Paula R.", 
+      role: t("products.testimonials.roles.manicurist", "Manicure"), 
+      text: t("products.testimonials.quotes.3", "Os melhores produtos do mercado, sem dúvida.") 
+    },
   ];
 
   return (
@@ -480,7 +499,7 @@ const ProductCategory = () => {
                         }} 
                       />
                       <span className="text-sm font-medium text-foreground" style={{ fontSize: '16px', color: '#424242' }}>
-                        {grain}
+                        {getGrainLabel(grain)}
                       </span>
                     </button>
                   ))}
@@ -560,11 +579,10 @@ const ProductCategory = () => {
               >
                 <div
                   className={`
-                    relative rounded-2xl overflow-hidden transition-all duration-500 cursor-pointer
+                    relative rounded-2xl overflow-hidden transition-all duration-500
                     bg-gradient-to-br from-white via-gray-50 to-gray-100 shadow-lg hover:shadow-2xl hover-lift
                   `}
                   style={{ height: '500px' }}
-                  onClick={() => handleViewDetails(product)}
                 >
                   {/* Product Visual - 350x250px with hover zoom */}
                   <div className="relative h-[250px] flex items-center justify-center bg-gradient-to-b from-gray-100 to-white overflow-hidden group">
@@ -594,7 +612,7 @@ const ProductCategory = () => {
                             border: grainColorMap[product.grain].bg === "#FFFFFF" ? "2px solid #DDD" : "none"
                           }} 
                         />
-                        <span className="text-sm font-medium text-gray-700">{product.grain}</span>
+                        <span className="text-sm font-medium text-gray-700">{getGrainLabel(product.grain)}</span>
                       </div>
                     )}
                   </div>
@@ -629,18 +647,6 @@ const ProductCategory = () => {
                       )}
                     </div>
 
-                    {/* Action Button - 180x45px, hover shadow lift */}
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleViewDetails(product);
-                      }}
-                      className="w-full flex items-center justify-center gap-2 py-3 rounded-xl font-semibold bg-primary text-white hover:bg-primary/90 transition-all duration-300 hover:shadow-button-hover"
-                      style={{ height: '45px' }}
-                    >
-                      <Eye className="w-5 h-5" />
-                      {t("products.viewDetails", "Ver Detalhes")}
-                    </button>
                   </div>
                 </div>
               </div>
@@ -673,18 +679,14 @@ const ProductCategory = () => {
                         </div>
                       </th>
                     ))}
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-gray-600">
-                      {t("products.table.actions", "Ações")}
-                    </th>
                   </tr>
                 </thead>
                 <tbody className="table-striped">
                   {filteredProducts.map((product, idx) => (
                     <tr 
                       key={idx} 
-                      className="border-b border-gray-100 hover:bg-primary/5 cursor-pointer transition-colors animate-slide-in-right"
+                      className="border-b border-gray-100 hover:bg-primary/5 transition-colors animate-slide-in-right"
                       style={{ animationDelay: `${idx * 0.05}s` }}
-                      onClick={() => handleViewDetails(product)}
                     >
                       <td className="px-6 py-4 font-medium text-foreground">{product.model}</td>
                       <td className="px-6 py-4 text-primary font-semibold">{product.code}</td>
@@ -699,25 +701,14 @@ const ProductCategory = () => {
                                 border: grainColorMap[product.grain].bg === "#FFFFFF" ? "2px solid #DDD" : "none"
                               }} 
                             />
-                            <span>{product.grain}</span>
+                            <span>{getGrainLabel(product.grain)}</span>
                           </div>
                         ) : (
-                          product.grain || product.cut || "-"
+                          product.grain ? getGrainLabel(product.grain) : (product.cut || "-")
                         )}
                       </td>
                       <td className="px-6 py-4 text-muted-foreground">{product.iso || "-"}</td>
                       <td className="px-6 py-4 text-muted-foreground">{product.activeLength || "-"}</td>
-                      <td className="px-6 py-4">
-                        <button 
-                          className="text-primary hover:underline font-semibold text-sm"
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleViewDetails(product);
-                          }}
-                        >
-                          {t("products.viewDetails", "Ver Detalhes")}
-                        </button>
-                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -728,7 +719,7 @@ const ProductCategory = () => {
           {/* Testimonials Carousel - 3 slides fade */}
           <div className="mt-16">
             <h2 className="text-foreground font-montserrat font-bold text-2xl md:text-3xl mb-8 text-center">
-              {t("products.testimonials", "O que dizem nossos clientes")}
+              {t("products.testimonials.title", "O que dizem nossos clientes")}
             </h2>
             
             <div className="grid md:grid-cols-3 gap-6">
@@ -794,123 +785,6 @@ const ProductCategory = () => {
         </div>
       </section>
 
-      {/* Product Detail Modal - Fullscreen overlay fade 0.5s */}
-      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle className="font-montserrat text-2xl">
-              {selectedProduct?.model} - {selectedProduct?.code}
-            </DialogTitle>
-          </DialogHeader>
-          
-          {selectedProduct && (
-            <div className="grid md:grid-cols-2 gap-8 py-4">
-              {/* Product Image */}
-              <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl p-8 flex items-center justify-center">
-                <div 
-                  className="w-40 h-40 rounded-full flex items-center justify-center animate-spin-slow"
-                  style={{
-                    background: "linear-gradient(135deg, #9B0000, #720000, #9B0000)",
-                    boxShadow: "0 0 40px rgba(155, 0, 0, 0.4)",
-                  }}
-                >
-                  <Sparkles className="w-20 h-20 text-white" />
-                </div>
-              </div>
-              
-              {/* Product Details */}
-              <div>
-                <h3 className="font-montserrat font-bold text-xl mb-4 text-foreground">
-                  {t("products.specifications", "Especificações")}
-                </h3>
-                
-                <div className="space-y-3">
-                  {selectedProduct.model && (
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">{t("products.table.model", "Modelo")}</span>
-                      <span className="font-semibold">{selectedProduct.model}</span>
-                    </div>
-                  )}
-                  {selectedProduct.code && (
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">{t("products.table.code", "Código")}</span>
-                      <span className="font-semibold text-primary">{selectedProduct.code}</span>
-                    </div>
-                  )}
-                  {selectedProduct.diameter && selectedProduct.diameter !== "N/A" && (
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">{t("products.table.diameter", "Diâmetro")}</span>
-                      <span className="badge-diameter">{selectedProduct.diameter}</span>
-                    </div>
-                  )}
-                  {selectedProduct.grain && (
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">{t("products.table.grain", "Grão")}</span>
-                      <div className="flex items-center gap-2">
-                        {grainColorMap[selectedProduct.grain] && (
-                          <div 
-                            className="w-5 h-5 rounded-full"
-                            style={{ 
-                              backgroundColor: grainColorMap[selectedProduct.grain].bg,
-                              border: grainColorMap[selectedProduct.grain].bg === "#FFFFFF" ? "2px solid #DDD" : "none"
-                            }} 
-                          />
-                        )}
-                        <span className="font-semibold">{selectedProduct.grain}</span>
-                      </div>
-                    </div>
-                  )}
-                  {selectedProduct.iso && (
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">ISO</span>
-                      <span className="badge-iso">ISO {selectedProduct.iso}</span>
-                    </div>
-                  )}
-                  {selectedProduct.activeLength && (
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">{t("products.table.activeLength", "Área Ativa")}</span>
-                      <span className="font-semibold">{selectedProduct.activeLength}</span>
-                    </div>
-                  )}
-                  {selectedProduct.cut && (
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">{t("products.table.cut", "Corte")}</span>
-                      <span className="font-semibold">{selectedProduct.cut}</span>
-                    </div>
-                  )}
-                  {selectedProduct.color && (
-                    <div className="flex justify-between py-2 border-b border-gray-100">
-                      <span className="text-muted-foreground">{t("products.table.color", "Cor")}</span>
-                      <span className="font-semibold">{selectedProduct.color}</span>
-                    </div>
-                  )}
-                </div>
-                
-                {/* CTA Buttons */}
-                <div className="flex gap-4 mt-8">
-                  <a
-                    href={`https://wa.me/5511940101807?text=Olá! Gostaria de um orçamento para o produto ${selectedProduct.code} - ${selectedProduct.model}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 bg-green-600 text-white font-bold py-3 rounded-xl hover:bg-green-700 transition-all"
-                  >
-                    <MessageCircle size={18} />
-                    {t("products.requestQuote", "Orçamento")}
-                  </a>
-                  <a
-                    href="/catalogo-brilho.pdf"
-                    target="_blank"
-                    className="flex-1 flex items-center justify-center gap-2 bg-primary text-white font-bold py-3 rounded-xl hover:bg-primary/90 transition-all"
-                  >
-                    <Download size={18} />
-                    {t("products.downloadPDF", "PDF")}
-                  </a>
-                </div>
-              </div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
     </Layout>
   );
 };

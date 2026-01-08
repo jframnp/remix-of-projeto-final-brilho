@@ -84,10 +84,53 @@
     "ctaDesc": "Contáctenos y solicite una cotización personalizada para sus necesidades.",
     "ctaContact": "Contáctenos",
     "searchPlaceholder": "Buscar productos...",
+    "searchProducts": "Buscar productos...",
     "filterBy": "Filtrar por",
     "filterAll": "Todos",
+    "all": "Todos",
+    "items": "productos",
     "noResults": "No se encontraron productos",
     "tryAnotherSearch": "Intente con otro término de búsqueda",
+    "grainLegend": "Leyenda de Granos",
+    "clickToFilter": "Haga clic para filtrar productos por granulometría",
+    "clearFilter": "Limpiar filtro",
+    "productDesc": "Para procedimientos de precisión y acabado profesional.",
+    "requestQuoteTitle": "Solicite su Cotización",
+    "ctaCategoryDesc": "Contáctenos para precios especiales y condiciones exclusivas para esta línea.",
+    "downloadThisLine": "Descargar Esta Línea en PDF",
+    "specifications": "Especificaciones",
+    "downloadPDF": "PDF",
+    "testimonials": {
+      "title": "Lo que dicen nuestros clientes",
+      "roles": {
+        "nailDesigner": "Nail Designer",
+        "podiatrist": "Podólogo",
+        "manicurist": "Manicurista"
+      },
+      "quotes": {
+        "1": "¡Perfecto para manicura precisa! Calidad excepcional.",
+        "2": "Lo uso hace 5 años y nunca me decepcionó. ¡Lo recomiendo!",
+        "3": "Los mejores productos del mercado, sin duda."
+      }
+    },
+    "table": {
+      "model": "Modelo",
+      "code": "Código",
+      "diameter": "Diámetro Ø",
+      "grain": "Grano",
+      "iso": "ISO",
+      "activeLength": "Área Activa",
+      "cut": "Corte",
+      "color": "Color"
+    },
+    "grains": {
+      "extraFine": "Extra Fino",
+      "fine": "Fino",
+      "medium": "Medio",
+      "coarse": "Grueso",
+      "extraCoarse": "Extra Grueso",
+      "ultraFine": "Ultra Fino"
+    },
     "badge": {
       "anvisa": "ANVISA",
       "certified": "Certificado",
@@ -155,7 +198,8 @@
         "fine": "Fino",
         "medium": "Medio",
         "coarse": "Grueso",
-        "extraCoarse": "Extra Grueso"
+        "extraCoarse": "Extra Grueso",
+        "ultraFine": "Ultra Fino"
       }
     },
     "tungstenBurs": {
