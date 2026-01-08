@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Phone, Mail, Menu, X, ChevronDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "@/hooks/useLanguage";
+import logoImage from "@/assets/logo-metalurgicabrilho.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -59,33 +60,12 @@ const Header = () => {
       <div className="bg-[#9B0000] h-[70px] md:h-[90px]">
         <div className="container mx-auto h-full px-4 md:px-[5%] flex items-center justify-between">
           {/* Logo */}
-          <Link to={getLocalizedPath("/")} className="flex items-center gap-3 group">
-            <div className="relative w-10 h-10 md:w-14 md:h-14 transition-transform duration-300 group-hover:scale-110">
-              <svg viewBox="0 0 60 60" className="w-full h-full drop-shadow-lg">
-                <defs>
-                  <linearGradient id="metalGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#FFFFFF" />
-                    <stop offset="50%" stopColor="#C0C0C0" />
-                    <stop offset="100%" stopColor="#808080" />
-                  </linearGradient>
-                  <linearGradient id="innerRedGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#FF4444" />
-                    <stop offset="50%" stopColor="#D32F2F" />
-                    <stop offset="100%" stopColor="#9B0000" />
-                  </linearGradient>
-                </defs>
-                <polygon
-                  points="30,2 55,17 55,47 30,62 5,47 5,17"
-                  fill="url(#metalGradient)"
-                  stroke="#FFFFFF"
-                  strokeWidth="1"
-                />
-                <polygon points="30,8 50,20 50,44 30,56 10,44 10,20" fill="url(#innerRedGradient)" />
-              </svg>
-            </div>
-            <span className="text-white font-montserrat font-bold text-sm md:text-xl tracking-wide drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">
-              METALÚRGICA BRILHO
-            </span>
+          <Link to={getLocalizedPath("/")} className="flex items-center group">
+            <img 
+              src={logoImage} 
+              alt="Metalúrgica Brilho" 
+              className="h-12 md:h-16 w-auto transition-transform duration-300 group-hover:scale-105 drop-shadow-lg"
+            />
           </Link>
 
           {/* Contact Info - Desktop */}
