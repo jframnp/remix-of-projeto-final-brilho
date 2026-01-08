@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "@/hooks/useLanguage";
+import logoImage from "@/assets/logo-metalurgicabrilho.png";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -63,34 +64,11 @@ const Footer = () => {
           <div className="flex flex-col items-center text-center">
             {/* Logo */}
             <div className="flex flex-col items-center mb-8">
-              <div className="relative w-20 h-20 mb-4 hover:scale-110 transition-transform duration-300">
-                <svg viewBox="0 0 80 80" className="w-full h-full">
-                  <polygon
-                    points="40,4 72,22 72,58 40,76 8,58 8,22"
-                    fill="none"
-                    stroke="#EEEEEE"
-                    strokeWidth="2"
-                  />
-                  <polygon
-                    points="40,12 64,26 64,54 40,68 16,54 16,26"
-                    fill="#D32F2F"
-                  />
-                  <text
-                    x="40"
-                    y="48"
-                    textAnchor="middle"
-                    fill="#EEEEEE"
-                    fontSize="28"
-                    fontWeight="bold"
-                    fontFamily="serif"
-                  >
-                    B
-                  </text>
-                </svg>
-              </div>
-              <span className="text-[#EEEEEE] font-montserrat font-bold text-xl tracking-wider">
-                METALÚRGICA BRILHO<sup className="text-xs">®</sup>
-              </span>
+              <img 
+                src={logoImage} 
+                alt="Metalúrgica Brilho" 
+                className="h-20 w-auto mb-4 hover:scale-110 transition-transform duration-300"
+              />
             </div>
 
             {/* CNPJ / IE */}
