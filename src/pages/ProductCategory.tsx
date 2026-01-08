@@ -5,14 +5,13 @@ import { useTranslation } from "react-i18next";
 import { useLanguage } from "@/hooks/useLanguage";
 import { 
   Download, 
-  ArrowLeft, 
   MessageCircle, 
-  Sparkles,
   Star
 } from "lucide-react";
-import ParticleBackground from "@/components/products/ParticleBackground";
 import CategoryTypeCard from "@/components/products/CategoryTypeCard";
 import CategoryTypeModal from "@/components/products/CategoryTypeModal";
+import ProductCategoryHero from "@/components/products/ProductCategoryHero";
+import CatalogSection from "@/components/products/CatalogSection";
 
 // Import product images
 import PM07 from "@/assets/products/PM07_AZUL.webp";
@@ -42,17 +41,21 @@ const productData: Record<string, {
   features?: string[];
   hasGoldLine?: boolean;
   subtypes?: string[];
+  titlePt: string;
+  titleEn?: string;
   description: {
     pt: string;
     en: string;
   };
 }> = {
   "brocas-diamantadas": {
-    hasGoldLine: false, // Gold Line moved to separate page /produtos/linha-gold
+    hasGoldLine: false,
     subtypes: ["Esférica", "Roda", "Cônica", "Chama", "Cilíndrica", "Torpedo"],
+    titlePt: "BROCAS DIAMANTADAS",
+    titleEn: "DIAMOND BURS",
     description: {
-      pt: "Indicadas para laboratórios de prótese, joalherias, indústrias em geral, hospitais, podólogos, nails designers e manicures – sempre oferecendo excelente qualidade.",
-      en: "Recommended for prosthesis laboratories, jewelry stores, general industries, hospitals, podiatrists, nail designers and manicurists – always offering excellent quality."
+      pt: "As peças de mão da Brilho são indicadas para laboratórios de prótese, joalherias, esmalterias, nail design e podologia. São fabricadas seguindo rigorosos critérios de produção, buscando sempre oferecer instrumentos de excelente qualidade.",
+      en: "Brilho's handpieces are recommended for prosthesis laboratories, jewelry stores, nail salons, nail design, and podiatry. They are manufactured following strict production criteria, always aiming to offer high-quality instruments."
     },
     features: [
       "Diamantes industriais de primeira linha",
@@ -77,9 +80,11 @@ const productData: Record<string, {
   },
   "fresas-tungstenio": {
     subtypes: ["Maxi Cut", "Mini Cut"],
+    titlePt: "FRESAS DE TUNGSTÊNIO",
+    titleEn: "TUNGSTEN BURS",
     description: {
-      pt: "Fresas de tungstênio de alta performance para procedimentos que exigem precisão e durabilidade.",
-      en: "High-performance tungsten burs for procedures requiring precision and durability."
+      pt: "Fresas de tungstênio de alta performance para procedimentos que exigem precisão e durabilidade. Ideais para laboratórios de prótese e aplicações industriais.",
+      en: "High-performance tungsten burs for procedures requiring precision and durability. Ideal for prosthesis laboratories and industrial applications."
     },
     products: [
       { model: "Maxi Cut Cônica", code: "FT-MC-01", iso: "023", diameter: "2.3mm", cut: "Cruzado Médio" },
@@ -91,9 +96,11 @@ const productData: Record<string, {
     ]
   },
   "fresas-ceramica": {
+    titlePt: "FRESAS DE CERÂMICA",
+    titleEn: "CERAMIC BURS",
     description: {
-      pt: "Fresas cerâmicas de alta tecnologia para acabamentos perfeitos e procedimentos delicados.",
-      en: "High-tech ceramic burs for perfect finishes and delicate procedures."
+      pt: "Fresas cerâmicas de alta tecnologia para acabamentos perfeitos e procedimentos delicados. Resistentes ao calor e de longa durabilidade.",
+      en: "High-tech ceramic burs for perfect finishes and delicate procedures. Heat resistant and long lasting."
     },
     products: [
       { model: "Cônica Média", code: "FC-CON-01", iso: "032", diameter: "2.5mm", cut: "Cruzado Médio" },
@@ -105,9 +112,11 @@ const productData: Record<string, {
   },
   "lixas": {
     subtypes: ["Laminar", "Plantar", "Boomerang", "Nails"],
+    titlePt: "LIXAS",
+    titleEn: "SANDING DISCS",
     description: {
-      pt: "Lixas profissionais de alta qualidade para podologia e nail design.",
-      en: "High-quality professional files for podiatry and nail design."
+      pt: "Lixas profissionais de alta qualidade para podologia e nail design. Disponíveis em diversas granulometrias para diferentes aplicações.",
+      en: "High-quality professional files for podiatry and nail design. Available in various grits for different applications."
     },
     products: [
       { model: "Laminar Premium (Norton)", code: "LX-LP-80", diameter: "15mm", grain: "80" },
@@ -122,9 +131,11 @@ const productData: Record<string, {
     ]
   },
   "lixa-tubular-adesiva": {
+    titlePt: "LIXA TUBULAR E ADESIVA",
+    titleEn: "TUBULAR & ADHESIVE FILES",
     description: {
-      pt: "Lixas tubulares e adesivas para aplicações específicas em podologia.",
-      en: "Tubular and adhesive files for specific podiatry applications."
+      pt: "Lixas tubulares e adesivas para aplicações específicas em podologia. Alta aderência e durabilidade.",
+      en: "Tubular and adhesive files for specific podiatry applications. High adhesion and durability."
     },
     products: [
       { model: "Tubular Send Grossa", code: "LT-TG-60", diameter: "10mm", grain: "60" },
@@ -136,9 +147,11 @@ const productData: Record<string, {
     ]
   },
   "polidoras": {
+    titlePt: "POLIDORAS",
+    titleEn: "POLISHERS",
     description: {
-      pt: "Polidoras de silicone em diversas cores e granulometrias para acabamento perfeito.",
-      en: "Silicone polishers in various colors and grits for perfect finishing."
+      pt: "Polidoras de silicone em diversas cores e granulometrias para acabamento perfeito. Sistema de cores para fácil identificação.",
+      en: "Silicone polishers in various colors and grits for perfect finishing. Color system for easy identification."
     },
     products: [
       { model: "Torpedo Ogival", code: "PO-TOG-EG", diameter: "8mm", grain: "Extra Grosso", color: "Preto" },
@@ -151,9 +164,11 @@ const productData: Record<string, {
     ]
   },
   "escovas-limpeza": {
+    titlePt: "ESCOVAS DE LIMPEZA",
+    titleEn: "CLEANING BRUSHES",
     description: {
-      pt: "Escovas de limpeza e acessórios para manutenção de brocas e instrumentos.",
-      en: "Cleaning brushes and accessories for maintaining burs and instruments."
+      pt: "Escovas de limpeza e acessórios para manutenção de brocas e instrumentos. Essenciais para prolongar a vida útil dos equipamentos.",
+      en: "Cleaning brushes and accessories for maintaining burs and instruments. Essential for extending equipment life."
     },
     products: [
       { model: "Cerdas Poliamida Rosa", code: "EC-CPR-01", diameter: "20mm" },
@@ -164,9 +179,11 @@ const productData: Record<string, {
     ]
   },
   "fibras-enucleadora-mandril": {
+    titlePt: "FIBRAS, ENUCLEADORA E MANDRIL",
+    titleEn: "FIBERS, ENUCLEATORS & MANDRELS",
     description: {
-      pt: "Fibras moleculares, enucleadoras e mandris de alta qualidade.",
-      en: "High-quality molecular fibers, enucleators and mandrels."
+      pt: "Fibras moleculares, enucleadoras e mandris de alta qualidade. Componentes essenciais para diversos procedimentos.",
+      en: "High-quality molecular fibers, enucleators and mandrels. Essential components for various procedures."
     },
     products: [
       { model: "Fibra Molecular P", code: "FE-FMP-01", diameter: "2.0mm" },
@@ -177,9 +194,11 @@ const productData: Record<string, {
     ]
   },
   "apoio-lixas-afiacao": {
+    titlePt: "APOIO PARA LIXAS E AFIAÇÃO",
+    titleEn: "FILE SUPPORTS & SHARPENING",
     description: {
-      pt: "Apoios para lixas e materiais de afiação profissional.",
-      en: "File supports and professional sharpening materials."
+      pt: "Apoios para lixas e materiais de afiação profissional. Garantem precisão e segurança nos procedimentos.",
+      en: "File supports and professional sharpening materials. Ensure precision and safety in procedures."
     },
     products: [
       { model: "Apoio Rígido Plantar", code: "AL-ARP-01", diameter: "25mm" },
@@ -195,6 +214,8 @@ const productData: Record<string, {
   "linha-gold": {
     hasGoldLine: true,
     subtypes: ["Esférica Gold", "Cônica Gold", "Chama Gold", "Cilíndrica Gold"],
+    titlePt: "LINHA GOLD",
+    titleEn: "GOLD LINE",
     description: {
       pt: "Linha Gold Premium - Acabamento dourado exclusivo para Nail Designers. Qualidade superior com diamantes industriais de primeira linha.",
       en: "Gold Line Premium - Exclusive golden finish for Nail Designers. Superior quality with first-class industrial diamonds."
@@ -281,8 +302,7 @@ const ProductCategory = () => {
     const groups: Record<string, typeof data.products> = {};
     
     data.products.forEach(product => {
-      // Extract base type from model name
-      const baseType = product.model.split(' ')[0]; // e.g., "Esférica" from "Esférica Gold"
+      const baseType = product.model.split(' ')[0];
       if (!groups[baseType]) {
         groups[baseType] = [];
       }
@@ -290,6 +310,14 @@ const ProductCategory = () => {
     });
     
     return groups;
+  }, [data.products]);
+
+  // Get featured images (first 3 products with images)
+  const featuredImages = useMemo(() => {
+    return data.products
+      .filter(p => p.image)
+      .slice(0, 3)
+      .map(p => p.image);
   }, [data.products]);
 
   // Get products for selected type, filtered by grain if active
@@ -311,7 +339,6 @@ const ProductCategory = () => {
     setSelectedType(typeName);
     setIsModalOpen(true);
   };
-
 
   // Get translated grain label
   const getGrainLabel = (grain: string): string => {
@@ -347,109 +374,38 @@ const ProductCategory = () => {
     },
   ];
 
+  const isGold = category === "linha-gold";
+
   return (
     <Layout>
-      {/* Immersive Hero - 600px with clean static background */}
-      <section
-        className={`relative min-h-[600px] md:min-h-[500px] overflow-hidden flex items-center ${
-          category === "linha-gold" 
-            ? "bg-gradient-to-br from-[#FFD54F] via-[#FFC107] to-[#FFA000]" 
-            : "bg-gradient-to-br from-primary via-[#9B0000] to-[#720000]"
-        }`}
-        style={category === "linha-gold" ? {
-          background: 'linear-gradient(135deg, #FFD54F 0%, #FFC107 50%, #FFA000 100%)',
-          padding: '60px 0'
-        } : {}}
-      >
-        {category !== "linha-gold" && <ParticleBackground />}
-        
-        {/* Gold Line glow effect */}
-        {category === "linha-gold" && (
-          <div className="absolute inset-0 animate-shimmer opacity-40" style={{
-            background: 'linear-gradient(45deg, transparent 25%, rgba(255,255,255,0.5) 50%, transparent 75%)',
-            backgroundSize: '400% 100%',
-            animation: 'shimmer 3s ease-in-out infinite'
-          }} />
-        )}
-        
-        {/* Overlay for non-Gold Line pages */}
-        {category !== "linha-gold" && <div className="absolute inset-0 bg-black/40" />}
-        
-        {/* No play button - clean hero layout */}
-        
-        <div className="container mx-auto px-4 relative z-10 py-16">
-          <Link
-            to={getLocalizedPath("/produtos")}
-            className={`inline-flex items-center gap-2 mb-6 transition-colors group ${
-              category === "linha-gold" 
-                ? "text-yellow-900/80 hover:text-yellow-900" 
-                : "text-white/80 hover:text-white"
-            }`}
-          >
-            <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-            {t("products.backToCategories", "Voltar às Categorias")}
-          </Link>
+      {/* 1. Hero Section - Dark background with 3 featured products */}
+      <ProductCategoryHero
+        category={category}
+        categoryKey={categoryKey}
+        description={currentLang === "en" ? data.description.en : data.description.pt}
+        featuredImages={featuredImages}
+        getLocalizedPath={getLocalizedPath}
+        isGold={isGold}
+      />
 
-          <div className="max-w-4xl">
-            {/* Bilingual Animated Title - 60px with text shadow */}
-            <h1 
-              className={`font-montserrat font-black text-4xl md:text-5xl lg:text-6xl mb-2 animate-fade-in ${
-                category === "linha-gold" 
-                  ? "text-yellow-900 flex items-center gap-4" 
-                  : "text-white text-shadow-lg"
-              }`} 
-              style={{ fontSize: '60px' }}
-            >
-              {category === "linha-gold" && <Sparkles className="w-14 h-14 animate-pulse" />}
-              {t(`products.sections.${categoryKey}`).toUpperCase()}
-              {category === "linha-gold" && <Sparkles className="w-14 h-14 animate-pulse" />}
-            </h1>
-            
-            {/* Description from PDF - 20px, line-height 1.8 */}
-            <p 
-              className={`font-inter text-lg md:text-xl leading-relaxed mb-8 animate-fade-in stagger-1 max-w-3xl ${
-                category === "linha-gold" ? "text-yellow-900" : "text-white/90"
-              }`} 
-              style={{ fontSize: '20px', lineHeight: '1.8', padding: '0 40px 0 0' }}
-            >
-              {currentLang === "en" ? data.description.en : data.description.pt}
-            </p>
+      {/* 2. Catalog Section - Like the PDF catalog style */}
+      <CatalogSection
+        categoryTitle={data.titlePt}
+        categorySubtitle={data.titleEn}
+        descriptionPt={data.description.pt}
+        descriptionEn={data.description.en}
+        grainLegend={{
+          grosso: true,
+          medio: true,
+          fino: category === "brocas-diamantadas" || category === "linha-gold",
+        }}
+        modelNumber="721"
+      />
 
-            {/* Action Buttons */}
-            <div className="flex flex-wrap gap-4 animate-fade-in stagger-3">
-              <a
-                href="/catalogo-brilho.pdf"
-                target="_blank"
-                className={`inline-flex items-center gap-3 font-montserrat font-bold px-8 py-4 rounded-xl hover:scale-105 transition-all shadow-lg ${
-                  category === "linha-gold" 
-                    ? "bg-yellow-900 text-yellow-100" 
-                    : "bg-white text-primary"
-                }`}
-              >
-                <Download size={20} />
-                {t("products.downloadCatalog", "Baixar Catálogo")}
-              </a>
-              <a
-                href="https://wa.me/5511940101807"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-green-600 text-white font-montserrat font-bold px-8 py-4 rounded-xl hover:scale-105 transition-all shadow-lg"
-              >
-                <MessageCircle size={20} />
-                {t("products.requestQuote", "Solicitar Orçamento")}
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Removed Gold Line Banner - Gold Line has its own dedicated page /produtos/linha-gold */}
-
-      {/* Grain Legend Section - Always visible for all product categories */}
+      {/* 3. Grain Legend Section - Always visible for all product categories */}
       <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-12">
         <div className="container mx-auto px-4">
           <div className="flex justify-center">
-            {/* Floating Grain Legend Card */}
             <div 
               className="bg-white rounded-lg p-5 shadow-lg w-full max-w-[600px] lg:max-w-[800px]"
               style={{ 
@@ -513,7 +469,7 @@ const ProductCategory = () => {
         </div>
       </section>
 
-      {/* Products Grid Section - Microdont Style Cards */}
+      {/* 4. Products Grid Section - "Selecione o Tipo" */}
       <section className="bg-muted/30 section-padding-lg">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -525,7 +481,7 @@ const ProductCategory = () => {
             </p>
           </div>
 
-          {/* Type Cards Grid - Microdont Style */}
+          {/* Type Cards Grid */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-16">
             {Object.keys(productsByType).map((typeName, idx) => (
               <div
@@ -538,13 +494,13 @@ const ProductCategory = () => {
                   image={getTypeImage(typeName)}
                   productCount={getProductsForType(typeName).length}
                   onClick={() => handleTypeClick(typeName)}
-                  isGold={category === "linha-gold"}
+                  isGold={isGold}
                 />
               </div>
             ))}
           </div>
 
-          {/* Testimonials Carousel - 3 slides fade */}
+          {/* Testimonials Carousel */}
           <div className="mt-16">
             <h2 className="text-foreground font-montserrat font-bold text-2xl md:text-3xl mb-8 text-center">
               {t("products.testimonials.title", "O que dizem nossos clientes")}
@@ -582,13 +538,13 @@ const ProductCategory = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-gradient-to-br from-primary to-primary/90 section-padding-lg">
+      {/* 5. CTA Section - Standard red (like the Microdont reference image) */}
+      <section className="bg-primary py-16">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-white font-montserrat font-bold text-2xl md:text-3xl mb-4">
+          <h2 className="text-primary-foreground font-montserrat font-bold text-2xl md:text-3xl mb-4">
             {t("products.requestQuoteTitle", "Solicite seu Orçamento")}
           </h2>
-          <p className="text-white/80 mb-8 max-w-xl mx-auto">
+          <p className="text-primary-foreground/80 mb-8 max-w-xl mx-auto">
             {t("products.ctaCategoryDesc", "Entre em contato para preços especiais e condições exclusivas para esta linha.")}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -604,7 +560,7 @@ const ProductCategory = () => {
             <a
               href="/catalogo-brilho.pdf"
               target="_blank"
-              className="inline-flex items-center justify-center gap-2 bg-white text-primary font-bold px-10 py-4 rounded-xl hover:bg-gray-100 transition-all hover:scale-105"
+              className="inline-flex items-center justify-center gap-2 bg-white text-primary font-bold px-10 py-4 rounded-xl hover:bg-gray-100 transition-all hover:scale-105 border-2 border-white"
             >
               <Download size={20} />
               {t("products.downloadThisLine", "Baixar Esta Linha em PDF")}
@@ -621,7 +577,7 @@ const ProductCategory = () => {
           typeName={selectedType}
           products={getProductsForType(selectedType)}
           typeImage={getTypeImage(selectedType)}
-          isGold={category === "linha-gold"}
+          isGold={isGold}
         />
       )}
 
