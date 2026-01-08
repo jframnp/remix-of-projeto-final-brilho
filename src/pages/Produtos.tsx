@@ -426,8 +426,13 @@ const Produtos = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 section-padding-lg">
-        <div className="container mx-auto px-4 text-center">
+      <section className="relative py-20 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1a0a0a] via-[#3d0f0f] to-[#720000]">
+          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#D32F2F]/20 rounded-full blur-[150px]" />
+          <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#9B0000]/30 rounded-full blur-[100px]" />
+        </div>
+        
+        <div className="container mx-auto px-4 relative z-10 text-center">
           <h2 className="text-white font-montserrat font-bold text-3xl md:text-4xl mb-4">
             {t("products.ctaTitle", "Não encontrou o que procura?")}
           </h2>
@@ -437,7 +442,7 @@ const Produtos = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               to={getLocalizedPath("/contato")}
-              className="btn-primary-lg"
+              className="inline-flex items-center justify-center gap-3 bg-white text-[#9B0000] font-montserrat font-bold text-lg px-10 py-5 rounded-full hover:scale-105 hover:shadow-2xl transition-all duration-300"
             >
               {t("products.ctaContact", "Fale Conosco")}
             </Link>
@@ -445,7 +450,7 @@ const Produtos = () => {
               href="https://wa.me/5511940101807"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 bg-green-600 text-white font-montserrat font-bold px-10 py-4 rounded-full hover:bg-green-700 hover:scale-105 transition-all shadow-lg"
+              className="inline-flex items-center justify-center gap-2 bg-green-600 text-white font-montserrat font-bold px-10 py-5 rounded-full hover:bg-green-700 hover:scale-105 transition-all shadow-lg"
             >
               WhatsApp
             </a>
