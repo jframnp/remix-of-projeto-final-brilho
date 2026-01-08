@@ -120,129 +120,13 @@ const Contato = () => {
       <section className="bg-[#FAFAFA] py-20 md:py-32">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-16">
-            {/* Form */}
-            <div className="lg:w-1/2">
-              <span className="inline-block text-[#D32F2F] font-montserrat font-bold text-sm tracking-widest uppercase mb-4">
-                {t("contact.formLabel", "Envie sua mensagem")}
-              </span>
-              <h2 className="text-gray-900 font-montserrat font-bold text-3xl md:text-4xl mb-8">
-                {t("contact.formTitle", "Entre em Contato")}
-              </h2>
-
-              {/* Success Message */}
-              {showSuccess && (
-                <div className="mb-8 p-6 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-2xl flex items-center gap-4 animate-fade-in">
-                  <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <CheckCircle className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-green-800 font-montserrat font-bold text-lg">{t("contact.successTitle", "Mensagem Enviada!")}</h3>
-                    <p className="text-green-700 font-inter">{t("contact.successDesc", "Retornaremos em breve.")}</p>
-                  </div>
-                </div>
-              )}
-
-              {/* FormSubmit Form */}
-              <form action="https://formsubmit.co/metalurgicabrilho@gmail.com" method="POST" className="space-y-6">
-                {/* Hidden FormSubmit Fields */}
-                <input type="hidden" name="_subject" value="Nova mensagem do site Metalúrgica Brilho!" />
-                <input type="hidden" name="_next" value={`${window.location.origin}/contato?success=true`} />
-                <input type="hidden" name="_captcha" value="false" />
-                <input type="text" name="_honey" style={{ display: "none" }} />
-                <input type="hidden" name="_template" value="table" />
-
-                <div>
-                  <label htmlFor="nome" className="block text-gray-900 font-inter font-medium mb-2">
-                    {t("contact.nameLabel", "Nome")} *
-                  </label>
-                  <input
-                    type="text"
-                    id="nome"
-                    name="nome"
-                    required
-                    className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-white text-gray-900 font-inter focus:outline-none focus:border-[#D32F2F] focus:ring-2 focus:ring-[#D32F2F]/20 transition-all"
-                    placeholder={t("contact.namePlaceholder", "Seu nome completo")}
-                  />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="email" className="block text-gray-900 font-inter font-medium mb-2">
-                      {t("contact.emailLabel", "E-mail")} *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-white text-gray-900 font-inter focus:outline-none focus:border-[#D32F2F] focus:ring-2 focus:ring-[#D32F2F]/20 transition-all"
-                      placeholder={t("contact.emailPlaceholder", "seu@email.com")}
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="telefone" className="block text-gray-900 font-inter font-medium mb-2">
-                      {t("contact.phoneLabel", "Telefone")}
-                    </label>
-                    <input
-                      type="tel"
-                      id="telefone"
-                      name="telefone"
-                      className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-white text-gray-900 font-inter focus:outline-none focus:border-[#D32F2F] focus:ring-2 focus:ring-[#D32F2F]/20 transition-all"
-                      placeholder={t("contact.phonePlaceholder", "(00) 00000-0000")}
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="assunto" className="block text-gray-900 font-inter font-medium mb-2">
-                    {t("contact.subjectLabel", "Assunto")} *
-                  </label>
-                  <select
-                    id="assunto"
-                    name="assunto"
-                    required
-                    className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-white text-gray-900 font-inter focus:outline-none focus:border-[#D32F2F] focus:ring-2 focus:ring-[#D32F2F]/20 transition-all"
-                  >
-                    <option value="">{t("contact.subjectPlaceholder", "Selecione um assunto")}</option>
-                    <option value="orcamento">{t("contact.subjectQuote", "Orçamento")}</option>
-                    <option value="catalogo">{t("contact.subjectCatalog", "Catálogo")}</option>
-                    <option value="representante">{t("contact.subjectRep", "Representante")}</option>
-                    <option value="suporte">{t("contact.subjectSupport", "Suporte Técnico")}</option>
-                    <option value="outro">{t("contact.subjectOther", "Outro")}</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="mensagem" className="block text-gray-900 font-inter font-medium mb-2">
-                    {t("contact.messageLabel", "Mensagem")} *
-                  </label>
-                  <textarea
-                    id="mensagem"
-                    name="mensagem"
-                    required
-                    rows={5}
-                    className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-white text-gray-900 font-inter focus:outline-none focus:border-[#D32F2F] focus:ring-2 focus:ring-[#D32F2F]/20 transition-all resize-none"
-                    placeholder={t("contact.messagePlaceholder", "Digite sua mensagem...")}
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full md:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#D32F2F] to-[#9B0000] text-white font-montserrat font-bold text-lg px-10 py-4 rounded-full hover:scale-105 hover:shadow-[0_10px_40px_rgba(211,47,47,0.3)] transition-all duration-300"
-                >
-                  <Send size={20} />
-                  {t("contact.sendBtn", "Enviar Mensagem")}
-                </button>
-              </form>
-            </div>
-
-            {/* Map & Info */}
+            {/* Map & Info - Primeiro */}
             <div className="lg:w-1/2">
               <span className="inline-block text-[#D32F2F] font-montserrat font-bold text-sm tracking-widest uppercase mb-4">
                 {t("contact.locationLabel", "Nossa Localização")}
               </span>
               <h2 className="text-gray-900 font-montserrat font-bold text-3xl md:text-4xl mb-8">
-                {t("contact.infoTitle", "Onde Estamos")}
+                {t("contact.infoTitle", "Informações de contato")}
               </h2>
 
               {/* Map Placeholder */}
@@ -291,6 +175,122 @@ const Contato = () => {
                   </a>
                 </div>
               </div>
+            </div>
+
+            {/* Form - Segundo */}
+            <div className="lg:w-1/2">
+              <span className="inline-block text-[#D32F2F] font-montserrat font-bold text-sm tracking-widest uppercase mb-4">
+                {t("contact.formLabel", "Envie sua mensagem")}
+              </span>
+              <h2 className="text-gray-900 font-montserrat font-bold text-3xl md:text-4xl mb-8">
+                {t("contact.formTitle", "Envie sua mensagem")}
+              </h2>
+
+              {/* Success Message */}
+              {showSuccess && (
+                <div className="mb-8 p-6 bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-2xl flex items-center gap-4 animate-fade-in">
+                  <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                    <CheckCircle className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-green-800 font-montserrat font-bold text-lg">{t("contact.successTitle", "Mensagem Enviada!")}</h3>
+                    <p className="text-green-700 font-inter">{t("contact.successDesc", "Retornaremos em breve.")}</p>
+                  </div>
+                </div>
+              )}
+
+              {/* FormSubmit Form */}
+              <form action="https://formsubmit.co/metalurgicabrilho@gmail.com" method="POST" className="space-y-6">
+                {/* Hidden FormSubmit Fields */}
+                <input type="hidden" name="_subject" value="Nova mensagem do site Metalúrgica Brilho!" />
+                <input type="hidden" name="_next" value={`${window.location.origin}/contato?success=true`} />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="text" name="_honey" style={{ display: "none" }} />
+                <input type="hidden" name="_template" value="table" />
+
+                <div>
+                  <label htmlFor="nome" className="block text-gray-900 font-inter font-medium mb-2">
+                    {t("contact.nameLabel", "Nome completo")} *
+                  </label>
+                  <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    required
+                    className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-white text-gray-900 font-inter focus:outline-none focus:border-[#D32F2F] focus:ring-2 focus:ring-[#D32F2F]/20 transition-all"
+                    placeholder={t("contact.namePlaceholder", "Seu nome")}
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="email" className="block text-gray-900 font-inter font-medium mb-2">
+                      {t("contact.emailLabel", "E-mail")} *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-white text-gray-900 font-inter focus:outline-none focus:border-[#D32F2F] focus:ring-2 focus:ring-[#D32F2F]/20 transition-all"
+                      placeholder={t("contact.emailPlaceholder", "seu@email.com")}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="telefone" className="block text-gray-900 font-inter font-medium mb-2">
+                      {t("contact.phoneLabel", "Telefone")}
+                    </label>
+                    <input
+                      type="tel"
+                      id="telefone"
+                      name="telefone"
+                      className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-white text-gray-900 font-inter focus:outline-none focus:border-[#D32F2F] focus:ring-2 focus:ring-[#D32F2F]/20 transition-all"
+                      placeholder={t("contact.phonePlaceholder", "(11) 99999-9999")}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="assunto" className="block text-gray-900 font-inter font-medium mb-2">
+                    {t("contact.subjectLabel", "Assunto")} *
+                  </label>
+                  <select
+                    id="assunto"
+                    name="assunto"
+                    required
+                    className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-white text-gray-900 font-inter focus:outline-none focus:border-[#D32F2F] focus:ring-2 focus:ring-[#D32F2F]/20 transition-all"
+                  >
+                    <option value="">{t("contact.subjectPlaceholder", "Selecione um assunto")}</option>
+                    <option value="orcamento">{t("contact.subjectQuote", "Orçamento")}</option>
+                    <option value="catalogo">{t("contact.subjectCatalog", "Catálogo")}</option>
+                    <option value="representante">{t("contact.subjectRep", "Representante")}</option>
+                    <option value="suporte">{t("contact.subjectSupport", "Suporte Técnico")}</option>
+                    <option value="outro">{t("contact.subjectOther", "Outro")}</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="mensagem" className="block text-gray-900 font-inter font-medium mb-2">
+                    {t("contact.messageLabel", "Mensagem")} *
+                  </label>
+                  <textarea
+                    id="mensagem"
+                    name="mensagem"
+                    required
+                    rows={5}
+                    className="w-full px-5 py-4 rounded-xl border border-gray-200 bg-white text-gray-900 font-inter focus:outline-none focus:border-[#D32F2F] focus:ring-2 focus:ring-[#D32F2F]/20 transition-all resize-none"
+                    placeholder={t("contact.messagePlaceholder", "Digite sua mensagem...")}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full md:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-[#D32F2F] to-[#9B0000] text-white font-montserrat font-bold text-lg px-10 py-4 rounded-full hover:scale-105 hover:shadow-[0_10px_40px_rgba(211,47,47,0.3)] transition-all duration-300"
+                >
+                  <Send size={20} />
+                  {t("contact.sendBtn", "Enviar Mensagem")}
+                </button>
+              </form>
             </div>
           </div>
         </div>
