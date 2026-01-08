@@ -19,6 +19,18 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import ParticleBackground from "@/components/products/ParticleBackground";
 
+// Import product images
+import PM07 from "@/assets/products/PM07_AZUL.webp";
+import PM42 from "@/assets/products/PM42_AZUL.jpg";
+import PM57 from "@/assets/products/PM57_AZUL.webp";
+import PM718 from "@/assets/products/PM718_AZUL.webp";
+import PM720 from "@/assets/products/PM720_AZUL.webp";
+import PM720L from "@/assets/products/PM720L_AZUL.webp";
+import PM744 from "@/assets/products/PM744_AZUL.webp";
+import PM829 from "@/assets/products/PM829_AZUL.webp";
+import PM838 from "@/assets/products/PM838_AZUL.webp";
+import PM859 from "@/assets/products/PM859_AZUL.webp";
+
 // Product data based on PDF catalog - exact specs
 const productData: Record<string, {
   products: Array<{
@@ -56,20 +68,16 @@ const productData: Record<string, {
       "Fabricação 100% nacional"
     ],
     products: [
-      { model: "Esférica", code: "BD-ESF-01", iso: "001", diameter: "1.0mm", grain: "Médio", activeLength: "1.0mm" },
-      { model: "Esférica", code: "BD-ESF-02", iso: "001", diameter: "1.5mm", grain: "Médio", activeLength: "1.5mm" },
-      { model: "Esférica", code: "BD-ESF-03", iso: "001", diameter: "2.0mm", grain: "Fino", activeLength: "2.0mm" },
-      { model: "Esférica", code: "BD-ESF-04", iso: "001", diameter: "2.5mm", grain: "Grosso", activeLength: "2.5mm" },
-      { model: "Roda", code: "BD-ROD-01", iso: "010", diameter: "3.0mm", grain: "Grosso", activeLength: "1.5mm" },
-      { model: "Roda", code: "BD-ROD-02", iso: "010", diameter: "4.0mm", grain: "Médio", activeLength: "2.0mm" },
-      { model: "Cônica", code: "BD-CON-01", iso: "012", diameter: "2.5mm", grain: "Fino", activeLength: "6.0mm" },
-      { model: "Cônica", code: "BD-CON-02", iso: "012", diameter: "3.5mm", grain: "Extra Fino", activeLength: "8.0mm" },
-      { model: "Chama", code: "BD-CHA-01", iso: "014", diameter: "2.0mm", grain: "Médio", activeLength: "5.0mm" },
-      { model: "Chama", code: "BD-CHA-02", iso: "014", diameter: "2.5mm", grain: "Grosso", activeLength: "6.0mm" },
-      { model: "Cilíndrica", code: "BD-CIL-01", iso: "016", diameter: "3.0mm", grain: "Grosso", activeLength: "7.0mm" },
-      { model: "Cilíndrica", code: "BD-CIL-02", iso: "016", diameter: "2.5mm", grain: "Médio", activeLength: "6.0mm" },
-      { model: "Torpedo", code: "BD-TOR-01", iso: "018", diameter: "4.0mm", grain: "Médio", activeLength: "10.0mm" },
-      { model: "Torpedo", code: "BD-TOR-02", iso: "018", diameter: "3.5mm", grain: "Fino", activeLength: "8.0mm" },
+      { model: "Esférica", code: "PM-07", iso: "001", diameter: "1.0mm", grain: "Médio", activeLength: "1.0mm", image: PM07 },
+      { model: "Roda Invertida", code: "PM-42", iso: "010", diameter: "3.0mm", grain: "Médio", activeLength: "1.5mm", image: PM42 },
+      { model: "Cilíndrica", code: "PM-57", iso: "016", diameter: "2.0mm", grain: "Médio", activeLength: "4.0mm", image: PM57 },
+      { model: "Cônica", code: "PM-718", iso: "012", diameter: "1.4mm", grain: "Médio", activeLength: "8.0mm", image: PM718 },
+      { model: "Cônica", code: "PM-720", iso: "012", diameter: "2.5mm", grain: "Médio", activeLength: "6.0mm", image: PM720 },
+      { model: "Cônica Longa", code: "PM-720L", iso: "012", diameter: "2.5mm", grain: "Médio", activeLength: "10.0mm", image: PM720L },
+      { model: "Chama", code: "PM-744", iso: "014", diameter: "2.0mm", grain: "Médio", activeLength: "5.0mm", image: PM744 },
+      { model: "Ogiva", code: "PM-829", iso: "018", diameter: "1.8mm", grain: "Médio", activeLength: "3.0mm", image: PM829 },
+      { model: "Chama", code: "PM-838", iso: "014", diameter: "2.5mm", grain: "Médio", activeLength: "6.0mm", image: PM838 },
+      { model: "Agulha", code: "PM-859", iso: "019", diameter: "1.6mm", grain: "Médio", activeLength: "8.0mm", image: PM859 },
     ]
   },
   "fresas-tungstenio": {
@@ -585,20 +593,28 @@ const ProductCategory = () => {
                   style={{ height: '500px' }}
                 >
                   {/* Product Visual - 350x250px with hover zoom */}
-                  <div className="relative h-[250px] flex items-center justify-center bg-gradient-to-b from-gray-100 to-white overflow-hidden group">
-                    {/* 3D Product Representation with spin on hover */}
-                    <div className="relative w-28 h-28 rounded-full flex items-center justify-center group-hover:animate-spin-slow transition-all"
-                      style={{
-                        background: "linear-gradient(135deg, #9B0000, #720000, #9B0000)",
-                        boxShadow: "0 0 30px rgba(155, 0, 0, 0.3)",
-                      }}
-                    >
-                      <div className="absolute inset-2 rounded-full bg-white/20 backdrop-blur-sm" />
-                      <Sparkles className="w-12 h-12 text-white" />
-                    </div>
+                  <div className="relative h-[250px] flex items-center justify-center bg-gradient-to-b from-gray-50 to-white overflow-hidden group">
+                    {/* Product Image or Placeholder */}
+                    {product.image ? (
+                      <img 
+                        src={product.image} 
+                        alt={`${product.model} - ${product.code}`}
+                        className="h-full w-full object-contain p-4 group-hover:scale-110 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div className="relative w-28 h-28 rounded-full flex items-center justify-center group-hover:animate-spin-slow transition-all"
+                        style={{
+                          background: "linear-gradient(135deg, #9B0000, #720000, #9B0000)",
+                          boxShadow: "0 0 30px rgba(155, 0, 0, 0.3)",
+                        }}
+                      >
+                        <div className="absolute inset-2 rounded-full bg-white/20 backdrop-blur-sm" />
+                        <Sparkles className="w-12 h-12 text-white" />
+                      </div>
+                    )}
 
                     {/* Code Badge */}
-                    <span className="absolute top-4 left-4 px-4 py-2 rounded-lg text-sm font-bold bg-primary text-white">
+                    <span className="absolute top-4 left-4 px-4 py-2 rounded-lg text-sm font-bold bg-primary text-white shadow-lg">
                       {product.code}
                     </span>
 
