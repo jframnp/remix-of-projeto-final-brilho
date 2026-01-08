@@ -218,20 +218,6 @@ const Produtos = () => {
             </div>
           </div>
 
-          {/* #BORA BRILHAR - 36px italic yellow with glow animation infinite 2s */}
-          <p 
-            className="font-montserrat mb-8 animate-fade-in stagger-4"
-            style={{
-              fontSize: '36px',
-              fontStyle: 'italic',
-              color: '#FFEB3B',
-              animation: 'glow 2s ease-in-out infinite',
-              textShadow: '0 0 10px #FFEB3B, 0 0 20px #FFEB3B, 0 0 30px #FFEB3B'
-            }}
-          >
-            #BORA BRILHAR
-          </p>
-
           {/* CTA Download Button */}
           <a
             href="/catalogo-brilho.pdf"

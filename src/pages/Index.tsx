@@ -66,8 +66,8 @@ const Index = () => {
             {t("home.welcomeSubtitle", "Descubra nossa linha de produtos de alta qualidade para podologia, odontologia e mais.")}
           </p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 animate-fade-in" style={{ animationDelay: "0.4s" }}>
+          {/* CTA Button */}
+          <div className="animate-fade-in" style={{ animationDelay: "0.4s" }}>
             <Link
               to={getLocalizedPath("/produtos")}
               className="inline-flex items-center gap-3 bg-gradient-to-r from-[#D32F2F] to-[#9B0000] text-white font-montserrat font-bold text-lg px-8 py-4 rounded-full hover:scale-105 hover:shadow-[0_10px_40px_rgba(211,47,47,0.4)] transition-all duration-300"
@@ -76,15 +76,6 @@ const Index = () => {
               {t("home.ctaProducts", "Ver Produtos")}
               <ChevronRight className="w-5 h-5" />
             </Link>
-            <a
-              href="/catalogo-brilho.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md text-white font-montserrat font-bold text-lg px-8 py-4 rounded-full border border-white/20 hover:bg-white/20 hover:scale-105 transition-all duration-300"
-            >
-              <Download className="w-5 h-5" />
-              {t("home.downloadBtn", "Baixar Catálogo")}
-            </a>
           </div>
 
           {/* Scroll Indicator */}
@@ -268,17 +259,6 @@ const Index = () => {
                 <Download size={24} />
                 {t("home.downloadBtn", "Baixar Catálogo")}
               </a>
-              
-              {/* #BORA BRILHAR */}
-              <p 
-                className="mt-8 font-montserrat font-bold text-2xl md:text-3xl italic"
-                style={{
-                  color: '#FFEB3B',
-                  textShadow: '0 0 20px rgba(255,235,59,0.5), 0 0 40px rgba(255,235,59,0.3)'
-                }}
-              >
-                #BORA BRILHAR ✨
-              </p>
             </div>
             
             <div className="lg:w-1/2">
