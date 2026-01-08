@@ -80,10 +80,7 @@ const Header = () => {
                   stroke="#FFFFFF"
                   strokeWidth="1"
                 />
-                <polygon
-                  points="30,8 50,20 50,44 30,56 10,44 10,20"
-                  fill="url(#innerRedGradient)"
-                />
+                <polygon points="30,8 50,20 50,44 30,56 10,44 10,20" fill="url(#innerRedGradient)" />
               </svg>
             </div>
             <span className="text-white font-montserrat font-bold text-sm md:text-xl tracking-wide drop-shadow-[0_2px_2px_rgba(0,0,0,0.3)]">
@@ -110,11 +107,7 @@ const Header = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-white p-2"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Menu"
-          >
+          <button className="md:hidden text-white p-2" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Menu">
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
@@ -125,7 +118,7 @@ const Header = () => {
         <div className="container mx-auto h-full px-4 md:px-[5%] flex items-center justify-between">
           {/* Centered Navigation */}
           <nav className="flex-1 flex items-center justify-center gap-[40px]">
-            {mainMenuItems.map((item) => (
+            {mainMenuItems.map((item) =>
               item.hasDropdown ? (
                 <div key={item.path} ref={dropdownRef} className="relative">
                   <button
@@ -137,7 +130,7 @@ const Header = () => {
                     {item.label}
                     <ChevronDown className={`w-4 h-4 transition-transform ${isProductsOpen ? "rotate-180" : ""}`} />
                   </button>
-                  
+
                   {isProductsOpen && (
                     <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-white rounded-lg shadow-2xl py-2 z-50 animate-fade-in">
                       <Link
@@ -170,11 +163,11 @@ const Header = () => {
                 >
                   {item.label}
                 </Link>
-              )
-            ))}
+              ),
+            )}
             {/* External Brilho-Nails link */}
             <a
-              href="https://brilho-nails.com"
+              href="https://brilhonails.com.br/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white font-inter text-lg font-medium transition-all duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[3px] after:bg-[#FF6B6B] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
@@ -186,20 +179,23 @@ const Header = () => {
           {/* Flags - Right side: BR | ES | US */}
           <div className="flex items-center gap-[10px]">
             {/* Brazil - Portuguese */}
-            <button 
+            <button
               onClick={() => changeLanguage("pt")}
               className={`w-6 h-[18px] rounded-sm overflow-hidden transition-all hover:scale-110 ${
                 currentLang === "pt" ? "opacity-100 ring-2 ring-white" : "opacity-60 hover:opacity-100"
-              }`} 
+              }`}
               aria-label="Português"
             >
               <div className="w-full h-full bg-[#009C3B] flex items-center justify-center relative">
-                <div className="w-4 h-3 bg-[#FFDF00] rotate-45 absolute" style={{ clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" }}></div>
+                <div
+                  className="w-4 h-3 bg-[#FFDF00] rotate-45 absolute"
+                  style={{ clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" }}
+                ></div>
                 <div className="w-2 h-2 rounded-full bg-[#002776] absolute"></div>
               </div>
             </button>
             {/* Spain - Spanish */}
-            <button 
+            <button
               onClick={() => changeLanguage("es")}
               className={`w-6 h-[18px] rounded-sm overflow-hidden transition-all hover:scale-110 ${
                 currentLang === "es" ? "opacity-100 ring-2 ring-white" : "opacity-60 hover:opacity-100"
@@ -213,7 +209,7 @@ const Header = () => {
               </div>
             </button>
             {/* USA - English */}
-            <button 
+            <button
               onClick={() => changeLanguage("en")}
               className={`w-6 h-[18px] rounded-sm overflow-hidden transition-all hover:scale-110 ${
                 currentLang === "en" ? "opacity-100 ring-2 ring-white" : "opacity-60 hover:opacity-100"
@@ -236,7 +232,7 @@ const Header = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-[#720000] border-t border-white/20 animate-fade-in">
           <nav className="container mx-auto px-4 py-4 flex flex-col gap-4">
-            {mainMenuItems.map((item) => (
+            {mainMenuItems.map((item) =>
               item.hasDropdown ? (
                 <div key={item.path}>
                   <button
@@ -250,7 +246,10 @@ const Header = () => {
                     <div className="pl-4 mt-2 space-y-2">
                       <Link
                         to={getLocalizedPath("/produtos")}
-                        onClick={() => { setIsMenuOpen(false); setIsProductsOpen(false); }}
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          setIsProductsOpen(false);
+                        }}
                         className="block text-white/90 font-inter text-sm py-1"
                       >
                         {t("products.selectCategory", "Ver Todos")}
@@ -259,7 +258,10 @@ const Header = () => {
                         <Link
                           key={sub.path}
                           to={getLocalizedPath(sub.path)}
-                          onClick={() => { setIsMenuOpen(false); setIsProductsOpen(false); }}
+                          onClick={() => {
+                            setIsMenuOpen(false);
+                            setIsProductsOpen(false);
+                          }}
                           className="block text-white/80 font-inter text-sm py-1"
                         >
                           {sub.label}
@@ -279,8 +281,8 @@ const Header = () => {
                 >
                   {item.label}
                 </Link>
-              )
-            ))}
+              ),
+            )}
             <a
               href="https://brilho-nails.com"
               target="_blank"
@@ -305,20 +307,29 @@ const Header = () => {
             </a>
             <div className="flex items-center gap-3 py-2">
               {/* Brazil */}
-              <button 
-                onClick={() => { changeLanguage("pt"); setIsMenuOpen(false); }}
+              <button
+                onClick={() => {
+                  changeLanguage("pt");
+                  setIsMenuOpen(false);
+                }}
                 className={`w-8 h-5 rounded-sm overflow-hidden transition-all ${
                   currentLang === "pt" ? "opacity-100 ring-2 ring-white" : "opacity-60"
                 }`}
               >
                 <div className="w-full h-full bg-[#009C3B] flex items-center justify-center relative">
-                  <div className="w-5 h-3 bg-[#FFDF00] rotate-45 absolute" style={{ clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" }}></div>
+                  <div
+                    className="w-5 h-3 bg-[#FFDF00] rotate-45 absolute"
+                    style={{ clipPath: "polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)" }}
+                  ></div>
                   <div className="w-2 h-2 rounded-full bg-[#002776] absolute"></div>
                 </div>
               </button>
               {/* Spain */}
-              <button 
-                onClick={() => { changeLanguage("es"); setIsMenuOpen(false); }}
+              <button
+                onClick={() => {
+                  changeLanguage("es");
+                  setIsMenuOpen(false);
+                }}
                 className={`w-8 h-5 rounded-sm overflow-hidden transition-all ${
                   currentLang === "es" ? "opacity-100 ring-2 ring-white" : "opacity-60"
                 }`}
@@ -330,8 +341,11 @@ const Header = () => {
                 </div>
               </button>
               {/* USA */}
-              <button 
-                onClick={() => { changeLanguage("en"); setIsMenuOpen(false); }}
+              <button
+                onClick={() => {
+                  changeLanguage("en");
+                  setIsMenuOpen(false);
+                }}
                 className={`w-8 h-5 rounded-sm overflow-hidden transition-all ${
                   currentLang === "en" ? "opacity-100 ring-2 ring-white" : "opacity-60"
                 }`}
