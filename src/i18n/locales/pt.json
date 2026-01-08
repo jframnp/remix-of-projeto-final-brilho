@@ -105,7 +105,14 @@
       "polishers": "Polidoras",
       "brushes": "Escovas de Limpeza",
       "fiberMandril": "Fibras / Enucleadora / Mandril",
-      "supportSharpening": "Apoio / Afiação"
+      "supportSharpening": "Apoio / Afiação",
+      "goldLine": "Linha Gold"
+    },
+    "goldLine": {
+      "title": "LINHA GOLD",
+      "subtitle": "Gold Line Premium",
+      "description": "Linha Gold Premium - Acabamento dourado exclusivo para Nail Designers. Qualidade superior com diamantes industriais de primeira linha.",
+      "shortDesc": "Acabamento dourado exclusivo para Nail Designers"
     },
     "lixas": {
       "title": "LIXAS",

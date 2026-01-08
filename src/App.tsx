@@ -23,6 +23,7 @@ const productCategories = [
   "escovas-limpeza",
   "fibras-enucleadora-mandril",
   "apoio-lixas-afiacao",
+  "linha-gold", // Added dedicated Gold Line page
 ];
 
 const App = () => (
