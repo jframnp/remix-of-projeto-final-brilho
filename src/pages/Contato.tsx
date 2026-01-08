@@ -1,43 +1,26 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import Layout from "@/components/Layout";
-import { Phone, Mail, MapPin, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Send, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "react-i18next";
 
 const Contato = () => {
   const { toast } = useToast();
   const { t } = useTranslation();
-  const [formData, setFormData] = useState({
-    nome: "",
-    email: "",
-    telefone: "",
-    assunto: "",
-    mensagem: "",
-  });
+  const [searchParams] = useSearchParams();
+  const [showSuccess, setShowSuccess] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: t("contact.successTitle"),
-      description: t("contact.successDesc"),
-    });
-    setFormData({
-      nome: "",
-      email: "",
-      telefone: "",
-      assunto: "",
-      mensagem: "",
-    });
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  // Check for success param from FormSubmit redirect
+  useEffect(() => {
+    if (searchParams.get("success") === "true") {
+      setShowSuccess(true);
+      toast({
+        title: t("contact.successTitle"),
+        description: t("contact.successDesc"),
+      });
+    }
+  }, [searchParams, toast, t]);
 
   return (
     <Layout>
@@ -62,7 +45,35 @@ const Contato = () => {
               <h2 className="text-brilho-red font-montserrat font-bold text-2xl mb-8">
                 {t("contact.formTitle")}
               </h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
+
+              {/* Success Message */}
+              {showSuccess && (
+                <div className="mb-8 p-6 bg-green-50 border border-green-200 rounded-lg flex items-center gap-4">
+                  <CheckCircle className="w-8 h-8 text-green-600 flex-shrink-0" />
+                  <div>
+                    <h3 className="text-green-800 font-montserrat font-bold text-lg">
+                      {t("contact.successTitle")}
+                    </h3>
+                    <p className="text-green-700 font-inter">
+                      {t("contact.successDesc")}
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* FormSubmit Form */}
+              <form 
+                action="https://formsubmit.co/metalurgicabrilho@gmail.com" 
+                method="POST"
+                className="space-y-6"
+              >
+                {/* Hidden FormSubmit Fields */}
+                <input type="hidden" name="_subject" value="Nova mensagem do site Metalúrgica Brilho!" />
+                <input type="hidden" name="_next" value={`${window.location.origin}/contato?success=true`} />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="text" name="_honey" style={{ display: 'none' }} />
+                <input type="hidden" name="_template" value="table" />
+
                 <div>
                   <label
                     htmlFor="nome"
@@ -75,8 +86,6 @@ const Contato = () => {
                     id="nome"
                     name="nome"
                     required
-                    value={formData.nome}
-                    onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground font-inter focus:outline-none focus:border-brilho-red-vivid focus:ring-2 focus:ring-brilho-red-vivid/20 transition-all"
                     placeholder={t("contact.namePlaceholder")}
                   />
@@ -95,8 +104,6 @@ const Contato = () => {
                       id="email"
                       name="email"
                       required
-                      value={formData.email}
-                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground font-inter focus:outline-none focus:border-brilho-red-vivid focus:ring-2 focus:ring-brilho-red-vivid/20 transition-all"
                       placeholder={t("contact.emailPlaceholder")}
                     />
@@ -112,8 +119,6 @@ const Contato = () => {
                       type="tel"
                       id="telefone"
                       name="telefone"
-                      value={formData.telefone}
-                      onChange={handleChange}
                       className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground font-inter focus:outline-none focus:border-brilho-red-vivid focus:ring-2 focus:ring-brilho-red-vivid/20 transition-all"
                       placeholder={t("contact.phonePlaceholder")}
                     />
@@ -131,8 +136,6 @@ const Contato = () => {
                     id="assunto"
                     name="assunto"
                     required
-                    value={formData.assunto}
-                    onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground font-inter focus:outline-none focus:border-brilho-red-vivid focus:ring-2 focus:ring-brilho-red-vivid/20 transition-all"
                   >
                     <option value="">{t("contact.subjectPlaceholder")}</option>
@@ -156,8 +159,6 @@ const Contato = () => {
                     name="mensagem"
                     required
                     rows={5}
-                    value={formData.mensagem}
-                    onChange={handleChange}
                     className="w-full px-4 py-3 rounded-lg border border-border bg-card text-foreground font-inter focus:outline-none focus:border-brilho-red-vivid focus:ring-2 focus:ring-brilho-red-vivid/20 transition-all resize-none"
                     placeholder={t("contact.messagePlaceholder")}
                   />
