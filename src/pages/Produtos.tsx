@@ -223,7 +223,8 @@ const Produtos = () => {
             <Download size={24} />
             {t("products.downloadCatalog", "Baixar Catálogo Completo")}
           </a>
-
+        </div>
+      </section>
 
       {/* Interactive Category Carousel - 400px slides */}
       <section className="bg-background section-padding-lg">
