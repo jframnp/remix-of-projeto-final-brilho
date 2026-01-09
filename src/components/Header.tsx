@@ -47,12 +47,13 @@ const Header = () => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        // Use setTimeout to allow link clicks to process first
-        setTimeout(() => setIsProductsOpen(false), 100);
+        // Use "click" (not "mousedown") so link navigation isn't interrupted
+        setIsProductsOpen(false);
       }
     };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
   // Close dropdown and menu when route changes
