@@ -79,7 +79,7 @@ const ProductCategoryHero = ({
           </div>
 
           {/* Right side - 3 burs horizontally arranged with animations */}
-          <div className="relative hidden lg:flex items-center justify-center h-[500px] gap-8">
+          <div className="relative hidden lg:flex items-center justify-center h-[500px] gap-2">
             {heroBurs.map((bur, index) => (
               <img
                 key={index}
