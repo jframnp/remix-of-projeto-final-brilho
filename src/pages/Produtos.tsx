@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Layout from "@/components/Layout";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -14,9 +14,6 @@ import {
   Brush,
   Wrench,
   ChevronRight,
-  ChevronLeft,
-  Filter,
-  X,
   QrCode,
 } from "lucide-react";
 import ParticleBackground from "@/components/products/ParticleBackground";
@@ -26,11 +23,7 @@ const Produtos = () => {
   const { t } = useTranslation();
   const { currentLang } = useLanguage();
   const [downloadCount, setDownloadCount] = useState(2847);
-  const [activeFilter, setActiveFilter] = useState<string | null>(null);
   const [qrModalOpen, setQrModalOpen] = useState(false);
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
 
   const getLocalizedPath = (path: string) => {
     if (currentLang === "en") return `/en${path}`;
@@ -119,49 +112,6 @@ const Produtos = () => {
     },
   ];
 
-  const filterOptions = {
-    usage: [
-      { value: "podologia", label: t("products.usage.podologia", "Podologia") },
-      { value: "nails", label: t("products.usage.nails", "Nails Design") },
-      { value: "odontologia", label: t("products.usage.odontologia", "Odontologia") },
-    ],
-    material: [
-      { value: "diamante", label: t("products.material.diamante", "Diamante") },
-      { value: "tungstenio", label: t("products.material.tungstenio", "Tungstênio") },
-      { value: "ceramica", label: t("products.material.ceramica", "Cerâmica") },
-    ],
-    grain: [
-      { value: "grosso", label: t("products.grains.grosso", "Grosso") },
-      { value: "medio", label: t("products.grains.medio", "Médio") },
-      { value: "fino", label: t("products.grains.fino", "Fino") },
-    ],
-  };
-
-  const checkScroll = () => {
-    if (carouselRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
-      setCanScrollLeft(scrollLeft > 0);
-      setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 10);
-    }
-  };
-
-  useEffect(() => {
-    checkScroll();
-    window.addEventListener("resize", checkScroll);
-    return () => window.removeEventListener("resize", checkScroll);
-  }, []);
-
-  const scroll = (direction: "left" | "right") => {
-    if (carouselRef.current) {
-      const scrollAmount = 350;
-      carouselRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth",
-      });
-      setTimeout(checkScroll, 400);
-    }
-  };
-
   return (
     <Layout>
       {/* Hero Section - Red gradient matching other pages */}
@@ -248,191 +198,158 @@ const Produtos = () => {
         </div>
       </section>
 
-      {/* Interactive Category Carousel - 400px slides */}
+      {/* Categories Section - Unified Grid Layout */}
       <section className="bg-background section-padding-lg">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-12">
-            <div>
-              <h2 className="text-foreground font-montserrat font-bold text-3xl md:text-4xl mb-2">
-                {t("products.shopByCategory", "Compre por Categoria")}
-              </h2>
-              <p className="text-muted-foreground font-inter text-lg">
-                {t("products.categoryDesc", "Selecione uma categoria para ver todos os produtos disponíveis")}
-              </p>
-            </div>
-
-            {/* Filters - Material-UI style dropdown */}
-            <div className="flex flex-wrap gap-3">
-              {Object.entries(filterOptions).map(([category, options]) => (
-                <div key={category} className="relative">
-                  <select
-                    className="filter-chip appearance-none pr-8 cursor-pointer"
-                    onChange={(e) => setActiveFilter(e.target.value || null)}
-                  >
-                    <option value="">{t(`products.filter.${category}`, category)}</option>
-                    {options.map((opt) => (
-                      <option key={opt.value} value={opt.value}>
-                        {opt.label}
-                      </option>
-                    ))}
-                  </select>
-                  <Filter className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
-                </div>
-              ))}
-              {activeFilter && (
-                <button
-                  onClick={() => setActiveFilter(null)}
-                  className="filter-chip flex items-center gap-2 text-primary"
-                >
-                  <X className="w-4 h-4" />
-                  {t("products.clearFilter", "Limpar")}
-                </button>
-              )}
-            </div>
+          <div className="text-center mb-12">
+            <h2 className="text-foreground font-montserrat font-bold text-3xl md:text-4xl mb-3">
+              {t("products.shopByCategory", "Selecione uma Categoria")}
+            </h2>
+            <p className="text-muted-foreground font-inter text-lg max-w-2xl mx-auto">
+              {t("products.categoryDesc", "Explore nossa linha completa de produtos profissionais")}
+            </p>
           </div>
 
-          {/* Carousel with 400px slides */}
-          <div className="relative">
-            {canScrollLeft && (
-              <button
-                onClick={() => scroll("left")}
-                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-14 h-14 bg-white rounded-full shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 -ml-7"
-              >
-                <ChevronLeft className="w-7 h-7" />
-              </button>
-            )}
-            {canScrollRight && (
-              <button
-                onClick={() => scroll("right")}
-                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-14 h-14 bg-white rounded-full shadow-lg flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300 -mr-7"
-              >
-                <ChevronRight className="w-7 h-7" />
-              </button>
-            )}
-
-            <div
-              ref={carouselRef}
-              onScroll={checkScroll}
-              className="flex gap-6 overflow-x-auto scrollbar-hide py-4 px-2"
-              style={{ scrollSnapType: "x mandatory" }}
+          {/* Bento Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Featured Large Cards - First Row */}
+            <Link
+              to={getLocalizedPath(categories[0].path)}
+              className="group lg:col-span-2 lg:row-span-2 animate-fade-in"
             >
-              {categories.map((cat, index) => (
-                <Link
-                  key={cat.key}
-                  to={getLocalizedPath(cat.path)}
-                  className="group flex-shrink-0"
-                  style={{
-                    scrollSnapAlign: "start",
-                    animationDelay: `${index * 0.1}s`,
-                  }}
-                >
-                  <div
-                    className={`relative carousel-slide h-[350px] bg-gradient-to-br ${cat.color} transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl overflow-hidden`}
-                  >
-                    {/* Glow Effect on Hover */}
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-white/20 rounded-full blur-3xl" />
-                    </div>
-
-                    {/* Badge */}
-                    {cat.badge && (
-                      <span
-                        className={`absolute top-4 right-4 z-10 px-4 py-1.5 rounded-full text-xs font-bold animate-pulse ${
-                          cat.badge === "BESTSELLER"
-                            ? "badge-bestseller"
-                            : cat.badge === "NOVO"
-                              ? "badge-novo"
-                              : "bg-primary text-white"
-                        }`}
-                      >
-                        {t(`products.badges.${cat.badge.toLowerCase()}`, cat.badge)}
-                      </span>
-                    )}
-
-                    {/* 3D Rotating Icon Container */}
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                      <div className="w-28 h-28 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white shadow-xl group-hover:animate-spin-slow transition-all duration-500">
-                        {cat.icon}
-                      </div>
-                    </div>
-
-                    {/* Content - Bottom */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
-                      <h3 className="text-white font-montserrat font-bold text-xl mb-2 group-hover:text-yellow-300 transition-colors">
-                        {t(`products.sections.${cat.key}`)}
-                      </h3>
-                      <p className="text-white/70 text-sm line-clamp-2 mb-4">
-                        {t(`products.${cat.key}.shortDesc`, "")}
-                      </p>
-
-                      {/* Discover Button */}
-                      <div className="flex items-center gap-2 text-white text-sm font-semibold opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                        <span>{t("products.discoverMore", "Descubra Mais")}</span>
-                        <ChevronRight className="w-5 h-5" />
-                      </div>
-                    </div>
+              <div className={`relative h-full min-h-[400px] rounded-3xl bg-gradient-to-br ${categories[0].color} overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-1`}>
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-white/20 rounded-full blur-3xl" />
+                </div>
+                <span className="absolute top-4 right-4 z-10 px-4 py-1.5 rounded-full text-xs font-bold badge-bestseller animate-pulse">
+                  BESTSELLER
+                </span>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                  <div className="w-32 h-32 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white shadow-xl group-hover:scale-110 transition-transform duration-500">
+                    {categories[0].icon}
                   </div>
-                </Link>
-              ))}
-            </div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
+                  <h3 className="text-white font-montserrat font-bold text-2xl md:text-3xl mb-2 group-hover:text-yellow-300 transition-colors">
+                    {t(`products.sections.${categories[0].key}`)}
+                  </h3>
+                  <p className="text-white/80 text-base mb-4">
+                    {t(`products.${categories[0].key}.shortDesc`, "Precisão e durabilidade para profissionais")}
+                  </p>
+                  <div className="flex items-center gap-2 text-white font-semibold">
+                    <span>{t("products.discoverMore", "Ver Produtos")}</span>
+                    <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </div>
+              </div>
+            </Link>
+
+            {/* Linha Gold - Premium */}
+            <Link
+              to={getLocalizedPath(categories[1].path)}
+              className="group animate-fade-in"
+              style={{ animationDelay: "0.1s" }}
+            >
+              <div className={`relative h-[190px] rounded-3xl bg-gradient-to-br ${categories[1].color} overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1`}>
+                <span className="absolute top-3 right-3 z-10 px-3 py-1 rounded-full text-xs font-bold bg-primary text-white">
+                  PREMIUM
+                </span>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                  <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
+                    {categories[1].icon}
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+                  <h3 className="text-white font-montserrat font-bold text-lg group-hover:text-yellow-300 transition-colors">
+                    {t(`products.sections.${categories[1].key}`)}
+                  </h3>
+                </div>
+              </div>
+            </Link>
+
+            {/* Fresas Tungstênio */}
+            <Link
+              to={getLocalizedPath(categories[2].path)}
+              className="group animate-fade-in"
+              style={{ animationDelay: "0.15s" }}
+            >
+              <div className={`relative h-[190px] rounded-3xl bg-gradient-to-br ${categories[2].color} overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1`}>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                  <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
+                    {categories[2].icon}
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+                  <h3 className="text-white font-montserrat font-bold text-lg group-hover:text-yellow-300 transition-colors">
+                    {t(`products.sections.${categories[2].key}`)}
+                  </h3>
+                </div>
+              </div>
+            </Link>
+
+            {/* Fresas Cerâmica */}
+            <Link
+              to={getLocalizedPath(categories[3].path)}
+              className="group animate-fade-in"
+              style={{ animationDelay: "0.2s" }}
+            >
+              <div className={`relative h-[190px] rounded-3xl bg-gradient-to-br ${categories[3].color} overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1`}>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                  <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
+                    {categories[3].icon}
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+                  <h3 className="text-white font-montserrat font-bold text-lg group-hover:text-yellow-300 transition-colors">
+                    {t(`products.sections.${categories[3].key}`)}
+                  </h3>
+                </div>
+              </div>
+            </Link>
+
+            {/* Lixas */}
+            <Link
+              to={getLocalizedPath(categories[4].path)}
+              className="group animate-fade-in"
+              style={{ animationDelay: "0.25s" }}
+            >
+              <div className={`relative h-[190px] rounded-3xl bg-gradient-to-br ${categories[4].color} overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1`}>
+                <span className="absolute top-3 right-3 z-10 px-3 py-1 rounded-full text-xs font-bold badge-novo">
+                  NOVO
+                </span>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                  <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white">
+                    {categories[4].icon}
+                  </div>
+                </div>
+                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+                  <h3 className="text-white font-montserrat font-bold text-lg group-hover:text-yellow-300 transition-colors">
+                    {t(`products.sections.${categories[4].key}`)}
+                  </h3>
+                </div>
+              </div>
+            </Link>
           </div>
-        </div>
-      </section>
 
-      {/* Category Grid - 4 columns desktop, 300x400px cards */}
-      <section className="bg-muted/30 section-padding-lg">
-        <div className="container mx-auto">
-          <h2 className="text-foreground font-montserrat font-bold text-3xl md:text-4xl mb-10 text-center">
-            {t("products.allCategories", "Todas as Categorias")}
-          </h2>
-
-          <div className="grid-products-4">
-            {categories.map((cat, index) => (
+          {/* Second Row - Remaining Categories */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-6">
+            {categories.slice(5).map((cat, index) => (
               <Link
                 key={cat.key}
                 to={getLocalizedPath(cat.path)}
                 className="group animate-fade-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                style={{ animationDelay: `${(index + 6) * 0.1}s` }}
               >
-                <div className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg transition-all duration-300 hover-lift">
-                  {/* Image Container - 300x200px with zoom on hover */}
-                  <div className="relative h-[200px] bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
-                    <div
-                      className={`absolute inset-0 bg-gradient-to-br ${cat.color} opacity-10 group-hover:opacity-20 transition-opacity`}
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-400">
-                        {cat.icon}
-                      </div>
+                <div className={`relative h-[160px] rounded-2xl bg-gradient-to-br ${cat.color} overflow-hidden shadow-md hover:shadow-lg transition-all duration-400 hover:-translate-y-1`}>
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white group-hover:scale-110 transition-transform">
+                      {cat.icon}
                     </div>
-                    {cat.badge && (
-                      <span
-                        className={`absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-bold ${
-                          cat.badge === "BESTSELLER" ? "badge-bestseller" : "badge-novo"
-                        }`}
-                      >
-                        {cat.badge}
-                      </span>
-                    )}
                   </div>
-
-                  {/* Content */}
-                  <div className="p-5">
-                    <h3
-                      className="font-montserrat font-bold text-xl text-foreground mb-2 group-hover:text-primary transition-colors"
-                      style={{ fontSize: "28px" }}
-                    >
+                  <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/70 to-transparent">
+                    <h3 className="text-white font-montserrat font-bold text-sm group-hover:text-yellow-300 transition-colors text-center">
                       {t(`products.sections.${cat.key}`)}
                     </h3>
-                    <p
-                      className="text-muted-foreground text-base leading-relaxed mb-4 line-clamp-2"
-                      style={{ fontSize: "16px", lineHeight: "1.6" }}
-                    >
-                      {t(`products.${cat.key}.teaser`, t(`products.${cat.key}.description`, "").substring(0, 100))}
-                    </p>
-                    <button className="btn-cta w-full bg-primary text-white hover:bg-primary/90">
-                      {t("products.discoverMore", "Descubra Mais")}
-                    </button>
                   </div>
                 </div>
               </Link>
