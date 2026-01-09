@@ -47,12 +47,19 @@ const Header = () => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsProductsOpen(false);
+        // Use setTimeout to allow link clicks to process first
+        setTimeout(() => setIsProductsOpen(false), 100);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  // Close dropdown and menu when route changes
+  useEffect(() => {
+    setIsProductsOpen(false);
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 shadow-lg">
