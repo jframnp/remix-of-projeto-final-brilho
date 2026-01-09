@@ -12,6 +12,7 @@ interface CategoryDiagramConfig {
   activeLength?: string;
   discDiameter?: string;
   grainColors?: { name: string; color: string; label: string }[];
+  cutTypes?: { name: string; color: string; label: string }[];
   modelPrefix?: string;
 }
 
@@ -36,10 +37,16 @@ const categoryDiagramConfigs: Record<string, CategoryDiagramConfig> = {
     shaftDiameter: "2,34 mm",
     totalLength: "44,5 mm",
     activeLength: "Variável",
-    grainColors: [
+    cutTypes: [
       { name: "Cruzado Grosso", color: "#1E3A8A", label: "Cruzado Grosso" },
-      { name: "Cruzado Médio", color: "#3B82F6", label: "Cruzado Médio" },
+      { name: "Cruzado Médio", color: "#DC2626", label: "Cruzado Médio" },
       { name: "Cruzado Fino", color: "#93C5FD", label: "Cruzado Fino" },
+    ],
+    grainColors: [
+      { name: "Preto", color: "#000000", label: "Preto/Black" },
+      { name: "Azul", color: "#2196F3", label: "Azul/Blue" },
+      { name: "Verde", color: "#4CAF50", label: "Verde/Green" },
+      { name: "Amarelo", color: "#FFEB3B", label: "Amarelo/Yellow" },
     ],
     modelPrefix: "FT",
   },
@@ -49,9 +56,15 @@ const categoryDiagramConfigs: Record<string, CategoryDiagramConfig> = {
     shaftDiameter: "2,34 mm",
     totalLength: "44,5 mm",
     activeLength: "Variável",
-    grainColors: [
+    cutTypes: [
       { name: "Cruzado Médio", color: "#F97316", label: "Cruzado Médio" },
       { name: "Cruzado Fino", color: "#FB923C", label: "Cruzado Fino" },
+    ],
+    grainColors: [
+      { name: "Preto", color: "#000000", label: "Preto/Black" },
+      { name: "Azul", color: "#2196F3", label: "Azul/Blue" },
+      { name: "Verde", color: "#4CAF50", label: "Verde/Green" },
+      { name: "Amarelo", color: "#FFEB3B", label: "Amarelo/Yellow" },
     ],
     modelPrefix: "FC",
   },
@@ -215,29 +228,54 @@ const CatalogSection = ({
         )}
       </div>
 
-      {/* Integrated Grain Legend - below the shaft diagram */}
-      {config.grainColors && config.grainColors.length > 0 && (
+      {/* Integrated Legend - below the shaft diagram */}
+      {((config.cutTypes && config.cutTypes.length > 0) || (config.grainColors && config.grainColors.length > 0)) && (
         <div className="mt-4 pt-4 border-t border-gray-200">
           <div className="flex items-start justify-between gap-8">
-            {/* Grain colors */}
-            <div>
-              <p className="font-semibold text-sm text-foreground mb-2">
-                {config.type === "polisher" ? "Cores/Colors" : "Grão/Grain"}
-              </p>
-              <div className="flex flex-wrap gap-x-4 gap-y-1">
-                {config.grainColors.map((grain) => (
-                  <div key={grain.name} className="flex items-center gap-1.5">
-                    <div 
-                      className="w-2.5 h-2.5 rounded-full flex-shrink-0"
-                      style={{ 
-                        backgroundColor: grain.color,
-                        border: grain.color === "#FFFFFF" || grain.color === "#FFEB3B" ? "1px solid #999" : "none"
-                      }}
-                    />
-                    <span className="text-xs text-muted-foreground">{grain.label}</span>
+            {/* Cut Types and/or Grain colors */}
+            <div className="flex flex-col gap-3">
+              {/* Cut Types (for tungsten and ceramic burs) */}
+              {config.cutTypes && config.cutTypes.length > 0 && (
+                <div>
+                  <p className="font-semibold text-sm text-foreground mb-2">
+                    Tipo de Corte/Cut Type
+                  </p>
+                  <div className="flex flex-wrap gap-x-4 gap-y-1">
+                    {config.cutTypes.map((cutType) => (
+                      <div key={cutType.name} className="flex items-center gap-1.5">
+                        <div 
+                          className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                          style={{ backgroundColor: cutType.color }}
+                        />
+                        <span className="text-xs text-muted-foreground">{cutType.label}</span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              )}
+
+              {/* Grain colors */}
+              {config.grainColors && config.grainColors.length > 0 && (
+                <div>
+                  <p className="font-semibold text-sm text-foreground mb-2">
+                    {config.type === "polisher" ? "Cores/Colors" : "Grão/Grain"}
+                  </p>
+                  <div className="flex flex-wrap gap-x-4 gap-y-1">
+                    {config.grainColors.map((grain) => (
+                      <div key={grain.name} className="flex items-center gap-1.5">
+                        <div 
+                          className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                          style={{ 
+                            backgroundColor: grain.color,
+                            border: grain.color === "#FFFFFF" || grain.color === "#FFEB3B" ? "1px solid #999" : "none"
+                          }}
+                        />
+                        <span className="text-xs text-muted-foreground">{grain.label}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Model prefix */}
