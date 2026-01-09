@@ -388,18 +388,14 @@ const ProductCategory = () => {
         isGold={isGold}
       />
 
-      {/* 2. Catalog Section - Like the PDF catalog style */}
+      {/* 2. Catalog Section - Like the PDF catalog style (unique per category) */}
       <CatalogSection
         categoryTitle={data.titlePt}
         categorySubtitle={data.titleEn}
         descriptionPt={data.description.pt}
         descriptionEn={data.description.en}
-        grainLegend={{
-          grosso: true,
-          medio: true,
-          fino: category === "brocas-diamantadas" || category === "linha-gold",
-        }}
-        modelNumber="721"
+        categorySlug={category}
+        isGold={isGold}
       />
 
       {/* 3. Grain Legend Section - Always visible for all product categories */}
