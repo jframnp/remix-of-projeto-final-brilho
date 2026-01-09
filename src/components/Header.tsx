@@ -147,7 +147,7 @@ const Header = () => {
             )}
             {/* External Brilho-Nails link */}
             <a
-              href="https://brilhonails.com.br/"
+              href="https://www.brilhonails.com.br"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white font-inter text-lg font-medium transition-all duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[3px] after:bg-[#FF6B6B] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
@@ -251,7 +251,7 @@ const Header = () => {
               ),
             )}
             <a
-              href="https://brilho-nails.com"
+              href="https://www.brilhonails.com.br"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white font-inter text-base font-medium py-2 border-b border-white/20 block"

@@ -50,7 +50,7 @@ const Footer = () => {
                 {t("footer.contact", "Contato")}
               </Link>
               <a
-                href="https://brilho-nails.com"
+                href="https://www.brilhonails.com.br"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-[#EEEEEE]/90 font-inter text-sm sm:text-base hover:text-[#EEEEEE] hover:translate-x-1 transition-all leading-relaxed"
