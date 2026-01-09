@@ -398,72 +398,74 @@ const ProductCategory = () => {
         isGold={isGold}
       />
 
-      {/* 3. Grain Legend Section - Always visible for all product categories */}
-      <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-12">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-center">
-            <div 
-              className="bg-white rounded-lg p-5 shadow-lg w-full max-w-[600px] lg:max-w-[800px]"
-              style={{ 
-                borderRadius: '8px',
-                boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
-                padding: '20px'
-              }}
-            >
-              <h3 className="font-montserrat font-bold text-lg text-foreground mb-4 flex items-center gap-2">
-                <div className="w-6 h-6 rounded-full bg-gradient-to-br from-gray-800 via-red-600 to-yellow-400" />
-                {t("products.grainLegend", "Legenda de Grãos")}
-              </h3>
-              
-              <p className="text-muted-foreground text-base mb-5" style={{ fontSize: '16px', color: '#424242' }}>
-                {t("products.clickToFilter", "Clique para filtrar os produtos por granulometria")}
-              </p>
-              
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-                {Object.entries(grainColorMap).map(([grain, colors]) => (
-                  <button
-                    key={grain}
-                    onClick={() => setActiveGrain(activeGrain === grain ? null : grain)}
-                    className={`
-                      flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 border
-                      ${activeGrain === grain 
-                        ? "ring-2 ring-primary ring-offset-2 scale-105 shadow-lg border-primary bg-primary/5" 
-                        : "border-gray-200 hover:border-gray-300 hover:scale-102 bg-white"
-                      }
-                    `}
-                    style={{ margin: '10px 0' }}
-                  >
-                    <div 
-                      className="w-5 h-5 rounded-full shadow-sm flex-shrink-0"
-                      style={{ 
-                        width: '20px',
-                        height: '20px',
-                        backgroundColor: colors.bg,
-                        border: colors.bg === "#FFFFFF" ? "2px solid #DDD" : "none"
-                      }} 
-                    />
-                    <span className="text-sm font-medium text-foreground" style={{ fontSize: '16px', color: '#424242' }}>
-                      {getGrainLabel(grain)}
-                    </span>
-                  </button>
-                ))}
-              </div>
+      {/* 3. Grain Legend Section - Only for categories with grain-based products */}
+      {["brocas-diamantadas", "fresas-tungstenio", "fresas-ceramica", "polidoras", "linha-gold"].includes(category) && (
+        <section className="bg-gradient-to-br from-gray-50 to-gray-100 py-12">
+          <div className="container mx-auto px-4">
+            <div className="flex justify-center">
+              <div 
+                className="bg-white rounded-lg p-5 shadow-lg w-full max-w-[600px] lg:max-w-[800px]"
+                style={{ 
+                  borderRadius: '8px',
+                  boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
+                  padding: '20px'
+                }}
+              >
+                <h3 className="font-montserrat font-bold text-lg text-foreground mb-4 flex items-center gap-2">
+                  <div className="w-6 h-6 rounded-full bg-gradient-to-br from-gray-800 via-red-600 to-yellow-400" />
+                  {t("products.grainLegend", "Legenda de Grãos")}
+                </h3>
+                
+                <p className="text-muted-foreground text-base mb-5" style={{ fontSize: '16px', color: '#424242' }}>
+                  {t("products.clickToFilter", "Clique para filtrar os produtos por granulometria")}
+                </p>
+                
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                  {Object.entries(grainColorMap).map(([grain, colors]) => (
+                    <button
+                      key={grain}
+                      onClick={() => setActiveGrain(activeGrain === grain ? null : grain)}
+                      className={`
+                        flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 border
+                        ${activeGrain === grain 
+                          ? "ring-2 ring-primary ring-offset-2 scale-105 shadow-lg border-primary bg-primary/5" 
+                          : "border-gray-200 hover:border-gray-300 hover:scale-102 bg-white"
+                        }
+                      `}
+                      style={{ margin: '10px 0' }}
+                    >
+                      <div 
+                        className="w-5 h-5 rounded-full shadow-sm flex-shrink-0"
+                        style={{ 
+                          width: '20px',
+                          height: '20px',
+                          backgroundColor: colors.bg,
+                          border: colors.bg === "#FFFFFF" ? "2px solid #DDD" : "none"
+                        }} 
+                      />
+                      <span className="text-sm font-medium text-foreground" style={{ fontSize: '16px', color: '#424242' }}>
+                        {getGrainLabel(grain)}
+                      </span>
+                    </button>
+                  ))}
+                </div>
 
-              {activeGrain && (
-                <button
-                  onClick={() => setActiveGrain(null)}
-                  className="mt-4 text-sm text-primary hover:underline flex items-center gap-1"
-                >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                  {t("products.clearFilter", "Limpar filtro")}
-                </button>
-              )}
+                {activeGrain && (
+                  <button
+                    onClick={() => setActiveGrain(null)}
+                    className="mt-4 text-sm text-primary hover:underline flex items-center gap-1"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                    {t("products.clearFilter", "Limpar filtro")}
+                  </button>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* 4. Products Grid Section - "Selecione o Tipo" */}
       <section className="bg-muted/30 section-padding-lg">
