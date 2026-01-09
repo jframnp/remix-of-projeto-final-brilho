@@ -78,21 +78,18 @@ const ProductCategoryHero = ({
             </p>
           </div>
 
-          {/* Right side - 3 burs diagonally arranged (Microdont style) */}
-          <div className="relative hidden lg:block h-[500px] w-full overflow-visible">
+          {/* Right side - 3 burs horizontally arranged with animations */}
+          <div className="relative hidden lg:flex items-center justify-center h-[500px] gap-8">
             {heroBurs.map((bur, index) => (
               <img
                 key={index}
                 src={bur.src}
                 alt={bur.alt}
-                className="absolute object-contain transition-all duration-500 hover:scale-105"
+                className="object-contain transition-all duration-500 hover:scale-110 hover:-translate-y-4"
                 style={{
-                  height: '420px',
-                  transform: 'rotate(-45deg)',
-                  filter: 'drop-shadow(0 15px 40px rgba(0,0,0,0.5))',
-                  top: `${index * 120 - 40}px`,
-                  right: `${index * 100 - 80}px`,
-                  zIndex: 3 - index,
+                  height: index === 1 ? '400px' : '350px',
+                  filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))',
+                  animation: `float 3s ease-in-out ${index * 0.3}s infinite`,
                 }}
               />
             ))}
