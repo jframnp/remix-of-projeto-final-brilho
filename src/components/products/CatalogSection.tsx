@@ -160,50 +160,96 @@ const CatalogSection = ({
 
   // Render shaft-based diagram (for burs, polishers, brushes)
   const renderShaftDiagram = () => (
-    <div className="relative w-full max-w-md">
-      {/* Total length indicator */}
-      <div className="flex items-center justify-end mb-2 text-xs text-muted-foreground">
-        <span className="w-16 border-t border-dashed border-gray-400"></span>
-        <span className="px-2">Comprimento total: {config.totalLength}</span>
-        <span className="w-8 border-t border-dashed border-gray-400"></span>
+    <div className="relative w-full max-w-lg">
+      {/* Total length indicator - above the shaft */}
+      <div className="flex items-center justify-center mb-3">
+        <span className="flex-1 border-t border-dashed border-gray-400"></span>
+        <span className="px-3 text-xs text-muted-foreground whitespace-nowrap">
+          Comprimento total: {config.totalLength}
+        </span>
+        <span className="flex-1 border-t border-dashed border-gray-400"></span>
       </div>
 
-      {/* Main shaft diagram */}
-      <div className="relative flex items-center">
-        {/* Shaft diameter label */}
-        <div className="absolute -left-6 top-1/2 -translate-y-1/2 text-xs text-muted-foreground whitespace-nowrap transform -rotate-90 origin-center">
-          Ø Haste: {config.shaftDiameter}
+      {/* Main shaft diagram with dimensions */}
+      <div className="relative flex items-center py-6">
+        {/* Shaft diameter label - left side, positioned outside the shaft */}
+        <div className="absolute -left-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
+          <div className="flex flex-col items-center">
+            <div className="h-4 border-l border-gray-400"></div>
+            <div className="h-2 border-l border-gray-400 border-t border-b w-0"></div>
+            <div className="h-4 border-l border-gray-400"></div>
+          </div>
+          <span className="text-[10px] text-muted-foreground whitespace-nowrap">
+            Ø {config.shaftDiameter}
+          </span>
         </div>
 
         {/* Shaft body */}
-        <div className="flex items-center w-full ml-4">
-          {/* Shaft */}
-          <div className="flex-1 h-4 bg-gradient-to-b from-gray-300 via-gray-400 to-gray-500 rounded-l relative">
-            {/* Colored band (grain indicator) */}
+        <div className="flex items-center w-full ml-16 mr-20">
+          {/* Shaft - main body */}
+          <div className="flex-1 h-5 bg-gradient-to-b from-gray-300 via-gray-400 to-gray-500 rounded-l relative">
+            {/* Colored band (grain indicator) on shaft */}
             <div 
-              className="absolute right-4 top-0 bottom-0 w-6 rounded-sm" 
+              className="absolute right-8 top-0 bottom-0 w-3 rounded-sm" 
               style={{ backgroundColor: isGold ? "#FFD700" : "#DC2626" }}
             />
           </div>
           
-          {/* Tip - varies by category */}
-          <div className="w-12 h-6 bg-gradient-to-r from-gray-400 to-gray-300 rounded-r relative flex items-center justify-end pr-1">
+          {/* Active tip area */}
+          <div className="w-16 h-7 bg-gradient-to-r from-gray-400 to-gray-300 rounded-r relative flex items-center justify-center">
+            {/* Tip indicator */}
             <div 
-              className="w-4 h-4 rounded-full" 
-              style={{ backgroundColor: isGold ? "#FFD700" : "#6B7280" }}
+              className="w-5 h-5 rounded-full" 
+              style={{ backgroundColor: isGold ? "#FFD700" : "#2196F3" }}
             />
           </div>
         </div>
 
-        {/* Active area length label */}
+        {/* Active area length label - right side */}
         {config.activeLength && (
-          <div className="absolute -right-20 top-1/2 -translate-y-1/2 text-xs text-muted-foreground whitespace-nowrap text-right">
-            L= {config.activeLength}
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 text-right">
+            <span className="text-xs text-muted-foreground">L= {config.activeLength}</span>
             <br />
-            <span className="text-[10px]">Comp.<br />Área ativa</span>
+            <span className="text-[10px] text-muted-foreground">Comp.<br />Área ativa</span>
           </div>
         )}
       </div>
+
+      {/* Integrated Grain Legend - below the shaft diagram */}
+      {config.grainColors && config.grainColors.length > 0 && (
+        <div className="mt-4 pt-4 border-t border-gray-200">
+          <div className="flex items-start justify-between gap-8">
+            {/* Grain colors */}
+            <div>
+              <p className="font-semibold text-sm text-foreground mb-2">
+                {config.type === "polisher" ? "Cores/Colors" : "Grão/Grain"}
+              </p>
+              <div className="flex flex-wrap gap-x-4 gap-y-1">
+                {config.grainColors.map((grain) => (
+                  <div key={grain.name} className="flex items-center gap-1.5">
+                    <div 
+                      className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                      style={{ 
+                        backgroundColor: grain.color,
+                        border: grain.color === "#FFFFFF" || grain.color === "#FFEB3B" ? "1px solid #999" : "none"
+                      }}
+                    />
+                    <span className="text-xs text-muted-foreground">{grain.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Model prefix */}
+            <div className="text-right flex-shrink-0">
+              <p className={`text-2xl font-bold ${isGold ? "text-yellow-500" : "text-foreground"}`}>
+                {config.modelPrefix}
+              </p>
+              <p className="text-xs text-muted-foreground">Modelo/Model</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 
@@ -406,39 +452,41 @@ const CatalogSection = ({
             {/* Diagram */}
             {renderDiagram()}
 
-            {/* Grain/Color legend and Model prefix */}
-            <div className="flex justify-between items-end mt-8 w-full max-w-md">
-              {/* Grain/Color legend */}
-              {config.grainColors && config.grainColors.length > 0 && (
-                <div>
-                  <p className="font-semibold text-foreground mb-2">
-                    {config.type === "polisher" ? "Cores/Colors" : "Grão/Grain"}
-                  </p>
-                  <div className="flex flex-col gap-1">
-                    {config.grainColors.slice(0, 4).map((grain) => (
-                      <div key={grain.name} className="flex items-center gap-2">
-                        <div 
-                          className="w-3 h-3 rounded-full"
-                          style={{ 
-                            backgroundColor: grain.color,
-                            border: grain.color === "#FFFFFF" || grain.color === "#FFEB3B" ? "1px solid #999" : "none"
-                          }}
-                        />
-                        <span className="text-sm text-muted-foreground">{grain.label}</span>
-                      </div>
-                    ))}
+            {/* Model prefix - only show for non-shaft types (shaft types have it integrated) */}
+            {config.type !== "shaft" && (
+              <div className="flex justify-between items-end mt-8 w-full max-w-md">
+                {/* Grain/Color legend */}
+                {config.grainColors && config.grainColors.length > 0 && (
+                  <div>
+                    <p className="font-semibold text-foreground mb-2">
+                      {config.type === "polisher" ? "Cores/Colors" : "Grão/Grain"}
+                    </p>
+                    <div className="flex flex-col gap-1">
+                      {config.grainColors.slice(0, 4).map((grain) => (
+                        <div key={grain.name} className="flex items-center gap-2">
+                          <div 
+                            className="w-3 h-3 rounded-full"
+                            style={{ 
+                              backgroundColor: grain.color,
+                              border: grain.color === "#FFFFFF" || grain.color === "#FFEB3B" ? "1px solid #999" : "none"
+                            }}
+                          />
+                          <span className="text-sm text-muted-foreground">{grain.label}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
 
-              {/* Model prefix */}
-              <div className="text-right">
-                <p className={`text-3xl font-bold ${isGold ? "text-yellow-500" : "text-foreground"}`}>
-                  {config.modelPrefix}
-                </p>
-                <p className="text-sm text-muted-foreground">Modelo/Model</p>
+                {/* Model prefix */}
+                <div className="text-right">
+                  <p className={`text-3xl font-bold ${isGold ? "text-yellow-500" : "text-foreground"}`}>
+                    {config.modelPrefix}
+                  </p>
+                  <p className="text-sm text-muted-foreground">Modelo/Model</p>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>
