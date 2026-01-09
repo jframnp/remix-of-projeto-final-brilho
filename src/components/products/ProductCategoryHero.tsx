@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { ArrowLeft, Download, MessageCircle, Sparkles } from "lucide-react";
-import ParticleBackground from "./ParticleBackground";
+import { ArrowLeft, Sparkles } from "lucide-react";
+import PM718Hero from "@/assets/products/PM718_HERO.png";
 
 interface ProductCategoryHeroProps {
   category: string;
@@ -68,37 +68,16 @@ const ProductCategoryHero = ({
             </p>
           </div>
 
-          {/* Right side - Featured products (3 burs diagonally) */}
+          {/* Right side - Featured PM718 bur (transparent background) */}
           <div className="relative hidden lg:flex items-center justify-center h-[450px]">
-            {/* Product images arranged diagonally like reference */}
-            {featuredImages.slice(0, 3).map((image, index) => (
-              image && (
-                <div
-                  key={index}
-                  className="absolute transform transition-all duration-500 hover:scale-110"
-                  style={{
-                    transform: `rotate(-25deg) translateY(${(index - 1) * 100}px) translateX(${(index - 1) * 60}px)`,
-                    zIndex: 3 - index,
-                  }}
-                >
-                  <img
-                    src={image}
-                    alt={`Featured product ${index + 1}`}
-                    className="w-auto h-48 md:h-56 object-contain drop-shadow-2xl"
-                    style={{
-                      filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))',
-                    }}
-                  />
-                </div>
-              )
-            ))}
-            
-            {/* Fallback if no images - show placeholder burs */}
-            {featuredImages.filter(Boolean).length === 0 && (
-              <div className="flex items-center justify-center">
-                <div className="w-32 h-64 bg-gradient-to-b from-gray-400 to-gray-600 rounded-full opacity-50 transform rotate-45" />
-              </div>
-            )}
+            <img
+              src={PM718Hero}
+              alt="Broca PM-718 diamantada cônica"
+              className="h-[400px] w-auto object-contain drop-shadow-2xl animate-float-slow"
+              style={{
+                filter: 'drop-shadow(0 30px 60px rgba(0,0,0,0.6))',
+              }}
+            />
           </div>
         </div>
       </div>
