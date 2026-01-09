@@ -8,7 +8,7 @@ import logoImage from "@/assets/logo-metalurgicabrilho.png";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLElement>(null);
   const location = useLocation();
   const { t } = useTranslation();
   const { currentLang, changeLanguage } = useLanguage();
@@ -43,17 +43,17 @@ const Header = () => {
     return currentPath === path || currentPath.startsWith(path + "/");
   };
 
-  // Close dropdown when clicking outside
+  // Close menu/dropdown when clicking outside the header (works on desktop + mobile)
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        // Use "click" (not "mousedown") so link navigation isn't interrupted
+    const handlePointerDownOutside = (event: PointerEvent) => {
+      if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
         setIsProductsOpen(false);
+        setIsMenuOpen(false);
       }
     };
 
-    document.addEventListener("click", handleClickOutside);
-    return () => document.removeEventListener("click", handleClickOutside);
+    document.addEventListener("pointerdown", handlePointerDownOutside);
+    return () => document.removeEventListener("pointerdown", handlePointerDownOutside);
   }, []);
 
   // Close dropdown and menu when route changes
@@ -63,7 +63,7 @@ const Header = () => {
   }, [location.pathname]);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 shadow-lg">
+    <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 shadow-lg">
       {/* Top Bar - Logo + Contact */}
       <div className="bg-[#9B0000] h-[70px] md:h-[90px]">
         <div className="container mx-auto h-full px-4 md:px-[5%] flex items-center justify-between">
@@ -108,7 +108,7 @@ const Header = () => {
           <nav className="flex-1 flex items-center justify-center gap-[40px]">
             {mainMenuItems.map((item) =>
               item.hasDropdown ? (
-                <div key={item.path} ref={dropdownRef} className="relative">
+                <div key={item.path} className="relative">
                   <button
                     onClick={() => setIsProductsOpen(!isProductsOpen)}
                     className={`flex items-center gap-1 text-white font-inter text-lg font-medium transition-all duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[3px] after:bg-[#FF6B6B] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 ${
