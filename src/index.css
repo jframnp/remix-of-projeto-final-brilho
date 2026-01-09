@@ -151,6 +151,15 @@ html {
 /* KEYFRAMES - Exact Timings */
 /* ========================= */
 
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
 @keyframes fade-in {
   from {
     opacity: 0;
