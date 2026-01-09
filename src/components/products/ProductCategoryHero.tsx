@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ArrowLeft, Sparkles } from "lucide-react";
+
+// Import hero burs for diagonal display (like Microdont reference)
 import PM718Hero from "@/assets/products/PM718_HERO.png";
+import PM718Fino from "@/assets/products/PM718_FINO.png";
+import PM07 from "@/assets/products/PM07_AZUL.webp";
 
 interface ProductCategoryHeroProps {
   category: string;
@@ -21,6 +25,13 @@ const ProductCategoryHero = ({
   isGold = false,
 }: ProductCategoryHeroProps) => {
   const { t } = useTranslation();
+
+  // 3 burs for diagonal display (Microdont style)
+  const heroBurs = [
+    { src: PM07, alt: "Broca PM-07 esférica" },
+    { src: PM718Hero, alt: "Broca PM-718 cônica azul" },
+    { src: PM718Fino, alt: "Broca PM-718 cônica fina" },
+  ];
 
   return (
     <section className="relative min-h-[500px] md:min-h-[600px] overflow-hidden bg-[#1a1a1a]">
@@ -68,16 +79,24 @@ const ProductCategoryHero = ({
             </p>
           </div>
 
-          {/* Right side - Featured PM718 bur (transparent background) */}
-          <div className="relative hidden lg:flex items-center justify-center h-[450px]">
-            <img
-              src={PM718Hero}
-              alt="Broca PM-718 diamantada cônica"
-              className="h-[400px] w-auto object-contain drop-shadow-2xl animate-float-slow"
-              style={{
-                filter: 'drop-shadow(0 30px 60px rgba(0,0,0,0.6))',
-              }}
-            />
+          {/* Right side - 3 burs diagonally arranged like Microdont */}
+          <div className="relative hidden lg:flex items-center justify-center h-[500px] overflow-visible">
+            {heroBurs.map((bur, index) => (
+              <img
+                key={index}
+                src={bur.src}
+                alt={bur.alt}
+                className="absolute object-contain transition-all duration-700 hover:scale-105"
+                style={{
+                  height: index === 1 ? '380px' : '320px',
+                  transform: `rotate(45deg) translateX(${(index - 1) * 120}px) translateY(${(index - 1) * 80}px)`,
+                  zIndex: 3 - index,
+                  filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))',
+                  right: `${index * 60}px`,
+                  top: `${index * 50}px`,
+                }}
+              />
+            ))}
           </div>
         </div>
       </div>
