@@ -538,13 +538,13 @@ const ProductCategory = () => {
         </div>
       </section>
 
-      {/* 5. CTA Section - Standard red (like the Microdont reference image) */}
-      <section className="bg-primary py-16">
+      {/* 5. CTA Section - Dark navy blue for better site identity */}
+      <section className="bg-[#1a2332] py-16">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-primary-foreground font-montserrat font-bold text-2xl md:text-3xl mb-4">
+          <h2 className="text-white font-montserrat font-bold text-2xl md:text-3xl mb-4">
             {t("products.requestQuoteTitle", "Solicite seu Orçamento")}
           </h2>
-          <p className="text-primary-foreground/80 mb-8 max-w-xl mx-auto">
+          <p className="text-white/80 mb-8 max-w-xl mx-auto">
             {t("products.ctaCategoryDesc", "Entre em contato para preços especiais e condições exclusivas para esta linha.")}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
