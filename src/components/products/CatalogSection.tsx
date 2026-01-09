@@ -177,46 +177,46 @@ const CatalogSection = ({
 
   // Render shaft-based diagram (for burs, polishers, brushes)
   const renderShaftDiagram = () => (
-    <div className="relative w-full max-w-lg">
+    <div className="relative w-full max-w-lg px-2 sm:px-0">
       {/* Total length indicator - above the shaft */}
       <div className="flex items-center justify-center mb-3">
         <span className="flex-1 border-t border-dashed border-gray-400"></span>
-        <span className="px-3 text-xs text-muted-foreground whitespace-nowrap">
+        <span className="px-2 sm:px-3 text-[10px] sm:text-xs text-muted-foreground whitespace-nowrap">
           Comprimento total: {config.totalLength}
         </span>
         <span className="flex-1 border-t border-dashed border-gray-400"></span>
       </div>
 
       {/* Main shaft diagram with dimensions */}
-      <div className="relative flex items-center py-6">
+      <div className="relative flex items-center py-4 sm:py-6">
         {/* Shaft diameter label - left side, positioned outside the shaft */}
-        <div className="absolute -left-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
+        <div className="absolute -left-1 sm:-left-2 top-1/2 -translate-y-1/2 flex items-center gap-0.5 sm:gap-1">
           <div className="flex flex-col items-center">
-            <div className="h-4 border-l border-gray-400"></div>
-            <div className="h-2 border-l border-gray-400 border-t border-b w-0"></div>
-            <div className="h-4 border-l border-gray-400"></div>
+            <div className="h-3 sm:h-4 border-l border-gray-400"></div>
+            <div className="h-1.5 sm:h-2 border-l border-gray-400 border-t border-b w-0"></div>
+            <div className="h-3 sm:h-4 border-l border-gray-400"></div>
           </div>
-          <span className="text-[10px] text-muted-foreground whitespace-nowrap">
+          <span className="text-[8px] sm:text-[10px] text-muted-foreground whitespace-nowrap">
             Ø {config.shaftDiameter}
           </span>
         </div>
 
         {/* Shaft body */}
-        <div className="flex items-center w-full ml-16 mr-20">
+        <div className="flex items-center w-full ml-12 sm:ml-16 mr-14 sm:mr-20">
           {/* Shaft - main body */}
-          <div className="flex-1 h-5 bg-gradient-to-b from-gray-300 via-gray-400 to-gray-500 rounded-l relative">
+          <div className="flex-1 h-4 sm:h-5 bg-gradient-to-b from-gray-300 via-gray-400 to-gray-500 rounded-l relative">
             {/* Colored band (grain indicator) on shaft */}
             <div 
-              className="absolute right-8 top-0 bottom-0 w-3 rounded-sm" 
+              className="absolute right-6 sm:right-8 top-0 bottom-0 w-2 sm:w-3 rounded-sm" 
               style={{ backgroundColor: isGold ? "#FFD700" : "#DC2626" }}
             />
           </div>
           
           {/* Active tip area */}
-          <div className="w-16 h-7 bg-gradient-to-r from-gray-400 to-gray-300 rounded-r relative flex items-center justify-center">
+          <div className="w-12 sm:w-16 h-5 sm:h-7 bg-gradient-to-r from-gray-400 to-gray-300 rounded-r relative flex items-center justify-center">
             {/* Tip indicator */}
             <div 
-              className="w-5 h-5 rounded-full" 
+              className="w-4 sm:w-5 h-4 sm:h-5 rounded-full" 
               style={{ backgroundColor: isGold ? "#FFD700" : "#2196F3" }}
             />
           </div>
@@ -225,33 +225,33 @@ const CatalogSection = ({
         {/* Active area length label - right side */}
         {config.activeLength && (
           <div className="absolute right-0 top-1/2 -translate-y-1/2 text-right">
-            <span className="text-xs text-muted-foreground">L= {config.activeLength}</span>
+            <span className="text-[10px] sm:text-xs text-muted-foreground">L= {config.activeLength}</span>
             <br />
-            <span className="text-[10px] text-muted-foreground">Comp.<br />Área ativa</span>
+            <span className="text-[8px] sm:text-[10px] text-muted-foreground">Comp.<br />Área ativa</span>
           </div>
         )}
       </div>
 
       {/* Integrated Legend - below the shaft diagram */}
       {((config.cutTypes && config.cutTypes.length > 0) || (config.grainColors && config.grainColors.length > 0)) && (
-        <div className="mt-4 pt-4 border-t border-gray-200">
-          <div className="flex items-start justify-between gap-6">
+        <div className="mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-gray-200">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 sm:gap-6">
             {/* Cut Types and Grain colors */}
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-3 sm:gap-4">
               {/* Cut Types (for tungsten and ceramic burs) */}
               {config.cutTypes && config.cutTypes.length > 0 && (
                 <div>
-                  <p className="font-semibold text-sm text-foreground mb-2">
+                  <p className="font-semibold text-xs sm:text-sm text-foreground mb-1.5 sm:mb-2">
                     Tipo de Corte/Cut Type
                   </p>
-                  <div className="flex flex-wrap gap-x-4 gap-y-1">
+                  <div className="flex flex-wrap gap-x-3 sm:gap-x-4 gap-y-1">
                     {config.cutTypes.map((cutType) => (
-                      <div key={cutType.name} className="flex items-center gap-1.5">
+                      <div key={cutType.name} className="flex items-center gap-1 sm:gap-1.5">
                         <div 
-                          className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                          className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full flex-shrink-0"
                           style={{ backgroundColor: cutType.color }}
                         />
-                        <span className="text-xs text-muted-foreground">{cutType.label}</span>
+                        <span className="text-[10px] sm:text-xs text-muted-foreground">{cutType.label}</span>
                       </div>
                     ))}
                   </div>
@@ -261,20 +261,20 @@ const CatalogSection = ({
               {/* Grain colors */}
               {config.grainColors && config.grainColors.length > 0 && (
                 <div>
-                  <p className="font-semibold text-sm text-foreground mb-2">
+                  <p className="font-semibold text-xs sm:text-sm text-foreground mb-1.5 sm:mb-2">
                     {config.type === "polisher" ? "Cores/Colors" : "Grão/Grain"}
                   </p>
-                  <div className="flex flex-wrap gap-x-4 gap-y-1">
+                  <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-x-3 sm:gap-x-4 gap-y-1">
                     {config.grainColors.map((grain) => (
-                      <div key={grain.name} className="flex items-center gap-1.5">
+                      <div key={grain.name} className="flex items-center gap-1 sm:gap-1.5">
                         <div 
-                          className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                          className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full flex-shrink-0"
                           style={{ 
                             backgroundColor: grain.color,
                             border: grain.color === "#FFFFFF" || grain.color === "#FFEB3B" ? "1px solid #999" : "none"
                           }}
                         />
-                        <span className="text-xs text-muted-foreground">{grain.label}</span>
+                        <span className="text-[10px] sm:text-xs text-muted-foreground">{grain.label}</span>
                       </div>
                     ))}
                   </div>
@@ -283,11 +283,11 @@ const CatalogSection = ({
             </div>
 
             {/* Model prefix */}
-            <div className="text-right flex-shrink-0">
-              <p className={`text-2xl font-bold ${isGold ? "text-yellow-500" : "text-foreground"}`}>
+            <div className="text-left sm:text-right flex-shrink-0">
+              <p className={`text-xl sm:text-2xl font-bold ${isGold ? "text-yellow-500" : "text-foreground"}`}>
                 {config.modelPrefix}
               </p>
-              <p className="text-xs text-muted-foreground">Modelo/Model</p>
+              <p className="text-[10px] sm:text-xs text-muted-foreground">Modelo/Model</p>
             </div>
           </div>
         </div>
@@ -459,13 +459,13 @@ const CatalogSection = ({
   };
 
   return (
-    <section className="bg-white py-16 border-b border-gray-200">
+    <section className="bg-white py-8 sm:py-16 border-b border-gray-200">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           {/* Left side - Title and descriptions */}
           <div>
             {/* Category title */}
-            <h2 className={`font-montserrat font-black text-4xl md:text-5xl mb-1 uppercase tracking-tight ${
+            <h2 className={`font-montserrat font-black text-2xl sm:text-4xl md:text-5xl mb-1 uppercase tracking-tight ${
               isGold ? "text-yellow-500" : "text-primary"
             }`}>
               {categoryTitle}
@@ -473,24 +473,24 @@ const CatalogSection = ({
             
             {/* Subtitle in gray */}
             {categorySubtitle && (
-              <p className="font-montserrat font-bold text-2xl md:text-3xl text-gray-400 uppercase tracking-tight mb-8">
+              <p className="font-montserrat font-bold text-lg sm:text-2xl md:text-3xl text-gray-400 uppercase tracking-tight mb-4 sm:mb-8">
                 {categorySubtitle}
               </p>
             )}
 
             {/* Portuguese description - Bold */}
-            <p className="text-foreground text-lg font-semibold leading-relaxed mb-4">
+            <p className="text-foreground text-sm sm:text-lg font-semibold leading-relaxed mb-3 sm:mb-4">
               {descriptionPt}
             </p>
 
             {/* English description - Italic */}
-            <p className="text-muted-foreground text-base italic leading-relaxed">
+            <p className="text-muted-foreground text-sm sm:text-base italic leading-relaxed">
               {descriptionEn}
             </p>
           </div>
 
           {/* Right side - Technical diagram (specific to category) */}
-          <div className="flex flex-col items-center lg:items-end">
+          <div className="flex flex-col items-center lg:items-end mt-4 lg:mt-0">
             {/* Diagram */}
             {renderDiagram()}
 
