@@ -51,45 +51,45 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-[95vw] max-h-[90vh] p-0 overflow-hidden">
+      <DialogContent className="max-w-[95vw] sm:max-w-[90vw] max-h-[90vh] p-0 overflow-hidden">
         <DialogHeader className="p-0">
           {/* Title Header - Catalog Style */}
-          <div className="p-6 pb-4">
+          <div className="p-4 sm:p-6 pb-2 sm:pb-4">
             <h2 
-              className="font-montserrat font-black text-4xl md:text-5xl tracking-tight"
+              className="font-montserrat font-black text-2xl sm:text-4xl md:text-5xl tracking-tight"
               style={{ color: isGold ? "#FFC107" : "#C62828" }}
             >
               {typeName.toUpperCase()}
             </h2>
-            <p className="text-muted-foreground font-light text-lg mt-1">
+            <p className="text-muted-foreground font-light text-sm sm:text-lg mt-1">
               {t(`products.types.${typeName.toLowerCase()}`, typeName)}
             </p>
           </div>
         </DialogHeader>
 
-        <div className="px-6 pb-6 overflow-x-auto">
+        <div className="px-3 sm:px-6 pb-4 sm:pb-6 overflow-x-auto">
           {/* Catalog-Style Horizontal Table */}
           <div className="min-w-max">
-            {/* Product Silhouettes Row - Images on top */}
-            <div className="flex">
+            {/* Product Silhouettes Row - Images on top - Hidden on mobile for better UX */}
+            <div className="hidden sm:flex">
               {/* Left column - Main product image */}
-              <div className="w-[140px] flex-shrink-0 flex items-end justify-center pb-4">
+              <div className="w-[100px] sm:w-[140px] flex-shrink-0 flex items-end justify-center pb-4">
                 {typeImage ? (
                   <img 
                     src={typeImage} 
                     alt={typeName}
-                    className="max-h-[180px] w-auto object-contain"
+                    className="max-h-[120px] sm:max-h-[180px] w-auto object-contain"
                   />
                 ) : (
                   <div 
-                    className="w-24 h-32 rounded-lg flex items-center justify-center"
+                    className="w-16 h-24 sm:w-24 sm:h-32 rounded-lg flex items-center justify-center"
                     style={{ 
                       background: isGold 
                         ? 'linear-gradient(135deg, #FFD54F, #FFC107, #FFA000)' 
                         : 'linear-gradient(135deg, #C62828, #B71C1C, #8B0000)'
                     }}
                   >
-                    <span className="text-white text-4xl">◆</span>
+                    <span className="text-white text-2xl sm:text-4xl">◆</span>
                   </div>
                 )}
               </div>
@@ -98,13 +98,13 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
               {products.map((product, idx) => (
                 <div 
                   key={idx} 
-                  className="flex-1 min-w-[100px] flex items-end justify-center pb-2"
+                  className="flex-1 min-w-[80px] sm:min-w-[100px] flex items-end justify-center pb-2"
                 >
                   {product.image ? (
                     <img 
                       src={product.image} 
                       alt={product.code}
-                      className="max-h-[120px] w-auto object-contain"
+                      className="max-h-[80px] sm:max-h-[120px] w-auto object-contain"
                     />
                   ) : (
                     // Silhouette placeholder based on diameter
@@ -112,11 +112,11 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                       <div 
                         className="rounded-full bg-black"
                         style={{ 
-                          width: `${Math.max(16, Math.min(48, parseFloat(product.diameter || "2") * 12))}px`,
-                          height: `${Math.max(16, Math.min(48, parseFloat(product.diameter || "2") * 12))}px`
+                          width: `${Math.max(12, Math.min(36, parseFloat(product.diameter || "2") * 10))}px`,
+                          height: `${Math.max(12, Math.min(36, parseFloat(product.diameter || "2") * 10))}px`
                         }}
                       />
-                      <div className="w-[2px] h-16 bg-black mt-1" />
+                      <div className="w-[2px] h-10 sm:h-16 bg-black mt-1" />
                     </div>
                   )}
                 </div>
@@ -124,12 +124,12 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
             </div>
 
             {/* Table Rows - Catalog Style */}
-            <table className="w-full border-collapse">
+            <table className="w-full border-collapse text-xs sm:text-sm">
               <tbody>
                 {/* MODELOS Row */}
                 <tr style={{ backgroundColor: headerBgColor }}>
                   <td 
-                    className="w-[140px] px-4 py-3 font-bold text-sm tracking-wider"
+                    className="w-[80px] sm:w-[140px] px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm tracking-wider"
                     style={{ color: headerTextColor }}
                   >
                     MODELOS
@@ -137,7 +137,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {products.map((product, idx) => (
                     <td 
                       key={idx}
-                      className="px-2 py-3 text-center font-bold min-w-[100px]"
+                      className="px-1 sm:px-2 py-2 sm:py-3 text-center font-bold min-w-[60px] sm:min-w-[100px] text-[10px] sm:text-sm"
                       style={{ color: headerTextColor }}
                     >
                       {product.code.replace(/^PM-?|^BD-GOLD-|^FT-|^FC-|^LX-|^LT-|^LA-|^PO-|^EC-|^FE-|^AL-/i, '')}
@@ -147,11 +147,11 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
 
                 {/* DIÂMETRO Row */}
                 <tr style={{ backgroundColor: rowBgLight }}>
-                  <td className="px-4 py-3 font-bold text-sm" style={{ color: headerBgColor }}>
+                  <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
                     DIÂMETRO ∅
                   </td>
                   {products.map((product, idx) => (
-                    <td key={idx} className="px-2 py-3 text-center text-sm">
+                    <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
                       {product.diameter?.replace('mm', '') || '—'}
                     </td>
                   ))}
@@ -159,12 +159,12 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
 
                 {/* COMPRIMENTO ÁREA ATIVA Row */}
                 <tr style={{ backgroundColor: rowBgWhite }}>
-                  <td className="px-4 py-2 text-xs font-medium" style={{ color: headerBgColor }}>
-                    <span className="block text-[10px] leading-tight">COMPRIMENTO</span>
-                    <span className="block text-[10px] leading-tight">ÁREA ATIVA</span>
+                  <td className="px-2 sm:px-4 py-1.5 sm:py-2 text-[8px] sm:text-xs font-medium" style={{ color: headerBgColor }}>
+                    <span className="block text-[8px] sm:text-[10px] leading-tight">COMPRIMENTO</span>
+                    <span className="block text-[8px] sm:text-[10px] leading-tight">ÁREA ATIVA</span>
                   </td>
                   {products.map((product, idx) => (
-                    <td key={idx} className="px-2 py-2 text-center text-sm">
+                    <td key={idx} className="px-1 sm:px-2 py-1.5 sm:py-2 text-center text-[10px] sm:text-sm">
                       {product.activeLength?.replace('mm', '') || '—'}
                     </td>
                   ))}
@@ -172,22 +172,22 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
 
                 {/* GRÃO Row - Colored circles */}
                 <tr style={{ backgroundColor: rowBgLight }}>
-                  <td className="px-4 py-3 font-bold text-sm" style={{ color: headerBgColor }}>
+                  <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
                     GRÃO
                   </td>
                   {products.map((product, idx) => (
-                    <td key={idx} className="px-2 py-3 text-center">
+                    <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center">
                       <div className="flex items-center justify-center gap-1">
                         {product.grain && grainColorMap[product.grain] ? (
                           <div 
-                            className="w-5 h-5 rounded-full"
+                            className="w-3 h-3 sm:w-5 sm:h-5 rounded-full"
                             style={{ 
                               backgroundColor: grainColorMap[product.grain],
                               border: grainColorMap[product.grain] === "#FFFFFF" ? "2px solid #DDD" : "none"
                             }}
                           />
                         ) : product.cut ? (
-                          <span className="text-xs text-muted-foreground">{product.cut}</span>
+                          <span className="text-[8px] sm:text-xs text-muted-foreground">{product.cut}</span>
                         ) : (
                           <span className="text-muted-foreground">—</span>
                         )}
@@ -198,11 +198,11 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
 
                 {/* ISO Row */}
                 <tr style={{ backgroundColor: rowBgWhite }}>
-                  <td className="px-4 py-3 font-bold text-sm" style={{ color: headerBgColor }}>
+                  <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
                     ISO
                   </td>
                   {products.map((product, idx) => (
-                    <td key={idx} className="px-2 py-3 text-center text-xs text-muted-foreground">
+                    <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[8px] sm:text-xs text-muted-foreground">
                       {product.iso || '—'}
                     </td>
                   ))}
@@ -210,13 +210,13 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
 
                 {/* CÓDIGO Row */}
                 <tr style={{ backgroundColor: rowBgLight }}>
-                  <td className="px-4 py-3 font-bold text-sm" style={{ color: headerBgColor }}>
+                  <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
                     CÓDIGO
                   </td>
                   {products.map((product, idx) => (
                     <td 
                       key={idx} 
-                      className="px-2 py-3 text-center text-xs font-semibold"
+                      className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[8px] sm:text-xs font-semibold"
                       style={{ color: headerBgColor }}
                     >
                       {product.code}
@@ -228,38 +228,38 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
           </div>
 
           {/* Grain Legend */}
-          <div className="mt-6 flex flex-wrap items-center gap-4 justify-center">
+          <div className="mt-4 sm:mt-6 flex flex-wrap items-center gap-2 sm:gap-4 justify-center">
             {Object.entries(grainColorMap).map(([grain, color]) => (
-              <div key={grain} className="flex items-center gap-2">
+              <div key={grain} className="flex items-center gap-1 sm:gap-2">
                 <div 
-                  className="w-4 h-4 rounded-full"
+                  className="w-3 h-3 sm:w-4 sm:h-4 rounded-full"
                   style={{ 
                     backgroundColor: color,
                     border: color === "#FFFFFF" ? "2px solid #DDD" : "none"
                   }}
                 />
-                <span className="text-xs text-muted-foreground">{grain}</span>
+                <span className="text-[10px] sm:text-xs text-muted-foreground">{grain}</span>
               </div>
             ))}
           </div>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 mt-6 pt-6 border-t border-gray-100">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-100">
             <a
               href="https://wa.me/5511940101807"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex-1 flex items-center justify-center gap-2 bg-green-600 text-white py-3 rounded-xl font-semibold hover:bg-green-700 transition-colors"
+              className="flex-1 flex items-center justify-center gap-2 bg-green-600 text-white py-2.5 sm:py-3 rounded-xl font-semibold hover:bg-green-700 transition-colors text-sm sm:text-base"
             >
-              <MessageCircle className="w-5 h-5" />
+              <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
               Solicitar Orçamento
             </a>
             <a
               href="/catalogo-brilho.pdf"
               target="_blank"
-              className="flex-1 flex items-center justify-center gap-2 bg-gray-100 text-foreground py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors"
+              className="flex-1 flex items-center justify-center gap-2 bg-gray-100 text-foreground py-2.5 sm:py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors text-sm sm:text-base"
             >
-              <Download className="w-5 h-5" />
+              <Download className="w-4 h-4 sm:w-5 sm:h-5" />
               Baixar Catálogo
             </a>
           </div>
