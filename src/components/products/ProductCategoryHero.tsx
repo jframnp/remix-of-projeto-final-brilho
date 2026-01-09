@@ -49,7 +49,7 @@ const ProductCategoryHero = ({
 
             {/* "Alta Performance" label */}
             <p className={`text-sm font-semibold uppercase tracking-wider mb-4 ${
-              isGold ? "text-yellow-400" : "text-blue-400"
+              isGold ? "text-yellow-400" : "text-primary"
             }`}>
               {t("products.highPerformance", "Alta Performance")}
             </p>
@@ -63,25 +63,9 @@ const ProductCategoryHero = ({
             </h1>
 
             {/* Description */}
-            <p className="text-gray-300 text-lg leading-relaxed mb-8">
+            <p className="text-gray-300 text-lg leading-relaxed">
               {description}
             </p>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4">
-              <a
-                href="https://wa.me/5511940101807"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`inline-flex items-center gap-2 font-bold px-6 py-3 rounded-lg hover:scale-105 transition-all ${
-                  isGold 
-                    ? "bg-yellow-400 text-yellow-900 hover:bg-yellow-300" 
-                    : "bg-blue-500 text-white hover:bg-blue-600"
-                }`}
-              >
-                {t("products.registerNow", "Cadastre-se")}
-              </a>
-            </div>
           </div>
 
           {/* Right side - Featured products (3 burs diagonally) */}
