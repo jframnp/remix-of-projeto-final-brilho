@@ -3,21 +3,21 @@ import Layout from "@/components/Layout";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "@/hooks/useLanguage";
-import { 
-  Download, 
-  ShieldCheck, 
-  Truck, 
-  Award, 
-  Sparkles, 
-  Gem, 
-  Disc, 
-  Brush, 
+import {
+  Download,
+  ShieldCheck,
+  Truck,
+  Award,
+  Sparkles,
+  Gem,
+  Disc,
+  Brush,
   Wrench,
   ChevronRight,
   ChevronLeft,
   Filter,
   X,
-  QrCode
+  QrCode,
 } from "lucide-react";
 import ParticleBackground from "@/components/products/ParticleBackground";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
@@ -41,81 +41,81 @@ const Produtos = () => {
   // Animate download counter
   useEffect(() => {
     const interval = setInterval(() => {
-      setDownloadCount(prev => prev + Math.floor(Math.random() * 3));
+      setDownloadCount((prev) => prev + Math.floor(Math.random() * 3));
     }, 8000);
     return () => clearInterval(interval);
   }, []);
 
   const categories = [
-    { 
-      key: "diamondBurs", 
-      path: "/produtos/brocas-diamantadas", 
+    {
+      key: "diamondBurs",
+      path: "/produtos/brocas-diamantadas",
       badge: "BESTSELLER",
       icon: <Gem className="w-10 h-10" />,
-      color: "from-red-600 to-red-800"
+      color: "from-red-600 to-red-800",
     },
-    { 
-      key: "goldLine", 
-      path: "/produtos/linha-gold", 
+    {
+      key: "goldLine",
+      path: "/produtos/linha-gold",
       badge: "PREMIUM",
       icon: <Sparkles className="w-10 h-10" />,
-      color: "from-yellow-500 to-amber-600"
+      color: "from-yellow-500 to-amber-600",
     },
-    { 
-      key: "tungstenBurs", 
-      path: "/produtos/fresas-tungstenio", 
+    {
+      key: "tungstenBurs",
+      path: "/produtos/fresas-tungstenio",
       badge: null,
       icon: <Disc className="w-10 h-10" />,
-      color: "from-gray-600 to-gray-800"
+      color: "from-gray-600 to-gray-800",
     },
-    { 
-      key: "ceramicBurs", 
-      path: "/produtos/fresas-ceramica", 
+    {
+      key: "ceramicBurs",
+      path: "/produtos/fresas-ceramica",
       badge: null,
       icon: <Sparkles className="w-10 h-10" />,
-      color: "from-blue-600 to-blue-800"
+      color: "from-blue-600 to-blue-800",
     },
-    { 
-      key: "lixas", 
-      path: "/produtos/lixas", 
+    {
+      key: "lixas",
+      path: "/produtos/lixas",
       badge: "NOVO",
       icon: <Disc className="w-10 h-10" />,
-      color: "from-green-600 to-green-800"
+      color: "from-green-600 to-green-800",
     },
-    { 
-      key: "tubularAdhesive", 
-      path: "/produtos/lixa-tubular-adesiva", 
+    {
+      key: "tubularAdhesive",
+      path: "/produtos/lixa-tubular-adesiva",
       badge: null,
       icon: <Disc className="w-10 h-10" />,
-      color: "from-purple-600 to-purple-800"
+      color: "from-purple-600 to-purple-800",
     },
-    { 
-      key: "polishers", 
-      path: "/produtos/polidoras", 
+    {
+      key: "polishers",
+      path: "/produtos/polidoras",
       badge: null,
       icon: <Brush className="w-10 h-10" />,
-      color: "from-pink-600 to-pink-800"
+      color: "from-pink-600 to-pink-800",
     },
-    { 
-      key: "brushes", 
-      path: "/produtos/escovas-limpeza", 
+    {
+      key: "brushes",
+      path: "/produtos/escovas-limpeza",
       badge: null,
       icon: <Brush className="w-10 h-10" />,
-      color: "from-teal-600 to-teal-800"
+      color: "from-teal-600 to-teal-800",
     },
-    { 
-      key: "fiberMandril", 
-      path: "/produtos/fibras-enucleadora-mandril", 
+    {
+      key: "fiberMandril",
+      path: "/produtos/fibras-enucleadora-mandril",
       badge: null,
       icon: <Wrench className="w-10 h-10" />,
-      color: "from-orange-600 to-orange-800"
+      color: "from-orange-600 to-orange-800",
     },
-    { 
-      key: "supportSharpening", 
-      path: "/produtos/apoio-lixas-afiacao", 
+    {
+      key: "supportSharpening",
+      path: "/produtos/apoio-lixas-afiacao",
       badge: null,
       icon: <Wrench className="w-10 h-10" />,
-      color: "from-indigo-600 to-indigo-800"
+      color: "from-indigo-600 to-indigo-800",
     },
   ];
 
@@ -165,25 +165,31 @@ const Produtos = () => {
   return (
     <Layout>
       {/* Hero Section - Red gradient matching other pages */}
-      <section className="relative hero-products overflow-hidden flex items-center justify-center" style={{ minHeight: '600px' }}>
+      <section
+        className="relative hero-products overflow-hidden flex items-center justify-center"
+        style={{ minHeight: "600px" }}
+      >
         {/* Red gradient background */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#1a0a0a] via-[#3d0f0f] to-[#720000]">
           <div className="absolute top-20 left-10 w-72 h-72 bg-[#D32F2F]/30 rounded-full blur-[100px] animate-pulse" />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#9B0000]/40 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
+          <div
+            className="absolute bottom-20 right-10 w-96 h-96 bg-[#9B0000]/40 rounded-full blur-[120px] animate-pulse"
+            style={{ animationDelay: "1s" }}
+          />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#ff4444]/10 rounded-full blur-[150px]" />
         </div>
-        
+
         <ParticleBackground />
-        
+
         <div className="container mx-auto px-4 relative z-10 py-20 text-center">
           {/* Animated Title - 48px white central */}
-          <h1 
+          <h1
             className="font-montserrat font-black mb-4 animate-fade-in text-white"
-            style={{ fontSize: '48px', textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}
+            style={{ fontSize: "48px", textShadow: "2px 2px 4px rgba(0,0,0,0.5)" }}
           >
-            CATÁLOGO / CATALOG
+            CATÁLOGO
           </h1>
-          
+
           {/* Subtitle - 24px with fade-in 1s delay 0.5s */}
           <p className="hero-subtitle max-w-3xl mx-auto mb-8 animate-fade-in-slow delay-500 text-white/90">
             {t("products.heroSubtitle", "Explore nossa linha completa para podologia, odontologia e nails")}
@@ -225,7 +231,7 @@ const Produtos = () => {
           </a>
 
           {/* QR Code Button */}
-          <button 
+          <button
             onClick={() => setQrModalOpen(true)}
             className="block mx-auto mt-4 text-white/70 hover:text-white text-sm underline animate-fade-in stagger-6"
           >
@@ -254,25 +260,27 @@ const Produtos = () => {
                 {t("products.categoryDesc", "Selecione uma categoria para ver todos os produtos disponíveis")}
               </p>
             </div>
-            
+
             {/* Filters - Material-UI style dropdown */}
             <div className="flex flex-wrap gap-3">
               {Object.entries(filterOptions).map(([category, options]) => (
                 <div key={category} className="relative">
-                  <select 
+                  <select
                     className="filter-chip appearance-none pr-8 cursor-pointer"
                     onChange={(e) => setActiveFilter(e.target.value || null)}
                   >
                     <option value="">{t(`products.filter.${category}`, category)}</option>
-                    {options.map(opt => (
-                      <option key={opt.value} value={opt.value}>{opt.label}</option>
+                    {options.map((opt) => (
+                      <option key={opt.value} value={opt.value}>
+                        {opt.label}
+                      </option>
                     ))}
                   </select>
                   <Filter className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
                 </div>
               ))}
               {activeFilter && (
-                <button 
+                <button
                   onClick={() => setActiveFilter(null)}
                   className="filter-chip flex items-center gap-2 text-primary"
                 >
@@ -282,7 +290,7 @@ const Produtos = () => {
               )}
             </div>
           </div>
-          
+
           {/* Carousel with 400px slides */}
           <div className="relative">
             {canScrollLeft && (
@@ -313,12 +321,12 @@ const Produtos = () => {
                   key={cat.key}
                   to={getLocalizedPath(cat.path)}
                   className="group flex-shrink-0"
-                  style={{ 
+                  style={{
                     scrollSnapAlign: "start",
                     animationDelay: `${index * 0.1}s`,
                   }}
                 >
-                  <div 
+                  <div
                     className={`relative carousel-slide h-[350px] bg-gradient-to-br ${cat.color} transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl overflow-hidden`}
                   >
                     {/* Glow Effect on Hover */}
@@ -328,20 +336,22 @@ const Produtos = () => {
 
                     {/* Badge */}
                     {cat.badge && (
-                      <span className={`absolute top-4 right-4 z-10 px-4 py-1.5 rounded-full text-xs font-bold animate-pulse ${
-                        cat.badge === "BESTSELLER" ? "badge-bestseller" :
-                        cat.badge === "NOVO" ? "badge-novo" :
-                        "bg-primary text-white"
-                      }`}>
+                      <span
+                        className={`absolute top-4 right-4 z-10 px-4 py-1.5 rounded-full text-xs font-bold animate-pulse ${
+                          cat.badge === "BESTSELLER"
+                            ? "badge-bestseller"
+                            : cat.badge === "NOVO"
+                              ? "badge-novo"
+                              : "bg-primary text-white"
+                        }`}
+                      >
                         {t(`products.badges.${cat.badge.toLowerCase()}`, cat.badge)}
                       </span>
                     )}
 
                     {/* 3D Rotating Icon Container */}
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                      <div 
-                        className="w-28 h-28 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white shadow-xl group-hover:animate-spin-slow transition-all duration-500"
-                      >
+                      <div className="w-28 h-28 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-white shadow-xl group-hover:animate-spin-slow transition-all duration-500">
                         {cat.icon}
                       </div>
                     </div>
@@ -354,7 +364,7 @@ const Produtos = () => {
                       <p className="text-white/70 text-sm line-clamp-2 mb-4">
                         {t(`products.${cat.key}.shortDesc`, "")}
                       </p>
-                      
+
                       {/* Discover Button */}
                       <div className="flex items-center gap-2 text-white text-sm font-semibold opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                         <span>{t("products.discoverMore", "Descubra Mais")}</span>
@@ -375,7 +385,7 @@ const Produtos = () => {
           <h2 className="text-foreground font-montserrat font-bold text-3xl md:text-4xl mb-10 text-center">
             {t("products.allCategories", "Todas as Categorias")}
           </h2>
-          
+
           <div className="grid-products-4">
             {categories.map((cat, index) => (
               <Link
@@ -387,27 +397,37 @@ const Produtos = () => {
                 <div className="bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-card-lg transition-all duration-300 hover-lift">
                   {/* Image Container - 300x200px with zoom on hover */}
                   <div className="relative h-[200px] bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${cat.color} opacity-10 group-hover:opacity-20 transition-opacity`} />
+                    <div
+                      className={`absolute inset-0 bg-gradient-to-br ${cat.color} opacity-10 group-hover:opacity-20 transition-opacity`}
+                    />
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-400">
                         {cat.icon}
                       </div>
                     </div>
                     {cat.badge && (
-                      <span className={`absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-bold ${
-                        cat.badge === "BESTSELLER" ? "badge-bestseller" : "badge-novo"
-                      }`}>
+                      <span
+                        className={`absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-bold ${
+                          cat.badge === "BESTSELLER" ? "badge-bestseller" : "badge-novo"
+                        }`}
+                      >
                         {cat.badge}
                       </span>
                     )}
                   </div>
-                  
+
                   {/* Content */}
                   <div className="p-5">
-                    <h3 className="font-montserrat font-bold text-xl text-foreground mb-2 group-hover:text-primary transition-colors" style={{ fontSize: '28px' }}>
+                    <h3
+                      className="font-montserrat font-bold text-xl text-foreground mb-2 group-hover:text-primary transition-colors"
+                      style={{ fontSize: "28px" }}
+                    >
                       {t(`products.sections.${cat.key}`)}
                     </h3>
-                    <p className="text-muted-foreground text-base leading-relaxed mb-4 line-clamp-2" style={{ fontSize: '16px', lineHeight: '1.6' }}>
+                    <p
+                      className="text-muted-foreground text-base leading-relaxed mb-4 line-clamp-2"
+                      style={{ fontSize: "16px", lineHeight: "1.6" }}
+                    >
                       {t(`products.${cat.key}.teaser`, t(`products.${cat.key}.description`, "").substring(0, 100))}
                     </p>
                     <button className="btn-cta w-full bg-primary text-white hover:bg-primary/90">
@@ -427,13 +447,16 @@ const Produtos = () => {
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#D32F2F]/20 rounded-full blur-[150px]" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#9B0000]/30 rounded-full blur-[100px]" />
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10 text-center">
           <h2 className="text-white font-montserrat font-bold text-3xl md:text-4xl mb-4">
             {t("products.ctaTitle", "Não encontrou o que procura?")}
           </h2>
           <p className="text-white/70 font-inter text-lg mb-10 max-w-xl mx-auto">
-            {t("products.ctaDesc", "Entre em contato conosco e solicite um orçamento personalizado para suas necessidades.")}
+            {t(
+              "products.ctaDesc",
+              "Entre em contato conosco e solicite um orçamento personalizado para suas necessidades.",
+            )}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -453,7 +476,6 @@ const Produtos = () => {
           </div>
         </div>
       </section>
-
 
       {/* QR Code Modal */}
       <Dialog open={qrModalOpen} onOpenChange={setQrModalOpen}>
