@@ -34,6 +34,12 @@ import Lixa1 from "@/assets/products/lixa-1.png";
 import Lixa2 from "@/assets/products/lixa-2.png";
 import Lixa3 from "@/assets/products/lixa-3.png";
 
+// Import escovas de limpeza images
+import EscovaLimpeza1 from "@/assets/products/escova-limpeza-1.png";
+import EscovaLimpeza2 from "@/assets/products/escova-limpeza-2.png";
+import EscovaLimpeza3 from "@/assets/products/escova-limpeza-3.png";
+import EscovaLimpeza4 from "@/assets/products/escova-limpeza-4.png";
+
 // Category-specific hero images configuration
 const categoryHeroImages: Record<string, { src: string; alt: string }[]> = {
   "brocas-diamantadas": [
@@ -67,9 +73,9 @@ const categoryHeroImages: Record<string, { src: string; alt: string }[]> = {
     { src: PM57, alt: "Polidora cilíndrica" },
   ],
   "escovas-limpeza": [
-    { src: PM07, alt: "Escova esférica" },
-    { src: PM42, alt: "Escova roda" },
-    { src: PM07, alt: "Escova esférica" },
+    { src: EscovaLimpeza1, alt: "Escova abrasiva" },
+    { src: EscovaLimpeza2, alt: "Escova de algodão" },
+    { src: EscovaLimpeza3, alt: "Escova de nylon" },
   ],
   "fibras-enucleadora-mandril": [
     { src: PM859, alt: "Fibra agulha" },
