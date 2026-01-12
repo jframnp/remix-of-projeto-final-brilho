@@ -2,9 +2,73 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ArrowLeft, Sparkles } from "lucide-react";
 
-// Import hero burs (transparent background)
+// Import all product images for hero sections
+import PM07 from "@/assets/products/PM07_AZUL.webp";
+import PM42 from "@/assets/products/PM42_AZUL.jpg";
+import PM57 from "@/assets/products/PM57_AZUL.webp";
+import PM718 from "@/assets/products/PM718_AZUL.webp";
 import PM718Hero from "@/assets/products/PM718_HERO.png";
 import PM718Fino from "@/assets/products/PM718_FINO.png";
+import PM720 from "@/assets/products/PM720_AZUL.webp";
+import PM720L from "@/assets/products/PM720L_AZUL.webp";
+import PM744 from "@/assets/products/PM744_AZUL.webp";
+import PM829 from "@/assets/products/PM829_AZUL.webp";
+import PM838 from "@/assets/products/PM838_AZUL.webp";
+import PM859 from "@/assets/products/PM859_AZUL.webp";
+
+// Category-specific hero images configuration
+const categoryHeroImages: Record<string, { src: string; alt: string }[]> = {
+  "brocas-diamantadas": [
+    { src: PM718Hero, alt: "Broca PM-718 cônica" },
+    { src: PM718Fino, alt: "Broca PM-718 fina" },
+    { src: PM718Hero, alt: "Broca PM-718 cônica" },
+  ],
+  "fresas-tungstenio": [
+    { src: PM57, alt: "Fresa de Tungstênio cilíndrica" },
+    { src: PM720, alt: "Fresa de Tungstênio cônica" },
+    { src: PM829, alt: "Fresa de Tungstênio ogiva" },
+  ],
+  "fresas-ceramica": [
+    { src: PM744, alt: "Fresa cerâmica chama" },
+    { src: PM838, alt: "Fresa cerâmica chama grande" },
+    { src: PM720L, alt: "Fresa cerâmica cônica longa" },
+  ],
+  "lixas": [
+    { src: PM07, alt: "Lixa esférica" },
+    { src: PM42, alt: "Lixa roda" },
+    { src: PM57, alt: "Lixa cilíndrica" },
+  ],
+  "lixa-tubular-adesiva": [
+    { src: PM829, alt: "Lixa tubular ogiva" },
+    { src: PM57, alt: "Lixa tubular cilíndrica" },
+    { src: PM744, alt: "Lixa adesiva chama" },
+  ],
+  "polidoras": [
+    { src: PM829, alt: "Polidora torpedo" },
+    { src: PM720, alt: "Polidora cônica" },
+    { src: PM57, alt: "Polidora cilíndrica" },
+  ],
+  "escovas-limpeza": [
+    { src: PM07, alt: "Escova esférica" },
+    { src: PM42, alt: "Escova roda" },
+    { src: PM07, alt: "Escova esférica" },
+  ],
+  "fibras-enucleadora-mandril": [
+    { src: PM859, alt: "Fibra agulha" },
+    { src: PM718, alt: "Mandril cônico" },
+    { src: PM859, alt: "Enucleadora agulha" },
+  ],
+  "apoio-lixas-afiacao": [
+    { src: PM42, alt: "Apoio roda" },
+    { src: PM57, alt: "Apoio cilíndrico" },
+    { src: PM42, alt: "Disco afiação" },
+  ],
+  "linha-gold": [
+    { src: PM718Hero, alt: "Broca Gold cônica" },
+    { src: PM718Fino, alt: "Broca Gold fina" },
+    { src: PM718Hero, alt: "Broca Gold cônica" },
+  ],
+};
 
 interface ProductCategoryHeroProps {
   category: string;
@@ -25,12 +89,8 @@ const ProductCategoryHero = ({
 }: ProductCategoryHeroProps) => {
   const { t } = useTranslation();
 
-  // 3 burs for diagonal display (Microdont style) - using available transparent images
-  const heroBurs = [
-    { src: PM718Hero, alt: "Broca PM-718 cônica azul" },
-    { src: PM718Fino, alt: "Broca PM-718 cônica fina" },
-    { src: PM718Hero, alt: "Broca PM-718 cônica azul" },
-  ];
+  // Get category-specific hero images or fallback to default
+  const heroBurs = categoryHeroImages[category] || categoryHeroImages["brocas-diamantadas"];
 
   return (
     <section className="relative min-h-[500px] md:min-h-[600px] overflow-hidden bg-[#1a1a1a]">
