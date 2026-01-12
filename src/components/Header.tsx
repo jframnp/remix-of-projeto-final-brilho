@@ -165,11 +165,11 @@ const Header = () => {
           </nav>
 
           {/* Flags - Right side: BR | ES | US */}
-          <div className="flex items-center gap-[10px]">
+          <div className="flex items-center gap-3 ml-4 shrink-0">
             {/* Brazil - Portuguese */}
             <button
               onClick={() => changeLanguage("pt")}
-              className={`text-2xl transition-all hover:scale-110 ${
+              className={`w-8 h-8 flex items-center justify-center text-2xl transition-all hover:scale-110 ${
                 currentLang === "pt" ? "opacity-100 drop-shadow-[0_0_4px_rgba(255,255,255,0.8)]" : "opacity-60 hover:opacity-100"
               }`}
               aria-label="Português"
@@ -180,7 +180,7 @@ const Header = () => {
             {/* Spain - Spanish */}
             <button
               onClick={() => changeLanguage("es")}
-              className={`text-2xl transition-all hover:scale-110 ${
+              className={`w-8 h-8 flex items-center justify-center text-2xl transition-all hover:scale-110 ${
                 currentLang === "es" ? "opacity-100 drop-shadow-[0_0_4px_rgba(255,255,255,0.8)]" : "opacity-60 hover:opacity-100"
               }`}
               aria-label="Español"
@@ -191,7 +191,7 @@ const Header = () => {
             {/* USA - English */}
             <button
               onClick={() => changeLanguage("en")}
-              className={`text-2xl transition-all hover:scale-110 ${
+              className={`w-8 h-8 flex items-center justify-center text-2xl transition-all hover:scale-110 ${
                 currentLang === "en" ? "opacity-100 drop-shadow-[0_0_4px_rgba(255,255,255,0.8)]" : "opacity-60 hover:opacity-100"
               }`}
               aria-label="English"
