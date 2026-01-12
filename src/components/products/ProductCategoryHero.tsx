@@ -29,6 +29,11 @@ import BrocaCeramica2 from "@/assets/products/broca-ceramica-2.png";
 import BrocaCeramica3 from "@/assets/products/broca-ceramica-3.png";
 import BrocaCeramica4 from "@/assets/products/broca-ceramica-4.png";
 
+// Import lixas images
+import Lixa1 from "@/assets/products/lixa-1.png";
+import Lixa2 from "@/assets/products/lixa-2.png";
+import Lixa3 from "@/assets/products/lixa-3.png";
+
 // Category-specific hero images configuration
 const categoryHeroImages: Record<string, { src: string; alt: string }[]> = {
   "brocas-diamantadas": [
@@ -47,9 +52,9 @@ const categoryHeroImages: Record<string, { src: string; alt: string }[]> = {
     { src: BrocaCeramica2, alt: "Broca cerâmica chama" },
   ],
   "lixas": [
-    { src: PM07, alt: "Lixa esférica" },
-    { src: PM42, alt: "Lixa roda" },
-    { src: PM57, alt: "Lixa cilíndrica" },
+    { src: Lixa1, alt: "Lixa retangular" },
+    { src: Lixa2, alt: "Lixa meia lua" },
+    { src: Lixa3, alt: "Lixa meia lua verde" },
   ],
   "lixa-tubular-adesiva": [
     { src: PM829, alt: "Lixa tubular ogiva" },
@@ -160,7 +165,8 @@ const ProductCategoryHero = ({
                 alt={bur.alt}
                 className="object-contain transition-all duration-500 hover:scale-110 hover:-translate-y-4"
                 style={{
-                  height: index === 1 ? '400px' : '350px',
+                  width: '180px',
+                  height: '300px',
                   filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))',
                   animation: `float 3s ease-in-out ${index * 0.3}s infinite`,
                 }}
