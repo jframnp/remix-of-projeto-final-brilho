@@ -23,6 +23,12 @@ import FresaTungstenio3 from "@/assets/products/fresa-tungstenio-3.png";
 import FresaTungstenio4 from "@/assets/products/fresa-tungstenio-4.png";
 import FresaTungstenio5 from "@/assets/products/fresa-tungstenio-5.png";
 
+// Import brocas de cerâmica images
+import BrocaCeramica1 from "@/assets/products/broca-ceramica-1.png";
+import BrocaCeramica2 from "@/assets/products/broca-ceramica-2.png";
+import BrocaCeramica3 from "@/assets/products/broca-ceramica-3.png";
+import BrocaCeramica4 from "@/assets/products/broca-ceramica-4.png";
+
 // Category-specific hero images configuration
 const categoryHeroImages: Record<string, { src: string; alt: string }[]> = {
   "brocas-diamantadas": [
@@ -36,9 +42,9 @@ const categoryHeroImages: Record<string, { src: string; alt: string }[]> = {
     { src: FresaTungstenio3, alt: "Fresa de Tungstênio cônica" },
   ],
   "fresas-ceramica": [
-    { src: PM744, alt: "Fresa cerâmica chama" },
-    { src: PM838, alt: "Fresa cerâmica chama grande" },
-    { src: PM720L, alt: "Fresa cerâmica cônica longa" },
+    { src: BrocaCeramica3, alt: "Broca cerâmica cônica" },
+    { src: BrocaCeramica1, alt: "Broca cerâmica cilíndrica" },
+    { src: BrocaCeramica2, alt: "Broca cerâmica chama" },
   ],
   "lixas": [
     { src: PM07, alt: "Lixa esférica" },
