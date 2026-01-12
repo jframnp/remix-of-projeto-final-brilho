@@ -24,7 +24,6 @@ const Header = () => {
     { label: t("nav.tungstenBurs", "Fresas de Tungstênio"), path: "/produtos/fresas-tungstenio" },
     { label: t("nav.ceramicBurs", "Fresas de Cerâmica"), path: "/produtos/fresas-ceramica" },
     { label: t("nav.lixas", "Lixas"), path: "/produtos/lixas" },
-    { label: t("nav.tubularAdhesive", "Lixa Tubular / Adesiva"), path: "/produtos/lixa-tubular-adesiva" },
     { label: t("nav.polishers", "Polidoras"), path: "/produtos/polidoras" },
     { label: t("nav.brushes", "Escovas de Limpeza"), path: "/produtos/escovas-limpeza" },
     { label: t("nav.fiberMandril", "Fibras / Enucleadora / Mandril"), path: "/produtos/fibras-enucleadora-mandril" },
