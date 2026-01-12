@@ -83,13 +83,6 @@ const Produtos = () => {
       color: "from-green-600 to-green-800"
     },
     { 
-      key: "tubularAdhesive", 
-      path: "/produtos/lixa-tubular-adesiva", 
-      badge: null,
-      icon: <Disc className="w-10 h-10" />,
-      color: "from-purple-600 to-purple-800"
-    },
-    { 
       key: "polishers", 
       path: "/produtos/polidoras", 
       badge: null,
