@@ -45,6 +45,11 @@ import PolidoraVerde from "@/assets/products/polidora-verde.png";
 import PolidoraCinza from "@/assets/products/polidora-cinza.png";
 import PolidoraAzul from "@/assets/products/polidora-azul.png";
 
+// Import fibras e mandril images
+import FibraMandril1 from "@/assets/products/fibra-mandril-1.png";
+import FibraMandril2 from "@/assets/products/fibra-mandril-2.png";
+import FibraMandril3 from "@/assets/products/fibra-mandril-3.png";
+
 // Category-specific hero images configuration
 const categoryHeroImages: Record<string, { src: string; alt: string }[]> = {
   "brocas-diamantadas": [
@@ -83,9 +88,9 @@ const categoryHeroImages: Record<string, { src: string; alt: string }[]> = {
     { src: EscovaLimpeza3, alt: "Escova de nylon" },
   ],
   "fibras-enucleadora-mandril": [
-    { src: PM859, alt: "Fibra agulha" },
-    { src: PM718, alt: "Mandril cônico" },
-    { src: PM859, alt: "Enucleadora agulha" },
+    { src: FibraMandril1, alt: "Mandril" },
+    { src: FibraMandril2, alt: "Fibra enucleadora" },
+    { src: FibraMandril3, alt: "Fibra" },
   ],
   "apoio-lixas-afiacao": [
     { src: PM42, alt: "Apoio roda" },
