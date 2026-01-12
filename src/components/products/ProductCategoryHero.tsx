@@ -40,6 +40,11 @@ import EscovaLimpeza2 from "@/assets/products/escova-limpeza-2.png";
 import EscovaLimpeza3 from "@/assets/products/escova-limpeza-3.png";
 import EscovaLimpeza4 from "@/assets/products/escova-limpeza-4.png";
 
+// Import polidoras images
+import PolidoraVerde from "@/assets/products/polidora-verde.png";
+import PolidoraCinza from "@/assets/products/polidora-cinza.png";
+import PolidoraAzul from "@/assets/products/polidora-azul.png";
+
 // Category-specific hero images configuration
 const categoryHeroImages: Record<string, { src: string; alt: string }[]> = {
   "brocas-diamantadas": [
@@ -68,9 +73,9 @@ const categoryHeroImages: Record<string, { src: string; alt: string }[]> = {
     { src: PM744, alt: "Lixa adesiva chama" },
   ],
   "polidoras": [
-    { src: PM829, alt: "Polidora torpedo" },
-    { src: PM720, alt: "Polidora cônica" },
-    { src: PM57, alt: "Polidora cilíndrica" },
+    { src: PolidoraVerde, alt: "Polidora verde" },
+    { src: PolidoraCinza, alt: "Polidora cinza" },
+    { src: PolidoraAzul, alt: "Polidora azul" },
   ],
   "escovas-limpeza": [
     { src: EscovaLimpeza1, alt: "Escova abrasiva" },
