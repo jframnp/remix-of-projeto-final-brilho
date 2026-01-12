@@ -93,9 +93,9 @@ const categoryHeroImages: Record<string, { src: string; alt: string }[]> = {
     { src: FibraMandril3, alt: "Fibra" },
   ],
   "apoio-lixas-afiacao": [
-    { src: PM42, alt: "Apoio roda" },
-    { src: PM57, alt: "Apoio cilíndrico" },
-    { src: PM42, alt: "Disco afiação" },
+    { src: Lixa1, alt: "Apoio para lixas" },
+    { src: Lixa2, alt: "Disco de afiação" },
+    { src: Lixa3, alt: "Disco de polimento" },
   ],
   "linha-gold": [
     { src: PM718Hero, alt: "Broca Gold cônica" },
