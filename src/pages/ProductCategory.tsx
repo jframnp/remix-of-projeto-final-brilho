@@ -24,6 +24,10 @@ import PM744 from "@/assets/products/PM744_AZUL.webp";
 import PM829 from "@/assets/products/PM829_AZUL.webp";
 import PM838 from "@/assets/products/PM838_AZUL.webp";
 import PM859 from "@/assets/products/PM859_AZUL.webp";
+// Polisher images
+import PolidoraVerde from "@/assets/products/polidora-verde.png";
+import PolidoraCinza from "@/assets/products/polidora-cinza.png";
+import PolidoraAzul from "@/assets/products/polidora-azul.png";
 
 // Product data based on PDF catalog - exact specs
 const productData: Record<string, {
@@ -162,11 +166,11 @@ const productData: Record<string, {
     },
     products: [
       { model: "Torpedo Ogival", code: "PO-TOG-EG", diameter: "8mm", grain: "Extra Grosso", color: "Preto" },
-      { model: "Torpedo Ogival", code: "PO-TOG-G", diameter: "8mm", grain: "Grosso", color: "Azul" },
-      { model: "Torpedo Ogival", code: "PO-TOG-M", diameter: "8mm", grain: "Médio", color: "Verde" },
+      { model: "Torpedo Ogival", code: "PO-TOG-G", diameter: "8mm", grain: "Grosso", color: "Azul", image: PolidoraAzul },
+      { model: "Torpedo Ogival", code: "PO-TOG-M", diameter: "8mm", grain: "Médio", color: "Verde", image: PolidoraVerde },
       { model: "Torpedo Grande", code: "PO-TG-F", diameter: "10mm", grain: "Fino", color: "Amarelo" },
       { model: "Torpedo Média", code: "PO-TM-EF", diameter: "6mm", grain: "Extra Fino", color: "Rosa" },
-      { model: "Cilíndrica", code: "PO-CIL-UF", diameter: "5mm", grain: "Ultra Fino", color: "Branco" },
+      { model: "Cilíndrica", code: "PO-CIL-UF", diameter: "5mm", grain: "Ultra Fino", color: "Branco", image: PolidoraCinza },
       { model: "Chama Pequena", code: "PO-CP-M", diameter: "4mm", grain: "Médio", color: "Verde" },
     ]
   },
