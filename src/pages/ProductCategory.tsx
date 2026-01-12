@@ -289,6 +289,31 @@ const ProductCategory = () => {
   const categoryKey = category ? categoryKeyMap[category] || category : "";
   const data = category ? productData[category] : null;
 
+  // Group products by type (model name base) - must be before early return
+  const productsByType = useMemo(() => {
+    if (!data) return {};
+    const groups: Record<string, typeof data.products> = {};
+    
+    data.products.forEach(product => {
+      const baseType = product.model.split(' ')[0];
+      if (!groups[baseType]) {
+        groups[baseType] = [];
+      }
+      groups[baseType].push(product);
+    });
+    
+    return groups;
+  }, [data?.products]);
+
+  // Get featured images (first 3 products with images) - must be before early return
+  const featuredImages = useMemo(() => {
+    if (!data) return [];
+    return data.products
+      .filter(p => p.image)
+      .slice(0, 3)
+      .map(p => p.image);
+  }, [data?.products]);
+
   if (!data) {
     return (
       <Layout>
@@ -303,29 +328,6 @@ const ProductCategory = () => {
       </Layout>
     );
   }
-
-  // Group products by type (model name base)
-  const productsByType = useMemo(() => {
-    const groups: Record<string, typeof data.products> = {};
-    
-    data.products.forEach(product => {
-      const baseType = product.model.split(' ')[0];
-      if (!groups[baseType]) {
-        groups[baseType] = [];
-      }
-      groups[baseType].push(product);
-    });
-    
-    return groups;
-  }, [data.products]);
-
-  // Get featured images (first 3 products with images)
-  const featuredImages = useMemo(() => {
-    return data.products
-      .filter(p => p.image)
-      .slice(0, 3)
-      .map(p => p.image);
-  }, [data.products]);
 
   // Get products for selected type, filtered by grain if active
   const getProductsForType = (typeName: string) => {
