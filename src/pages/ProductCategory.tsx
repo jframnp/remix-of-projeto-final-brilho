@@ -37,10 +37,12 @@ const productData: Record<string, {
     color?: string;
     activeLength?: string;
     image?: string;
+    subcategory?: string;
   }>;
   features?: string[];
   hasGoldLine?: boolean;
   subtypes?: string[];
+  subcategories?: Record<string, { description: string; types: string[] }>;
   titlePt: string;
   titleEn?: string;
   description: {
@@ -111,39 +113,44 @@ const productData: Record<string, {
     ]
   },
   "lixas": {
-    subtypes: ["Laminar", "Plantar", "Boomerang", "Nails"],
+    subtypes: ["Boomerang", "Quadrada", "Gota", "Caixão", "Laminar", "Plantar", "Tubular", "Base"],
+    subcategories: {
+      "Lixas Manuais": {
+        description: "Lixas tradicionais para nail design - formatos ergonômicos para acabamento perfeito",
+        types: ["Boomerang", "Quadrada", "Gota", "Caixão"]
+      },
+      "Lixas com Mandril": {
+        description: "Lixas para uso com motor/mandril - ideais para podologia e procedimentos profissionais",
+        types: ["Laminar", "Plantar", "Tubular", "Base"]
+      }
+    },
     titlePt: "LIXAS",
-    titleEn: "SANDING DISCS",
+    titleEn: "SANDING FILES",
     description: {
-      pt: "Lixas profissionais de alta qualidade para podologia e nail design. Disponíveis em diversas granulometrias para diferentes aplicações.",
-      en: "High-quality professional files for podiatry and nail design. Available in various grits for different applications."
+      pt: "Lixas profissionais de alta qualidade para podologia e nail design. Disponíveis em diversas granulometrias e formatos para diferentes aplicações.",
+      en: "High-quality professional files for podiatry and nail design. Available in various grits and shapes for different applications."
     },
     products: [
-      { model: "Laminar Premium (Norton)", code: "LX-LP-80", diameter: "15mm", grain: "80" },
-      { model: "Laminar Premium (Norton)", code: "LX-LP-100", diameter: "15mm", grain: "100" },
-      { model: "Laminar Premium (Norton)", code: "LX-LP-120", diameter: "15mm", grain: "120" },
-      { model: "Plantar Premium (Norton)", code: "LX-PP-60", diameter: "25mm", grain: "60" },
-      { model: "Plantar Premium (Norton)", code: "LX-PP-80", diameter: "25mm", grain: "80" },
-      { model: "Boomerang Nails Verde", code: "LX-BNV-150", diameter: "N/A", grain: "150/180" },
-      { model: "Boomerang White 2mm", code: "LX-BW-180", diameter: "N/A", grain: "180" },
-      { model: "Nails Descartável Branca", code: "LX-NDB-100", diameter: "N/A", grain: "100/180" },
-      { model: "Base Inox Boomerang", code: "LX-BIB-01", diameter: "N/A", grain: "N/A" },
-    ]
-  },
-  "lixa-tubular-adesiva": {
-    titlePt: "LIXA TUBULAR E ADESIVA",
-    titleEn: "TUBULAR & ADHESIVE FILES",
-    description: {
-      pt: "Lixas tubulares e adesivas para aplicações específicas em podologia. Alta aderência e durabilidade.",
-      en: "Tubular and adhesive files for specific podiatry applications. High adhesion and durability."
-    },
-    products: [
-      { model: "Tubular Send Grossa", code: "LT-TG-60", diameter: "10mm", grain: "60" },
-      { model: "Tubular Send Média", code: "LT-TM-80", diameter: "10mm", grain: "80" },
-      { model: "Tubular Send Fina", code: "LT-TF-120", diameter: "10mm", grain: "120" },
-      { model: "Adesiva Circular", code: "LA-AC-80", diameter: "20mm", grain: "80" },
-      { model: "Adesiva Circular", code: "LA-AC-100", diameter: "20mm", grain: "100" },
-      { model: "Adesiva Circular", code: "LA-AC-150", diameter: "15mm", grain: "150" },
+      // Lixas Manuais
+      { model: "Boomerang Nails Verde", code: "LX-BNV-150", diameter: "N/A", grain: "150/180", subcategory: "Lixas Manuais" },
+      { model: "Boomerang White 2mm", code: "LX-BW-180", diameter: "N/A", grain: "180", subcategory: "Lixas Manuais" },
+      { model: "Quadrada Preta", code: "LX-QP-100", diameter: "N/A", grain: "100/180", subcategory: "Lixas Manuais" },
+      { model: "Quadrada Branca", code: "LX-QB-150", diameter: "N/A", grain: "150/180", subcategory: "Lixas Manuais" },
+      { model: "Gota Rosa", code: "LX-GR-100", diameter: "N/A", grain: "100/180", subcategory: "Lixas Manuais" },
+      { model: "Gota Preta", code: "LX-GP-150", diameter: "N/A", grain: "150/180", subcategory: "Lixas Manuais" },
+      { model: "Caixão Premium", code: "LX-CP-100", diameter: "N/A", grain: "100/180", subcategory: "Lixas Manuais" },
+      { model: "Caixão Descartável", code: "LX-CD-150", diameter: "N/A", grain: "150/180", subcategory: "Lixas Manuais" },
+      // Lixas com Mandril
+      { model: "Laminar Premium (Norton)", code: "LX-LP-80", diameter: "15mm", grain: "80", subcategory: "Lixas com Mandril" },
+      { model: "Laminar Premium (Norton)", code: "LX-LP-100", diameter: "15mm", grain: "100", subcategory: "Lixas com Mandril" },
+      { model: "Laminar Premium (Norton)", code: "LX-LP-120", diameter: "15mm", grain: "120", subcategory: "Lixas com Mandril" },
+      { model: "Plantar Premium (Norton)", code: "LX-PP-60", diameter: "25mm", grain: "60", subcategory: "Lixas com Mandril" },
+      { model: "Plantar Premium (Norton)", code: "LX-PP-80", diameter: "25mm", grain: "80", subcategory: "Lixas com Mandril" },
+      { model: "Tubular Send Grossa", code: "LT-TG-60", diameter: "10mm", grain: "60", subcategory: "Lixas com Mandril" },
+      { model: "Tubular Send Média", code: "LT-TM-80", diameter: "10mm", grain: "80", subcategory: "Lixas com Mandril" },
+      { model: "Tubular Send Fina", code: "LT-TF-120", diameter: "10mm", grain: "120", subcategory: "Lixas com Mandril" },
+      { model: "Base Inox Boomerang", code: "LX-BIB-01", diameter: "N/A", grain: "N/A", subcategory: "Lixas com Mandril" },
+      { model: "Base Inox Plantar", code: "LX-BIP-01", diameter: "25mm", grain: "N/A", subcategory: "Lixas com Mandril" },
     ]
   },
   "polidoras": {
@@ -412,24 +419,65 @@ const ProductCategory = () => {
             </p>
           </div>
 
-          {/* Type Cards Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-16">
-            {Object.keys(productsByType).map((typeName, idx) => (
-              <div
-                key={typeName}
-                className="animate-fade-in"
-                style={{ animationDelay: `${idx * 0.1}s` }}
-              >
-                <CategoryTypeCard
-                  typeName={typeName}
-                  image={getTypeImage(typeName)}
-                  productCount={getProductsForType(typeName).length}
-                  onClick={() => handleTypeClick(typeName)}
-                  isGold={isGold}
-                />
-              </div>
-            ))}
-          </div>
+          {/* Subcategories layout for lixas */}
+          {data.subcategories ? (
+            <div className="space-y-12">
+              {Object.entries(data.subcategories).map(([subcatName, subcatData], subcatIdx) => (
+                <div key={subcatName} className="animate-fade-in" style={{ animationDelay: `${subcatIdx * 0.2}s` }}>
+                  {/* Subcategory Header */}
+                  <div className="mb-6">
+                    <h3 className="text-foreground font-montserrat font-bold text-xl md:text-2xl mb-2">
+                      {subcatName}
+                    </h3>
+                    <p className="text-muted-foreground">
+                      {subcatData.description}
+                    </p>
+                  </div>
+                  
+                  {/* Type Cards Grid for this subcategory */}
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                    {subcatData.types.map((typeName, idx) => {
+                      const typeProducts = data.products.filter(p => p.model.startsWith(typeName));
+                      return (
+                        <div
+                          key={typeName}
+                          className="animate-fade-in"
+                          style={{ animationDelay: `${idx * 0.1}s` }}
+                        >
+                          <CategoryTypeCard
+                            typeName={typeName}
+                            image={typeProducts[0]?.image}
+                            productCount={typeProducts.length}
+                            onClick={() => handleTypeClick(typeName)}
+                            isGold={isGold}
+                          />
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            /* Default Type Cards Grid */
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-16">
+              {Object.keys(productsByType).map((typeName, idx) => (
+                <div
+                  key={typeName}
+                  className="animate-fade-in"
+                  style={{ animationDelay: `${idx * 0.1}s` }}
+                >
+                  <CategoryTypeCard
+                    typeName={typeName}
+                    image={getTypeImage(typeName)}
+                    productCount={getProductsForType(typeName).length}
+                    onClick={() => handleTypeClick(typeName)}
+                    isGold={isGold}
+                  />
+                </div>
+              ))}
+            </div>
+          )}
 
           {/* Testimonials Carousel */}
           <div className="mt-16">
