@@ -40,6 +40,17 @@ const getProductGrains = (product: Product): string[] => {
   return [product.grain];
 };
 
+// Extract product name from code (e.g., "500.001.718" -> "PM718", "500.001.720L" -> "PM720L")
+const getProductName = (code: string): string => {
+  // For diamond burs with format "500.001.XXX"
+  const diamondBurMatch = code.match(/500\.001\.(.+)$/);
+  if (diamondBurMatch) {
+    return `PM${diamondBurMatch[1]}`;
+  }
+  // For other products, remove prefix patterns and return the code part
+  return code.replace(/^PM-?|^BD-GOLD-|^FT-|^FC-|^LX-|^LT-|^LA-|^PO-|^EC-|^FE-|^AL-/i, '');
+};
+
 const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isGold = false }: CategoryTypeModalProps) => {
   const { t } = useTranslation();
 
@@ -140,7 +151,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                       className="px-1 sm:px-2 py-2 sm:py-3 text-center font-bold min-w-[60px] sm:min-w-[100px] text-[10px] sm:text-sm"
                       style={{ color: headerTextColor }}
                     >
-                      {product.code.replace(/^PM-?|^BD-GOLD-|^FT-|^FC-|^LX-|^LT-|^LA-|^PO-|^EC-|^FE-|^AL-/i, '')}
+                      {getProductName(product.code)}
                     </td>
                   ))}
                 </tr>
