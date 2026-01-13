@@ -81,59 +81,6 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
         <div className="px-3 sm:px-6 pb-4 sm:pb-6 overflow-x-auto">
           {/* Catalog-Style Horizontal Table */}
           <div className="min-w-max">
-            {/* Product Silhouettes Row - Images on top - Hidden on mobile for better UX */}
-            <div className="hidden sm:flex">
-              {/* Left column - Main product image */}
-              <div className="w-[100px] sm:w-[140px] flex-shrink-0 flex items-end justify-center pb-4">
-                {typeImage ? (
-                  <img 
-                    src={typeImage} 
-                    alt={typeName}
-                    className="max-h-[120px] sm:max-h-[180px] w-auto object-contain"
-                  />
-                ) : (
-                  <div 
-                    className="w-16 h-24 sm:w-24 sm:h-32 rounded-lg flex items-center justify-center"
-                    style={{ 
-                      background: isGold 
-                        ? 'linear-gradient(135deg, #FFD54F, #FFC107, #FFA000)' 
-                        : 'linear-gradient(135deg, #C62828, #B71C1C, #8B0000)'
-                    }}
-                  >
-                    <span className="text-white text-2xl sm:text-4xl">◆</span>
-                  </div>
-                )}
-              </div>
-              
-              {/* Product silhouettes */}
-              {products.map((product, idx) => (
-                <div 
-                  key={idx} 
-                  className="flex-1 min-w-[80px] sm:min-w-[100px] flex items-end justify-center pb-2"
-                >
-                  {product.image ? (
-                    <img 
-                      src={product.image} 
-                      alt={product.code}
-                      className="max-h-[80px] sm:max-h-[120px] w-auto object-contain"
-                    />
-                  ) : (
-                    // Silhouette placeholder based on diameter
-                    <div className="flex flex-col items-center">
-                      <div 
-                        className="rounded-full bg-black"
-                        style={{ 
-                          width: `${Math.max(12, Math.min(36, parseFloat(product.diameter || "2") * 10))}px`,
-                          height: `${Math.max(12, Math.min(36, parseFloat(product.diameter || "2") * 10))}px`
-                        }}
-                      />
-                      <div className="w-[2px] h-10 sm:h-16 bg-black mt-1" />
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-
             {/* Table Rows - Catalog Style */}
             <table className="w-full border-collapse text-xs sm:text-sm">
               <tbody>

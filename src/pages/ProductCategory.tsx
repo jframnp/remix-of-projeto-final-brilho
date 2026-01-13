@@ -141,7 +141,7 @@ const productData: Record<string, {
     ]
   },
   "fresas-tungstenio": {
-    subtypes: ["Maxi Cut", "Mini Cut"],
+    subtypes: ["Corte Cruzado Médio", "Corte Cruzado Fino", "Corte Cruzado Extra Fino", "Corte Cruzado Grosso", "Corte Reto", "Mini Cut"],
     titlePt: "FRESAS DE TUNGSTÊNIO",
     titleEn: "TUNGSTEN BURS",
     description: {
@@ -149,15 +149,39 @@ const productData: Record<string, {
       en: "High-performance tungsten burs for procedures requiring precision and durability. Ideal for prosthesis laboratories and industrial applications."
     },
     products: [
-      { model: "Maxi Cut Cônica", code: "FT-MC-01", iso: "023", diameter: "2.3mm", cut: "Cruzado Médio" },
-      { model: "Maxi Cut Esférica", code: "FT-MC-02", iso: "023", diameter: "3.0mm", cut: "Cruzado Grosso" },
-      { model: "Mini Cut Cônica", code: "FT-MN-01", iso: "023", diameter: "1.5mm", cut: "Cruzado Fino" },
-      { model: "Mini Cut Chama", code: "FT-MN-02", iso: "023", diameter: "2.0mm", cut: "Cruzado Extra Fino" },
-      { model: "Maxi Cut Cilíndrica", code: "FT-MC-03", iso: "023", diameter: "2.5mm", cut: "Reto" },
-      { model: "Mini Cut Torpedo", code: "FT-MN-03", iso: "023", diameter: "3.5mm", cut: "Cruzado Médio" },
+      // CORTE CRUZADO MÉDIO (MEDIUM CROSS CUT)
+      { model: "Corte Cruzado Médio", code: "500.002.1503", iso: "137.190.023", diameter: "2,3mm", grain: "Médio", activeLength: "16,00mm" },
+      { model: "Corte Cruzado Médio", code: "500.002.1511", iso: "292.140.023", diameter: "2,3mm", grain: "Médio", activeLength: "14,00mm" },
+      { model: "Corte Cruzado Médio", code: "500.002.1512", iso: "194.190.045", diameter: "4,3mm", grain: "Médio", activeLength: "13,00mm" },
+      { model: "Corte Cruzado Médio", code: "500.002.1571", iso: "176.190.023", diameter: "2,3mm", grain: "Médio", activeLength: "15,00mm" },
+      { model: "Corte Cruzado Médio", code: "500.002.3022", iso: "299.140.019", diameter: "1,9mm", grain: "Médio", activeLength: "11,00mm" },
+      { model: "Corte Cruzado Médio", code: "500.002.4061", iso: "141.140.022", diameter: "2,2mm", grain: "Médio", activeLength: "10,00mm" },
+      // CORTE CRUZADO FINO (THIN CROSS CUT)
+      { model: "Corte Cruzado Fino", code: "500.002.1503F", iso: "137.190.023", diameter: "2,3mm", grain: "Fino", activeLength: "16,00mm" },
+      { model: "Corte Cruzado Fino", code: "500.002.1511F", iso: "292.140.023", diameter: "2,3mm", grain: "Fino", activeLength: "14,00mm" },
+      { model: "Corte Cruzado Fino", code: "500.002.1512F", iso: "194.190.050", diameter: "5,0mm", grain: "Fino", activeLength: "15,00mm" },
+      { model: "Corte Cruzado Fino", code: "500.002.1571F", iso: "176.190.023", diameter: "2,3mm", grain: "Fino", activeLength: "15,00mm" },
+      { model: "Corte Cruzado Fino", code: "500.002.3022F", iso: "299.140.019", diameter: "1,9mm", grain: "Fino", activeLength: "11,00mm" },
+      // CORTE CRUZADO EXTRA FINO (EXTRA THIN CROSS CUT)
+      { model: "Corte Cruzado Extra Fino", code: "500.002.1503XEF", iso: "144.110.023", diameter: "2,3mm", grain: "Extra Fino", activeLength: "14,00mm" },
+      { model: "Corte Cruzado Extra Fino", code: "500.002.1511XEF", iso: "292.140.023", diameter: "6,0mm", grain: "Extra Fino", activeLength: "14,00mm" },
+      { model: "Corte Cruzado Extra Fino", code: "500.002.1571XEF", iso: "176.110.023", diameter: "2,3mm", grain: "Extra Fino", activeLength: "15,00mm" },
+      // CORTE CRUZADO GROSSO (THICK CROSS CUT)
+      { model: "Corte Cruzado Grosso", code: "500.002.1503G", iso: "137.140.023 / 292.140.023", diameter: "2,3mm", grain: "Grosso", activeLength: "14,00mm" },
+      // CORTE RETO (STRAIGHT CUT)
+      { model: "Corte Reto", code: "500.002.7710R", iso: "140.023", diameter: "2,3mm", grain: "Médio", activeLength: "14,00mm" },
+      { model: "Corte Reto", code: "500.002.716", iso: "140.023", diameter: "2,3mm", grain: "Médio", activeLength: "11,00mm" },
+      { model: "Corte Reto", code: "500.002.707", iso: "140.019", diameter: "1,9mm", grain: "Médio", activeLength: "8,00mm" },
+      { model: "Corte Reto", code: "500.002.7701R", iso: "140.019", diameter: "1,9mm", grain: "Médio", activeLength: "8,00mm" },
+      { model: "Corte Reto", code: "500.002.7703R", iso: "140.023", diameter: "2,3mm", grain: "Médio", activeLength: "8,00mm" },
+      // MINI CUT
+      { model: "Mini Cut", code: "500.002.MINI01", iso: "137.190.016", diameter: "1,6mm", grain: "Médio", activeLength: "8,00mm" },
+      { model: "Mini Cut", code: "500.002.MINI02", iso: "292.140.016", diameter: "1,6mm", grain: "Fino", activeLength: "6,00mm" },
+      { model: "Mini Cut", code: "500.002.MINI03", iso: "176.190.016", diameter: "1,6mm", grain: "Médio", activeLength: "10,00mm" },
     ]
   },
   "fresas-ceramica": {
+    subtypes: ["Cônica Cerâmica", "Esférica Cerâmica", "Chama Cerâmica", "Cilíndrica Cerâmica", "Torpedo Cerâmica"],
     titlePt: "FRESAS DE CERÂMICA",
     titleEn: "CERAMIC BURS",
     description: {
@@ -165,11 +189,26 @@ const productData: Record<string, {
       en: "High-tech ceramic burs for perfect finishes and delicate procedures. Heat resistant and long lasting."
     },
     products: [
-      { model: "Cônica Média", code: "FC-CON-01", iso: "032", diameter: "2.5mm", cut: "Cruzado Médio" },
-      { model: "Cônica Grande", code: "FC-CON-02", iso: "032", diameter: "3.5mm", cut: "Cruzado Fino" },
-      { model: "Esférica", code: "FC-ESF-01", iso: "032", diameter: "2.0mm", cut: "Cruzado Extra Fino" },
-      { model: "Chama", code: "FC-CHA-01", iso: "032", diameter: "2.5mm", cut: "Cruzado Grosso" },
-      { model: "Cilíndrica", code: "FC-CIL-01", iso: "032", diameter: "3.0mm", cut: "Cruzado Médio" },
+      // CÔNICA CERÂMICA
+      { model: "Cônica Cerâmica", code: "500.003.CON01", iso: "173.848.023", diameter: "2,3mm", grain: "Médio", activeLength: "10,00mm" },
+      { model: "Cônica Cerâmica", code: "500.003.CON02", iso: "173.848.025", diameter: "2,5mm", grain: "Médio", activeLength: "12,00mm" },
+      { model: "Cônica Cerâmica", code: "500.003.CON03", iso: "173.848.029", diameter: "2,9mm", grain: "Fino", activeLength: "11,00mm" },
+      { model: "Cônica Cerâmica", code: "500.003.CON04", iso: "173.848.040", diameter: "4,0mm", grain: "Fino", activeLength: "10,00mm" },
+      // ESFÉRICA CERÂMICA
+      { model: "Esférica Cerâmica", code: "500.003.ESF01", iso: "001.801.016", diameter: "1,6mm", grain: "Médio", activeLength: "1,6mm" },
+      { model: "Esférica Cerâmica", code: "500.003.ESF02", iso: "001.801.023", diameter: "2,3mm", grain: "Médio", activeLength: "2,3mm" },
+      { model: "Esférica Cerâmica", code: "500.003.ESF03", iso: "001.801.029", diameter: "2,9mm", grain: "Fino", activeLength: "2,9mm" },
+      // CHAMA CERÂMICA
+      { model: "Chama Cerâmica", code: "500.003.CHA01", iso: "249.862.017", diameter: "1,7mm", grain: "Médio", activeLength: "5,00mm" },
+      { model: "Chama Cerâmica", code: "500.003.CHA02", iso: "249.862.022", diameter: "2,2mm", grain: "Médio", activeLength: "6,00mm" },
+      { model: "Chama Cerâmica", code: "500.003.CHA03", iso: "249.862.026", diameter: "2,6mm", grain: "Fino", activeLength: "8,00mm" },
+      // CILÍNDRICA CERÂMICA
+      { model: "Cilíndrica Cerâmica", code: "500.003.CIL01", iso: "110.837.023", diameter: "2,3mm", grain: "Médio", activeLength: "8,00mm" },
+      { model: "Cilíndrica Cerâmica", code: "500.003.CIL02", iso: "110.837.029", diameter: "2,9mm", grain: "Médio", activeLength: "10,00mm" },
+      { model: "Cilíndrica Cerâmica", code: "500.003.CIL03", iso: "110.837.040", diameter: "4,0mm", grain: "Fino", activeLength: "10,00mm" },
+      // TORPEDO CERÂMICA
+      { model: "Torpedo Cerâmica", code: "500.003.TOR01", iso: "142.881.023", diameter: "2,3mm", grain: "Médio", activeLength: "10,00mm" },
+      { model: "Torpedo Cerâmica", code: "500.003.TOR02", iso: "142.881.029", diameter: "2,9mm", grain: "Fino", activeLength: "12,00mm" },
     ]
   },
   "lixas": {
@@ -214,6 +253,7 @@ const productData: Record<string, {
     ]
   },
   "polidoras": {
+    subtypes: ["Torpedo Ogival", "Torpedo Grande", "Torpedo Média", "Cilíndrica Polidora", "Chama Polidora", "Cônica Polidora", "Esférica Polidora"],
     titlePt: "POLIDORAS",
     titleEn: "POLISHERS",
     description: {
@@ -221,16 +261,38 @@ const productData: Record<string, {
       en: "Silicone polishers in various colors and grits for perfect finishing. Color system for easy identification."
     },
     products: [
+      // TORPEDO OGIVAL
       { model: "Torpedo Ogival", code: "PO-TOG-EG", diameter: "8mm", grain: "Extra Grosso", color: "Preto" },
       { model: "Torpedo Ogival", code: "PO-TOG-G", diameter: "8mm", grain: "Grosso", color: "Azul", image: PolidoraAzul },
       { model: "Torpedo Ogival", code: "PO-TOG-M", diameter: "8mm", grain: "Médio", color: "Verde", image: PolidoraVerde },
+      { model: "Torpedo Ogival", code: "PO-TOG-F", diameter: "8mm", grain: "Fino", color: "Rosa" },
+      // TORPEDO GRANDE
+      { model: "Torpedo Grande", code: "PO-TG-EG", diameter: "10mm", grain: "Extra Grosso", color: "Preto" },
+      { model: "Torpedo Grande", code: "PO-TG-G", diameter: "10mm", grain: "Grosso", color: "Azul" },
+      { model: "Torpedo Grande", code: "PO-TG-M", diameter: "10mm", grain: "Médio", color: "Verde" },
       { model: "Torpedo Grande", code: "PO-TG-F", diameter: "10mm", grain: "Fino", color: "Amarelo" },
+      // TORPEDO MÉDIA
+      { model: "Torpedo Média", code: "PO-TM-M", diameter: "6mm", grain: "Médio", color: "Verde" },
+      { model: "Torpedo Média", code: "PO-TM-F", diameter: "6mm", grain: "Fino", color: "Rosa" },
       { model: "Torpedo Média", code: "PO-TM-EF", diameter: "6mm", grain: "Extra Fino", color: "Rosa" },
-      { model: "Cilíndrica", code: "PO-CIL-UF", diameter: "5mm", grain: "Ultra Fino", color: "Branco", image: PolidoraCinza },
-      { model: "Chama Pequena", code: "PO-CP-M", diameter: "4mm", grain: "Médio", color: "Verde" },
+      // CILÍNDRICA POLIDORA
+      { model: "Cilíndrica Polidora", code: "PO-CIL-G", diameter: "5mm", grain: "Grosso", color: "Azul" },
+      { model: "Cilíndrica Polidora", code: "PO-CIL-M", diameter: "5mm", grain: "Médio", color: "Verde" },
+      { model: "Cilíndrica Polidora", code: "PO-CIL-UF", diameter: "5mm", grain: "Ultra Fino", color: "Branco", image: PolidoraCinza },
+      // CHAMA POLIDORA
+      { model: "Chama Polidora", code: "PO-CP-G", diameter: "4mm", grain: "Grosso", color: "Azul" },
+      { model: "Chama Polidora", code: "PO-CP-M", diameter: "4mm", grain: "Médio", color: "Verde" },
+      { model: "Chama Polidora", code: "PO-CP-F", diameter: "4mm", grain: "Fino", color: "Rosa" },
+      // CÔNICA POLIDORA
+      { model: "Cônica Polidora", code: "PO-CON-M", diameter: "6mm", grain: "Médio", color: "Verde" },
+      { model: "Cônica Polidora", code: "PO-CON-F", diameter: "6mm", grain: "Fino", color: "Rosa" },
+      // ESFÉRICA POLIDORA
+      { model: "Esférica Polidora", code: "PO-ESF-M", diameter: "4mm", grain: "Médio", color: "Verde" },
+      { model: "Esférica Polidora", code: "PO-ESF-F", diameter: "4mm", grain: "Fino", color: "Rosa" },
     ]
   },
   "escovas-limpeza": {
+    subtypes: ["Cerdas Poliamida", "Escova Limpeza", "Esponja Polidora", "Feltro Polidor"],
     titlePt: "ESCOVAS DE LIMPEZA",
     titleEn: "CLEANING BRUSHES",
     description: {
@@ -238,14 +300,25 @@ const productData: Record<string, {
       en: "Cleaning brushes and accessories for maintaining burs and instruments. Essential for extending equipment life."
     },
     products: [
-      { model: "Cerdas Poliamida Rosa", code: "EC-CPR-01", diameter: "20mm" },
-      { model: "Cerdas Poliamida Lilás", code: "EC-CPL-01", diameter: "20mm" },
-      { model: "Escova Limpeza Brocas", code: "EC-ELB-01", diameter: "15mm" },
-      { model: "Esponja Polidora", code: "EC-ESP-01", diameter: "25mm" },
-      { model: "Feltro Polidor", code: "EC-FP-01", diameter: "20mm" },
+      // CERDAS POLIAMIDA
+      { model: "Cerdas Poliamida", code: "EC-CPR-01", diameter: "20mm", color: "Rosa" },
+      { model: "Cerdas Poliamida", code: "EC-CPL-01", diameter: "20mm", color: "Lilás" },
+      { model: "Cerdas Poliamida", code: "EC-CPB-01", diameter: "20mm", color: "Branca" },
+      // ESCOVA LIMPEZA
+      { model: "Escova Limpeza", code: "EC-ELB-01", diameter: "15mm" },
+      { model: "Escova Limpeza", code: "EC-ELB-02", diameter: "20mm" },
+      { model: "Escova Limpeza", code: "EC-ELB-03", diameter: "25mm" },
+      // ESPONJA POLIDORA
+      { model: "Esponja Polidora", code: "EC-ESP-01", diameter: "20mm" },
+      { model: "Esponja Polidora", code: "EC-ESP-02", diameter: "25mm" },
+      // FELTRO POLIDOR
+      { model: "Feltro Polidor", code: "EC-FP-01", diameter: "15mm" },
+      { model: "Feltro Polidor", code: "EC-FP-02", diameter: "20mm" },
+      { model: "Feltro Polidor", code: "EC-FP-03", diameter: "25mm" },
     ]
   },
   "fibras-enucleadora-mandril": {
+    subtypes: ["Fibra Molecular", "Enucleadora", "Mandril"],
     titlePt: "FIBRAS, ENUCLEADORA E MANDRIL",
     titleEn: "FIBERS, ENUCLEATORS & MANDRELS",
     description: {
@@ -253,14 +326,22 @@ const productData: Record<string, {
       en: "High-quality molecular fibers, enucleators and mandrels. Essential components for various procedures."
     },
     products: [
-      { model: "Fibra Molecular P", code: "FE-FMP-01", diameter: "2.0mm" },
-      { model: "Fibra Molecular M", code: "FE-FMM-01", diameter: "3.0mm" },
-      { model: "Fibra Molecular G", code: "FE-FMG-01", diameter: "4.0mm" },
-      { model: "Enucleadora Calos Inox", code: "FE-ECI-01", diameter: "5mm" },
-      { model: "Mandril PM Church", code: "FE-MPC-01", diameter: "2.35mm" },
+      // FIBRA MOLECULAR
+      { model: "Fibra Molecular", code: "FE-FMP-01", diameter: "2.0mm" },
+      { model: "Fibra Molecular", code: "FE-FMM-01", diameter: "3.0mm" },
+      { model: "Fibra Molecular", code: "FE-FMG-01", diameter: "4.0mm" },
+      { model: "Fibra Molecular", code: "FE-FMG-02", diameter: "5.0mm" },
+      // ENUCLEADORA
+      { model: "Enucleadora", code: "FE-ECI-01", diameter: "5mm" },
+      { model: "Enucleadora", code: "FE-ECI-02", diameter: "6mm" },
+      { model: "Enucleadora", code: "FE-ECI-03", diameter: "8mm" },
+      // MANDRIL
+      { model: "Mandril", code: "FE-MPC-01", diameter: "2.35mm" },
+      { model: "Mandril", code: "FE-MPC-02", diameter: "3.0mm" },
     ]
   },
   "apoio-lixas-afiacao": {
+    subtypes: ["Apoio Rígido", "Apoio Flexível", "Disco Afiação", "Pasta Polimento", "Mandril"],
     titlePt: "APOIO PARA LIXAS E AFIAÇÃO",
     titleEn: "FILE SUPPORTS & SHARPENING",
     description: {
@@ -268,14 +349,24 @@ const productData: Record<string, {
       en: "File supports and professional sharpening materials. Ensure precision and safety in procedures."
     },
     products: [
-      { model: "Apoio Rígido Plantar", code: "AL-ARP-01", diameter: "25mm" },
-      { model: "Apoio Rígido Laminar", code: "AL-ARL-01", diameter: "15mm" },
-      { model: "Apoio Flexível Plantar", code: "AL-AFP-01", diameter: "25mm" },
-      { model: "Apoio Flexível Laminar", code: "AL-AFL-01", diameter: "15mm" },
-      { model: "Disco Couro Afiação", code: "AL-DCA-01", diameter: "75mm" },
-      { model: "Disco Abrasivo", code: "AL-DAB-01", diameter: "75mm" },
+      // APOIO RÍGIDO
+      { model: "Apoio Rígido", code: "AL-ARP-01", diameter: "25mm" },
+      { model: "Apoio Rígido", code: "AL-ARL-01", diameter: "15mm" },
+      { model: "Apoio Rígido", code: "AL-ARL-02", diameter: "20mm" },
+      // APOIO FLEXÍVEL
+      { model: "Apoio Flexível", code: "AL-AFP-01", diameter: "25mm" },
+      { model: "Apoio Flexível", code: "AL-AFL-01", diameter: "15mm" },
+      { model: "Apoio Flexível", code: "AL-AFL-02", diameter: "20mm" },
+      // DISCO AFIAÇÃO
+      { model: "Disco Afiação", code: "AL-DCA-01", diameter: "75mm" },
+      { model: "Disco Afiação", code: "AL-DAB-01", diameter: "75mm" },
+      { model: "Disco Afiação", code: "AL-DAB-02", diameter: "100mm" },
+      // PASTA POLIMENTO
       { model: "Pasta Polimento", code: "AL-PP-01", diameter: "N/A" },
-      { model: "Mandril Standard", code: "AL-MS-01", diameter: "2.35mm" },
+      { model: "Pasta Polimento", code: "AL-PP-02", diameter: "N/A" },
+      // MANDRIL
+      { model: "Mandril", code: "AL-MS-01", diameter: "2.35mm" },
+      { model: "Mandril", code: "AL-MS-02", diameter: "3.0mm" },
     ]
   },
   "linha-gold": {
