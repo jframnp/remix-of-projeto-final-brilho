@@ -349,21 +349,29 @@ const ProductCategory = () => {
   const categoryKey = category ? categoryKeyMap[category] || category : "";
   const data = category ? productData[category] : null;
 
-  // Group products by type (model name base) - must be before early return
+  // Group products by exact type name (full model name match for subtypes)
   const productsByType = useMemo(() => {
     if (!data) return {};
     const groups: Record<string, typeof data.products> = {};
     
-    data.products.forEach(product => {
-      const baseType = product.model.split(' ')[0];
-      if (!groups[baseType]) {
-        groups[baseType] = [];
-      }
-      groups[baseType].push(product);
-    });
+    // If subtypes are defined, use them for grouping
+    if (data.subtypes) {
+      data.subtypes.forEach(subtype => {
+        groups[subtype] = data.products.filter(product => product.model === subtype);
+      });
+    } else {
+      // Default: group by first word
+      data.products.forEach(product => {
+        const baseType = product.model.split(' ')[0];
+        if (!groups[baseType]) {
+          groups[baseType] = [];
+        }
+        groups[baseType].push(product);
+      });
+    }
     
     return groups;
-  }, [data?.products]);
+  }, [data?.products, data?.subtypes]);
 
   // Get featured images (first 3 products with images) - must be before early return
   const featuredImages = useMemo(() => {
