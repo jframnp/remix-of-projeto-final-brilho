@@ -89,64 +89,7 @@ const Contato = () => {
       <section className="bg-[#FAFAFA] py-20 md:py-32">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-16">
-            {/* Map & Info - Primeiro */}
-            <div className="lg:w-1/2">
-              <span className="inline-block text-[#D32F2F] font-montserrat font-bold text-sm tracking-widest uppercase mb-4">
-                {t("contact.locationLabel", "Nossa Localização")}
-              </span>
-              <h2 className="text-gray-900 font-montserrat font-bold text-3xl md:text-4xl mb-8">
-                {t("contact.infoTitle", "Informações de contato")}
-              </h2>
-
-              {/* Map Placeholder */}
-              <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl h-64 mb-8 flex items-center justify-center overflow-hidden relative">
-                <div className="absolute inset-0 bg-[#720000]/5" />
-                <div className="text-center z-10">
-                  <MapPin className="w-12 h-12 text-[#D32F2F] mx-auto mb-3" />
-                  <p className="text-gray-600 font-inter">São Paulo - SP</p>
-                </div>
-              </div>
-
-              {/* Address Card */}
-              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
-                <div className="flex items-start gap-4 mb-6">
-                  <div className="w-12 h-12 bg-[#D32F2F]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-[#D32F2F]" />
-                  </div>
-                  <div>
-                    <h3 className="text-gray-900 font-montserrat font-bold text-lg mb-1">
-                      {t("contact.address", "Endereço")}
-                    </h3>
-                    <p className="text-gray-600 font-inter">
-                      R. Cel. Botelho, 58 - Bela Aliança<br />
-                      São Paulo – SP – 05508-020
-                    </p>
-                  </div>
-                </div>
-
-                {/* Quick Contact Links */}
-                <div className="grid grid-cols-2 gap-4">
-                  <a
-                    href="https://wa.me/5511940101807"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-green-600 text-white font-montserrat font-bold py-3 px-4 rounded-xl hover:scale-105 transition-all duration-300"
-                  >
-                    <MessageCircle className="w-5 h-5" />
-                    WhatsApp
-                  </a>
-                  <a
-                    href="tel:+551139316343"
-                    className="flex items-center justify-center gap-2 bg-gradient-to-r from-[#D32F2F] to-[#9B0000] text-white font-montserrat font-bold py-3 px-4 rounded-xl hover:scale-105 transition-all duration-300"
-                  >
-                    <Phone className="w-5 h-5" />
-                    {t("contact.callNow", "Ligar")}
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Form - Segundo */}
+            {/* Form - Primeiro (esquerda) */}
             <div className="lg:w-1/2">
               <span className="inline-block text-[#D32F2F] font-montserrat font-bold text-sm tracking-widest uppercase mb-4">
                 {t("contact.formLabel", "Envie sua mensagem")}
@@ -260,6 +203,63 @@ const Contato = () => {
                   {t("contact.sendBtn", "Enviar Mensagem")}
                 </button>
               </form>
+            </div>
+
+            {/* Map & Info - Segundo (direita) */}
+            <div className="lg:w-1/2">
+              <span className="inline-block text-[#D32F2F] font-montserrat font-bold text-sm tracking-widest uppercase mb-4">
+                {t("contact.locationLabel", "Nossa Localização")}
+              </span>
+              <h2 className="text-gray-900 font-montserrat font-bold text-3xl md:text-4xl mb-8">
+                {t("contact.infoTitle", "Informações de contato")}
+              </h2>
+
+              {/* Map Placeholder */}
+              <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl h-64 mb-8 flex items-center justify-center overflow-hidden relative">
+                <div className="absolute inset-0 bg-[#720000]/5" />
+                <div className="text-center z-10">
+                  <MapPin className="w-12 h-12 text-[#D32F2F] mx-auto mb-3" />
+                  <p className="text-gray-600 font-inter">São Paulo - SP</p>
+                </div>
+              </div>
+
+              {/* Address Card */}
+              <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+                <div className="flex items-start gap-4 mb-6">
+                  <div className="w-12 h-12 bg-[#D32F2F]/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-[#D32F2F]" />
+                  </div>
+                  <div>
+                    <h3 className="text-gray-900 font-montserrat font-bold text-lg mb-1">
+                      {t("contact.address", "Endereço")}
+                    </h3>
+                    <p className="text-gray-600 font-inter">
+                      R. Cel. Botelho, 58 - Bela Aliança<br />
+                      São Paulo – SP – 05508-020
+                    </p>
+                  </div>
+                </div>
+
+                {/* Quick Contact Links */}
+                <div className="grid grid-cols-2 gap-4">
+                  <a
+                    href="https://wa.me/5511940101807"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-green-600 text-white font-montserrat font-bold py-3 px-4 rounded-xl hover:scale-105 transition-all duration-300"
+                  >
+                    <MessageCircle className="w-5 h-5" />
+                    WhatsApp
+                  </a>
+                  <a
+                    href="tel:+551139316343"
+                    className="flex items-center justify-center gap-2 bg-gradient-to-r from-[#D32F2F] to-[#9B0000] text-white font-montserrat font-bold py-3 px-4 rounded-xl hover:scale-105 transition-all duration-300"
+                  >
+                    <Phone className="w-5 h-5" />
+                    {t("contact.callNow", "Ligar")}
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
