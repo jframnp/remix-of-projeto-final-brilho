@@ -56,7 +56,7 @@ const productData: Record<string, {
 }> = {
   "brocas-diamantadas": {
     hasGoldLine: false,
-    subtypes: ["Esférica", "Roda", "Cônica", "Chama", "Cilíndrica", "Torpedo"],
+    subtypes: ["Esférica", "Roda", "Cônica Topo Invertido", "Cônica Topo Arredondado", "Cônica Topo Plano", "Cônica", "Cilíndrica Topo Plano", "Cilíndrica Topo Arredondado", "Lentilha", "Chama", "Cônica Topo Chama"],
     titlePt: "BROCAS DIAMANTADAS",
     titleEn: "DIAMOND BURS",
     description: {
@@ -72,16 +72,72 @@ const productData: Record<string, {
       "Fabricação 100% nacional"
     ],
     products: [
-      { model: "Esférica", code: "PM-07", iso: "001", diameter: "1.0mm", grain: "Médio", activeLength: "1.0mm", image: PM07 },
-      { model: "Roda Invertida", code: "PM-42", iso: "010", diameter: "3.0mm", grain: "Médio", activeLength: "1.5mm", image: PM42 },
-      { model: "Cilíndrica", code: "PM-57", iso: "016", diameter: "2.0mm", grain: "Médio", activeLength: "4.0mm", image: PM57 },
-      { model: "Cônica", code: "PM-718", iso: "012", diameter: "1.4mm", grain: "Médio", activeLength: "8.0mm", image: PM718 },
-      { model: "Cônica", code: "PM-720", iso: "012", diameter: "2.5mm", grain: "Médio", activeLength: "6.0mm", image: PM720 },
-      { model: "Cônica Longa", code: "PM-720L", iso: "012", diameter: "2.5mm", grain: "Médio", activeLength: "10.0mm", image: PM720L },
-      { model: "Chama", code: "PM-744", iso: "014", diameter: "2.0mm", grain: "Médio", activeLength: "5.0mm", image: PM744 },
-      { model: "Ogiva", code: "PM-829", iso: "018", diameter: "1.8mm", grain: "Médio", activeLength: "3.0mm", image: PM829 },
-      { model: "Chama", code: "PM-838", iso: "014", diameter: "2.5mm", grain: "Médio", activeLength: "6.0mm", image: PM838 },
-      { model: "Agulha", code: "PM-859", iso: "019", diameter: "1.6mm", grain: "Médio", activeLength: "8.0mm", image: PM859 },
+      // ESFÉRICA (ROUND)
+      { model: "Esférica", code: "500.001.01", iso: "001.801.010", diameter: "1,0mm", grain: "Médio", image: PM07 },
+      { model: "Esférica", code: "500.001.03", iso: "001.801.016", diameter: "1,6mm", grain: "Médio" },
+      { model: "Esférica", code: "500.001.05", iso: "001.801.017", diameter: "1,7mm", grain: "Médio" },
+      { model: "Esférica", code: "500.001.06", iso: "001.801.026", diameter: "2,6mm", grain: "Médio" },
+      { model: "Esférica", code: "500.001.096", iso: "001.801.029", diameter: "2,9mm", grain: "Médio" },
+      { model: "Esférica", code: "500.001.07", iso: "001.801.040", diameter: "4,0mm", grain: "Médio" },
+      { model: "Esférica", code: "500.001.08", iso: "001.801.048", diameter: "4,8mm", grain: "Médio" },
+      { model: "Esférica", code: "500.001.10", iso: "001.801.052", diameter: "5,2mm", grain: "Médio" },
+      // RODA (WHEEL)
+      { model: "Roda", code: "500.001.17", iso: "040.815.065", diameter: "6,5mm", grain: "Médio", activeLength: "1,0mm" },
+      { model: "Roda", code: "500.001.19", iso: "040.815.050", diameter: "5,0mm", grain: "Médio", activeLength: "1,0mm" },
+      { model: "Roda", code: "500.001.21", iso: "048.815.060", diameter: "6,0mm", grain: "Médio", activeLength: "2,0mm" },
+      // CÔNICA TOPO INVERTIDO (CONICAL INVERTED END)
+      { model: "Cônica Topo Invertido", code: "500.001.33", iso: "010/805", diameter: "1,0mm", grain: "Médio", activeLength: "1,3mm", image: PM42 },
+      { model: "Cônica Topo Invertido", code: "500.001.35", iso: "010/805", diameter: "1,6mm", grain: "Médio", activeLength: "1,8mm" },
+      { model: "Cônica Topo Invertido", code: "500.001.38", iso: "010/805", diameter: "2,5mm", grain: "Médio", activeLength: "2,5mm" },
+      { model: "Cônica Topo Invertido", code: "500.001.42", iso: "010/805", diameter: "5,0mm", grain: "Médio", activeLength: "2,2mm" },
+      { model: "Cônica Topo Invertido", code: "500.001.46", iso: "010/805", diameter: "6,0mm", grain: "Médio", activeLength: "7,0mm" },
+      { model: "Cônica Topo Invertido", code: "500.001.49", iso: "225/807", diameter: "2,3mm", grain: "Médio", activeLength: "5,0mm" },
+      // CÔNICA TOPO ARREDONDADO (CONICAL ROUNDED TOP)
+      { model: "Cônica Topo Arredondado", code: "500.001.718", iso: "199.825.018", diameter: "1,8mm", grain: "Fino", activeLength: "11mm", image: PM718 },
+      { model: "Cônica Topo Arredondado", code: "500.001.720", iso: "199.852.026", diameter: "2,6mm", grain: "Fino", activeLength: "10mm", image: PM720 },
+      { model: "Cônica Topo Arredondado", code: "500.001.720L", iso: "198.850.024", diameter: "2,4mm", grain: "Fino", activeLength: "14mm", image: PM720L },
+      { model: "Cônica Topo Arredondado", code: "500.001.721", iso: "198.850.040", diameter: "4,0mm", grain: "Fino", activeLength: "1mm" },
+      // CÔNICA TOPO PLANO (TAPERED FLAT END)
+      { model: "Cônica Topo Plano", code: "500.001.700", iso: "170/845", diameter: "1,0mm", grain: "Médio", activeLength: "4,0mm" },
+      { model: "Cônica Topo Plano", code: "500.001.703", iso: "170/845", diameter: "1,5mm", grain: "Médio", activeLength: "5,0mm" },
+      { model: "Cônica Topo Plano", code: "500.001.705", iso: "170/845", diameter: "1,3mm", grain: "Médio", activeLength: "4,0mm" },
+      { model: "Cônica Topo Plano", code: "500.001.707", iso: "172/847", diameter: "2,1mm", grain: "Médio", activeLength: "5,5mm" },
+      { model: "Cônica Topo Plano", code: "500.001.708", iso: "173/848", diameter: "1,6mm", grain: "Médio", activeLength: "8,0mm" },
+      { model: "Cônica Topo Plano", code: "500.001.710", iso: "173/848", diameter: "2,1mm", grain: "Médio", activeLength: "10,0mm" },
+      { model: "Cônica Topo Plano", code: "500.001.715", iso: "173/848", diameter: "2,5mm", grain: "Médio", activeLength: "10,0mm" },
+      { model: "Cônica Topo Plano", code: "500.001.716", iso: "173/848", diameter: "2,9mm", grain: "Médio", activeLength: "11,0mm" },
+      { model: "Cônica Topo Plano", code: "500.001.716L", iso: "173/848", diameter: "2,5mm", grain: "Médio", activeLength: "10,0mm" },
+      { model: "Cônica Topo Plano", code: "500.001.717", iso: "173/848", diameter: "4,0mm", grain: "Médio", activeLength: "10,0mm" },
+      // CÔNICA (CONICAL)
+      { model: "Cônica", code: "500.001.730", iso: "161.898.050", diameter: "5,0mm", grain: "Médio", activeLength: "10,0mm" },
+      // CILÍNDRICA TOPO PLANO (CYLINDRICAL FLAT END)
+      { model: "Cilíndrica Topo Plano", code: "500.001.56", iso: "109.835.010", diameter: "1,0mm", grain: "Médio", activeLength: "4mm", image: PM57 },
+      { model: "Cilíndrica Topo Plano", code: "500.001.57", iso: "109.835.014", diameter: "1,4mm", grain: "Médio", activeLength: "4mm" },
+      { model: "Cilíndrica Topo Plano", code: "500.001.61", iso: "110.835.025", diameter: "2,5mm", grain: "Médio", activeLength: "6mm" },
+      { model: "Cilíndrica Topo Plano", code: "500.001.82", iso: "110.837.029", diameter: "2,9mm", grain: "Médio", activeLength: "10mm" },
+      { model: "Cilíndrica Topo Plano", code: "500.001.85", iso: "110.837.040", diameter: "4,0mm", grain: "Médio", activeLength: "10mm" },
+      { model: "Cilíndrica Topo Plano", code: "500.001.85L", iso: "110.842.050", diameter: "5,0mm", grain: "Médio", activeLength: "15mm" },
+      { model: "Cilíndrica Topo Plano", code: "500.001.87", iso: "110.837.045", diameter: "4,5mm", grain: "Médio", activeLength: "10mm" },
+      // CILÍNDRICA TOPO ARREDONDADO (CYLINDER ROUNDED END)
+      { model: "Cilíndrica Topo Arredondado", code: "500.001.92", iso: "142.881.029", diameter: "2,9mm", grain: "Médio", activeLength: "10,0mm" },
+      { model: "Cilíndrica Topo Arredondado", code: "500.001.95", iso: "142.881.040", diameter: "4,0mm", grain: "Médio", activeLength: "10,0mm" },
+      // LENTILHA (LENTIL)
+      { model: "Lentilha", code: "500.001.23", iso: "304.825.045", diameter: "4,5mm", grain: "Médio", activeLength: "1,5mm" },
+      { model: "Lentilha", code: "500.001.25", iso: "304.825.058", diameter: "5,8mm", grain: "Médio", activeLength: "1,5mm" },
+      // CHAMA (FLAME)
+      { model: "Chama", code: "500.001.740", iso: "249.862.012", diameter: "1,2mm", grain: "Médio", activeLength: "8,0mm", image: PM744 },
+      { model: "Chama", code: "500.001.741", iso: "249.862.015", diameter: "1,5mm", grain: "Médio", activeLength: "8,0mm" },
+      { model: "Chama", code: "500.001.743", iso: "249.862.026", diameter: "2,6mm", grain: "Médio", activeLength: "6,5mm" },
+      { model: "Chama", code: "500.001.744", iso: "249.862.024", diameter: "2,4mm", grain: "Médio", activeLength: "9,0mm" },
+      { model: "Chama", code: "500.001.829", iso: "249.862.017", diameter: "1,7mm", grain: "Médio", activeLength: "5,0mm", image: PM829 },
+      { model: "Chama", code: "500.001.830", iso: "249.862.022", diameter: "2,2mm", grain: "Médio", activeLength: "5,0mm" },
+      { model: "Chama", code: "500.001.837", iso: "249.862.022", diameter: "2,2mm", grain: "Médio", activeLength: "8,0mm" },
+      { model: "Chama", code: "500.001.838", iso: "249.862.026", diameter: "2,6mm", grain: "Médio", activeLength: "8,0mm", image: PM838 },
+      { model: "Chama", code: "500.001.858", iso: "249.862.028", diameter: "2,8mm", grain: "Médio", activeLength: "5,0mm" },
+      // CÔNICA TOPO CHAMA (CONICAL FLAME END)
+      { model: "Cônica Topo Chama", code: "500.001.859", iso: "299/879", diameter: "2,0mm", grain: "Médio", activeLength: "11mm", image: PM859 },
+      { model: "Cônica Topo Chama", code: "500.001.3203", iso: "253/863", diameter: "1,5mm", grain: "Médio", activeLength: "10mm" },
+      { model: "Cônica Topo Chama", code: "500.001.3195", iso: "253/862", diameter: "1,3mm", grain: "Médio", activeLength: "10mm" },
     ]
   },
   "fresas-tungstenio": {
