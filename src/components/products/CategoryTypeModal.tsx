@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { X, Download, MessageCircle } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader } from "@/components/ui/dialog";
+import LixaTubular from "@/assets/products/lixa-tubular.png";
 
 interface Product {
   model: string;
@@ -163,11 +164,11 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
         </DialogHeader>
 
         <div className="px-3 sm:px-6 pb-4 sm:pb-6 overflow-x-auto">
-          {/* Product Image - Show for Tubular/Adesiva at top */}
-          {categorySlug === 'lixas' && (typeName.toLowerCase().includes('tubular') || typeName.toLowerCase().includes('adesiva')) && products[0]?.image && (
+          {/* Product Image - Show for Tubular at top */}
+          {categorySlug === 'lixas' && typeName.toLowerCase().includes('tubular') && (
             <div className="flex justify-center items-center p-4 mb-4">
               <img 
-                src={products[0].image} 
+                src={LixaTubular}
                 alt={translatedTypeName}
                 className="max-w-full max-h-[160px] sm:max-h-[200px] object-contain rounded-lg"
               />
