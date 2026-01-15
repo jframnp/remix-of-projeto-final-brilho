@@ -48,19 +48,34 @@ const getProductName = (code: string, model?: string): string => {
     return `PM${diamondBurMatch[1]}`;
   }
   
-  // For tungsten burs with format "500.002.XXXX" -> show code suffix
+  // For tungsten burs with format "500.002.XXXX" -> show model suffix (e.g., "1507", "1507F", "717")
   const tungstenMatch = code.match(/500\.002\.(.+)$/);
   if (tungstenMatch) {
-    return tungstenMatch[1];
+    return tungstenMatch[1].toUpperCase();
   }
   
-  // For ceramic burs with format "500.003.XXXX" -> show code suffix
-  const ceramicMatch = code.match(/500\.003\.(.+)$/);
+  // For ceramic burs with format "500.004.XXXX" -> show model suffix (e.g., "1508C", "717C")
+  const ceramicMatch = code.match(/500\.004\.(.+)$/);
   if (ceramicMatch) {
-    return ceramicMatch[1];
+    return ceramicMatch[1].toUpperCase();
   }
   
-  // For other products, just return the code as-is for display
+  // For polidoras with format "500.008.XXXX"
+  const polisherMatch = code.match(/500\.008\.(.+)$/);
+  if (polisherMatch) {
+    return polisherMatch[1];
+  }
+  
+  // For lixas with specific patterns
+  if (code.startsWith('LX-') || code.startsWith('LT-')) {
+    return code;
+  }
+  
+  // For other products, just return the model name if available
+  if (model) {
+    return model;
+  }
+  
   return code;
 };
 
