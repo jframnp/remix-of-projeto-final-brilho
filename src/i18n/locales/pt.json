@@ -200,7 +200,10 @@
       "iso": "ISO",
       "activeLength": "Área Ativa",
       "cut": "Corte",
-      "color": "Cor"
+      "color": "Cor",
+      "thickness": "Espessura",
+      "granulometry": "Granulometria",
+      "packaging": "Embalagem"
     },
     "grains": {
       "extraFine": "Extra Fino",

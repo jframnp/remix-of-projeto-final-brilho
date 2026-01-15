@@ -200,7 +200,10 @@
       "iso": "ISO",
       "activeLength": "Active Length",
       "cut": "Cut",
-      "color": "Color"
+      "color": "Color",
+      "thickness": "Thickness",
+      "granulometry": "Granulometry",
+      "packaging": "Packaging"
     },
     "grains": {
       "extraFine": "Extra Fine",
