@@ -141,15 +141,15 @@ const productData: Record<string, {
     ]
   },
   "fresas-tungstenio": {
-    subtypes: ["1507", "1508", "1509", "1510", "1517", "1520", "92", "95", "1251", "3029", "717", "1503", "1511", "1512", "1571", "3022", "4061"],
+    subtypes: ["Corte Cruzado Médio", "Corte Cruzado Fino", "Corte Cruzado Extra Fino", "Corte Cruzado Grosso", "Corte Reto"],
     subcategories: {
       "Maxi Cut": {
         description: "Fresas de tungstênio de alta remoção - ideais para desbaste rápido",
-        types: ["1507", "1508", "1509", "1510", "1517", "1520", "92", "95", "1251", "3029", "717"]
+        types: ["Corte Cruzado Médio", "Corte Cruzado Fino", "Corte Cruzado Extra Fino", "Corte Cruzado Grosso", "Corte Reto"]
       },
       "Mini Cut": {
         description: "Fresas de tungstênio de precisão - ideais para acabamento e detalhes",
-        types: ["1503", "1511", "1512", "1571", "3022", "4061"]
+        types: ["Corte Cruzado Médio", "Corte Cruzado Fino", "Corte Cruzado Extra Fino", "Corte Cruzado Grosso"]
       }
     },
     titlePt: "FRESAS DE TUNGSTÊNIO",
@@ -159,72 +159,72 @@ const productData: Record<string, {
       en: "High-performance tungsten burs for procedures requiring precision and durability. Ideal for prosthesis laboratories and industrial applications."
     },
     products: [
-      // MAXI CUT - CORTE CRUZADO MÉDIO (MEDIUM CROSS CUT)
-      { model: "1507", code: "500.002.1507", iso: "194.190.060", diameter: "6,0mm", grain: "Médio", activeLength: "15,00mm", subcategory: "Maxi Cut" },
-      { model: "1508", code: "500.002.1508", iso: "274.190.060", diameter: "6,0mm", grain: "Médio", activeLength: "14,00mm", subcategory: "Maxi Cut" },
-      { model: "1509", code: "500.002.1509", iso: "274.190.050", diameter: "5,0mm", grain: "Médio", activeLength: "13,50mm", subcategory: "Maxi Cut" },
-      { model: "1510", code: "500.002.1510", iso: "200.110.040", diameter: "4,0mm", grain: "Médio", activeLength: "14,00mm", subcategory: "Maxi Cut" },
-      { model: "1517", code: "500.002.1517", iso: "201.190.060", diameter: "6,0mm", grain: "Médio", activeLength: "15,00mm", subcategory: "Maxi Cut" },
-      { model: "1520", code: "500.002.1520", iso: "199.850.050", diameter: "5,0mm", grain: "Médio", activeLength: "13,00mm", subcategory: "Maxi Cut" },
-      { model: "92", code: "500.002.92", iso: "194.190.050", diameter: "5,5mm", grain: "Médio", activeLength: "13,50mm", subcategory: "Maxi Cut" },
-      { model: "95", code: "500.002.95", iso: "194.190.060", diameter: "6,0mm", grain: "Médio", activeLength: "13,50mm", subcategory: "Maxi Cut" },
-      { model: "1251", code: "500.002.1251", iso: "277.175.045", diameter: "4,5mm", grain: "Médio", activeLength: "13,00mm", subcategory: "Maxi Cut" },
-      { model: "3029", code: "500.002.3029", iso: "194.175.055", diameter: "5,5mm", grain: "Médio", activeLength: "13,00mm", subcategory: "Maxi Cut" },
-      // MAXI CUT - CORTE CRUZADO FINO (THIN CROSS CUT)
-      { model: "1507", code: "500.002.1507F", iso: "194.190.060", diameter: "6,0mm", grain: "Fino", activeLength: "15,00mm", subcategory: "Maxi Cut" },
-      { model: "1508", code: "500.002.1508F", iso: "274.140.060", diameter: "6,0mm", grain: "Fino", activeLength: "14,00mm", subcategory: "Maxi Cut" },
-      { model: "1509", code: "500.002.1509F", iso: "274.140.050", diameter: "5,0mm", grain: "Fino", activeLength: "14,00mm", subcategory: "Maxi Cut" },
-      { model: "1510", code: "500.002.1510F", iso: "199.850.040", diameter: "4,0mm", grain: "Fino", activeLength: "14,00mm", subcategory: "Maxi Cut" },
-      { model: "1517", code: "500.002.1517F", iso: "201.140.060", diameter: "6,0mm", grain: "Fino", activeLength: "15,00mm", subcategory: "Maxi Cut" },
-      { model: "1520", code: "500.002.1520F", iso: "199.850.050", diameter: "5,0mm", grain: "Fino", activeLength: "13,00mm", subcategory: "Maxi Cut" },
-      { model: "92", code: "500.002.92F", iso: "194.190.050", diameter: "5,5mm", grain: "Fino", activeLength: "13,50mm", subcategory: "Maxi Cut" },
-      { model: "95", code: "500.002.95F", iso: "194.190.060", diameter: "6,0mm", grain: "Fino", activeLength: "13,00mm", subcategory: "Maxi Cut" },
-      { model: "1251", code: "500.002.1251F", iso: "277.175.045", diameter: "4,5mm", grain: "Fino", activeLength: "13,00mm", subcategory: "Maxi Cut" },
-      // MAXI CUT - CORTE CRUZADO EXTRA FINO (EXTRA THIN CROSS CUT)
-      { model: "1508", code: "500.002.1508XEF", iso: "274.110.060", diameter: "6,0mm", grain: "Extra Fino", activeLength: "14,00mm", subcategory: "Maxi Cut" },
-      { model: "1510", code: "500.002.1510XEF", iso: "200.110.040", diameter: "4,0mm", grain: "Extra Fino", activeLength: "14,00mm", subcategory: "Maxi Cut" },
-      { model: "1520", code: "500.002.1520XEF", iso: "194.215.050", diameter: "5,0mm", grain: "Extra Fino", activeLength: "13,00mm", subcategory: "Maxi Cut" },
-      // MAXI CUT - CORTE CRUZADO GROSSO (THICK CROSS CUT)
-      { model: "1508", code: "500.002.1508G", iso: "274.190.060", diameter: "6,0mm", grain: "Grosso", activeLength: "14,00mm", subcategory: "Maxi Cut" },
+      // MAXI CUT - CORTE CRUZADO MÉDIO
+      { model: "Corte Cruzado Médio", code: "500.002.1507", iso: "194.190.060", diameter: "6,0mm", grain: "Médio", activeLength: "15,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Médio", code: "500.002.1508", iso: "274.190.060", diameter: "6,0mm", grain: "Médio", activeLength: "14,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Médio", code: "500.002.1509", iso: "274.190.050", diameter: "5,0mm", grain: "Médio", activeLength: "13,50mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Médio", code: "500.002.1510", iso: "200.110.040", diameter: "4,0mm", grain: "Médio", activeLength: "14,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Médio", code: "500.002.1517", iso: "201.190.060", diameter: "6,0mm", grain: "Médio", activeLength: "15,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Médio", code: "500.002.1520", iso: "199.850.050", diameter: "5,0mm", grain: "Médio", activeLength: "13,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Médio", code: "500.002.92", iso: "194.190.050", diameter: "5,5mm", grain: "Médio", activeLength: "13,50mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Médio", code: "500.002.95", iso: "194.190.060", diameter: "6,0mm", grain: "Médio", activeLength: "13,50mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Médio", code: "500.002.1251", iso: "277.175.045", diameter: "4,5mm", grain: "Médio", activeLength: "13,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Médio", code: "500.002.3029", iso: "194.175.055", diameter: "5,5mm", grain: "Médio", activeLength: "13,00mm", subcategory: "Maxi Cut" },
+      // MAXI CUT - CORTE CRUZADO FINO
+      { model: "Corte Cruzado Fino", code: "500.002.1507F", iso: "194.190.060", diameter: "6,0mm", grain: "Fino", activeLength: "15,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Fino", code: "500.002.1508F", iso: "274.140.060", diameter: "6,0mm", grain: "Fino", activeLength: "14,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Fino", code: "500.002.1509F", iso: "274.140.050", diameter: "5,0mm", grain: "Fino", activeLength: "14,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Fino", code: "500.002.1510F", iso: "199.850.040", diameter: "4,0mm", grain: "Fino", activeLength: "14,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Fino", code: "500.002.1517F", iso: "201.140.060", diameter: "6,0mm", grain: "Fino", activeLength: "15,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Fino", code: "500.002.1520F", iso: "199.850.050", diameter: "5,0mm", grain: "Fino", activeLength: "13,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Fino", code: "500.002.92F", iso: "194.190.050", diameter: "5,5mm", grain: "Fino", activeLength: "13,50mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Fino", code: "500.002.95F", iso: "194.190.060", diameter: "6,0mm", grain: "Fino", activeLength: "13,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Fino", code: "500.002.1251F", iso: "277.175.045", diameter: "4,5mm", grain: "Fino", activeLength: "13,00mm", subcategory: "Maxi Cut" },
+      // MAXI CUT - CORTE CRUZADO EXTRA FINO
+      { model: "Corte Cruzado Extra Fino", code: "500.002.1508XEF", iso: "274.110.060", diameter: "6,0mm", grain: "Extra Fino", activeLength: "14,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Extra Fino", code: "500.002.1510XEF", iso: "200.110.040", diameter: "4,0mm", grain: "Extra Fino", activeLength: "14,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Extra Fino", code: "500.002.1520XEF", iso: "194.215.050", diameter: "5,0mm", grain: "Extra Fino", activeLength: "13,00mm", subcategory: "Maxi Cut" },
+      // MAXI CUT - CORTE CRUZADO GROSSO
+      { model: "Corte Cruzado Grosso", code: "500.002.1508G", iso: "274.190.060", diameter: "6,0mm", grain: "Grosso", activeLength: "14,00mm", subcategory: "Maxi Cut" },
       // MAXI CUT - CORTE RETO (717 models)
-      { model: "717", code: "500.002.717EG", iso: "173.849.070", diameter: "7,0mm", grain: "Extra Grosso", activeLength: "15,00mm", subcategory: "Maxi Cut" },
-      { model: "717", code: "500.002.717G", iso: "173.849.070", diameter: "7,0mm", grain: "Grosso", activeLength: "15,00mm", subcategory: "Maxi Cut" },
-      { model: "717", code: "500.002.717", iso: "173.849.070", diameter: "7,0mm", grain: "Médio", activeLength: "15,00mm", subcategory: "Maxi Cut" },
-      { model: "717", code: "500.002.717F", iso: "173.849.070", diameter: "7,0mm", grain: "Fino", activeLength: "15,00mm", subcategory: "Maxi Cut" },
-      { model: "717", code: "500.002.717XEF", iso: "173.849.070", diameter: "7,0mm", grain: "Extra Fino", activeLength: "15,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Reto", code: "500.002.717EG", iso: "173.849.070", diameter: "7,0mm", grain: "Extra Grosso", activeLength: "15,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Reto", code: "500.002.717G", iso: "173.849.070", diameter: "7,0mm", grain: "Grosso", activeLength: "15,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Reto", code: "500.002.717", iso: "173.849.070", diameter: "7,0mm", grain: "Médio", activeLength: "15,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Reto", code: "500.002.717F", iso: "173.849.070", diameter: "7,0mm", grain: "Fino", activeLength: "15,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Reto", code: "500.002.717XEF", iso: "173.849.070", diameter: "7,0mm", grain: "Extra Fino", activeLength: "15,00mm", subcategory: "Maxi Cut" },
       // MINI CUT - CORTE CRUZADO MÉDIO
-      { model: "1503", code: "500.002.1503", iso: "137.190.023", diameter: "2,3mm", grain: "Médio", activeLength: "16,00mm", subcategory: "Mini Cut" },
-      { model: "1511", code: "500.002.1511", iso: "292.140.023", diameter: "2,3mm", grain: "Médio", activeLength: "14,00mm", subcategory: "Mini Cut" },
-      { model: "1512", code: "500.002.1512", iso: "194.190.045", diameter: "4,3mm", grain: "Médio", activeLength: "13,00mm", subcategory: "Mini Cut" },
-      { model: "1571", code: "500.002.1571", iso: "175.190.023", diameter: "2,3mm", grain: "Médio", activeLength: "15,00mm", subcategory: "Mini Cut" },
-      { model: "3022", code: "500.002.3022", iso: "289.140.019", diameter: "1,9mm", grain: "Médio", activeLength: "11,00mm", subcategory: "Mini Cut" },
-      { model: "4061", code: "500.002.4061", iso: "141.140.022", diameter: "2,2mm", grain: "Médio", activeLength: "10,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Médio", code: "500.002.1503", iso: "137.190.023", diameter: "2,3mm", grain: "Médio", activeLength: "16,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Médio", code: "500.002.1511", iso: "292.140.023", diameter: "2,3mm", grain: "Médio", activeLength: "14,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Médio", code: "500.002.1512", iso: "194.190.045", diameter: "4,3mm", grain: "Médio", activeLength: "13,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Médio", code: "500.002.1571", iso: "175.190.023", diameter: "2,3mm", grain: "Médio", activeLength: "15,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Médio", code: "500.002.3022", iso: "289.140.019", diameter: "1,9mm", grain: "Médio", activeLength: "11,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Médio", code: "500.002.4061", iso: "141.140.022", diameter: "2,2mm", grain: "Médio", activeLength: "10,00mm", subcategory: "Mini Cut" },
       // MINI CUT - CORTE CRUZADO FINO
-      { model: "1503", code: "500.002.1503F", iso: "137.190.023", diameter: "2,3mm", grain: "Fino", activeLength: "16,00mm", subcategory: "Mini Cut" },
-      { model: "1511", code: "500.002.1511F", iso: "292.140.023", diameter: "2,3mm", grain: "Fino", activeLength: "14,00mm", subcategory: "Mini Cut" },
-      { model: "1512", code: "500.002.1512F", iso: "194.190.050", diameter: "5,0mm", grain: "Fino", activeLength: "15,00mm", subcategory: "Mini Cut" },
-      { model: "1571", code: "500.002.1571F", iso: "175.110.023", diameter: "2,3mm", grain: "Fino", activeLength: "15,00mm", subcategory: "Mini Cut" },
-      { model: "3022", code: "500.002.3022F", iso: "289.140.019", diameter: "1,9mm", grain: "Fino", activeLength: "11,00mm", subcategory: "Mini Cut" },
-      { model: "4061", code: "500.002.4061F", iso: "141.140.022", diameter: "2,2mm", grain: "Fino", activeLength: "10,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Fino", code: "500.002.1503F", iso: "137.190.023", diameter: "2,3mm", grain: "Fino", activeLength: "16,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Fino", code: "500.002.1511F", iso: "292.140.023", diameter: "2,3mm", grain: "Fino", activeLength: "14,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Fino", code: "500.002.1512F", iso: "194.190.050", diameter: "5,0mm", grain: "Fino", activeLength: "15,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Fino", code: "500.002.1571F", iso: "175.110.023", diameter: "2,3mm", grain: "Fino", activeLength: "15,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Fino", code: "500.002.3022F", iso: "289.140.019", diameter: "1,9mm", grain: "Fino", activeLength: "11,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Fino", code: "500.002.4061F", iso: "141.140.022", diameter: "2,2mm", grain: "Fino", activeLength: "10,00mm", subcategory: "Mini Cut" },
       // MINI CUT - CORTE CRUZADO EXTRA FINO
-      { model: "1503", code: "500.002.1503XEF", iso: "144.110.023", diameter: "2,3mm", grain: "Extra Fino", activeLength: "14,00mm", subcategory: "Mini Cut" },
-      { model: "1511", code: "500.002.1511XEF", iso: "292.140.023", diameter: "6,0mm", grain: "Extra Fino", activeLength: "14,00mm", subcategory: "Mini Cut" },
-      { model: "1571", code: "500.002.1571XEF", iso: "175.110.023", diameter: "2,3mm", grain: "Extra Fino", activeLength: "15,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Extra Fino", code: "500.002.1503XEF", iso: "144.110.023", diameter: "2,3mm", grain: "Extra Fino", activeLength: "14,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Extra Fino", code: "500.002.1511XEF", iso: "292.140.023", diameter: "6,0mm", grain: "Extra Fino", activeLength: "14,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Extra Fino", code: "500.002.1571XEF", iso: "175.110.023", diameter: "2,3mm", grain: "Extra Fino", activeLength: "15,00mm", subcategory: "Mini Cut" },
       // MINI CUT - CORTE CRUZADO GROSSO
-      { model: "1503", code: "500.002.1503G", iso: "137.140.023", diameter: "2,3mm", grain: "Grosso", activeLength: "14,00mm", subcategory: "Mini Cut" },
-      { model: "1511", code: "500.002.1511G", iso: "292.140.023", diameter: "2,3mm", grain: "Grosso", activeLength: "14,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Grosso", code: "500.002.1503G", iso: "137.140.023", diameter: "2,3mm", grain: "Grosso", activeLength: "14,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Grosso", code: "500.002.1511G", iso: "292.140.023", diameter: "2,3mm", grain: "Grosso", activeLength: "14,00mm", subcategory: "Mini Cut" },
     ]
   },
   "fresas-ceramica": {
-    subtypes: ["1508C", "1509C", "1510C", "1517C", "85C", "95C", "717C", "1571C", "07C", "859C"],
+    subtypes: ["Corte Cruzado Médio", "Corte Cruzado Fino", "Corte Cruzado Extra Fino", "Corte Cruzado Grosso"],
     subcategories: {
       "Maxi Cut": {
         description: "Fresas de cerâmica de alta remoção - ideais para desbaste rápido",
-        types: ["1508C", "1509C", "1510C", "1517C", "85C", "95C", "717C"]
+        types: ["Corte Cruzado Médio", "Corte Cruzado Fino", "Corte Cruzado Extra Fino", "Corte Cruzado Grosso"]
       },
       "Mini Cut": {
         description: "Fresas de cerâmica de precisão - ideais para acabamento e detalhes",
-        types: ["1571C", "07C", "859C"]
+        types: ["Corte Cruzado Médio", "Corte Cruzado Fino", "Corte Cruzado Extra Fino", "Corte Cruzado Grosso"]
       }
     },
     titlePt: "FRESAS DE CERÂMICA",
@@ -235,46 +235,46 @@ const productData: Record<string, {
     },
     products: [
       // MAXI CUT - CORTE CRUZADO MÉDIO
-      { model: "1508C", code: "500.004.1508C", iso: "274.190.060", diameter: "6,0mm", grain: "Médio", activeLength: "14,00mm", subcategory: "Maxi Cut" },
-      { model: "1509C", code: "500.004.1509C", iso: "274.110.060", diameter: "6,0mm", grain: "Médio", activeLength: "15,00mm", subcategory: "Maxi Cut" },
-      { model: "1510C", code: "500.004.1510C", iso: "201.190.050", diameter: "5,0mm", grain: "Médio", activeLength: "14,00mm", subcategory: "Maxi Cut" },
-      { model: "1517C", code: "500.004.1517C", iso: "201.190.060", diameter: "11,5mm", grain: "Médio", activeLength: "19,00mm", subcategory: "Maxi Cut" },
-      { model: "85C", code: "500.004.85C", iso: "113.190.050", diameter: "5,0mm", grain: "Médio", activeLength: "12,50mm", subcategory: "Maxi Cut" },
-      { model: "95C", code: "500.004.95C", iso: "194.190.060", diameter: "6,0mm", grain: "Médio", activeLength: "15,00mm", subcategory: "Maxi Cut" },
-      { model: "717C", code: "500.004.717C", iso: "173.849.065", diameter: "6,5mm", grain: "Médio", activeLength: "14,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Médio", code: "500.004.1508C", iso: "274.190.060", diameter: "6,0mm", grain: "Médio", activeLength: "14,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Médio", code: "500.004.1509C", iso: "274.110.060", diameter: "6,0mm", grain: "Médio", activeLength: "15,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Médio", code: "500.004.1510C", iso: "201.190.050", diameter: "5,0mm", grain: "Médio", activeLength: "14,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Médio", code: "500.004.1517C", iso: "201.190.060", diameter: "11,5mm", grain: "Médio", activeLength: "19,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Médio", code: "500.004.85C", iso: "113.190.050", diameter: "5,0mm", grain: "Médio", activeLength: "12,50mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Médio", code: "500.004.95C", iso: "194.190.060", diameter: "6,0mm", grain: "Médio", activeLength: "15,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Médio", code: "500.004.717C", iso: "173.849.065", diameter: "6,5mm", grain: "Médio", activeLength: "14,00mm", subcategory: "Maxi Cut" },
       // MAXI CUT - CORTE CRUZADO FINO
-      { model: "1508C", code: "500.004.1508CF", iso: "274.140.050", diameter: "5,0mm", grain: "Fino", activeLength: "14,00mm", subcategory: "Maxi Cut" },
-      { model: "1509C", code: "500.004.1509CF", iso: "274.110.060", diameter: "6,0mm", grain: "Fino", activeLength: "15,00mm", subcategory: "Maxi Cut" },
-      { model: "1510C", code: "500.004.1510CF", iso: "201.190.050", diameter: "5,0mm", grain: "Fino", activeLength: "14,00mm", subcategory: "Maxi Cut" },
-      { model: "1517C", code: "500.004.1517CF", iso: "201.190.060", diameter: "11,5mm", grain: "Fino", activeLength: "19,00mm", subcategory: "Maxi Cut" },
-      { model: "85C", code: "500.004.85CF", iso: "113.140.050", diameter: "5,0mm", grain: "Fino", activeLength: "12,50mm", subcategory: "Maxi Cut" },
-      { model: "95C", code: "500.004.95CF", iso: "194.190.060", diameter: "6,0mm", grain: "Fino", activeLength: "15,00mm", subcategory: "Maxi Cut" },
-      { model: "717C", code: "500.004.717CF", iso: "173.849.065", diameter: "6,5mm", grain: "Fino", activeLength: "14,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Fino", code: "500.004.1508CF", iso: "274.140.050", diameter: "5,0mm", grain: "Fino", activeLength: "14,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Fino", code: "500.004.1509CF", iso: "274.110.060", diameter: "6,0mm", grain: "Fino", activeLength: "15,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Fino", code: "500.004.1510CF", iso: "201.190.050", diameter: "5,0mm", grain: "Fino", activeLength: "14,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Fino", code: "500.004.1517CF", iso: "201.190.060", diameter: "11,5mm", grain: "Fino", activeLength: "19,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Fino", code: "500.004.85CF", iso: "113.140.050", diameter: "5,0mm", grain: "Fino", activeLength: "12,50mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Fino", code: "500.004.95CF", iso: "194.190.060", diameter: "6,0mm", grain: "Fino", activeLength: "15,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Fino", code: "500.004.717CF", iso: "173.849.065", diameter: "6,5mm", grain: "Fino", activeLength: "14,00mm", subcategory: "Maxi Cut" },
       // MAXI CUT - CORTE CRUZADO EXTRA FINO
-      { model: "1508C", code: "500.004.1508CXF", iso: "274.110.060", diameter: "6,0mm", grain: "Extra Fino", activeLength: "14,00mm", subcategory: "Maxi Cut" },
-      { model: "1509C", code: "500.004.1509CXF", iso: "274.110.060", diameter: "6,0mm", grain: "Extra Fino", activeLength: "15,00mm", subcategory: "Maxi Cut" },
-      { model: "1510C", code: "500.004.1510CXF", iso: "201.190.050", diameter: "5,0mm", grain: "Extra Fino", activeLength: "14,00mm", subcategory: "Maxi Cut" },
-      { model: "1517C", code: "500.004.1517CXF", iso: "201.190.060", diameter: "11,5mm", grain: "Extra Fino", activeLength: "19,00mm", subcategory: "Maxi Cut" },
-      { model: "85C", code: "500.004.85CXF", iso: "113.140.050", diameter: "5,0mm", grain: "Extra Fino", activeLength: "12,50mm", subcategory: "Maxi Cut" },
-      { model: "95C", code: "500.004.95CXF", iso: "194.190.060", diameter: "6,0mm", grain: "Extra Fino", activeLength: "15,00mm", subcategory: "Maxi Cut" },
-      { model: "717C", code: "500.004.717CXF", iso: "173.849.065", diameter: "6,5mm", grain: "Extra Fino", activeLength: "14,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Extra Fino", code: "500.004.1508CXF", iso: "274.110.060", diameter: "6,0mm", grain: "Extra Fino", activeLength: "14,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Extra Fino", code: "500.004.1509CXF", iso: "274.110.060", diameter: "6,0mm", grain: "Extra Fino", activeLength: "15,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Extra Fino", code: "500.004.1510CXF", iso: "201.190.050", diameter: "5,0mm", grain: "Extra Fino", activeLength: "14,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Extra Fino", code: "500.004.1517CXF", iso: "201.190.060", diameter: "11,5mm", grain: "Extra Fino", activeLength: "19,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Extra Fino", code: "500.004.85CXF", iso: "113.140.050", diameter: "5,0mm", grain: "Extra Fino", activeLength: "12,50mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Extra Fino", code: "500.004.95CXF", iso: "194.190.060", diameter: "6,0mm", grain: "Extra Fino", activeLength: "15,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Extra Fino", code: "500.004.717CXF", iso: "173.849.065", diameter: "6,5mm", grain: "Extra Fino", activeLength: "14,00mm", subcategory: "Maxi Cut" },
       // MAXI CUT - CORTE CRUZADO GROSSO
-      { model: "95C", code: "500.004.95CG", iso: "144.175.068", diameter: "6,8mm", grain: "Grosso", activeLength: "14,50mm", subcategory: "Maxi Cut" },
-      { model: "1509C", code: "500.004.1509CG", iso: "274.110.060", diameter: "6,0mm", grain: "Grosso", activeLength: "14,00mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Grosso", code: "500.004.95CG", iso: "144.175.068", diameter: "6,8mm", grain: "Grosso", activeLength: "14,50mm", subcategory: "Maxi Cut" },
+      { model: "Corte Cruzado Grosso", code: "500.004.1509CG", iso: "274.110.060", diameter: "6,0mm", grain: "Grosso", activeLength: "14,00mm", subcategory: "Maxi Cut" },
       // MINI CUT - CORTE CRUZADO MÉDIO
-      { model: "1571C", code: "500.004.1571C", iso: "175.110.023", diameter: "2,3mm", grain: "Médio", activeLength: "15,00mm", subcategory: "Mini Cut" },
-      { model: "07C", code: "500.004.07C", iso: "119.002.2", diameter: "2,2mm", grain: "Médio", activeLength: "---", subcategory: "Mini Cut" },
-      { model: "859C", code: "500.004.859C", iso: "175.190.023", diameter: "2,3mm", grain: "Médio", activeLength: "15,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Médio", code: "500.004.1571C", iso: "175.110.023", diameter: "2,3mm", grain: "Médio", activeLength: "15,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Médio", code: "500.004.07C", iso: "119.002.2", diameter: "2,2mm", grain: "Médio", activeLength: "---", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Médio", code: "500.004.859C", iso: "175.190.023", diameter: "2,3mm", grain: "Médio", activeLength: "15,00mm", subcategory: "Mini Cut" },
       // MINI CUT - CORTE CRUZADO FINO
-      { model: "1571C", code: "500.004.1571CF", iso: "175.110.023", diameter: "2,3mm", grain: "Fino", activeLength: "15,00mm", subcategory: "Mini Cut" },
-      { model: "07C", code: "500.004.07CF", iso: "119.002.2", diameter: "2,2mm", grain: "Fino", activeLength: "---", subcategory: "Mini Cut" },
-      { model: "859C", code: "500.004.859CF", iso: "175.190.023", diameter: "2,3mm", grain: "Fino", activeLength: "15,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Fino", code: "500.004.1571CF", iso: "175.110.023", diameter: "2,3mm", grain: "Fino", activeLength: "15,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Fino", code: "500.004.07CF", iso: "119.002.2", diameter: "2,2mm", grain: "Fino", activeLength: "---", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Fino", code: "500.004.859CF", iso: "175.190.023", diameter: "2,3mm", grain: "Fino", activeLength: "15,00mm", subcategory: "Mini Cut" },
       // MINI CUT - CORTE CRUZADO EXTRA FINO
-      { model: "1571C", code: "500.004.1571CXF", iso: "175.140.023", diameter: "2,3mm", grain: "Extra Fino", activeLength: "15,00mm", subcategory: "Mini Cut" },
-      { model: "859C", code: "500.004.859CXF", iso: "175.190.023", diameter: "2,3mm", grain: "Extra Fino", activeLength: "15,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Extra Fino", code: "500.004.1571CXF", iso: "175.140.023", diameter: "2,3mm", grain: "Extra Fino", activeLength: "15,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Extra Fino", code: "500.004.859CXF", iso: "175.190.023", diameter: "2,3mm", grain: "Extra Fino", activeLength: "15,00mm", subcategory: "Mini Cut" },
       // MINI CUT - CORTE CRUZADO GROSSO
-      { model: "1571C", code: "500.004.1571CG", iso: "175.190.023", diameter: "2,3mm", grain: "Grosso", activeLength: "15,00mm", subcategory: "Mini Cut" },
-      { model: "859C", code: "500.004.859CG", iso: "175.190.023", diameter: "2,3mm", grain: "Grosso", activeLength: "15,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Grosso", code: "500.004.1571CG", iso: "175.190.023", diameter: "2,3mm", grain: "Grosso", activeLength: "15,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Grosso", code: "500.004.859CG", iso: "175.190.023", diameter: "2,3mm", grain: "Grosso", activeLength: "15,00mm", subcategory: "Mini Cut" },
     ]
   },
   "lixas": {
