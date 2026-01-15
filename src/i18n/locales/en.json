@@ -271,7 +271,17 @@
       "subtitle": "Sandpaper & Boomerang Files",
       "description": "Versatile files for podiatry and nails, including Boomerang models for precise shapes and Sandpaper for premium abrasion. Complete line of disposable files with different grits and premium brands.",
       "shortDesc": "Professional files for podiatry and nails",
-      "teaser": "Versatile files for podiatry and nails"
+      "teaser": "Versatile files for podiatry and nails",
+      "subcategories": {
+        "Lixas Manuais": {
+          "name": "Manual Files",
+          "description": "Traditional files for nail design - ergonomic shapes for perfect finishing"
+        },
+        "Lixas com Mandril": {
+          "name": "Mandrel Files",
+          "description": "Files for use with motor/mandrel - ideal for podiatry and professional procedures"
+        }
+      }
     },
     "diamondBurs": {
       "title": "DIAMOND BURS",
@@ -351,6 +361,16 @@
       "teaser": "High-performance burs for grinding",
       "maxiCut": "Maxi Cut",
       "miniCut": "Mini Cut",
+      "subcategories": {
+        "Maxi Cut": {
+          "name": "Maxi Cut",
+          "description": "High-removal tungsten burs - ideal for quick grinding"
+        },
+        "Mini Cut": {
+          "name": "Mini Cut",
+          "description": "Precision tungsten burs - ideal for finishing and details"
+        }
+      },
       "cuts": {
         "crossMedium": "Cross Medium",
         "crossFine": "Cross Fine",
@@ -372,6 +392,16 @@
       "description": "Ceramic burs with high resistance and durability. Ideal for work requiring precision and delicate finishing. Available in various shapes and grits.",
       "shortDesc": "High resistance for delicate finishes",
       "teaser": "High-tech ceramic burs",
+      "subcategories": {
+        "Maxi Cut": {
+          "name": "Maxi Cut",
+          "description": "High-removal ceramic burs - ideal for quick grinding"
+        },
+        "Mini Cut": {
+          "name": "Mini Cut",
+          "description": "Precision ceramic burs - ideal for finishing and details"
+        }
+      },
       "tableHeaders": {
         "model": "Model",
         "code": "Code",
