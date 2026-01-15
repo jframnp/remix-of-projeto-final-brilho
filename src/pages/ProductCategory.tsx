@@ -597,6 +597,16 @@ const ProductCategory = () => {
     return products?.[0]?.image;
   };
 
+  // Get available grains for a type
+  const getAvailableGrains = (typeName: string): string[] => {
+    const products = productsByType[typeName] || [];
+    const grains = new Set<string>();
+    products.forEach(p => {
+      if (p.grain) grains.add(p.grain);
+    });
+    return Array.from(grains);
+  };
+
   const handleTypeClick = (typeName: string) => {
     setSelectedType(typeName);
     setIsModalOpen(true);
@@ -728,6 +738,7 @@ const ProductCategory = () => {
                     productCount={getProductsForType(typeName).length}
                     onClick={() => handleTypeClick(typeName)}
                     isGold={isGold}
+                    availableGrains={getAvailableGrains(typeName)}
                   />
                 </div>
               ))}

@@ -211,8 +211,13 @@
       "ultraFine": "Ultra Fine",
       "grosso": "Coarse",
       "medio": "Medium",
-      "fino": "Fine"
+      "fino": "Fine",
+      "extraGrosso": "Extra Coarse",
+      "medioGrosso": "Medium-Coarse",
+      "extraFino": "Extra Fine",
+      "ultraFino": "Ultra Fine"
     },
+    "grainTypes": "Available Grits",
     "badge": {
       "anvisa": "ANVISA",
       "certified": "Certified",

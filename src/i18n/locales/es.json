@@ -211,8 +211,13 @@
       "ultraFine": "Ultra Fino",
       "grosso": "Grueso",
       "medio": "Medio",
-      "fino": "Fino"
+      "fino": "Fino",
+      "extraGrosso": "Extra Grueso",
+      "medioGrosso": "Medio-Grueso",
+      "extraFino": "Extra Fino",
+      "ultraFino": "Ultra Fino"
     },
+    "grainTypes": "Granos Disponibles",
     "badge": {
       "anvisa": "ANVISA",
       "certified": "Certificado",
