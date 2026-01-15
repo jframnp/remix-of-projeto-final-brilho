@@ -104,10 +104,23 @@ const categoryHeroImages: Record<string, { src: string; alt: string }[]> = {
   ],
 };
 
+// Map category slugs to translation keys
+const categoryTranslationKeys: Record<string, string> = {
+  "brocas-diamantadas": "diamondBurs",
+  "fresas-tungstenio": "tungstenBurs",
+  "fresas-ceramica": "ceramicBurs",
+  "lixas": "lixas",
+  "lixa-tubular-adesiva": "tubularAdhesive",
+  "polidoras": "polishers",
+  "escovas-limpeza": "brushes",
+  "fibras-enucleadora-mandril": "fiberMandril",
+  "apoio-lixas-afiacao": "supportSharpening",
+  "linha-gold": "goldLine",
+};
+
 interface ProductCategoryHeroProps {
   category: string;
   categoryKey: string;
-  description: string;
   featuredImages: (string | undefined)[];
   getLocalizedPath: (path: string) => string;
   isGold?: boolean;
@@ -116,12 +129,17 @@ interface ProductCategoryHeroProps {
 const ProductCategoryHero = ({
   category,
   categoryKey,
-  description,
   featuredImages,
   getLocalizedPath,
   isGold = false,
 }: ProductCategoryHeroProps) => {
   const { t } = useTranslation();
+
+  // Get translation key for this category
+  const translationKey = categoryTranslationKeys[category] || "diamondBurs";
+  
+  // Get translated description
+  const description = t(`products.${translationKey}.description`);
 
   // Get category-specific hero images or fallback to default
   const heroBurs = categoryHeroImages[category] || categoryHeroImages["brocas-diamantadas"];

@@ -269,7 +269,17 @@
       "subtitle": "Sandpaper & Boomerang Files",
       "description": "Lixas versáteis para podologia e nails, incluindo modelos Boomerang para shapes precisos e Sandpaper para abrasão premium. Linha completa de lixas descartáveis com diferentes granulações e marcas premium.",
       "shortDesc": "Lixas profissionais para podologia e nails",
-      "teaser": "Lixas versáteis para podologia e nails"
+      "teaser": "Lixas versáteis para podologia e nails",
+      "subcategories": {
+        "Lixas Manuais": {
+          "name": "Lixas Manuais",
+          "description": "Lixas tradicionais para nail design - formatos ergonômicos para acabamento perfeito"
+        },
+        "Lixas com Mandril": {
+          "name": "Lixas com Mandril",
+          "description": "Lixas para uso com motor/mandril - ideais para podologia e procedimentos profissionais"
+        }
+      }
     },
     "diamondBurs": {
       "title": "BROCAS DIAMANTADAS",
@@ -319,6 +329,16 @@
       "teaser": "Fresas de alta performance para desbaste",
       "maxiCut": "Maxi Cut",
       "miniCut": "Mini Cut",
+      "subcategories": {
+        "Maxi Cut": {
+          "name": "Maxi Cut",
+          "description": "Fresas de tungstênio de alta remoção - ideais para desbaste rápido"
+        },
+        "Mini Cut": {
+          "name": "Mini Cut",
+          "description": "Fresas de tungstênio de precisão - ideais para acabamento e detalhes"
+        }
+      },
       "cuts": {
         "crossMedium": "Cruzado Médio",
         "crossFine": "Cruzado Fino",
@@ -340,6 +360,16 @@
       "description": "Fresas de cerâmica de alta resistência e durabilidade. Ideais para trabalhos que exigem precisão e acabamento delicado. Disponíveis em diversos formatos e granulometrias.",
       "shortDesc": "Alta resistência para acabamentos delicados",
       "teaser": "Fresas cerâmicas de alta tecnologia",
+      "subcategories": {
+        "Maxi Cut": {
+          "name": "Maxi Cut",
+          "description": "Fresas de cerâmica de alta remoção - ideais para desbaste rápido"
+        },
+        "Mini Cut": {
+          "name": "Mini Cut",
+          "description": "Fresas de cerâmica de precisão - ideais para acabamento e detalhes"
+        }
+      },
       "tableHeaders": {
         "model": "Modelo",
         "code": "Código",

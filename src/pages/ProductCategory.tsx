@@ -531,6 +531,23 @@ const ProductCategory = () => {
     return path;
   };
 
+  // Map category slugs to translation keys
+  const getCategoryTranslationKey = (slug: string): string => {
+    const categoryTranslationKeys: Record<string, string> = {
+      "brocas-diamantadas": "diamondBurs",
+      "fresas-tungstenio": "tungstenBurs",
+      "fresas-ceramica": "ceramicBurs",
+      "lixas": "lixas",
+      "lixa-tubular-adesiva": "tubularAdhesive",
+      "polidoras": "polishers",
+      "escovas-limpeza": "brushes",
+      "fibras-enucleadora-mandril": "fiberMandril",
+      "apoio-lixas-afiacao": "supportSharpening",
+      "linha-gold": "goldLine",
+    };
+    return categoryTranslationKeys[slug] || "diamondBurs";
+  };
+
   const categoryKey = category ? categoryKeyMap[category] || category : "";
   const data = category ? productData[category] : null;
 
@@ -644,7 +661,6 @@ const ProductCategory = () => {
       <ProductCategoryHero
         category={category}
         categoryKey={categoryKey}
-        description={currentLang === "en" ? data.description.en : data.description.pt}
         featuredImages={featuredImages}
         getLocalizedPath={getLocalizedPath}
         isGold={isGold}
@@ -652,10 +668,6 @@ const ProductCategory = () => {
 
       {/* 2. Catalog Section - Like the PDF catalog style (unique per category) */}
       <CatalogSection
-        categoryTitle={data.titlePt}
-        categorySubtitle={data.titleEn}
-        descriptionPt={data.description.pt}
-        descriptionEn={data.description.en}
         categorySlug={category}
         isGold={isGold}
       />
@@ -677,41 +689,48 @@ const ProductCategory = () => {
           {/* Subcategories layout for lixas */}
           {data.subcategories ? (
             <div className="space-y-12">
-              {Object.entries(data.subcategories).map(([subcatName, subcatData], subcatIdx) => (
-                <div key={subcatName} className="animate-fade-in" style={{ animationDelay: `${subcatIdx * 0.2}s` }}>
-                  {/* Subcategory Header */}
-                  <div className="mb-6">
-                    <h3 className="text-foreground font-montserrat font-bold text-xl md:text-2xl mb-2">
-                      {subcatName}
-                    </h3>
-                    <p className="text-muted-foreground">
-                      {subcatData.description}
-                    </p>
+              {Object.entries(data.subcategories).map(([subcatName, subcatData], subcatIdx) => {
+                // Get translated subcategory name and description
+                const translationKey = getCategoryTranslationKey(category);
+                const translatedSubcatName = t(`products.${translationKey}.subcategories.${subcatName}.name`, subcatName);
+                const translatedSubcatDesc = t(`products.${translationKey}.subcategories.${subcatName}.description`, subcatData.description);
+                
+                return (
+                  <div key={subcatName} className="animate-fade-in" style={{ animationDelay: `${subcatIdx * 0.2}s` }}>
+                    {/* Subcategory Header */}
+                    <div className="mb-6">
+                      <h3 className="text-foreground font-montserrat font-bold text-xl md:text-2xl mb-2">
+                        {translatedSubcatName}
+                      </h3>
+                      <p className="text-muted-foreground">
+                        {translatedSubcatDesc}
+                      </p>
+                    </div>
+                    
+                    {/* Type Cards Grid for this subcategory */}
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                      {subcatData.types.map((typeName, idx) => {
+                        const typeProducts = data.products.filter(p => p.model.startsWith(typeName));
+                        return (
+                          <div
+                            key={typeName}
+                            className="animate-fade-in"
+                            style={{ animationDelay: `${idx * 0.1}s` }}
+                          >
+                            <CategoryTypeCard
+                              typeName={typeName}
+                              image={typeProducts[0]?.image}
+                              productCount={typeProducts.length}
+                              onClick={() => handleTypeClick(typeName)}
+                              isGold={isGold}
+                            />
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
-                  
-                  {/* Type Cards Grid for this subcategory */}
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                    {subcatData.types.map((typeName, idx) => {
-                      const typeProducts = data.products.filter(p => p.model.startsWith(typeName));
-                      return (
-                        <div
-                          key={typeName}
-                          className="animate-fade-in"
-                          style={{ animationDelay: `${idx * 0.1}s` }}
-                        >
-                          <CategoryTypeCard
-                            typeName={typeName}
-                            image={typeProducts[0]?.image}
-                            productCount={typeProducts.length}
-                            onClick={() => handleTypeClick(typeName)}
-                            isGold={isGold}
-                          />
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           ) : (
             /* Default Type Cards Grid */

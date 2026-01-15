@@ -155,24 +155,38 @@ const categoryDiagramConfigs: Record<string, CategoryDiagramConfig> = {
 };
 
 interface CatalogSectionProps {
-  categoryTitle: string;
-  categorySubtitle?: string;
-  descriptionPt: string;
-  descriptionEn: string;
   categorySlug: string;
   isGold?: boolean;
 }
 
+// Map category slugs to translation keys
+const categoryTranslationKeys: Record<string, string> = {
+  "brocas-diamantadas": "diamondBurs",
+  "fresas-tungstenio": "tungstenBurs",
+  "fresas-ceramica": "ceramicBurs",
+  "lixas": "lixas",
+  "lixa-tubular-adesiva": "tubularAdhesive",
+  "polidoras": "polishers",
+  "escovas-limpeza": "brushes",
+  "fibras-enucleadora-mandril": "fiberMandril",
+  "apoio-lixas-afiacao": "supportSharpening",
+  "linha-gold": "goldLine",
+};
+
 const CatalogSection = ({
-  categoryTitle,
-  categorySubtitle,
-  descriptionPt,
-  descriptionEn,
   categorySlug,
   isGold = false,
 }: CatalogSectionProps) => {
   const { t } = useTranslation();
   const { currentLang } = useLanguage();
+
+  // Get translation key for this category
+  const translationKey = categoryTranslationKeys[categorySlug] || "diamondBurs";
+  
+  // Get translated title, subtitle, and description
+  const categoryTitle = t(`products.${translationKey}.title`);
+  const categorySubtitle = t(`products.${translationKey}.subtitle`);
+  const description = t(`products.${translationKey}.description`);
 
   const config = categoryDiagramConfigs[categorySlug] || categoryDiagramConfigs["brocas-diamantadas"];
 
@@ -479,14 +493,9 @@ const CatalogSection = ({
               </p>
             )}
 
-            {/* Portuguese description - Bold */}
-            <p className="text-foreground text-sm sm:text-lg font-semibold leading-relaxed mb-3 sm:mb-4">
-              {descriptionPt}
-            </p>
-
-            {/* English description - Italic */}
-            <p className="text-muted-foreground text-sm sm:text-base italic leading-relaxed">
-              {descriptionEn}
+            {/* Description - translated */}
+            <p className="text-foreground text-sm sm:text-lg font-semibold leading-relaxed">
+              {description}
             </p>
           </div>
 
