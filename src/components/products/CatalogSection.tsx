@@ -489,10 +489,10 @@ const CatalogSection = ({
             </p>
           </div>
 
-          {/* Right side - Technical diagram (specific to category) */}
+          {/* Right side - Technical diagram (only for brocas-diamantadas and linha-gold) */}
           <div className="flex flex-col items-center lg:items-end mt-4 lg:mt-0">
-            {/* Diagram */}
-            {renderDiagram()}
+            {/* Diagram - Only show for diamond burs */}
+            {(categorySlug === "brocas-diamantadas" || categorySlug === "linha-gold") && renderDiagram()}
 
             {/* Model prefix - only show for non-shaft types (shaft types have it integrated) */}
             {config.type !== "shaft" && (
