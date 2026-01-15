@@ -35,9 +35,9 @@ const polidorasGrainColorMap: Record<string, { color: string; border?: boolean }
   "Ultra Fino": { color: "#9C6B8E" },             // Rosa/Mauve
 };
 
-// Grain color map for BROCAS DIAMANTADAS - only black and blue as per catalog
+// Grain color map for BROCAS DIAMANTADAS - vermelho (Grosso) e azul (Fino) as per catalog
 const diamantadasGrainColorMap: Record<string, { color: string; border?: boolean }> = {
-  "Grosso": { color: "#000000" },                 // Preto
+  "Grosso": { color: "#C62828" },                 // Vermelho
   "Fino": { color: "#0066CC" },                   // Azul
 };
 
@@ -50,6 +50,14 @@ const defaultGrainColorMap: Record<string, { color: string; border?: boolean }> 
   "Fino": { color: "#C62828" },                   // Vermelho
   "Extra Fino": { color: "#FFD700" },             // Amarelo
   "Ultra Fino": { color: "#C62828" },             // Vermelho
+};
+
+// Categories that have grain information
+const categoriesWithGrain = ['brocas-diamantadas', 'fresas-tungstenio', 'fresas-ceramica', 'polidoras', 'linha-gold'];
+
+// Function to check if category has grain
+const categoryHasGrain = (categorySlug?: string): boolean => {
+  return categorySlug ? categoriesWithGrain.includes(categorySlug) : false;
 };
 
 // Function to get the correct grain color map based on category
@@ -112,8 +120,14 @@ const getProductName = (code: string, model?: string): string => {
 const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isGold = false, categorySlug }: CategoryTypeModalProps) => {
   const { t } = useTranslation();
 
+  // Check if this category has grain information
+  const hasGrain = categoryHasGrain(categorySlug);
+  
   // Get the correct grain color map based on category
   const grainColorMap = getGrainColorMap(categorySlug);
+  
+  // For Brocas Diamantadas, show both colors (available in both grains)
+  const showBothGrains = categorySlug === 'brocas-diamantadas';
 
   // Catalog-style table design matching the PDF reference
   const headerBgColor = isGold ? "#FFC107" : "#C62828";
@@ -188,31 +202,47 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   ))}
                 </tr>
 
-                {/* GRÃO Row - Colored circles */}
-                <tr style={{ backgroundColor: rowBgLight }}>
-                  <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                    {t("products.table.grain", "GRÃO").toUpperCase()}
-                  </td>
-                  {products.map((product, idx) => (
-                    <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center">
-                      <div className="flex items-center justify-center gap-1">
-                        {product.grain && grainColorMap[product.grain] ? (
-                          <div 
-                            className="w-3 h-3 sm:w-5 sm:h-5 rounded-full"
-                            style={{ 
-                              backgroundColor: grainColorMap[product.grain].color,
-                              border: grainColorMap[product.grain].border ? "2px solid #DDD" : "none"
-                            }}
-                          />
-                        ) : product.cut ? (
-                          <span className="text-[8px] sm:text-xs text-muted-foreground">{product.cut}</span>
-                        ) : (
-                          <span className="text-muted-foreground">—</span>
-                        )}
-                      </div>
+                {/* GRÃO Row - Colored circles - Only show for categories with grain */}
+                {hasGrain && (
+                  <tr style={{ backgroundColor: rowBgLight }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      {t("products.table.grain", "GRÃO").toUpperCase()}
                     </td>
-                  ))}
-                </tr>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center">
+                        <div className="flex items-center justify-center gap-1">
+                          {showBothGrains ? (
+                            // For Brocas Diamantadas: show both red and blue circles
+                            <>
+                              <div 
+                                className="w-3 h-3 sm:w-5 sm:h-5 rounded-full"
+                                style={{ backgroundColor: "#C62828" }}
+                                title="Grosso"
+                              />
+                              <div 
+                                className="w-3 h-3 sm:w-5 sm:h-5 rounded-full"
+                                style={{ backgroundColor: "#0066CC" }}
+                                title="Fino"
+                              />
+                            </>
+                          ) : product.grain && grainColorMap[product.grain] ? (
+                            <div 
+                              className="w-3 h-3 sm:w-5 sm:h-5 rounded-full"
+                              style={{ 
+                                backgroundColor: grainColorMap[product.grain].color,
+                                border: grainColorMap[product.grain].border ? "2px solid #DDD" : "none"
+                              }}
+                            />
+                          ) : product.cut ? (
+                            <span className="text-[8px] sm:text-xs text-muted-foreground">{product.cut}</span>
+                          ) : (
+                            <span className="text-muted-foreground">—</span>
+                          )}
+                        </div>
+                      </td>
+                    ))}
+                  </tr>
+                )}
 
                 {/* ISO Row */}
                 <tr style={{ backgroundColor: rowBgWhite }}>
@@ -245,21 +275,23 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
             </table>
           </div>
 
-          {/* Grain Legend */}
-          <div className="mt-4 sm:mt-6 flex flex-wrap items-center gap-2 sm:gap-4 justify-center">
-            {Object.entries(grainColorMap).map(([grain, config]) => (
-              <div key={grain} className="flex items-center gap-1 sm:gap-2">
-                <div 
-                  className="w-3 h-3 sm:w-4 sm:h-4 rounded-full"
-                  style={{ 
-                    backgroundColor: config.color,
-                    border: config.border ? "2px solid #DDD" : "none"
-                  }}
-                />
-                <span className="text-[10px] sm:text-xs text-muted-foreground">{grain}</span>
-              </div>
-            ))}
-          </div>
+          {/* Grain Legend - Only show for categories with grain */}
+          {hasGrain && (
+            <div className="mt-4 sm:mt-6 flex flex-wrap items-center gap-2 sm:gap-4 justify-center">
+              {Object.entries(grainColorMap).map(([grain, config]) => (
+                <div key={grain} className="flex items-center gap-1 sm:gap-2">
+                  <div 
+                    className="w-3 h-3 sm:w-4 sm:h-4 rounded-full"
+                    style={{ 
+                      backgroundColor: config.color,
+                      border: config.border ? "2px solid #DDD" : "none"
+                    }}
+                  />
+                  <span className="text-[10px] sm:text-xs text-muted-foreground">{grain}</span>
+                </div>
+              ))}
+            </div>
+          )}
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-100">
