@@ -812,6 +812,7 @@ const ProductCategory = () => {
           products={getProductsForType(selectedType)}
           typeImage={getTypeImage(selectedType)}
           isGold={isGold}
+          categorySlug={category}
         />
       )}
 
