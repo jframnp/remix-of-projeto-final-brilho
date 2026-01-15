@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Sparkles } from "lucide-react";
 
 interface CategoryTypeCardProps {
@@ -9,6 +10,8 @@ interface CategoryTypeCardProps {
 }
 
 const CategoryTypeCard = ({ typeName, image, productCount, onClick, isGold = false }: CategoryTypeCardProps) => {
+  const { t } = useTranslation();
+  
   return (
     <button
       onClick={onClick}
@@ -52,7 +55,7 @@ const CategoryTypeCard = ({ typeName, image, productCount, onClick, isGold = fal
       
       {/* Product Count Badge */}
       <span className="text-sm text-muted-foreground mt-1">
-        {productCount} {productCount === 1 ? "modelo" : "modelos"}
+        {productCount} {productCount === 1 ? t("products.model", "modelo") : t("products.models", "modelos")}
       </span>
     </button>
   );

@@ -118,7 +118,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                     className="w-[80px] sm:w-[140px] px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm tracking-wider"
                     style={{ color: headerTextColor }}
                   >
-                    MODELOS
+                    {t("products.table.model", "MODELOS").toUpperCase()}
                   </td>
                   {products.map((product, idx) => (
                     <td 
@@ -134,7 +134,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                 {/* DIÂMETRO Row */}
                 <tr style={{ backgroundColor: rowBgLight }}>
                   <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                    DIÂMETRO ∅
+                    {t("products.table.diameter", "DIÂMETRO")} ∅
                   </td>
                   {products.map((product, idx) => (
                     <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -146,8 +146,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                 {/* COMPRIMENTO ÁREA ATIVA Row */}
                 <tr style={{ backgroundColor: rowBgWhite }}>
                   <td className="px-2 sm:px-4 py-1.5 sm:py-2 text-[8px] sm:text-xs font-medium" style={{ color: headerBgColor }}>
-                    <span className="block text-[8px] sm:text-[10px] leading-tight">COMPRIMENTO</span>
-                    <span className="block text-[8px] sm:text-[10px] leading-tight">ÁREA ATIVA</span>
+                    <span className="block text-[8px] sm:text-[10px] leading-tight">{t("products.table.activeLength", "ÁREA ATIVA").toUpperCase()}</span>
                   </td>
                   {products.map((product, idx) => (
                     <td key={idx} className="px-1 sm:px-2 py-1.5 sm:py-2 text-center text-[10px] sm:text-sm">
@@ -159,7 +158,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                 {/* GRÃO Row - Colored circles */}
                 <tr style={{ backgroundColor: rowBgLight }}>
                   <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                    GRÃO
+                    {t("products.table.grain", "GRÃO").toUpperCase()}
                   </td>
                   {products.map((product, idx) => (
                     <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center">
@@ -185,7 +184,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                 {/* ISO Row */}
                 <tr style={{ backgroundColor: rowBgWhite }}>
                   <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                    ISO
+                    {t("products.table.iso", "ISO").toUpperCase()}
                   </td>
                   {products.map((product, idx) => (
                     <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[8px] sm:text-xs text-muted-foreground">
@@ -197,7 +196,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                 {/* CÓDIGO Row */}
                 <tr style={{ backgroundColor: rowBgLight }}>
                   <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                    CÓDIGO
+                    {t("products.table.code", "CÓDIGO").toUpperCase()}
                   </td>
                   {products.map((product, idx) => (
                     <td 
@@ -238,7 +237,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
               className="flex-1 flex items-center justify-center gap-2 bg-green-600 text-white py-2.5 sm:py-3 rounded-xl font-semibold hover:bg-green-700 transition-colors text-sm sm:text-base"
             >
               <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
-              Solicitar Orçamento
+              {t("products.requestQuote")}
             </a>
             <a
               href="/catalogo-brilho.pdf"
@@ -246,7 +245,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
               className="flex-1 flex items-center justify-center gap-2 bg-gray-100 text-foreground py-2.5 sm:py-3 rounded-xl font-semibold hover:bg-gray-200 transition-colors text-sm sm:text-base"
             >
               <Download className="w-4 h-4 sm:w-5 sm:h-5" />
-              Baixar Catálogo
+              {t("products.downloadCatalog")}
             </a>
           </div>
         </div>

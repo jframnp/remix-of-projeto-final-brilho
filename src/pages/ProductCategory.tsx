@@ -572,9 +572,9 @@ const ProductCategory = () => {
       <Layout>
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
-            <p className="text-muted-foreground mb-4">Categoria não encontrada</p>
+            <p className="text-muted-foreground mb-4">{t("products.categoryNotFound", "Categoria não encontrada")}</p>
             <Link to={getLocalizedPath("/produtos")} className="text-primary underline">
-              Voltar aos Produtos
+              {t("products.backToProducts", "Voltar aos Produtos")}
             </Link>
           </div>
         </div>
@@ -667,10 +667,10 @@ const ProductCategory = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-foreground font-montserrat font-bold text-2xl md:text-3xl mb-4">
-              {t("products.selectType", "Selecione o Tipo")}
+              {t("products.selectType")}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              {t("products.selectTypeDesc", "Clique em um tipo para ver todos os modelos disponíveis com especificações completas.")}
+              {t("products.selectTypeDesc")}
             </p>
           </div>
 
@@ -737,7 +737,7 @@ const ProductCategory = () => {
           {/* Testimonials Carousel */}
           <div className="mt-16">
             <h2 className="text-foreground font-montserrat font-bold text-2xl md:text-3xl mb-8 text-center">
-              {t("products.testimonials.title", "O que dizem nossos clientes")}
+              {t("products.testimonials.title")}
             </h2>
             
             <div className="grid md:grid-cols-3 gap-6">
@@ -776,10 +776,10 @@ const ProductCategory = () => {
       <section className="bg-[#1a2332] py-16">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-white font-montserrat font-bold text-2xl md:text-3xl mb-4">
-            {t("products.requestQuoteTitle", "Solicite seu Orçamento")}
+            {t("products.requestQuoteTitle")}
           </h2>
           <p className="text-white/80 mb-8 max-w-xl mx-auto">
-            {t("products.ctaCategoryDesc", "Entre em contato para preços especiais e condições exclusivas para esta linha.")}
+            {t("products.ctaCategoryDesc")}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -797,7 +797,7 @@ const ProductCategory = () => {
               className="inline-flex items-center justify-center gap-2 bg-white text-primary font-bold px-10 py-4 rounded-xl hover:bg-gray-100 transition-all hover:scale-105 border-2 border-white"
             >
               <Download size={20} />
-              {t("products.downloadThisLine", "Baixar Esta Linha em PDF")}
+              {t("products.downloadThisLine")}
             </a>
           </div>
         </div>

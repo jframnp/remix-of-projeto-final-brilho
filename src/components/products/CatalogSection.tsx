@@ -183,7 +183,7 @@ const CatalogSection = ({
       <div className="flex items-center justify-center mb-3">
         <span className="flex-1 border-t border-dashed border-gray-400"></span>
         <span className="px-2 sm:px-3 text-[10px] sm:text-xs text-muted-foreground whitespace-nowrap">
-          Comprimento total: {config.totalLength}
+          {t("products.diagram.totalLength", "Comprimento total")}: {config.totalLength}
         </span>
         <span className="flex-1 border-t border-dashed border-gray-400"></span>
       </div>
@@ -228,7 +228,7 @@ const CatalogSection = ({
           <div className="absolute right-0 top-1/2 -translate-y-1/2 text-right">
             <span className="text-[10px] sm:text-xs text-muted-foreground">L= {config.activeLength}</span>
             <br />
-            <span className="text-[8px] sm:text-[10px] text-muted-foreground">Comp.<br />Área ativa</span>
+            <span className="text-[8px] sm:text-[10px] text-muted-foreground">{t("products.diagram.activeArea", "Comp. Área ativa")}</span>
           </div>
         )}
       </div>
@@ -243,7 +243,7 @@ const CatalogSection = ({
               {config.cutTypes && config.cutTypes.length > 0 && (
                 <div>
                   <p className="font-semibold text-xs sm:text-sm text-foreground mb-1.5 sm:mb-2">
-                    Tipo de Corte/Cut Type
+                    {t("products.diagram.cutType", "Tipo de Corte")}
                   </p>
                   <div className="flex flex-wrap gap-x-3 sm:gap-x-4 gap-y-1">
                     {config.cutTypes.map((cutType) => (
@@ -263,7 +263,7 @@ const CatalogSection = ({
               {config.grainColors && config.grainColors.length > 0 && (
                 <div>
                   <p className="font-semibold text-xs sm:text-sm text-foreground mb-1.5 sm:mb-2">
-                    {config.type === "polisher" ? "Cores/Colors" : "Grão/Grain"}
+                    {config.type === "polisher" ? t("products.diagram.colors", "Cores") : t("products.diagram.grain", "Grão")}
                   </p>
                   <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-x-3 sm:gap-x-4 gap-y-1">
                     {config.grainColors.map((grain) => (
@@ -288,7 +288,7 @@ const CatalogSection = ({
               <p className={`text-xl sm:text-2xl font-bold ${isGold ? "text-yellow-500" : "text-foreground"}`}>
                 {config.modelPrefix}
               </p>
-              <p className="text-[10px] sm:text-xs text-muted-foreground">Modelo/Model</p>
+              <p className="text-[10px] sm:text-xs text-muted-foreground">{t("products.diagram.model", "Modelo")}</p>
             </div>
           </div>
         </div>
@@ -321,8 +321,8 @@ const CatalogSection = ({
       {categorySlug === "apoio-lixas-afiacao" && (
         <div className="mt-12 text-center">
           <p className="text-sm text-muted-foreground">
-            Apoios rígidos e flexíveis<br />
-            para diferentes aplicações
+            {t("products.diagram.rigidFlexible", "Apoios rígidos e flexíveis")}<br />
+            {t("products.diagram.forDifferentApps", "para diferentes aplicações")}
           </p>
         </div>
       )}
@@ -342,13 +342,13 @@ const CatalogSection = ({
           <div className="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-green-500" />
         </div>
         <div className="text-xs text-muted-foreground">
-          Sistema de cores<br />para identificação
+          {t("products.diagram.colorSystem", "Sistema de cores")}<br />{t("products.diagram.forIdentification", "para identificação")}
         </div>
       </div>
       
       {/* Shaft info */}
       <div className="text-xs text-muted-foreground text-center">
-        Haste padrão: Ø {config.shaftDiameter}
+        {t("products.diagram.standardShaft", "Haste padrão")}: Ø {config.shaftDiameter}
       </div>
     </div>
   );
@@ -371,8 +371,8 @@ const CatalogSection = ({
       
       {/* Info */}
       <div className="mt-6 text-xs text-muted-foreground text-center">
-        Cerdas de poliamida<br />
-        Haste: Ø {config.shaftDiameter}
+        {t("products.diagram.polyamideBristles", "Cerdas de poliamida")}<br />
+        {t("products.diagram.shaft", "Haste")}: Ø {config.shaftDiameter}
       </div>
     </div>
   );
@@ -384,7 +384,7 @@ const CatalogSection = ({
         {/* Fiber molecular */}
         <div className="flex flex-col items-center">
           <div className="w-2 h-16 bg-gradient-to-b from-amber-200 to-amber-400 rounded" />
-          <span className="text-xs text-muted-foreground mt-2">Fibra</span>
+          <span className="text-xs text-muted-foreground mt-2">{t("products.diagram.fiber", "Fibra")}</span>
         </div>
         
         {/* Enucleadora */}
@@ -392,13 +392,13 @@ const CatalogSection = ({
           <div className="w-4 h-12 bg-gradient-to-b from-gray-300 to-gray-500 rounded-t">
             <div className="w-6 h-6 -mx-1 rounded-full bg-gradient-to-br from-gray-400 to-gray-600" />
           </div>
-          <span className="text-xs text-muted-foreground mt-2">Enucleadora</span>
+          <span className="text-xs text-muted-foreground mt-2">{t("products.diagram.enucleator", "Enucleadora")}</span>
         </div>
         
         {/* Mandril */}
         <div className="flex flex-col items-center">
           <div className="w-1 h-16 bg-gradient-to-b from-gray-400 to-gray-600 rounded" />
-          <span className="text-xs text-muted-foreground mt-2">Mandril</span>
+          <span className="text-xs text-muted-foreground mt-2">{t("products.diagram.mandril", "Mandril")}</span>
         </div>
       </div>
     </div>
@@ -417,7 +417,7 @@ const CatalogSection = ({
           >
             <div className="w-3 h-3 rounded-full bg-gray-500" />
           </div>
-          <span className="text-xs text-muted-foreground mt-2">Apoio Rígido</span>
+          <span className="text-xs text-muted-foreground mt-2">{t("products.diagram.rigidSupport", "Apoio Rígido")}</span>
         </div>
         
         {/* Flexible support */}
@@ -428,13 +428,13 @@ const CatalogSection = ({
           >
             <div className="w-3 h-3 rounded-full bg-gray-400" />
           </div>
-          <span className="text-xs text-muted-foreground mt-2">Apoio Flexível</span>
+          <span className="text-xs text-muted-foreground mt-2">{t("products.diagram.flexibleSupport", "Apoio Flexível")}</span>
         </div>
       </div>
       
       {/* Diameters info */}
       <div className="mt-6 text-xs text-muted-foreground text-center">
-        Diâmetros disponíveis: {config.discDiameter}
+        {t("products.diagram.availableDiameters", "Diâmetros disponíveis")}: {config.discDiameter}
       </div>
     </div>
   );
@@ -502,7 +502,7 @@ const CatalogSection = ({
                 {config.grainColors && config.grainColors.length > 0 && (
                   <div>
                     <p className="font-semibold text-foreground mb-2">
-                      {config.type === "polisher" ? "Cores/Colors" : "Grão/Grain"}
+                      {config.type === "polisher" ? t("products.diagram.colors", "Cores") : t("products.diagram.grain", "Grão")}
                     </p>
                     <div className="flex flex-col gap-1">
                       {config.grainColors.slice(0, 4).map((grain) => (
@@ -526,7 +526,7 @@ const CatalogSection = ({
                   <p className={`text-3xl font-bold ${isGold ? "text-yellow-500" : "text-foreground"}`}>
                     {config.modelPrefix}
                   </p>
-                  <p className="text-sm text-muted-foreground">Modelo/Model</p>
+                  <p className="text-sm text-muted-foreground">{t("products.diagram.model", "Modelo")}</p>
                 </div>
               </div>
             )}

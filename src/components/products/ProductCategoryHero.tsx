@@ -148,14 +148,14 @@ const ProductCategoryHero = ({
               className="inline-flex items-center gap-2 mb-6 text-white/70 hover:text-white transition-colors group"
             >
               <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-              {t("products.backToCategories", "Voltar às Categorias")}
+              {t("products.backToCategories")}
             </Link>
 
             {/* "Alta Performance" label */}
             <p className={`text-sm font-semibold uppercase tracking-wider mb-4 ${
               isGold ? "text-yellow-400" : "text-primary"
             }`}>
-              {t("products.highPerformance", "Alta Performance")}
+              {t("products.highPerformance")}
             </p>
 
             {/* Main title */}
@@ -163,7 +163,7 @@ const ProductCategoryHero = ({
               isGold ? "text-yellow-400" : "text-white"
             }`}>
               {isGold && <Sparkles className="inline w-10 h-10 mr-2 animate-pulse" />}
-              {t("products.heroTitle", "Combinação que proporciona resistência e durabilidade")}
+              {t("products.heroTitle")}
             </h1>
 
             {/* Description */}
