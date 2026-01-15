@@ -319,7 +319,7 @@ const productData: Record<string, {
     ]
   },
   "polidoras": {
-    subtypes: ["70101", "70501", "70701", "70201", "70301", "70601", "70401"],
+    subtypes: ["Polidora Torpedo Ogival", "Polidora Torpedo Grande", "Polidora Torpedo Média", "Polidora Cilíndrica", "Polidora Chama", "Polidora Cônica", "Polidora Esférica"],
     titlePt: "POLIDORAS",
     titleEn: "POLISHERS",
     description: {
@@ -327,20 +327,62 @@ const productData: Record<string, {
       en: "Silicone polishers in various colors and grits for perfect finishing. Color system for easy identification."
     },
     products: [
-      // 70101 - EXTRA GROSSO (Marrom)
-      { model: "70101", code: "500.008.70101", diameter: "10,0mm", grain: "Extra Grosso", color: "Marrom", activeLength: "24,0mm" },
-      // 70501 - GROSSO (Cinza)
-      { model: "70501", code: "500.008.70501", diameter: "10,0mm", grain: "Grosso", color: "Cinza", activeLength: "24,0mm" },
-      // 70701 - MÉDIO-GROSSO (Branco)
-      { model: "70701", code: "500.008.70701", diameter: "10,0mm", grain: "Médio-Grosso", color: "Branco", activeLength: "24,0mm" },
-      // 70201 - MÉDIO (Verde)
-      { model: "70201", code: "500.008.70201", diameter: "10,0mm", grain: "Médio", color: "Verde", activeLength: "24,0mm", image: PolidoraVerde },
-      // 70301 - FINO (Azul)
-      { model: "70301", code: "500.008.70301", diameter: "10,0mm", grain: "Fino", color: "Azul", activeLength: "24,0mm", image: PolidoraAzul },
-      // 70601 - EXTRA FINO (Amarelo)
-      { model: "70601", code: "500.008.70601", diameter: "10,0mm", grain: "Extra Fino", color: "Amarelo", activeLength: "24,0mm" },
-      // 70401 - ULTRA FINO (Lilás)
-      { model: "70401", code: "500.008.70401", diameter: "10,0mm", grain: "Ultra Fino", color: "Lilás", activeLength: "24,0mm" },
+      // POLIDORA TORPEDO OGIVAL
+      { model: "Polidora Torpedo Ogival", code: "500.008.70101", diameter: "10,0mm", grain: "Extra Grosso", color: "Marrom", activeLength: "24,0mm" },
+      { model: "Polidora Torpedo Ogival", code: "500.008.70501", diameter: "10,0mm", grain: "Grosso", color: "Cinza", activeLength: "24,0mm" },
+      { model: "Polidora Torpedo Ogival", code: "500.008.70701", diameter: "10,0mm", grain: "Médio-Grosso", color: "Branco", activeLength: "24,0mm" },
+      { model: "Polidora Torpedo Ogival", code: "500.008.70201", diameter: "10,0mm", grain: "Médio", color: "Verde", activeLength: "24,0mm", image: PolidoraVerde },
+      { model: "Polidora Torpedo Ogival", code: "500.008.70301", diameter: "10,0mm", grain: "Fino", color: "Azul", activeLength: "24,0mm", image: PolidoraAzul },
+      { model: "Polidora Torpedo Ogival", code: "500.008.70601", diameter: "10,0mm", grain: "Extra Fino", color: "Amarelo", activeLength: "24,0mm" },
+      { model: "Polidora Torpedo Ogival", code: "500.008.70401", diameter: "10,0mm", grain: "Ultra Fino", color: "Lilás", activeLength: "24,0mm" },
+      // POLIDORA TORPEDO GRANDE
+      { model: "Polidora Torpedo Grande", code: "500.008.70102", diameter: "12,0mm", grain: "Extra Grosso", color: "Marrom", activeLength: "28,0mm" },
+      { model: "Polidora Torpedo Grande", code: "500.008.70502", diameter: "12,0mm", grain: "Grosso", color: "Cinza", activeLength: "28,0mm" },
+      { model: "Polidora Torpedo Grande", code: "500.008.70702", diameter: "12,0mm", grain: "Médio-Grosso", color: "Branco", activeLength: "28,0mm" },
+      { model: "Polidora Torpedo Grande", code: "500.008.70202", diameter: "12,0mm", grain: "Médio", color: "Verde", activeLength: "28,0mm" },
+      { model: "Polidora Torpedo Grande", code: "500.008.70302", diameter: "12,0mm", grain: "Fino", color: "Azul", activeLength: "28,0mm" },
+      { model: "Polidora Torpedo Grande", code: "500.008.70602", diameter: "12,0mm", grain: "Extra Fino", color: "Amarelo", activeLength: "28,0mm" },
+      { model: "Polidora Torpedo Grande", code: "500.008.70402", diameter: "12,0mm", grain: "Ultra Fino", color: "Lilás", activeLength: "28,0mm" },
+      // POLIDORA TORPEDO MÉDIA
+      { model: "Polidora Torpedo Média", code: "500.008.70103", diameter: "8,0mm", grain: "Extra Grosso", color: "Marrom", activeLength: "20,0mm" },
+      { model: "Polidora Torpedo Média", code: "500.008.70503", diameter: "8,0mm", grain: "Grosso", color: "Cinza", activeLength: "20,0mm" },
+      { model: "Polidora Torpedo Média", code: "500.008.70703", diameter: "8,0mm", grain: "Médio-Grosso", color: "Branco", activeLength: "20,0mm" },
+      { model: "Polidora Torpedo Média", code: "500.008.70203", diameter: "8,0mm", grain: "Médio", color: "Verde", activeLength: "20,0mm" },
+      { model: "Polidora Torpedo Média", code: "500.008.70303", diameter: "8,0mm", grain: "Fino", color: "Azul", activeLength: "20,0mm" },
+      { model: "Polidora Torpedo Média", code: "500.008.70603", diameter: "8,0mm", grain: "Extra Fino", color: "Amarelo", activeLength: "20,0mm" },
+      { model: "Polidora Torpedo Média", code: "500.008.70403", diameter: "8,0mm", grain: "Ultra Fino", color: "Lilás", activeLength: "20,0mm" },
+      // POLIDORA CILÍNDRICA
+      { model: "Polidora Cilíndrica", code: "500.008.70104", diameter: "6,0mm", grain: "Extra Grosso", color: "Marrom", activeLength: "18,0mm" },
+      { model: "Polidora Cilíndrica", code: "500.008.70504", diameter: "6,0mm", grain: "Grosso", color: "Cinza", activeLength: "18,0mm" },
+      { model: "Polidora Cilíndrica", code: "500.008.70704", diameter: "6,0mm", grain: "Médio-Grosso", color: "Branco", activeLength: "18,0mm" },
+      { model: "Polidora Cilíndrica", code: "500.008.70204", diameter: "6,0mm", grain: "Médio", color: "Verde", activeLength: "18,0mm" },
+      { model: "Polidora Cilíndrica", code: "500.008.70304", diameter: "6,0mm", grain: "Fino", color: "Azul", activeLength: "18,0mm" },
+      { model: "Polidora Cilíndrica", code: "500.008.70604", diameter: "6,0mm", grain: "Extra Fino", color: "Amarelo", activeLength: "18,0mm" },
+      { model: "Polidora Cilíndrica", code: "500.008.70404", diameter: "6,0mm", grain: "Ultra Fino", color: "Lilás", activeLength: "18,0mm", image: PolidoraCinza },
+      // POLIDORA CHAMA
+      { model: "Polidora Chama", code: "500.008.70105", diameter: "5,0mm", grain: "Extra Grosso", color: "Marrom", activeLength: "15,0mm" },
+      { model: "Polidora Chama", code: "500.008.70505", diameter: "5,0mm", grain: "Grosso", color: "Cinza", activeLength: "15,0mm" },
+      { model: "Polidora Chama", code: "500.008.70705", diameter: "5,0mm", grain: "Médio-Grosso", color: "Branco", activeLength: "15,0mm" },
+      { model: "Polidora Chama", code: "500.008.70205", diameter: "5,0mm", grain: "Médio", color: "Verde", activeLength: "15,0mm" },
+      { model: "Polidora Chama", code: "500.008.70305", diameter: "5,0mm", grain: "Fino", color: "Azul", activeLength: "15,0mm" },
+      { model: "Polidora Chama", code: "500.008.70605", diameter: "5,0mm", grain: "Extra Fino", color: "Amarelo", activeLength: "15,0mm" },
+      { model: "Polidora Chama", code: "500.008.70405", diameter: "5,0mm", grain: "Ultra Fino", color: "Lilás", activeLength: "15,0mm" },
+      // POLIDORA CÔNICA
+      { model: "Polidora Cônica", code: "500.008.70106", diameter: "6,0mm", grain: "Extra Grosso", color: "Marrom", activeLength: "16,0mm" },
+      { model: "Polidora Cônica", code: "500.008.70506", diameter: "6,0mm", grain: "Grosso", color: "Cinza", activeLength: "16,0mm" },
+      { model: "Polidora Cônica", code: "500.008.70706", diameter: "6,0mm", grain: "Médio-Grosso", color: "Branco", activeLength: "16,0mm" },
+      { model: "Polidora Cônica", code: "500.008.70206", diameter: "6,0mm", grain: "Médio", color: "Verde", activeLength: "16,0mm" },
+      { model: "Polidora Cônica", code: "500.008.70306", diameter: "6,0mm", grain: "Fino", color: "Azul", activeLength: "16,0mm" },
+      { model: "Polidora Cônica", code: "500.008.70606", diameter: "6,0mm", grain: "Extra Fino", color: "Amarelo", activeLength: "16,0mm" },
+      { model: "Polidora Cônica", code: "500.008.70406", diameter: "6,0mm", grain: "Ultra Fino", color: "Lilás", activeLength: "16,0mm" },
+      // POLIDORA ESFÉRICA
+      { model: "Polidora Esférica", code: "500.008.70107", diameter: "5,0mm", grain: "Extra Grosso", color: "Marrom", activeLength: "---" },
+      { model: "Polidora Esférica", code: "500.008.70507", diameter: "5,0mm", grain: "Grosso", color: "Cinza", activeLength: "---" },
+      { model: "Polidora Esférica", code: "500.008.70707", diameter: "5,0mm", grain: "Médio-Grosso", color: "Branco", activeLength: "---" },
+      { model: "Polidora Esférica", code: "500.008.70207", diameter: "5,0mm", grain: "Médio", color: "Verde", activeLength: "---" },
+      { model: "Polidora Esférica", code: "500.008.70307", diameter: "5,0mm", grain: "Fino", color: "Azul", activeLength: "---" },
+      { model: "Polidora Esférica", code: "500.008.70607", diameter: "5,0mm", grain: "Extra Fino", color: "Amarelo", activeLength: "---" },
+      { model: "Polidora Esférica", code: "500.008.70407", diameter: "5,0mm", grain: "Ultra Fino", color: "Lilás", activeLength: "---" },
     ]
   },
   "escovas-limpeza": {
