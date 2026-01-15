@@ -187,8 +187,8 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   ))}
                 </tr>
 
-                {/* DIAGRAM Row - Only for Brocas Diamantadas */}
-                {categorySlug === 'brocas-diamantadas' && (
+                {/* DIAGRAM Row - For Brocas Diamantadas and Lixas */}
+                {(categorySlug === 'brocas-diamantadas' || categorySlug === 'lixas') && (
                   <tr style={{ backgroundColor: rowBgWhite }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3" style={{ color: headerBgColor }}></td>
                     {products.map((product, idx) => {
@@ -447,6 +447,87 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                         );
                       }
                       
+                      // ===== LIXAS SECTION =====
+                      // Laminar - circular sandpaper disc (thin)
+                      if (categorySlug === 'lixas' && typeNameLower.includes('laminar')) {
+                        const discDiameter = parseFloat(product.diameter?.replace('mm', '').replace(',', '.') || '23');
+                        const discSize = Math.max(30, Math.min(50, discDiameter * 1.8));
+                        const svgSize = discSize + 16;
+                        
+                        return (
+                          <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
+                            <div className="flex justify-center">
+                              <svg width={svgSize} height={svgSize} viewBox={`0 0 ${svgSize} ${svgSize}`}>
+                                {/* Outer circle - sandpaper texture */}
+                                <circle 
+                                  cx={svgSize/2} 
+                                  cy={svgSize/2} 
+                                  r={discSize/2} 
+                                  fill="#D4A854"
+                                  stroke="#B8963F"
+                                  strokeWidth="1.5"
+                                />
+                                {/* Inner circle - center hole */}
+                                <circle 
+                                  cx={svgSize/2} 
+                                  cy={svgSize/2} 
+                                  r={4}
+                                  fill="#1a1a1a"
+                                />
+                                {/* Texture dots pattern */}
+                                <circle cx={svgSize/2 - 8} cy={svgSize/2 - 6} r="1.5" fill="#C49844" />
+                                <circle cx={svgSize/2 + 6} cy={svgSize/2 - 8} r="1.5" fill="#C49844" />
+                                <circle cx={svgSize/2 - 5} cy={svgSize/2 + 7} r="1.5" fill="#C49844" />
+                                <circle cx={svgSize/2 + 8} cy={svgSize/2 + 5} r="1.5" fill="#C49844" />
+                                <circle cx={svgSize/2 + 2} cy={svgSize/2 - 12} r="1" fill="#C49844" />
+                                <circle cx={svgSize/2 - 10} cy={svgSize/2 + 2} r="1" fill="#C49844" />
+                              </svg>
+                            </div>
+                          </td>
+                        );
+                      }
+                      
+                      // Plantar - circular sandpaper disc (larger)
+                      if (categorySlug === 'lixas' && typeNameLower.includes('plantar')) {
+                        const discDiameter = parseFloat(product.diameter?.replace('mm', '').replace(',', '.') || '30');
+                        const discSize = Math.max(40, Math.min(60, discDiameter * 1.6));
+                        const svgSize = discSize + 16;
+                        
+                        return (
+                          <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
+                            <div className="flex justify-center">
+                              <svg width={svgSize} height={svgSize} viewBox={`0 0 ${svgSize} ${svgSize}`}>
+                                {/* Outer circle - sandpaper texture */}
+                                <circle 
+                                  cx={svgSize/2} 
+                                  cy={svgSize/2} 
+                                  r={discSize/2} 
+                                  fill="#D4A854"
+                                  stroke="#B8963F"
+                                  strokeWidth="1.5"
+                                />
+                                {/* Inner circle - center hole */}
+                                <circle 
+                                  cx={svgSize/2} 
+                                  cy={svgSize/2} 
+                                  r={5}
+                                  fill="#1a1a1a"
+                                />
+                                {/* Texture dots pattern - more dots for larger disc */}
+                                <circle cx={svgSize/2 - 12} cy={svgSize/2 - 8} r="1.5" fill="#C49844" />
+                                <circle cx={svgSize/2 + 10} cy={svgSize/2 - 10} r="1.5" fill="#C49844" />
+                                <circle cx={svgSize/2 - 8} cy={svgSize/2 + 10} r="1.5" fill="#C49844" />
+                                <circle cx={svgSize/2 + 12} cy={svgSize/2 + 6} r="1.5" fill="#C49844" />
+                                <circle cx={svgSize/2 + 3} cy={svgSize/2 - 15} r="1" fill="#C49844" />
+                                <circle cx={svgSize/2 - 15} cy={svgSize/2 + 3} r="1" fill="#C49844" />
+                                <circle cx={svgSize/2 + 15} cy={svgSize/2 - 2} r="1" fill="#C49844" />
+                                <circle cx={svgSize/2 - 4} cy={svgSize/2 + 16} r="1" fill="#C49844" />
+                              </svg>
+                            </div>
+                          </td>
+                        );
+                      }
+                      
                       return <td key={idx}></td>;
                     })}
                   </tr>
@@ -455,7 +536,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                 {/* DIÂMETRO Row */}
                 <tr style={{ backgroundColor: rowBgLight }}>
                   <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                    {t("products.table.diameter", "DIÂMETRO")} ∅
+                    {t("products.table.diameter", "DIÂMETRO")} ∅ (MM)
                   </td>
                   {products.map((product, idx) => (
                     <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -464,17 +545,61 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   ))}
                 </tr>
 
-                {/* COMPRIMENTO ÁREA ATIVA Row */}
-                <tr style={{ backgroundColor: rowBgWhite }}>
-                  <td className="px-2 sm:px-4 py-1.5 sm:py-2 text-[8px] sm:text-xs font-medium" style={{ color: headerBgColor }}>
-                    <span className="block text-[8px] sm:text-[10px] leading-tight">{t("products.table.activeLength", "ÁREA ATIVA").toUpperCase()}</span>
-                  </td>
-                  {products.map((product, idx) => (
-                    <td key={idx} className="px-1 sm:px-2 py-1.5 sm:py-2 text-center text-[10px] sm:text-sm">
-                      {product.activeLength?.replace('mm', '') || '—'}
+                {/* ESPESSURA Row - Only for Lixas Laminar/Plantar */}
+                {categorySlug === 'lixas' && (typeName.toLowerCase().includes('laminar') || typeName.toLowerCase().includes('plantar')) && (
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      {t("products.table.thickness", "ESPESSURA")} (MM)
                     </td>
-                  ))}
-                </tr>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-1.5 sm:py-2 text-center text-[10px] sm:text-sm">
+                        {product.activeLength?.replace('mm', '') || '—'}
+                      </td>
+                    ))}
+                  </tr>
+                )}
+
+                {/* GRANULOMETRIA Row - Only for Lixas Laminar/Plantar */}
+                {categorySlug === 'lixas' && (typeName.toLowerCase().includes('laminar') || typeName.toLowerCase().includes('plantar')) && (
+                  <tr style={{ backgroundColor: rowBgLight }}>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      {t("products.table.granulometry", "GRANULOMETRIA")} (MESH)
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-1.5 sm:py-2 text-center text-[8px] sm:text-xs whitespace-nowrap">
+                        {product.grain || '—'}
+                      </td>
+                    ))}
+                  </tr>
+                )}
+
+                {/* EMBALAGEM Row - Only for Lixas Laminar/Plantar */}
+                {categorySlug === 'lixas' && (typeName.toLowerCase().includes('laminar') || typeName.toLowerCase().includes('plantar')) && (
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      {t("products.table.packaging", "EMBALAGEM")} (UNIT)
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-1.5 sm:py-2 text-center text-[10px] sm:text-sm">
+                        100
+                      </td>
+                    ))}
+                  </tr>
+                )}
+
+                {/* COMPRIMENTO ÁREA ATIVA Row - Hide for Lixas Laminar/Plantar */}
+                {!(categorySlug === 'lixas' && (typeName.toLowerCase().includes('laminar') || typeName.toLowerCase().includes('plantar'))) && (
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2 text-[8px] sm:text-xs font-medium" style={{ color: headerBgColor }}>
+                      <span className="block text-[8px] sm:text-[10px] leading-tight">{t("products.table.activeLength", "ÁREA ATIVA").toUpperCase()}</span>
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-1.5 sm:py-2 text-center text-[10px] sm:text-sm">
+                        {product.activeLength?.replace('mm', '') || '—'}
+                      </td>
+                    ))}
+                  </tr>
+                )}
 
                 {/* GRÃO Row - Colored circles - Only show for categories with grain */}
                 {hasGrain && (

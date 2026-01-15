@@ -305,17 +305,20 @@ const productData: Record<string, {
       { model: "Gota Preta", code: "LX-GP-150", diameter: "N/A", grain: "150/180", subcategory: "Lixas Manuais" },
       { model: "Caixão Premium", code: "LX-CP-100", diameter: "N/A", grain: "100/180", subcategory: "Lixas Manuais" },
       { model: "Caixão Descartável", code: "LX-CD-150", diameter: "N/A", grain: "150/180", subcategory: "Lixas Manuais" },
-      // Lixas com Mandril
-      { model: "Laminar Premium (Norton)", code: "LX-LP-80", diameter: "15mm", grain: "80", subcategory: "Lixas com Mandril" },
-      { model: "Laminar Premium (Norton)", code: "LX-LP-100", diameter: "15mm", grain: "100", subcategory: "Lixas com Mandril" },
-      { model: "Laminar Premium (Norton)", code: "LX-LP-120", diameter: "15mm", grain: "120", subcategory: "Lixas com Mandril" },
-      { model: "Plantar Premium (Norton)", code: "LX-PP-60", diameter: "25mm", grain: "60", subcategory: "Lixas com Mandril" },
-      { model: "Plantar Premium (Norton)", code: "LX-PP-80", diameter: "25mm", grain: "80", subcategory: "Lixas com Mandril" },
-      { model: "Tubular Send Grossa", code: "LT-TG-60", diameter: "10mm", grain: "60", subcategory: "Lixas com Mandril" },
-      { model: "Tubular Send Média", code: "LT-TM-80", diameter: "10mm", grain: "80", subcategory: "Lixas com Mandril" },
-      { model: "Tubular Send Fina", code: "LT-TF-120", diameter: "10mm", grain: "120", subcategory: "Lixas com Mandril" },
-      { model: "Base Inox Boomerang", code: "LX-BIB-01", diameter: "N/A", grain: "N/A", subcategory: "Lixas com Mandril" },
-      { model: "Base Inox Plantar", code: "LX-BIP-01", diameter: "25mm", grain: "N/A", subcategory: "Lixas com Mandril" },
+      // Lixas com Mandril - LAMINAR
+      { model: "Laminar", code: "500.012.14", diameter: "23,00mm", grain: "100/120/150/180/220/320/400/600", activeLength: "0,15mm", subcategory: "Lixas com Mandril" },
+      { model: "Laminar", code: "500.012.20", diameter: "17,00mm", grain: "100/120/150/180/220/320/400/600", activeLength: "0,10mm", subcategory: "Lixas com Mandril" },
+      // Lixas com Mandril - PLANTAR
+      { model: "Plantar", code: "500.012.02", diameter: "30,00mm", grain: "80/100/120/150/180/220/320", activeLength: "0,15mm", subcategory: "Lixas com Mandril" },
+      { model: "Plantar", code: "500.012.27", diameter: "30,00mm", grain: "80/100/120/150/180/220", activeLength: "0,15mm", subcategory: "Lixas com Mandril" },
+      { model: "Plantar", code: "500.012.37", diameter: "30,00mm", grain: "60/80/100/120/150/220/320", activeLength: "0,10mm", subcategory: "Lixas com Mandril" },
+      // Lixas com Mandril - TUBULAR
+      { model: "Tubular", code: "LT-TG-60", diameter: "10mm", grain: "60", subcategory: "Lixas com Mandril" },
+      { model: "Tubular", code: "LT-TM-80", diameter: "10mm", grain: "80", subcategory: "Lixas com Mandril" },
+      { model: "Tubular", code: "LT-TF-120", diameter: "10mm", grain: "120", subcategory: "Lixas com Mandril" },
+      // Lixas com Mandril - BASE
+      { model: "Base", code: "LX-BIB-01", diameter: "N/A", grain: "N/A", subcategory: "Lixas com Mandril" },
+      { model: "Base", code: "LX-BIP-01", diameter: "25mm", grain: "N/A", subcategory: "Lixas com Mandril" },
     ]
   },
   "polidoras": {
