@@ -248,13 +248,14 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                         );
                       }
                       
-                      // Cônica Topo Arredondado (Conical Rounded Top) - cylinder with rounded top
+                      // Cônica Topo Arredondado (Conical Rounded Top) - tapered: wider at bottom, narrower at top with rounded cap
                       if (typeNameLower.includes('cônica topo arredondado')) {
-                        const width = Math.max(8, Math.min(20, diameterValue * 4));
+                        const bottomWidth = Math.max(10, Math.min(24, diameterValue * 5));
+                        const topWidth = bottomWidth * 0.55; // Narrower at top
                         const bodyHeight = Math.max(24, Math.min(50, activeLengthValue * 3));
-                        const svgWidth = width + 16;
+                        const svgWidth = bottomWidth + 16;
                         const svgHeight = stemHeight + bodyHeight + 6;
-                        const radius = width / 2;
+                        const topRadius = topWidth / 2;
                         
                         return (
                           <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
@@ -262,12 +263,12 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                               <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
                                 {/* Thin stem */}
                                 <rect x={svgWidth/2 - 1.5} y={bodyHeight + 6} width={3} height={stemHeight} fill="#1a1a1a"/>
-                                {/* Cylinder body with rounded top - straight sides */}
+                                {/* Tapered body: wide at bottom, narrow at top with rounded cap */}
                                 <path d={`
-                                  M${svgWidth/2 - width/2} ${bodyHeight + 4}
-                                  L${svgWidth/2 - width/2} ${radius + 4}
-                                  A${radius} ${radius} 0 0 1 ${svgWidth/2 + width/2} ${radius + 4}
-                                  L${svgWidth/2 + width/2} ${bodyHeight + 4}
+                                  M${svgWidth/2 - bottomWidth/2} ${bodyHeight + 4}
+                                  L${svgWidth/2 - topWidth/2} ${topRadius + 4}
+                                  A${topRadius} ${topRadius} 0 0 1 ${svgWidth/2 + topWidth/2} ${topRadius + 4}
+                                  L${svgWidth/2 + bottomWidth/2} ${bodyHeight + 4}
                                   Z
                                 `} fill="#1a1a1a"/>
                               </svg>
