@@ -21,10 +21,11 @@ interface CategoryTypeModalProps {
   products: Product[];
   typeImage?: string;
   isGold?: boolean;
+  categorySlug?: string;
 }
 
-// Grain color map with correct colors from catalog - matching the reference image
-const grainColorMap: Record<string, { color: string; border?: boolean }> = {
+// Grain color map for POLIDORAS section - specific colors from catalog
+const polidorasGrainColorMap: Record<string, { color: string; border?: boolean }> = {
   "Extra Grosso": { color: "#5D3A1A" },           // Marrom escuro
   "Grosso": { color: "#808080" },                 // Cinza
   "Médio-Grosso": { color: "#FFFFFF", border: true }, // Branco com borda
@@ -32,6 +33,34 @@ const grainColorMap: Record<string, { color: string; border?: boolean }> = {
   "Fino": { color: "#0066CC" },                   // Azul
   "Extra Fino": { color: "#FFD700" },             // Amarelo
   "Ultra Fino": { color: "#9C6B8E" },             // Rosa/Mauve
+};
+
+// Grain color map for BROCAS DIAMANTADAS - only black and blue as per catalog
+const diamantadasGrainColorMap: Record<string, { color: string; border?: boolean }> = {
+  "Grosso": { color: "#000000" },                 // Preto
+  "Fino": { color: "#0066CC" },                   // Azul
+};
+
+// Default grain color map for other categories (verde, azul, vermelho, amarelo)
+const defaultGrainColorMap: Record<string, { color: string; border?: boolean }> = {
+  "Extra Grosso": { color: "#1B7D3A" },           // Verde
+  "Grosso": { color: "#0066CC" },                 // Azul
+  "Médio-Grosso": { color: "#FFFFFF", border: true }, // Branco com borda
+  "Médio": { color: "#1B7D3A" },                  // Verde
+  "Fino": { color: "#C62828" },                   // Vermelho
+  "Extra Fino": { color: "#FFD700" },             // Amarelo
+  "Ultra Fino": { color: "#C62828" },             // Vermelho
+};
+
+// Function to get the correct grain color map based on category
+const getGrainColorMap = (categorySlug?: string): Record<string, { color: string; border?: boolean }> => {
+  if (categorySlug === 'polidoras') {
+    return polidorasGrainColorMap;
+  }
+  if (categorySlug === 'brocas-diamantadas') {
+    return diamantadasGrainColorMap;
+  }
+  return defaultGrainColorMap;
 };
 
 // Get unique grain colors for a product (can have multiple)
@@ -80,8 +109,11 @@ const getProductName = (code: string, model?: string): string => {
   return code;
 };
 
-const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isGold = false }: CategoryTypeModalProps) => {
+const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isGold = false, categorySlug }: CategoryTypeModalProps) => {
   const { t } = useTranslation();
+
+  // Get the correct grain color map based on category
+  const grainColorMap = getGrainColorMap(categorySlug);
 
   // Catalog-style table design matching the PDF reference
   const headerBgColor = isGold ? "#FFC107" : "#C62828";
