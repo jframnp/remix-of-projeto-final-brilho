@@ -178,46 +178,86 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   ))}
                 </tr>
 
-                {/* DIAGRAM Row - Only for Esférica type in Brocas Diamantadas */}
-                {categorySlug === 'brocas-diamantadas' && typeName.toLowerCase().includes('esférica') && (
+                {/* DIAGRAM Row - Only for specific types in Brocas Diamantadas */}
+                {categorySlug === 'brocas-diamantadas' && (typeName.toLowerCase().includes('esférica') || typeName.toLowerCase().includes('cônica topo invertido')) && (
                   <tr style={{ backgroundColor: rowBgWhite }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3" style={{ color: headerBgColor }}></td>
                     {products.map((product, idx) => {
                       // Extract diameter value for scaling
                       const diameterValue = parseFloat(product.diameter?.replace('mm', '') || '0');
-                      // Scale: base sphere size relative to diameter (min 8, max 32)
-                      const sphereSize = Math.max(6, Math.min(28, diameterValue * 2.5));
-                      const stemHeight = 40;
-                      const svgHeight = stemHeight + sphereSize + 4;
-                      const svgWidth = Math.max(sphereSize + 8, 36);
+                      const isEsferica = typeName.toLowerCase().includes('esférica');
+                      const isConicaInvertida = typeName.toLowerCase().includes('cônica topo invertido');
                       
-                      return (
-                        <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
-                          <div className="flex justify-center">
-                            <svg 
-                              width={svgWidth} 
-                              height={svgHeight} 
-                              viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-                              className="drop-shadow-sm"
-                            >
-                              {/* Stem - tapered line */}
-                              <path 
-                                d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 1} ${sphereSize + 4} L${svgWidth/2 + 1} ${sphereSize + 4} L${svgWidth/2 + 2} ${svgHeight} Z`}
-                                fill="#1a1a1a"
-                                stroke="#1a1a1a"
-                                strokeWidth="0.5"
-                              />
-                              {/* Sphere head */}
-                              <circle 
-                                cx={svgWidth/2} 
-                                cy={sphereSize/2 + 2} 
-                                r={sphereSize/2} 
-                                fill="#1a1a1a"
-                              />
-                            </svg>
-                          </div>
-                        </td>
-                      );
+                      if (isEsferica) {
+                        // Spherical shape
+                        const sphereSize = Math.max(6, Math.min(28, diameterValue * 2.5));
+                        const stemHeight = 40;
+                        const svgHeight = stemHeight + sphereSize + 4;
+                        const svgWidth = Math.max(sphereSize + 8, 36);
+                        
+                        return (
+                          <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
+                            <div className="flex justify-center">
+                              <svg 
+                                width={svgWidth} 
+                                height={svgHeight} 
+                                viewBox={`0 0 ${svgWidth} ${svgHeight}`}
+                                className="drop-shadow-sm"
+                              >
+                                {/* Stem - tapered line */}
+                                <path 
+                                  d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 1} ${sphereSize + 4} L${svgWidth/2 + 1} ${sphereSize + 4} L${svgWidth/2 + 2} ${svgHeight} Z`}
+                                  fill="#1a1a1a"
+                                  stroke="#1a1a1a"
+                                  strokeWidth="0.5"
+                                />
+                                {/* Sphere head */}
+                                <circle 
+                                  cx={svgWidth/2} 
+                                  cy={sphereSize/2 + 2} 
+                                  r={sphereSize/2} 
+                                  fill="#1a1a1a"
+                                />
+                              </svg>
+                            </div>
+                          </td>
+                        );
+                      } else if (isConicaInvertida) {
+                        // Inverted cone shape - trapezoid wider at top
+                        const topWidth = Math.max(8, Math.min(32, diameterValue * 2.8));
+                        const bottomWidth = Math.max(4, topWidth * 0.4);
+                        const coneHeight = Math.max(10, Math.min(24, diameterValue * 1.8));
+                        const stemHeight = 35;
+                        const svgWidth = topWidth + 12;
+                        const svgHeight = stemHeight + coneHeight + 4;
+                        
+                        return (
+                          <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
+                            <div className="flex justify-center">
+                              <svg 
+                                width={svgWidth} 
+                                height={svgHeight} 
+                                viewBox={`0 0 ${svgWidth} ${svgHeight}`}
+                                className="drop-shadow-sm"
+                              >
+                                {/* Stem - thin rectangle */}
+                                <path 
+                                  d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${svgHeight} Z`}
+                                  fill="#1a1a1a"
+                                  stroke="#1a1a1a"
+                                  strokeWidth="0.5"
+                                />
+                                {/* Inverted cone - trapezoid wider at top */}
+                                <path 
+                                  d={`M${(svgWidth - topWidth)/2} 2 L${(svgWidth + topWidth)/2} 2 L${(svgWidth + bottomWidth)/2} ${coneHeight + 2} L${(svgWidth - bottomWidth)/2} ${coneHeight + 2} Z`}
+                                  fill="#1a1a1a"
+                                />
+                              </svg>
+                            </div>
+                          </td>
+                        );
+                      }
+                      return null;
                     })}
                   </tr>
                 )}
