@@ -248,28 +248,42 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                         );
                       }
                       
-                      // Cônica Topo Arredondado (Conical Rounded Top) - bullet/capsule shape tapered
+                      // Cônica Topo Arredondado (Conical Rounded Top) - bullet shape wider at top
                       if (typeNameLower.includes('cônica topo arredondado')) {
-                        const topWidth = Math.max(8, Math.min(22, diameterValue * 3));
-                        const coneHeight = Math.max(20, Math.min(45, activeLengthValue * 3));
-                        const bottomWidth = 4;
-                        const svgWidth = topWidth + 16;
-                        const svgHeight = stemHeight + coneHeight + 6;
-                        const radiusTop = topWidth / 2;
+                        // Scale based on diameter and active length from catalog
+                        const topWidth = Math.max(10, Math.min(28, diameterValue * 4));
+                        const bodyHeight = Math.max(28, Math.min(55, activeLengthValue * 3.5));
+                        const bottomWidth = Math.max(6, topWidth * 0.35);
+                        const svgWidth = topWidth + 20;
+                        const svgHeight = stemHeight + bodyHeight + 8;
+                        const domeHeight = topWidth * 0.45; // Rounded dome at top
                         
                         return (
                           <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
                             <div className="flex justify-center">
                               <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
-                                {/* Stem */}
-                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${coneHeight + 6} L${svgWidth/2 + 2} ${coneHeight + 6} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
-                                {/* Tapered body with rounded dome top */}
+                                {/* Thin stem */}
                                 <path d={`
-                                  M${svgWidth/2 - bottomWidth/2} ${coneHeight + 4}
-                                  L${svgWidth/2 - topWidth/2} ${radiusTop + 6}
-                                  Q${svgWidth/2 - topWidth/2} 2, ${svgWidth/2} 2
-                                  Q${svgWidth/2 + topWidth/2} 2, ${svgWidth/2 + topWidth/2} ${radiusTop + 6}
-                                  L${svgWidth/2 + bottomWidth/2} ${coneHeight + 4}
+                                  M${svgWidth/2 - 1.5} ${svgHeight} 
+                                  L${svgWidth/2 - 1.5} ${bodyHeight + 8} 
+                                  L${svgWidth/2 + 1.5} ${bodyHeight + 8} 
+                                  L${svgWidth/2 + 1.5} ${svgHeight} 
+                                  Z
+                                `} fill="#1a1a1a"/>
+                                {/* Neck connection - small trapezoid */}
+                                <path d={`
+                                  M${svgWidth/2 - 1.5} ${bodyHeight + 8}
+                                  L${svgWidth/2 - bottomWidth/2} ${bodyHeight + 4}
+                                  L${svgWidth/2 + bottomWidth/2} ${bodyHeight + 4}
+                                  L${svgWidth/2 + 1.5} ${bodyHeight + 8}
+                                  Z
+                                `} fill="#1a1a1a"/>
+                                {/* Main body - tapered cone with rounded dome top */}
+                                <path d={`
+                                  M${svgWidth/2 - bottomWidth/2} ${bodyHeight + 4}
+                                  L${svgWidth/2 - topWidth/2} ${domeHeight + 4}
+                                  A${topWidth/2} ${domeHeight} 0 0 1 ${svgWidth/2 + topWidth/2} ${domeHeight + 4}
+                                  L${svgWidth/2 + bottomWidth/2} ${bodyHeight + 4}
                                   Z
                                 `} fill="#1a1a1a"/>
                               </svg>
