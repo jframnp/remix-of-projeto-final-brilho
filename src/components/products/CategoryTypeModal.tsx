@@ -23,14 +23,15 @@ interface CategoryTypeModalProps {
   isGold?: boolean;
 }
 
-// Grain color map with correct colors from catalog
-const grainColorMap: Record<string, string> = {
-  "Extra Grosso": "#000000",
-  "Grosso": "#4CAF50",    // Verde
-  "Médio": "#2196F3",     // Azul
-  "Fino": "#F44336",      // Vermelho
-  "Extra Fino": "#FFEB3B",
-  "Ultra Fino": "#FFFFFF",
+// Grain color map with correct colors from catalog - matching the PDF reference
+const grainColorMap: Record<string, { color: string; border?: boolean }> = {
+  "Extra Grosso": { color: "#000000" },           // Preto
+  "Grosso": { color: "#1B7D3A" },                 // Verde
+  "Médio-Grosso": { color: "#FFFFFF", border: true }, // Branco
+  "Médio": { color: "#0066CC" },                  // Azul
+  "Fino": { color: "#C62828" },                   // Vermelho
+  "Extra Fino": { color: "#FFD700" },             // Amarelo
+  "Ultra Fino": { color: "#FFFFFF", border: true }, // Branco/cinza claro
 };
 
 // Get unique grain colors for a product (can have multiple)
@@ -167,8 +168,8 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                           <div 
                             className="w-3 h-3 sm:w-5 sm:h-5 rounded-full"
                             style={{ 
-                              backgroundColor: grainColorMap[product.grain],
-                              border: grainColorMap[product.grain] === "#FFFFFF" ? "2px solid #DDD" : "none"
+                              backgroundColor: grainColorMap[product.grain].color,
+                              border: grainColorMap[product.grain].border ? "2px solid #DDD" : "none"
                             }}
                           />
                         ) : product.cut ? (
@@ -214,13 +215,13 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
 
           {/* Grain Legend */}
           <div className="mt-4 sm:mt-6 flex flex-wrap items-center gap-2 sm:gap-4 justify-center">
-            {Object.entries(grainColorMap).map(([grain, color]) => (
+            {Object.entries(grainColorMap).map(([grain, config]) => (
               <div key={grain} className="flex items-center gap-1 sm:gap-2">
                 <div 
                   className="w-3 h-3 sm:w-4 sm:h-4 rounded-full"
                   style={{ 
-                    backgroundColor: color,
-                    border: color === "#FFFFFF" ? "2px solid #DDD" : "none"
+                    backgroundColor: config.color,
+                    border: config.border ? "2px solid #DDD" : "none"
                   }}
                 />
                 <span className="text-[10px] sm:text-xs text-muted-foreground">{grain}</span>
