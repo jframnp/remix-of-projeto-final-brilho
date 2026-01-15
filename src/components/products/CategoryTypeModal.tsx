@@ -144,6 +144,11 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
   const rowBgLight = isGold ? "#FFF8E1" : "#FFEBEE";
   const rowBgWhite = "#FFFFFF";
 
+  // Check if this is Tubular or Adesiva with single product and image
+  const isSingleProductWithImage = categorySlug === 'lixas' && 
+    (typeName.toLowerCase().includes('tubular') || typeName.toLowerCase().includes('adesiva')) && 
+    products.length === 1 && products[0].image;
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="max-w-[95vw] sm:max-w-[90vw] max-h-[90vh] p-0 overflow-hidden">
@@ -163,7 +168,55 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
         </DialogHeader>
 
         <div className="px-3 sm:px-6 pb-4 sm:pb-6 overflow-x-auto">
-          {/* Catalog-Style Horizontal Table */}
+          {/* Special layout for Tubular/Adesiva with image */}
+          {isSingleProductWithImage ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+              {/* Image Section */}
+              <div className="flex justify-center items-center p-4">
+                <img 
+                  src={products[0].image} 
+                  alt={translatedTypeName}
+                  className="max-w-full max-h-[200px] sm:max-h-[280px] object-contain rounded-lg"
+                />
+              </div>
+              {/* Specs Table Section */}
+              <div className="overflow-x-auto">
+                <table className="w-full border-collapse text-xs sm:text-sm">
+                  <tbody>
+                    <tr style={{ backgroundColor: headerBgColor }}>
+                      <td className="px-4 py-3 font-bold text-sm" style={{ color: headerTextColor }}>{t("products.table.model", "MODELO")}</td>
+                      <td className="px-4 py-3 font-bold text-sm text-center" style={{ color: headerTextColor }}>{products[0].model}</td>
+                    </tr>
+                    <tr style={{ backgroundColor: rowBgLight }}>
+                      <td className="px-4 py-3 font-bold text-sm" style={{ color: headerBgColor }}>{t("products.table.grain", "GRÃO")}</td>
+                      <td className="px-4 py-3 text-sm text-center">{products[0].grain?.split('/').map((g, i) => <span key={i} className="block">{g} MESH</span>)}</td>
+                    </tr>
+                    <tr style={{ backgroundColor: rowBgWhite }}>
+                      <td className="px-4 py-3 font-bold text-sm" style={{ color: headerBgColor }}>{t("products.table.diameter", "DIÂMETRO")} Ø(MM)</td>
+                      <td className="px-4 py-3 text-sm text-center">{products[0].diameter?.replace('mm', '')}</td>
+                    </tr>
+                    <tr style={{ backgroundColor: rowBgLight }}>
+                      <td className="px-4 py-3 font-bold text-sm" style={{ color: headerBgColor }}>{t("products.table.activeLength", "COMPRIMENTO ÁREA ATIVA")} (MM)</td>
+                      <td className="px-4 py-3 text-sm text-center">{products[0].activeLength?.replace('mm', '')}</td>
+                    </tr>
+                    <tr style={{ backgroundColor: rowBgWhite }}>
+                      <td className="px-4 py-3 font-bold text-sm" style={{ color: headerBgColor }}>{t("products.table.packaging", "EMBALAGEM")}</td>
+                      <td className="px-4 py-3 text-sm text-center">100 {t("products.units", "UNIDADES")}</td>
+                    </tr>
+                    <tr style={{ backgroundColor: rowBgLight }}>
+                      <td className="px-4 py-3 font-bold text-sm" style={{ color: headerBgColor }}>TIPO ABRASIVO</td>
+                      <td className="px-4 py-3 text-sm text-center">ÓXIDO DE ALUMÍNIO</td>
+                    </tr>
+                    <tr style={{ backgroundColor: rowBgWhite }}>
+                      <td className="px-4 py-3 font-bold text-sm" style={{ color: headerBgColor }}>ISO</td>
+                      <td className="px-4 py-3 text-sm text-center font-semibold" style={{ color: headerBgColor }}>{products[0].code}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          ) : (
+          /* Catalog-Style Horizontal Table */
           <div className="min-w-max">
             {/* Table Rows - Catalog Style */}
             <table className="w-full border-collapse text-xs sm:text-sm">
@@ -176,15 +229,21 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   >
                     {t("products.table.model", "MODELOS").toUpperCase()}
                   </td>
-                  {products.map((product, idx) => (
-                    <td 
-                      key={idx}
-                      className="px-1 sm:px-2 py-2 sm:py-3 text-center font-bold min-w-[60px] sm:min-w-[100px] text-[10px] sm:text-sm"
-                      style={{ color: headerTextColor }}
-                    >
-                      {getProductName(product.code)}
-                    </td>
-                  ))}
+                  {products.map((product, idx) => {
+                    // For Lixas Laminar/Plantar, show model name
+                    const isLixaWithModelName = categorySlug === 'lixas' && 
+                      (typeName.toLowerCase().includes('laminar') || typeName.toLowerCase().includes('plantar'));
+                    
+                    return (
+                      <td 
+                        key={idx}
+                        className="px-1 sm:px-2 py-2 sm:py-3 text-center font-bold min-w-[60px] sm:min-w-[100px] text-[8px] sm:text-xs"
+                        style={{ color: headerTextColor }}
+                      >
+                        {isLixaWithModelName ? product.model : getProductName(product.code)}
+                      </td>
+                    );
+                  })}
                 </tr>
 
                 {/* DIAGRAM Row - For Brocas Diamantadas and Lixas */}
@@ -673,9 +732,10 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
               </tbody>
             </table>
           </div>
+          )}
 
-          {/* Grain Legend - Only show for categories with grain */}
-          {hasGrain && (
+          {/* Grain Legend - Only show for categories with grain and not single product layout */}
+          {hasGrain && !isSingleProductWithImage && (
             <div className="mt-4 sm:mt-6 flex flex-wrap items-center gap-2 sm:gap-4 justify-center">
               {Object.entries(grainColorMap).map(([grain, config]) => (
                 <div key={grain} className="flex items-center gap-1 sm:gap-2">
