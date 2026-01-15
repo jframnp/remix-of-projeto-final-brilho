@@ -319,7 +319,7 @@ const productData: Record<string, {
     ]
   },
   "polidoras": {
-    subtypes: ["Torpedo Ogival", "Torpedo Grande", "Torpedo Média", "Cilíndrica Polidora", "Chama Polidora", "Cônica Polidora", "Esférica Polidora"],
+    subtypes: ["70101", "70501", "70701", "70201", "70301", "70601", "70401"],
     titlePt: "POLIDORAS",
     titleEn: "POLISHERS",
     description: {
@@ -327,34 +327,20 @@ const productData: Record<string, {
       en: "Silicone polishers in various colors and grits for perfect finishing. Color system for easy identification."
     },
     products: [
-      // TORPEDO OGIVAL
-      { model: "Torpedo Ogival", code: "PO-TOG-EG", diameter: "8mm", grain: "Extra Grosso", color: "Preto" },
-      { model: "Torpedo Ogival", code: "PO-TOG-G", diameter: "8mm", grain: "Grosso", color: "Azul", image: PolidoraAzul },
-      { model: "Torpedo Ogival", code: "PO-TOG-M", diameter: "8mm", grain: "Médio", color: "Verde", image: PolidoraVerde },
-      { model: "Torpedo Ogival", code: "PO-TOG-F", diameter: "8mm", grain: "Fino", color: "Rosa" },
-      // TORPEDO GRANDE
-      { model: "Torpedo Grande", code: "PO-TG-EG", diameter: "10mm", grain: "Extra Grosso", color: "Preto" },
-      { model: "Torpedo Grande", code: "PO-TG-G", diameter: "10mm", grain: "Grosso", color: "Azul" },
-      { model: "Torpedo Grande", code: "PO-TG-M", diameter: "10mm", grain: "Médio", color: "Verde" },
-      { model: "Torpedo Grande", code: "PO-TG-F", diameter: "10mm", grain: "Fino", color: "Amarelo" },
-      // TORPEDO MÉDIA
-      { model: "Torpedo Média", code: "PO-TM-M", diameter: "6mm", grain: "Médio", color: "Verde" },
-      { model: "Torpedo Média", code: "PO-TM-F", diameter: "6mm", grain: "Fino", color: "Rosa" },
-      { model: "Torpedo Média", code: "PO-TM-EF", diameter: "6mm", grain: "Extra Fino", color: "Rosa" },
-      // CILÍNDRICA POLIDORA
-      { model: "Cilíndrica Polidora", code: "PO-CIL-G", diameter: "5mm", grain: "Grosso", color: "Azul" },
-      { model: "Cilíndrica Polidora", code: "PO-CIL-M", diameter: "5mm", grain: "Médio", color: "Verde" },
-      { model: "Cilíndrica Polidora", code: "PO-CIL-UF", diameter: "5mm", grain: "Ultra Fino", color: "Branco", image: PolidoraCinza },
-      // CHAMA POLIDORA
-      { model: "Chama Polidora", code: "PO-CP-G", diameter: "4mm", grain: "Grosso", color: "Azul" },
-      { model: "Chama Polidora", code: "PO-CP-M", diameter: "4mm", grain: "Médio", color: "Verde" },
-      { model: "Chama Polidora", code: "PO-CP-F", diameter: "4mm", grain: "Fino", color: "Rosa" },
-      // CÔNICA POLIDORA
-      { model: "Cônica Polidora", code: "PO-CON-M", diameter: "6mm", grain: "Médio", color: "Verde" },
-      { model: "Cônica Polidora", code: "PO-CON-F", diameter: "6mm", grain: "Fino", color: "Rosa" },
-      // ESFÉRICA POLIDORA
-      { model: "Esférica Polidora", code: "PO-ESF-M", diameter: "4mm", grain: "Médio", color: "Verde" },
-      { model: "Esférica Polidora", code: "PO-ESF-F", diameter: "4mm", grain: "Fino", color: "Rosa" },
+      // 70101 - EXTRA GROSSO (Marrom)
+      { model: "70101", code: "500.008.70101", diameter: "10,0mm", grain: "Extra Grosso", color: "Marrom", activeLength: "24,0mm" },
+      // 70501 - GROSSO (Cinza)
+      { model: "70501", code: "500.008.70501", diameter: "10,0mm", grain: "Grosso", color: "Cinza", activeLength: "24,0mm" },
+      // 70701 - MÉDIO-GROSSO (Branco)
+      { model: "70701", code: "500.008.70701", diameter: "10,0mm", grain: "Médio-Grosso", color: "Branco", activeLength: "24,0mm" },
+      // 70201 - MÉDIO (Verde)
+      { model: "70201", code: "500.008.70201", diameter: "10,0mm", grain: "Médio", color: "Verde", activeLength: "24,0mm", image: PolidoraVerde },
+      // 70301 - FINO (Azul)
+      { model: "70301", code: "500.008.70301", diameter: "10,0mm", grain: "Fino", color: "Azul", activeLength: "24,0mm", image: PolidoraAzul },
+      // 70601 - EXTRA FINO (Amarelo)
+      { model: "70601", code: "500.008.70601", diameter: "10,0mm", grain: "Extra Fino", color: "Amarelo", activeLength: "24,0mm" },
+      // 70401 - ULTRA FINO (Lilás)
+      { model: "70401", code: "500.008.70401", diameter: "10,0mm", grain: "Ultra Fino", color: "Lilás", activeLength: "24,0mm" },
     ]
   },
   "escovas-limpeza": {

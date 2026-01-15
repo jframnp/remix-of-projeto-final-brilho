@@ -5,14 +5,15 @@ interface GrainLegendProps {
   activeGrain?: string | null;
 }
 
-// Updated grain data with exact hex colors from specs
+// Updated grain data with exact colors from catalog - Polidoras section
 const grainData = [
-  { key: "extraGrosso", label: "Extra Grosso", color: "bg-[#000000]", bgHex: "#000000", textColor: "text-white" },
-  { key: "grosso", label: "Grosso", color: "bg-[#2196F3]", bgHex: "#2196F3", textColor: "text-white" },
-  { key: "medio", label: "Médio", color: "bg-[#B71C1C]", bgHex: "#B71C1C", textColor: "text-white" },
-  { key: "fino", label: "Fino", color: "bg-[#4CAF50]", bgHex: "#4CAF50", textColor: "text-white" },
+  { key: "extraGrosso", label: "Extra Grosso", color: "bg-[#5C4033]", bgHex: "#5C4033", textColor: "text-white" },
+  { key: "grosso", label: "Grosso", color: "bg-[#9E9E9E]", bgHex: "#9E9E9E", textColor: "text-white" },
+  { key: "medioGrosso", label: "Médio-Grosso", color: "bg-[#FFFFFF] border-2 border-gray-300", bgHex: "#FFFFFF", textColor: "text-gray-700" },
+  { key: "medio", label: "Médio", color: "bg-[#4CAF50]", bgHex: "#4CAF50", textColor: "text-white" },
+  { key: "fino", label: "Fino", color: "bg-[#2196F3]", bgHex: "#2196F3", textColor: "text-white" },
   { key: "extraFino", label: "Extra Fino", color: "bg-[#FFEB3B]", bgHex: "#FFEB3B", textColor: "text-gray-900" },
-  { key: "ultraFino", label: "Ultra Fino", color: "bg-[#FFFFFF] border-2 border-gray-300", bgHex: "#FFFFFF", textColor: "text-gray-700" },
+  { key: "ultraFino", label: "Ultra Fino", color: "bg-[#C39BD3]", bgHex: "#C39BD3", textColor: "text-white" },
 ];
 
 const GrainLegend = ({ onFilterChange, activeGrain }: GrainLegendProps) => {
