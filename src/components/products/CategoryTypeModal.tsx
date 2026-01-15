@@ -178,86 +178,232 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   ))}
                 </tr>
 
-                {/* DIAGRAM Row - Only for specific types in Brocas Diamantadas */}
-                {categorySlug === 'brocas-diamantadas' && (typeName.toLowerCase().includes('esférica') || typeName.toLowerCase().includes('cônica topo invertido')) && (
+                {/* DIAGRAM Row - Only for Brocas Diamantadas */}
+                {categorySlug === 'brocas-diamantadas' && (
                   <tr style={{ backgroundColor: rowBgWhite }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3" style={{ color: headerBgColor }}></td>
                     {products.map((product, idx) => {
-                      // Extract diameter value for scaling
                       const diameterValue = parseFloat(product.diameter?.replace('mm', '') || '0');
-                      const isEsferica = typeName.toLowerCase().includes('esférica');
-                      const isConicaInvertida = typeName.toLowerCase().includes('cônica topo invertido');
+                      const activeLengthValue = parseFloat(product.activeLength?.replace('mm', '') || '0');
+                      const typeNameLower = typeName.toLowerCase();
                       
-                      if (isEsferica) {
-                        // Spherical shape
+                      // Common stem dimensions
+                      const stemWidth = 4;
+                      const stemHeight = 30;
+                      
+                      // Esférica (Spherical)
+                      if (typeNameLower.includes('esférica')) {
                         const sphereSize = Math.max(6, Math.min(28, diameterValue * 2.5));
-                        const stemHeight = 40;
                         const svgHeight = stemHeight + sphereSize + 4;
                         const svgWidth = Math.max(sphereSize + 8, 36);
                         
                         return (
                           <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
                             <div className="flex justify-center">
-                              <svg 
-                                width={svgWidth} 
-                                height={svgHeight} 
-                                viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-                                className="drop-shadow-sm"
-                              >
-                                {/* Stem - tapered line */}
-                                <path 
-                                  d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 1} ${sphereSize + 4} L${svgWidth/2 + 1} ${sphereSize + 4} L${svgWidth/2 + 2} ${svgHeight} Z`}
-                                  fill="#1a1a1a"
-                                  stroke="#1a1a1a"
-                                  strokeWidth="0.5"
-                                />
-                                {/* Sphere head */}
-                                <circle 
-                                  cx={svgWidth/2} 
-                                  cy={sphereSize/2 + 2} 
-                                  r={sphereSize/2} 
-                                  fill="#1a1a1a"
-                                />
+                              <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
+                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 1} ${sphereSize + 4} L${svgWidth/2 + 1} ${sphereSize + 4} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
+                                <circle cx={svgWidth/2} cy={sphereSize/2 + 2} r={sphereSize/2} fill="#1a1a1a"/>
                               </svg>
                             </div>
                           </td>
                         );
-                      } else if (isConicaInvertida) {
-                        // Inverted cone shape - trapezoid wider at top
+                      }
+                      
+                      // Cônica Topo Invertido (Inverted Cone)
+                      if (typeNameLower.includes('cônica topo invertido')) {
                         const topWidth = Math.max(8, Math.min(32, diameterValue * 2.8));
                         const bottomWidth = Math.max(4, topWidth * 0.4);
                         const coneHeight = Math.max(10, Math.min(24, diameterValue * 1.8));
-                        const stemHeight = 35;
                         const svgWidth = topWidth + 12;
                         const svgHeight = stemHeight + coneHeight + 4;
                         
                         return (
                           <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
                             <div className="flex justify-center">
-                              <svg 
-                                width={svgWidth} 
-                                height={svgHeight} 
-                                viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-                                className="drop-shadow-sm"
-                              >
-                                {/* Stem - thin rectangle */}
-                                <path 
-                                  d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${svgHeight} Z`}
-                                  fill="#1a1a1a"
-                                  stroke="#1a1a1a"
-                                  strokeWidth="0.5"
-                                />
-                                {/* Inverted cone - trapezoid wider at top */}
-                                <path 
-                                  d={`M${(svgWidth - topWidth)/2} 2 L${(svgWidth + topWidth)/2} 2 L${(svgWidth + bottomWidth)/2} ${coneHeight + 2} L${(svgWidth - bottomWidth)/2} ${coneHeight + 2} Z`}
-                                  fill="#1a1a1a"
-                                />
+                              <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
+                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
+                                <path d={`M${(svgWidth - topWidth)/2} 2 L${(svgWidth + topWidth)/2} 2 L${(svgWidth + bottomWidth)/2} ${coneHeight + 2} L${(svgWidth - bottomWidth)/2} ${coneHeight + 2} Z`} fill="#1a1a1a"/>
                               </svg>
                             </div>
                           </td>
                         );
                       }
-                      return null;
+                      
+                      // Roda (Wheel) - flat disc
+                      if (typeNameLower.includes('roda')) {
+                        const discWidth = Math.max(12, Math.min(36, diameterValue * 3));
+                        const discHeight = Math.max(4, Math.min(10, activeLengthValue * 3));
+                        const svgWidth = discWidth + 12;
+                        const svgHeight = stemHeight + discHeight + 6;
+                        
+                        return (
+                          <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
+                            <div className="flex justify-center">
+                              <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
+                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${discHeight + 6} L${svgWidth/2 + 2} ${discHeight + 6} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
+                                <rect x={(svgWidth - discWidth)/2} y={2} width={discWidth} height={discHeight} fill="#1a1a1a"/>
+                              </svg>
+                            </div>
+                          </td>
+                        );
+                      }
+                      
+                      // Cônica Topo Arredondado (Conical Rounded Top)
+                      if (typeNameLower.includes('cônica topo arredondado')) {
+                        const topWidth = Math.max(6, Math.min(20, diameterValue * 2.5));
+                        const coneHeight = Math.max(16, Math.min(40, activeLengthValue * 2.5));
+                        const svgWidth = topWidth + 16;
+                        const svgHeight = stemHeight + coneHeight + 4;
+                        const radius = topWidth / 2;
+                        
+                        return (
+                          <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
+                            <div className="flex justify-center">
+                              <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
+                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
+                                <path d={`M${svgWidth/2 - 2} ${coneHeight + 4} L${svgWidth/2 - topWidth/2} ${radius + 4} Q${svgWidth/2 - topWidth/2} 2 ${svgWidth/2} 2 Q${svgWidth/2 + topWidth/2} 2 ${svgWidth/2 + topWidth/2} ${radius + 4} L${svgWidth/2 + 2} ${coneHeight + 4} Z`} fill="#1a1a1a"/>
+                              </svg>
+                            </div>
+                          </td>
+                        );
+                      }
+                      
+                      // Cônica Topo Plano (Tapered Flat End)
+                      if (typeNameLower.includes('cônica topo plano')) {
+                        const topWidth = Math.max(6, Math.min(24, diameterValue * 3));
+                        const coneHeight = Math.max(12, Math.min(32, activeLengthValue * 2.2));
+                        const bottomWidth = Math.max(4, topWidth * 0.3);
+                        const svgWidth = topWidth + 12;
+                        const svgHeight = stemHeight + coneHeight + 4;
+                        
+                        return (
+                          <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
+                            <div className="flex justify-center">
+                              <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
+                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
+                                <path d={`M${(svgWidth - topWidth)/2} 2 L${(svgWidth + topWidth)/2} 2 L${(svgWidth + bottomWidth)/2} ${coneHeight + 2} L${(svgWidth - bottomWidth)/2} ${coneHeight + 2} Z`} fill="#1a1a1a"/>
+                              </svg>
+                            </div>
+                          </td>
+                        );
+                      }
+                      
+                      // Cônica (Conical) - pointed triangle
+                      if (typeNameLower === 'cônica') {
+                        const baseWidth = Math.max(10, Math.min(28, diameterValue * 3));
+                        const coneHeight = Math.max(20, Math.min(40, activeLengthValue * 2.5));
+                        const svgWidth = baseWidth + 12;
+                        const svgHeight = stemHeight + coneHeight + 4;
+                        
+                        return (
+                          <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
+                            <div className="flex justify-center">
+                              <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
+                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
+                                <path d={`M${svgWidth/2} 2 L${(svgWidth + baseWidth)/2} ${coneHeight + 2} L${(svgWidth - baseWidth)/2} ${coneHeight + 2} Z`} fill="#1a1a1a"/>
+                              </svg>
+                            </div>
+                          </td>
+                        );
+                      }
+                      
+                      // Cilíndrica Topo Plano (Cylindrical Flat End)
+                      if (typeNameLower.includes('cilíndrica topo plano')) {
+                        const rectWidth = Math.max(6, Math.min(24, diameterValue * 3));
+                        const rectHeight = Math.max(12, Math.min(40, activeLengthValue * 2.5));
+                        const svgWidth = rectWidth + 12;
+                        const svgHeight = stemHeight + rectHeight + 4;
+                        
+                        return (
+                          <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
+                            <div className="flex justify-center">
+                              <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
+                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${rectHeight + 4} L${svgWidth/2 + 2} ${rectHeight + 4} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
+                                <rect x={(svgWidth - rectWidth)/2} y={2} width={rectWidth} height={rectHeight} fill="#1a1a1a"/>
+                              </svg>
+                            </div>
+                          </td>
+                        );
+                      }
+                      
+                      // Cilíndrica Topo Arredondado (Cylinder Rounded End)
+                      if (typeNameLower.includes('cilíndrica topo arredondado')) {
+                        const rectWidth = Math.max(8, Math.min(22, diameterValue * 3));
+                        const rectHeight = Math.max(16, Math.min(36, activeLengthValue * 2.5));
+                        const radius = rectWidth / 2;
+                        const svgWidth = rectWidth + 12;
+                        const svgHeight = stemHeight + rectHeight + 4;
+                        
+                        return (
+                          <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
+                            <div className="flex justify-center">
+                              <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
+                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${rectHeight + 4} L${svgWidth/2 + 2} ${rectHeight + 4} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
+                                <path d={`M${(svgWidth - rectWidth)/2} ${radius + 2} L${(svgWidth - rectWidth)/2} ${rectHeight + 2} L${(svgWidth + rectWidth)/2} ${rectHeight + 2} L${(svgWidth + rectWidth)/2} ${radius + 2} A${radius} ${radius} 0 0 0 ${(svgWidth - rectWidth)/2} ${radius + 2} Z`} fill="#1a1a1a"/>
+                              </svg>
+                            </div>
+                          </td>
+                        );
+                      }
+                      
+                      // Lentilha (Lentil) - lens/ellipse shape
+                      if (typeNameLower.includes('lentilha')) {
+                        const lensWidth = Math.max(14, Math.min(36, diameterValue * 3.5));
+                        const lensHeight = Math.max(4, Math.min(10, activeLengthValue * 3));
+                        const svgWidth = lensWidth + 12;
+                        const svgHeight = stemHeight + lensHeight + 8;
+                        
+                        return (
+                          <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
+                            <div className="flex justify-center">
+                              <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
+                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${lensHeight + 8} L${svgWidth/2 + 2} ${lensHeight + 8} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
+                                <ellipse cx={svgWidth/2} cy={lensHeight/2 + 3} rx={lensWidth/2} ry={lensHeight/2} fill="#1a1a1a"/>
+                              </svg>
+                            </div>
+                          </td>
+                        );
+                      }
+                      
+                      // Chama (Flame) - teardrop/flame shape
+                      if (typeNameLower === 'chama') {
+                        const flameWidth = Math.max(6, Math.min(18, diameterValue * 3));
+                        const flameHeight = Math.max(14, Math.min(32, activeLengthValue * 2.5));
+                        const svgWidth = flameWidth + 12;
+                        const svgHeight = stemHeight + flameHeight + 4;
+                        
+                        return (
+                          <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
+                            <div className="flex justify-center">
+                              <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
+                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${flameHeight + 4} L${svgWidth/2 + 2} ${flameHeight + 4} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
+                                <path d={`M${svgWidth/2} 2 Q${svgWidth/2 - flameWidth/2 - 2} ${flameHeight * 0.4} ${svgWidth/2 - flameWidth/2} ${flameHeight * 0.7} Q${svgWidth/2 - flameWidth/2} ${flameHeight + 2} ${svgWidth/2} ${flameHeight + 2} Q${svgWidth/2 + flameWidth/2} ${flameHeight + 2} ${svgWidth/2 + flameWidth/2} ${flameHeight * 0.7} Q${svgWidth/2 + flameWidth/2 + 2} ${flameHeight * 0.4} ${svgWidth/2} 2 Z`} fill="#1a1a1a"/>
+                              </svg>
+                            </div>
+                          </td>
+                        );
+                      }
+                      
+                      // Cônica Topo Chama (Conical Flame End) - thin pointed triangle
+                      if (typeNameLower.includes('cônica topo chama') || typeNameLower.includes('conica topo chama')) {
+                        const baseWidth = Math.max(4, Math.min(12, diameterValue * 2.5));
+                        const coneHeight = Math.max(24, Math.min(44, activeLengthValue * 2.8));
+                        const svgWidth = baseWidth + 16;
+                        const svgHeight = stemHeight + coneHeight + 4;
+                        
+                        return (
+                          <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
+                            <div className="flex justify-center">
+                              <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
+                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
+                                <path d={`M${svgWidth/2} 2 L${(svgWidth + baseWidth)/2} ${coneHeight + 2} L${(svgWidth - baseWidth)/2} ${coneHeight + 2} Z`} fill="#1a1a1a"/>
+                              </svg>
+                            </div>
+                          </td>
+                        );
+                      }
+                      
+                      return <td key={idx}></td>;
                     })}
                   </tr>
                 )}
