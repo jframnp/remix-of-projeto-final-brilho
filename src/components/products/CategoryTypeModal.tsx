@@ -178,6 +178,50 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   ))}
                 </tr>
 
+                {/* DIAGRAM Row - Only for Esférica type in Brocas Diamantadas */}
+                {categorySlug === 'brocas-diamantadas' && typeName.toLowerCase().includes('esférica') && (
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3" style={{ color: headerBgColor }}></td>
+                    {products.map((product, idx) => {
+                      // Extract diameter value for scaling
+                      const diameterValue = parseFloat(product.diameter?.replace('mm', '') || '0');
+                      // Scale: base sphere size relative to diameter (min 8, max 32)
+                      const sphereSize = Math.max(6, Math.min(28, diameterValue * 2.5));
+                      const stemHeight = 40;
+                      const svgHeight = stemHeight + sphereSize + 4;
+                      const svgWidth = Math.max(sphereSize + 8, 36);
+                      
+                      return (
+                        <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
+                          <div className="flex justify-center">
+                            <svg 
+                              width={svgWidth} 
+                              height={svgHeight} 
+                              viewBox={`0 0 ${svgWidth} ${svgHeight}`}
+                              className="drop-shadow-sm"
+                            >
+                              {/* Stem - tapered line */}
+                              <path 
+                                d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 1} ${sphereSize + 4} L${svgWidth/2 + 1} ${sphereSize + 4} L${svgWidth/2 + 2} ${svgHeight} Z`}
+                                fill="#1a1a1a"
+                                stroke="#1a1a1a"
+                                strokeWidth="0.5"
+                              />
+                              {/* Sphere head */}
+                              <circle 
+                                cx={svgWidth/2} 
+                                cy={sphereSize/2 + 2} 
+                                r={sphereSize/2} 
+                                fill="#1a1a1a"
+                              />
+                            </svg>
+                          </div>
+                        </td>
+                      );
+                    })}
+                  </tr>
+                )}
+
                 {/* DIÂMETRO Row */}
                 <tr style={{ backgroundColor: rowBgLight }}>
                   <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
