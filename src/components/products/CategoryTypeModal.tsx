@@ -23,15 +23,15 @@ interface CategoryTypeModalProps {
   isGold?: boolean;
 }
 
-// Grain color map with correct colors from catalog - matching the PDF reference
+// Grain color map with correct colors from catalog - matching the reference image
 const grainColorMap: Record<string, { color: string; border?: boolean }> = {
-  "Extra Grosso": { color: "#000000" },           // Preto
-  "Grosso": { color: "#1B7D3A" },                 // Verde
-  "Médio-Grosso": { color: "#FFFFFF", border: true }, // Branco
-  "Médio": { color: "#0066CC" },                  // Azul
-  "Fino": { color: "#C62828" },                   // Vermelho
+  "Extra Grosso": { color: "#5D3A1A" },           // Marrom escuro
+  "Grosso": { color: "#808080" },                 // Cinza
+  "Médio-Grosso": { color: "#FFFFFF", border: true }, // Branco com borda
+  "Médio": { color: "#1B7D3A" },                  // Verde
+  "Fino": { color: "#0066CC" },                   // Azul
   "Extra Fino": { color: "#FFD700" },             // Amarelo
-  "Ultra Fino": { color: "#FFFFFF", border: true }, // Branco/cinza claro
+  "Ultra Fino": { color: "#9C6B8E" },             // Rosa/Mauve
 };
 
 // Get unique grain colors for a product (can have multiple)
