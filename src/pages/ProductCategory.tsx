@@ -314,8 +314,8 @@ const productData: Record<string, {
       { model: "Plantar Premium (Norton)", code: "500.012.02", diameter: "30,00mm", grain: "80/100/120/150/180/220/320", activeLength: "0,15mm", subcategory: "Lixas com Mandril" },
       { model: "Plantar Premium Extra Grande (Norton)", code: "500.012.27", diameter: "30,00mm", grain: "80/100/120/150/180/220", activeLength: "0,15mm", subcategory: "Lixas com Mandril" },
       { model: "Plantar (Alcar)", code: "500.012.37", diameter: "30,00mm", grain: "60/80/100/120/150/220/320", activeLength: "0,10mm", subcategory: "Lixas com Mandril" },
-      // Lixas com Mandril - TUBULAR
-      { model: "Tubular", code: "500.012.046", diameter: "8,0mm", grain: "80/100/120/180/220", activeLength: "14,0mm", subcategory: "Lixas com Mandril", image: LixaTubular },
+      // Lixas com Mandril - TUBULAR (image shown only inside modal)
+      { model: "Tubular", code: "500.012.046", diameter: "8,0mm", grain: "80/100/120/180/220", activeLength: "14,0mm", subcategory: "Lixas com Mandril" },
       // Lixas com Mandril - ADESIVA
       { model: "Adesiva Circular", code: "500.012.046", diameter: "8,0mm", grain: "80/100/120/180/220", activeLength: "14,0mm", subcategory: "Lixas com Mandril" },
     ]
@@ -561,7 +561,14 @@ const ProductCategory = () => {
     // If subtypes are defined, use them for grouping
     if (data.subtypes) {
       data.subtypes.forEach(subtype => {
-        groups[subtype] = data.products.filter(product => product.model === subtype);
+        // For lixas, match by model starting with subtype name (e.g., "Laminar" matches "Laminar Premium (Norton)")
+        if (category === 'lixas') {
+          groups[subtype] = data.products.filter(product => 
+            product.model.toLowerCase().startsWith(subtype.toLowerCase())
+          );
+        } else {
+          groups[subtype] = data.products.filter(product => product.model === subtype);
+        }
       });
     } else {
       // Default: group by first word
@@ -575,7 +582,7 @@ const ProductCategory = () => {
     }
     
     return groups;
-  }, [data?.products, data?.subtypes]);
+  }, [data?.products, data?.subtypes, category]);
 
   // Get featured images (first 3 products with images) - must be before early return
   const featuredImages = useMemo(() => {
