@@ -11,7 +11,16 @@ interface CategoryTypeCardProps {
 }
 
 const CategoryTypeCard = ({ typeName, image, productCount, onClick, isGold = false }: CategoryTypeCardProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  
+  // Get translated type name
+  const getTranslatedTypeName = (name: string): string => {
+    const translationKey = `products.diamondBurs.types.${name}`;
+    const translated = t(translationKey, name);
+    return translated !== translationKey ? translated : name;
+  };
+  
+  const translatedName = getTranslatedTypeName(typeName);
   
   return (
     <button
@@ -51,7 +60,7 @@ const CategoryTypeCard = ({ typeName, image, productCount, onClick, isGold = fal
         font-montserrat font-bold text-lg text-foreground group-hover:text-primary transition-colors
         ${isGold ? "group-hover:text-yellow-600" : ""}
       `}>
-        {typeName}
+        {translatedName}
       </h3>
       
       {/* Product Count Badge */}
