@@ -248,42 +248,26 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                         );
                       }
                       
-                      // Cônica Topo Arredondado (Conical Rounded Top) - bullet shape wider at top
+                      // Cônica Topo Arredondado (Conical Rounded Top) - cylinder with rounded top
                       if (typeNameLower.includes('cônica topo arredondado')) {
-                        // Scale based on diameter and active length from catalog
-                        const topWidth = Math.max(10, Math.min(28, diameterValue * 4));
-                        const bodyHeight = Math.max(28, Math.min(55, activeLengthValue * 3.5));
-                        const bottomWidth = Math.max(6, topWidth * 0.35);
-                        const svgWidth = topWidth + 20;
-                        const svgHeight = stemHeight + bodyHeight + 8;
-                        const domeHeight = topWidth * 0.45; // Rounded dome at top
+                        const width = Math.max(8, Math.min(20, diameterValue * 4));
+                        const bodyHeight = Math.max(24, Math.min(50, activeLengthValue * 3));
+                        const svgWidth = width + 16;
+                        const svgHeight = stemHeight + bodyHeight + 6;
+                        const radius = width / 2;
                         
                         return (
                           <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
                             <div className="flex justify-center">
                               <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
                                 {/* Thin stem */}
+                                <rect x={svgWidth/2 - 1.5} y={bodyHeight + 6} width={3} height={stemHeight} fill="#1a1a1a"/>
+                                {/* Cylinder body with rounded top - straight sides */}
                                 <path d={`
-                                  M${svgWidth/2 - 1.5} ${svgHeight} 
-                                  L${svgWidth/2 - 1.5} ${bodyHeight + 8} 
-                                  L${svgWidth/2 + 1.5} ${bodyHeight + 8} 
-                                  L${svgWidth/2 + 1.5} ${svgHeight} 
-                                  Z
-                                `} fill="#1a1a1a"/>
-                                {/* Neck connection - small trapezoid */}
-                                <path d={`
-                                  M${svgWidth/2 - 1.5} ${bodyHeight + 8}
-                                  L${svgWidth/2 - bottomWidth/2} ${bodyHeight + 4}
-                                  L${svgWidth/2 + bottomWidth/2} ${bodyHeight + 4}
-                                  L${svgWidth/2 + 1.5} ${bodyHeight + 8}
-                                  Z
-                                `} fill="#1a1a1a"/>
-                                {/* Main body - tapered cone with rounded dome top */}
-                                <path d={`
-                                  M${svgWidth/2 - bottomWidth/2} ${bodyHeight + 4}
-                                  L${svgWidth/2 - topWidth/2} ${domeHeight + 4}
-                                  A${topWidth/2} ${domeHeight} 0 0 1 ${svgWidth/2 + topWidth/2} ${domeHeight + 4}
-                                  L${svgWidth/2 + bottomWidth/2} ${bodyHeight + 4}
+                                  M${svgWidth/2 - width/2} ${bodyHeight + 4}
+                                  L${svgWidth/2 - width/2} ${radius + 4}
+                                  A${radius} ${radius} 0 0 1 ${svgWidth/2 + width/2} ${radius + 4}
+                                  L${svgWidth/2 + width/2} ${bodyHeight + 4}
                                   Z
                                 `} fill="#1a1a1a"/>
                               </svg>
