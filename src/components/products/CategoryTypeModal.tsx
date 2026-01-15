@@ -40,15 +40,28 @@ const getProductGrains = (product: Product): string[] => {
   return [product.grain];
 };
 
-// Extract product name from code (e.g., "500.001.718" -> "PM718", "500.001.720L" -> "PM720L")
-const getProductName = (code: string): string => {
-  // For diamond burs with format "500.001.XXX"
+// Extract product name from code - returns readable model names
+const getProductName = (code: string, model?: string): string => {
+  // For diamond burs with format "500.001.XXX" -> "PM718", "PM720L", etc.
   const diamondBurMatch = code.match(/500\.001\.(.+)$/);
   if (diamondBurMatch) {
     return `PM${diamondBurMatch[1]}`;
   }
-  // For other products, remove prefix patterns and return the code part
-  return code.replace(/^PM-?|^BD-GOLD-|^FT-|^FC-|^LX-|^LT-|^LA-|^PO-|^EC-|^FE-|^AL-/i, '');
+  
+  // For tungsten burs with format "500.002.XXXX" -> show code suffix
+  const tungstenMatch = code.match(/500\.002\.(.+)$/);
+  if (tungstenMatch) {
+    return tungstenMatch[1];
+  }
+  
+  // For ceramic burs with format "500.003.XXXX" -> show code suffix
+  const ceramicMatch = code.match(/500\.003\.(.+)$/);
+  if (ceramicMatch) {
+    return ceramicMatch[1];
+  }
+  
+  // For other products, just return the code as-is for display
+  return code;
 };
 
 const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isGold = false }: CategoryTypeModalProps) => {
