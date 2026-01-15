@@ -120,6 +120,15 @@ const getProductName = (code: string, model?: string): string => {
 const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isGold = false, categorySlug }: CategoryTypeModalProps) => {
   const { t } = useTranslation();
 
+  // Get translated type name
+  const getTranslatedTypeName = (name: string): string => {
+    const translationKey = `products.diamondBurs.types.${name}`;
+    const translated = t(translationKey, name);
+    return translated !== translationKey ? translated : name;
+  };
+  
+  const translatedTypeName = getTranslatedTypeName(typeName);
+
   // Check if this category has grain information
   const hasGrain = categoryHasGrain(categorySlug);
   
@@ -145,7 +154,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
               className="font-montserrat font-black text-2xl sm:text-4xl md:text-5xl tracking-tight"
               style={{ color: isGold ? "#FFC107" : "#C62828" }}
             >
-              {typeName.toUpperCase()}
+              {translatedTypeName.toUpperCase()}
             </h2>
             <p className="text-muted-foreground font-light text-sm sm:text-lg mt-1">
               {t(`products.types.${typeName.toLowerCase()}`, typeName)}
