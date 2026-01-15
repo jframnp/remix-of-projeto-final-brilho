@@ -248,20 +248,30 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                         );
                       }
                       
-                      // Cônica Topo Arredondado (Conical Rounded Top)
+                      // Cônica Topo Arredondado (Conical Rounded Top) - bullet/capsule shape tapered
                       if (typeNameLower.includes('cônica topo arredondado')) {
-                        const topWidth = Math.max(6, Math.min(20, diameterValue * 2.5));
-                        const coneHeight = Math.max(16, Math.min(40, activeLengthValue * 2.5));
+                        const topWidth = Math.max(8, Math.min(22, diameterValue * 3));
+                        const coneHeight = Math.max(20, Math.min(45, activeLengthValue * 3));
+                        const bottomWidth = 4;
                         const svgWidth = topWidth + 16;
-                        const svgHeight = stemHeight + coneHeight + 4;
-                        const radius = topWidth / 2;
+                        const svgHeight = stemHeight + coneHeight + 6;
+                        const radiusTop = topWidth / 2;
                         
                         return (
                           <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
                             <div className="flex justify-center">
                               <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
-                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
-                                <path d={`M${svgWidth/2 - 2} ${coneHeight + 4} L${svgWidth/2 - topWidth/2} ${radius + 4} Q${svgWidth/2 - topWidth/2} 2 ${svgWidth/2} 2 Q${svgWidth/2 + topWidth/2} 2 ${svgWidth/2 + topWidth/2} ${radius + 4} L${svgWidth/2 + 2} ${coneHeight + 4} Z`} fill="#1a1a1a"/>
+                                {/* Stem */}
+                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${coneHeight + 6} L${svgWidth/2 + 2} ${coneHeight + 6} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
+                                {/* Tapered body with rounded dome top */}
+                                <path d={`
+                                  M${svgWidth/2 - bottomWidth/2} ${coneHeight + 4}
+                                  L${svgWidth/2 - topWidth/2} ${radiusTop + 6}
+                                  Q${svgWidth/2 - topWidth/2} 2, ${svgWidth/2} 2
+                                  Q${svgWidth/2 + topWidth/2} 2, ${svgWidth/2 + topWidth/2} ${radiusTop + 6}
+                                  L${svgWidth/2 + bottomWidth/2} ${coneHeight + 4}
+                                  Z
+                                `} fill="#1a1a1a"/>
                               </svg>
                             </div>
                           </td>
