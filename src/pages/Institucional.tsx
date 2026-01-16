@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import { useTranslation } from "react-i18next";
-import { Shield, Target, Heart, Eye, Award, Users, Factory, Globe, CheckCircle } from "lucide-react";
+import { Target, Heart, Eye, Award, Users, Factory, Globe, CheckCircle } from "lucide-react";
+import anvisaCertificado from "@/assets/certificado-anvisa.png";
 import logoImage from "@/assets/logo-metalurgicabrilho.png";
 
 const Institucional = () => {
@@ -115,15 +116,17 @@ const Institucional = () => {
                   />
                   
                   {/* ANVISA Badge */}
-                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
-                    <div className="flex items-center gap-4">
-                      <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center flex-shrink-0">
-                        <Shield className="w-8 h-8 text-[#006341]" />
-                      </div>
+                  <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-lg">
+                    <div className="flex items-center gap-5">
+                      <img 
+                        src={anvisaCertificado} 
+                        alt="Certificado ANVISA - Boas Práticas de Bioequivalência" 
+                        className="w-20 h-20 object-contain flex-shrink-0"
+                      />
                       <div>
-                        <p className="text-white font-montserrat font-bold text-lg">ANVISA</p>
-                        <p className="text-white/70 font-inter text-sm">Nº 8019.208</p>
-                        <p className="text-white/50 font-inter text-xs mt-1">{t("institutional.anvisaCert", "Certificação Nacional")}</p>
+                        <p className="text-[#006341] font-montserrat font-bold text-lg">Certificado ANVISA</p>
+                        <p className="text-gray-700 font-inter text-sm">Nº 8019.208</p>
+                        <p className="text-gray-500 font-inter text-xs mt-1">{t("institutional.anvisaCert", "Boas Práticas de Bioequivalência")}</p>
                       </div>
                     </div>
                   </div>
