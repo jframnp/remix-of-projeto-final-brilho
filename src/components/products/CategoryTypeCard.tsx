@@ -1,6 +1,36 @@
 import { useTranslation } from "react-i18next";
 import { Sparkles } from "lucide-react";
 
+// Import diamond bur type images
+import BrocaConicaInvertida from "@/assets/products/broca-conica-invertida.png";
+import BrocaConica from "@/assets/products/broca-conica.png";
+import BrocaConicaTopoArredondado from "@/assets/products/broca-conica-topo-arredondado.png";
+import BrocaConicaTopoPlano from "@/assets/products/broca-conica-topo-plano.png";
+import BrocaEsferica from "@/assets/products/broca-esferica.png";
+import BrocaLentilha from "@/assets/products/broca-lentilha.png";
+import BrocaCilindrica from "@/assets/products/broca-cilindrica.png";
+import BrocaRoda from "@/assets/products/broca-roda.png";
+import BrocaCilindricaTopoArredondado from "@/assets/products/broca-cilindrica-topo-arredondado.png";
+import BrocaChama from "@/assets/products/broca-chama.png";
+
+// Map type names to images for diamond burs
+const diamondBurImages: Record<string, string> = {
+  "cônica topo invertido": BrocaConicaInvertida,
+  "cônica invertida": BrocaConicaInvertida,
+  "cônica": BrocaConica,
+  "cônica topo arredondado": BrocaConicaTopoArredondado,
+  "cônica topo plano": BrocaConicaTopoPlano,
+  "esférica": BrocaEsferica,
+  "esféricas": BrocaEsferica,
+  "lentilha": BrocaLentilha,
+  "cilíndrica": BrocaCilindrica,
+  "cilíndrica topo plano": BrocaCilindrica,
+  "roda": BrocaRoda,
+  "cilíndrica topo arredondado": BrocaCilindricaTopoArredondado,
+  "chama": BrocaChama,
+  "cônica topo chama": BrocaChama,
+};
+
 interface CategoryTypeCardProps {
   typeName: string;
   image?: string;
@@ -8,9 +38,10 @@ interface CategoryTypeCardProps {
   onClick: () => void;
   isGold?: boolean;
   availableGrains?: string[];
+  categorySlug?: string;
 }
 
-const CategoryTypeCard = ({ typeName, image, productCount, onClick, isGold = false }: CategoryTypeCardProps) => {
+const CategoryTypeCard = ({ typeName, image, productCount, onClick, isGold = false, categorySlug }: CategoryTypeCardProps) => {
   const { t, i18n } = useTranslation();
   
   // Get translated type name
@@ -21,6 +52,17 @@ const CategoryTypeCard = ({ typeName, image, productCount, onClick, isGold = fal
   };
   
   const translatedName = getTranslatedTypeName(typeName);
+  
+  // Get the appropriate image for diamond burs
+  const getTypeImage = (): string | undefined => {
+    if (categorySlug === "brocas-diamantadas") {
+      const normalizedTypeName = typeName.toLowerCase().trim();
+      return diamondBurImages[normalizedTypeName] || image;
+    }
+    return image;
+  };
+  
+  const displayImage = getTypeImage();
   
   return (
     <button
@@ -34,9 +76,9 @@ const CategoryTypeCard = ({ typeName, image, productCount, onClick, isGold = fal
     >
       {/* Product Image */}
       <div className="flex-1 flex items-center justify-center mb-4 w-full">
-        {image ? (
+        {displayImage ? (
           <img 
-            src={image} 
+            src={displayImage} 
             alt={typeName}
             className="max-h-[120px] w-auto object-contain group-hover:scale-110 transition-transform duration-300"
           />

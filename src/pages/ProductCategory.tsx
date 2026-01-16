@@ -744,6 +744,7 @@ const ProductCategory = () => {
                               productCount={typeProducts.length}
                               onClick={() => handleTypeClick(typeName)}
                               isGold={isGold}
+                              categorySlug={category}
                             />
                           </div>
                         );
@@ -769,6 +770,7 @@ const ProductCategory = () => {
                       productCount={getProductsForType(typeName).length}
                       onClick={() => handleTypeClick(typeName)}
                       isGold={isGold}
+                      categorySlug={category}
                     />
                   </div>
                 ))}
