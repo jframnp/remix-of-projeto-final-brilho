@@ -280,11 +280,11 @@ const productData: Record<string, {
     ]
   },
   "lixas": {
-    subtypes: ["Boomerang", "Quadrada", "Gota", "Caixão", "Laminar", "Plantar", "Tubular", "Adesiva"],
+    subtypes: ["Gota", "Boomerang", "Quadrada", "Caixão", "Laminar", "Plantar", "Tubular", "Adesiva"],
     subcategories: {
       "Lixas Manuais": {
         description: "Lixas tradicionais para nail design - formatos ergonômicos para acabamento perfeito",
-        types: ["Boomerang", "Quadrada", "Gota", "Caixão"]
+        types: ["Gota", "Boomerang", "Quadrada", "Caixão"]
       },
       "Lixas com Mandril": {
         description: "Lixas para uso com motor/mandril - ideais para podologia e procedimentos profissionais",
@@ -298,15 +298,30 @@ const productData: Record<string, {
       en: "High-quality professional files for podiatry and nail design. Available in various grits and shapes for different applications."
     },
     products: [
-      // Lixas Manuais
-      { model: "Boomerang Nails Verde", code: "LX-BNV-150", diameter: "N/A", grain: "150/180", subcategory: "Lixas Manuais" },
-      { model: "Boomerang White 2mm", code: "LX-BW-180", diameter: "N/A", grain: "180", subcategory: "Lixas Manuais" },
-      { model: "Quadrada Preta", code: "LX-QP-100", diameter: "N/A", grain: "100/180", subcategory: "Lixas Manuais" },
-      { model: "Quadrada Branca", code: "LX-QB-150", diameter: "N/A", grain: "150/180", subcategory: "Lixas Manuais" },
-      { model: "Gota Rosa", code: "LX-GR-100", diameter: "N/A", grain: "100/180", subcategory: "Lixas Manuais" },
-      { model: "Gota Preta", code: "LX-GP-150", diameter: "N/A", grain: "150/180", subcategory: "Lixas Manuais" },
-      { model: "Caixão Premium", code: "LX-CP-100", diameter: "N/A", grain: "100/180", subcategory: "Lixas Manuais" },
-      { model: "Caixão Descartável", code: "LX-CD-150", diameter: "N/A", grain: "150/180", subcategory: "Lixas Manuais" },
+      // GOTA - Branca
+      { model: "Gota Branca", code: "500.009.08", diameter: "3,0mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais" },
+      // GOTA - Green (Alta Performance)
+      { model: "Gota Green", code: "500.0015.004", diameter: "3,0mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais" },
+      // GOTA - Fina (2mm)
+      { model: "Gota Fina", code: "500.009.12", diameter: "3,0mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais" },
+      // BOOMERANG - Branca
+      { model: "Boomerang Branca", code: "500.0015.05", diameter: "3,0mm", grain: "180/100", activeLength: "18,0mm", subcategory: "Lixas Manuais" },
+      // BOOMERANG - Green (Alta Performance)
+      { model: "Boomerang Green", code: "500.0015.01", diameter: "3,0mm", grain: "180/100", activeLength: "18,0mm", subcategory: "Lixas Manuais" },
+      // BOOMERANG - Fina (2mm)
+      { model: "Boomerang Fina", code: "500.009.09", diameter: "3,0mm", grain: "180/100", activeLength: "18,0mm", subcategory: "Lixas Manuais" },
+      // QUADRADA - Branca
+      { model: "Quadrada Branca", code: "500.009.06", diameter: "2,8mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais" },
+      // QUADRADA - Green (Alta Performance)
+      { model: "Quadrada Green", code: "500.0015.02", diameter: "2,8mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais" },
+      // QUADRADA - Fina (2mm)
+      { model: "Quadrada Fina", code: "500.009.10", diameter: "2,8mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais" },
+      // CAIXÃO - Branca
+      { model: "Caixão Branca", code: "500.009.07", diameter: "2,5mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais" },
+      // CAIXÃO - Green (Alta Performance)
+      { model: "Caixão Green", code: "500.0015.03", diameter: "2,5mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais" },
+      // CAIXÃO - Fina (2mm)
+      { model: "Caixão Fina", code: "500.009.11", diameter: "2,5mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais" },
       // Lixas com Mandril - LAMINAR
       { model: "Laminar Premium (Norton)", code: "500.012.14", diameter: "23,00mm", grain: "100/120/150/180/220/320/400/600", activeLength: "0,15mm", subcategory: "Lixas com Mandril" },
       { model: "Laminar (Alcar)", code: "500.012.20", diameter: "17,00mm", grain: "100/120/150/180/220/320/400/600", activeLength: "0,10mm", subcategory: "Lixas com Mandril" },
@@ -314,9 +329,9 @@ const productData: Record<string, {
       { model: "Plantar Premium (Norton)", code: "500.012.02", diameter: "30,00mm", grain: "80/100/120/150/180/220/320", activeLength: "0,15mm", subcategory: "Lixas com Mandril" },
       { model: "Plantar Premium Extra Grande (Norton)", code: "500.012.27", diameter: "30,00mm", grain: "80/100/120/150/180/220", activeLength: "0,15mm", subcategory: "Lixas com Mandril" },
       { model: "Plantar (Alcar)", code: "500.012.37", diameter: "30,00mm", grain: "60/80/100/120/150/220/320", activeLength: "0,10mm", subcategory: "Lixas com Mandril" },
-      // Lixas com Mandril - TUBULAR (image shown only inside modal)
+      // Lixas com Mandril - TUBULAR
       { model: "Tubular", code: "500.012.046", diameter: "8,0mm", grain: "80/100/120/180/220", activeLength: "14,0mm", subcategory: "Lixas com Mandril" },
-      // Lixas com Mandril - ADESIVA
+      // Lixas com Mandril - ADESIVA CIRCULAR
       { model: "Adesiva Circular", code: "500.012.046", diameter: "8,0mm", grain: "80/100/120/180/220", activeLength: "14,0mm", subcategory: "Lixas com Mandril" },
     ]
   },
