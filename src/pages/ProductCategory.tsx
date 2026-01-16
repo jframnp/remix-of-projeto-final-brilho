@@ -739,23 +739,25 @@ const ProductCategory = () => {
               })}
             </div>
           ) : (
-            /* Default Type Cards Grid */
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-16">
-              {Object.keys(productsByType).map((typeName, idx) => (
-                <div
-                  key={typeName}
-                  className="animate-fade-in"
-                  style={{ animationDelay: `${idx * 0.1}s` }}
-                >
-                  <CategoryTypeCard
-                    typeName={typeName}
-                    image={getTypeImage(typeName)}
-                    productCount={getProductsForType(typeName).length}
-                    onClick={() => handleTypeClick(typeName)}
-                    isGold={isGold}
-                  />
-                </div>
-              ))}
+            /* Default Type Cards Grid - centered */
+            <div className="flex justify-center">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16">
+                {Object.keys(productsByType).map((typeName, idx) => (
+                  <div
+                    key={typeName}
+                    className="animate-fade-in"
+                    style={{ animationDelay: `${idx * 0.1}s` }}
+                  >
+                    <CategoryTypeCard
+                      typeName={typeName}
+                      image={getTypeImage(typeName)}
+                      productCount={getProductsForType(typeName).length}
+                      onClick={() => handleTypeClick(typeName)}
+                      isGold={isGold}
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           )}
 
