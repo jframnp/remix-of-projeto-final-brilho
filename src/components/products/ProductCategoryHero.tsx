@@ -50,43 +50,12 @@ import FibraMandril1 from "@/assets/products/fibra-mandril-1.png";
 import FibraMandril2 from "@/assets/products/fibra-mandril-2.png";
 import FibraMandril3 from "@/assets/products/fibra-mandril-3.png";
 
-// Import ANVISA certificate
-import CertificadoAnvisa from "@/assets/certificado-anvisa.jpg";
-
-// Category-specific hero images configuration
+// Category-specific hero images configuration - ONLY for categories with bur illustrations
 const categoryHeroImages: Record<string, { src: string; alt: string }[]> = {
   "brocas-diamantadas": [
     { src: PM718Hero, alt: "Broca PM-718 cônica" },
     { src: PM718Fino, alt: "Broca PM-718 fina" },
     { src: PM718Hero, alt: "Broca PM-718 cônica" },
-  ],
-  "fresas-tungstenio": [], // No hero images - centered layout
-  "fresas-ceramica": [], // No hero images - centered layout
-  "lixas": [
-    { src: Lixa1, alt: "Lixa retangular" },
-    { src: Lixa2, alt: "Lixa meia lua" },
-    { src: Lixa3, alt: "Lixa meia lua verde" },
-  ],
-  "lixa-tubular-adesiva": [
-    { src: PM829, alt: "Lixa tubular ogiva" },
-    { src: PM57, alt: "Lixa tubular cilíndrica" },
-    { src: PM744, alt: "Lixa adesiva chama" },
-  ],
-  "polidoras": [], // No hero images - centered layout with color legend
-  "escovas-limpeza": [
-    { src: EscovaLimpeza1, alt: "Escova abrasiva" },
-    { src: EscovaLimpeza2, alt: "Escova de algodão" },
-    { src: EscovaLimpeza3, alt: "Escova de nylon" },
-  ],
-  "fibras-enucleadora-mandril": [
-    { src: FibraMandril1, alt: "Mandril" },
-    { src: FibraMandril2, alt: "Fibra enucleadora" },
-    { src: FibraMandril3, alt: "Fibra" },
-  ],
-  "apoio-lixas-afiacao": [
-    { src: Lixa1, alt: "Apoio para lixas" },
-    { src: Lixa2, alt: "Disco de afiação" },
-    { src: Lixa3, alt: "Disco de polimento" },
   ],
   "linha-gold": [
     { src: PM718Hero, alt: "Broca Gold cônica" },
@@ -94,9 +63,6 @@ const categoryHeroImages: Record<string, { src: string; alt: string }[]> = {
     { src: PM718Hero, alt: "Broca Gold cônica" },
   ],
 };
-
-// Categories that show color legend instead of bur images
-const categoriesWithColorLegend = ["polidoras"];
 
 // Map category slugs to translation keys
 const categoryTranslationKeys: Record<string, string> = {
@@ -111,14 +77,6 @@ const categoryTranslationKeys: Record<string, string> = {
   "apoio-lixas-afiacao": "supportSharpening",
   "linha-gold": "goldLine",
 };
-
-// Color legend data for polidoras
-const polisherColors = [
-  { name: "Extra Grosso (Marrom)", color: "#8B4513" },
-  { name: "Grosso (Cinza)", color: "#808080" },
-  { name: "Médio-Grosso (Branco)", color: "#FFFFFF", border: true },
-  { name: "Médio (Verde)", color: "#228B22" },
-];
 
 interface ProductCategoryHeroProps {
   category: string;
@@ -143,14 +101,11 @@ const ProductCategoryHero = ({
   // Get translated description
   const description = t(`products.${translationKey}.description`);
 
-  // Get category-specific hero images or fallback to default
+  // Get category-specific hero images
   const heroBurs = categoryHeroImages[category] || [];
   
-  // Check if this category has hero images
+  // Only show images for categories that have them configured
   const hasHeroImages = heroBurs.length > 0;
-  
-  // Check if this category shows color legend
-  const showColorLegend = categoriesWithColorLegend.includes(category);
 
   return (
     <section className="relative min-h-[400px] md:min-h-[500px] overflow-hidden bg-white">
@@ -206,8 +161,8 @@ const ProductCategoryHero = ({
             </div>
           </div>
         ) : (
-          // Centered layout without images
-          <div className="w-full">
+          // Centered layout - clean and simple, no side info
+          <div className="w-full max-w-3xl">
             <Link
               to={getLocalizedPath("/produtos")}
               className="inline-flex items-center gap-2 mb-6 text-gray-500 hover:text-gray-700 transition-colors group"
@@ -216,49 +171,23 @@ const ProductCategoryHero = ({
               {t("products.backToCategories")}
             </Link>
             
-            <div className={`flex ${showColorLegend ? 'justify-between items-start' : 'justify-start'}`}>
-              <div className="max-w-2xl">
-                {/* Main title */}
-                <h1 className={`font-montserrat font-black text-3xl md:text-4xl lg:text-5xl mb-2 leading-tight ${
-                  isGold ? "text-yellow-500" : "text-primary"
-                }`}>
-                  {isGold && <Sparkles className="inline w-10 h-10 mr-2 animate-pulse" />}
-                  {t("products.heroTitle")}
-                </h1>
-                
-                {/* English subtitle */}
-                <p className="text-gray-500 text-lg font-medium mb-6">
-                  {t(`products.${translationKey}.titleEn`) || translationKey.toUpperCase()}
-                </p>
+            {/* Main title */}
+            <h1 className={`font-montserrat font-black text-3xl md:text-4xl lg:text-5xl mb-2 leading-tight ${
+              isGold ? "text-yellow-500" : "text-primary"
+            }`}>
+              {isGold && <Sparkles className="inline w-10 h-10 mr-2 animate-pulse" />}
+              {t("products.heroTitle")}
+            </h1>
+            
+            {/* English subtitle */}
+            <p className="text-gray-500 text-lg font-medium mb-6">
+              {t(`products.${translationKey}.titleEn`) || translationKey.toUpperCase()}
+            </p>
 
-                {/* Description */}
-                <p className="text-gray-600 text-base leading-relaxed">
-                  {description}
-                </p>
-              </div>
-              
-              {/* Color legend for polidoras */}
-              {showColorLegend && (
-                <div className="hidden lg:block ml-8">
-                  <h3 className="font-semibold text-gray-800 mb-3">Cores</h3>
-                  <div className="space-y-2">
-                    {polisherColors.map((item, index) => (
-                      <div key={index} className="flex items-center gap-2">
-                        <div 
-                          className={`w-4 h-4 rounded-full ${item.border ? 'border border-gray-300' : ''}`}
-                          style={{ backgroundColor: item.color }}
-                        />
-                        <span className="text-sm text-gray-600">{item.name}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-4 text-right">
-                    <span className="text-2xl font-bold text-gray-800">70</span>
-                    <p className="text-sm text-gray-500">Modelo</p>
-                  </div>
-                </div>
-              )}
-            </div>
+            {/* Description */}
+            <p className="text-gray-600 text-base leading-relaxed">
+              {description}
+            </p>
           </div>
         )}
       </div>
