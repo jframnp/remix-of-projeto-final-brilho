@@ -1,9 +1,10 @@
 import Layout from "@/components/Layout";
-import { ArrowDown, Download, Sparkles, Shield, Award, Users, ChevronRight } from "lucide-react";
+import { ArrowDown, Download, Sparkles, Award, Users, ChevronRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/hooks/useLanguage";
 import logoImage from "@/assets/logo-metalurgicabrilho.png";
+import anvisaCertificado from "@/assets/certificado-anvisa.png";
 
 const Index = () => {
   const { t } = useTranslation();
@@ -148,10 +149,14 @@ const Index = () => {
                 
                 <div className="relative bg-gradient-to-br from-[#720000] to-[#9B0000] rounded-3xl p-10 shadow-2xl">
                   <div className="grid grid-cols-2 gap-6">
-                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/10">
-                      <Shield className="w-10 h-10 text-white mx-auto mb-3" />
-                      <p className="text-white font-montserrat font-bold">ANVISA</p>
-                      <p className="text-white/70 text-sm">{t("home.certified", "Certificado")}</p>
+                    <div className="bg-white rounded-2xl p-5 text-center border border-gray-100 shadow-lg">
+                      <img 
+                        src={anvisaCertificado} 
+                        alt="Certificado ANVISA" 
+                        className="w-14 h-14 object-contain mx-auto mb-2"
+                      />
+                      <p className="text-[#006341] font-montserrat font-bold text-sm">ANVISA</p>
+                      <p className="text-gray-500 text-xs">{t("home.certified", "Certificado")}</p>
                     </div>
                     <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/10">
                       <Award className="w-10 h-10 text-white mx-auto mb-3" />
