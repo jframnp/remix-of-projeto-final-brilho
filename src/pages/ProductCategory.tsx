@@ -280,15 +280,23 @@ const productData: Record<string, {
     ]
   },
   "lixas": {
-    subtypes: ["Boomerang", "Quadrada", "Gota", "Caixão", "Laminar", "Plantar", "Tubular", "Adesiva"],
+    subtypes: ["Lixa Nails Verde", "Lixa Nails Branca", "Lixa Descartável Branca", "Lixa Adesiva Circular"],
     subcategories: {
-      "Lixas Manuais": {
-        description: "Lixas tradicionais para nail design - formatos ergonômicos para acabamento perfeito",
-        types: ["Boomerang", "Quadrada", "Gota", "Caixão"]
+      "Lixa Nails Verde": {
+        description: "Alta Performance - Verde - Óxido de Alumínio - ABS/EVA/Poliester",
+        types: ["Boomerang Verde", "Quadrada Verde", "Caixão Verde", "Gota Verde"]
       },
-      "Lixas com Mandril": {
-        description: "Lixas para uso com motor/mandril - ideais para podologia e procedimentos profissionais",
-        types: ["Laminar", "Plantar", "Tubular", "Adesiva"]
+      "Lixa Nails Branca": {
+        description: "White - Óxido de Alumínio - ABS/EVA/Poliester",
+        types: ["Boomerang Branca", "Quadrada Branca", "Caixão Branca", "Gota Branca"]
+      },
+      "Lixa Descartável Branca": {
+        description: "Disposable Nail Screen - Óxido de Alumínio - Madeira",
+        types: ["Boomerang Descartável"]
+      },
+      "Lixa Adesiva Circular": {
+        description: "Circular Adhesive Sandpaper - Óxido de Alumínio",
+        types: ["Adesiva Circular"]
       }
     },
     titlePt: "LIXAS",
@@ -298,26 +306,25 @@ const productData: Record<string, {
       en: "High-quality professional files for podiatry and nail design. Available in various grits and shapes for different applications."
     },
     products: [
-      // Lixas Manuais
-      { model: "Boomerang Nails Verde", code: "LX-BNV-150", diameter: "N/A", grain: "150/180", subcategory: "Lixas Manuais" },
-      { model: "Boomerang White 2mm", code: "LX-BW-180", diameter: "N/A", grain: "180", subcategory: "Lixas Manuais" },
-      { model: "Quadrada Preta", code: "LX-QP-100", diameter: "N/A", grain: "100/180", subcategory: "Lixas Manuais" },
-      { model: "Quadrada Branca", code: "LX-QB-150", diameter: "N/A", grain: "150/180", subcategory: "Lixas Manuais" },
-      { model: "Gota Rosa", code: "LX-GR-100", diameter: "N/A", grain: "100/180", subcategory: "Lixas Manuais" },
-      { model: "Gota Preta", code: "LX-GP-150", diameter: "N/A", grain: "150/180", subcategory: "Lixas Manuais" },
-      { model: "Caixão Premium", code: "LX-CP-100", diameter: "N/A", grain: "100/180", subcategory: "Lixas Manuais" },
-      { model: "Caixão Descartável", code: "LX-CD-150", diameter: "N/A", grain: "150/180", subcategory: "Lixas Manuais" },
-      // Lixas com Mandril - LAMINAR
-      { model: "Laminar Premium (Norton)", code: "500.012.14", diameter: "23,00mm", grain: "100/120/150/180/220/320/400/600", activeLength: "0,15mm", subcategory: "Lixas com Mandril" },
-      { model: "Laminar (Alcar)", code: "500.012.20", diameter: "17,00mm", grain: "100/120/150/180/220/320/400/600", activeLength: "0,10mm", subcategory: "Lixas com Mandril" },
-      // Lixas com Mandril - PLANTAR
-      { model: "Plantar Premium (Norton)", code: "500.012.02", diameter: "30,00mm", grain: "80/100/120/150/180/220/320", activeLength: "0,15mm", subcategory: "Lixas com Mandril" },
-      { model: "Plantar Premium Extra Grande (Norton)", code: "500.012.27", diameter: "30,00mm", grain: "80/100/120/150/180/220", activeLength: "0,15mm", subcategory: "Lixas com Mandril" },
-      { model: "Plantar (Alcar)", code: "500.012.37", diameter: "30,00mm", grain: "60/80/100/120/150/220/320", activeLength: "0,10mm", subcategory: "Lixas com Mandril" },
-      // Lixas com Mandril - TUBULAR (image shown only inside modal)
-      { model: "Tubular", code: "500.012.046", diameter: "8,0mm", grain: "80/100/120/180/220", activeLength: "14,0mm", subcategory: "Lixas com Mandril" },
-      // Lixas com Mandril - ADESIVA
-      { model: "Adesiva Circular", code: "500.012.046", diameter: "8,0mm", grain: "80/100/120/180/220", activeLength: "14,0mm", subcategory: "Lixas com Mandril" },
+      // LIXA NAILS VERDE - ALTA PERFORMANCE
+      { model: "Boomerang Verde", code: "500.0015.01", iso: "500.0015.01", diameter: "3,0mm", grain: "180/100", activeLength: "18,0mm", subcategory: "Lixa Nails Verde" },
+      { model: "Quadrada Verde", code: "500.0015.02", iso: "500.0015.02", diameter: "2,8mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixa Nails Verde" },
+      { model: "Caixão Verde", code: "500.0015.03", iso: "500.0015.03", diameter: "2,5mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixa Nails Verde" },
+      { model: "Gota Verde", code: "500.0015.004", iso: "500.0015.004", diameter: "3,0mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixa Nails Verde" },
+      // LIXA NAILS BRANCA - WHITE
+      { model: "Boomerang Branca", code: "500.0015.05", iso: "500.0015.05", diameter: "3,0mm", grain: "180/100", activeLength: "18,0mm", subcategory: "Lixa Nails Branca" },
+      { model: "Quadrada Branca", code: "500.009.06", iso: "500.009.06", diameter: "2,8mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixa Nails Branca" },
+      { model: "Caixão Branca", code: "500.009.07", iso: "500.009.07", diameter: "2,5mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixa Nails Branca" },
+      { model: "Gota Branca", code: "500.009.08", iso: "500.009.08", diameter: "3,0mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixa Nails Branca" },
+      // BOOMERANG WHITE FINA 2MM (material: Madeira, embalagem: 20)
+      { model: "Boomerang Branca", code: "500.009.09", iso: "500.009.09", diameter: "3,0mm", grain: "180/100", activeLength: "18,0mm", subcategory: "Lixa Nails Branca" },
+      { model: "Quadrada Branca", code: "500.009.10", iso: "500.009.10", diameter: "2,8mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixa Nails Branca" },
+      { model: "Caixão Branca", code: "500.009.11", iso: "500.009.11", diameter: "2,5mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixa Nails Branca" },
+      { model: "Gota Branca", code: "500.009.12", iso: "500.009.12", diameter: "3,0mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixa Nails Branca" },
+      // LIXA NAILS DESCARTÁVEL - BRANCA
+      { model: "Boomerang Descartável", code: "500.012.073", iso: "500.012.073", diameter: "3,0mm", grain: "180/100", activeLength: "18,0mm", subcategory: "Lixa Descartável Branca" },
+      // LIXA ADESIVA CIRCULAR
+      { model: "Adesiva Circular", code: "500.012.046", iso: "500.012.046", diameter: "8,0mm", grain: "80/100/120/180/220", activeLength: "14,0mm", subcategory: "Lixa Adesiva Circular" },
     ]
   },
   "polidoras": {
@@ -388,7 +395,17 @@ const productData: Record<string, {
     ]
   },
   "escovas-limpeza": {
-    subtypes: ["Cerdas Poliamida", "Escova Limpeza", "Esponja Polidora", "Feltro Polidor"],
+    subtypes: ["Cerdas de Poliamida", "Brocas Polidoras"],
+    subcategories: {
+      "Cerdas de Poliamida": {
+        description: "Polyamide Bristles - Cerdas Finas",
+        types: ["Rosa", "Lilás"]
+      },
+      "Brocas Polidoras": {
+        description: "Polishing Drills - Brocas de limpeza, esponja e feltro",
+        types: ["Broca de Limpeza", "Esponja Polidora", "Esponja Feltro"]
+      }
+    },
     titlePt: "ESCOVAS DE LIMPEZA",
     titleEn: "CLEANING BRUSHES",
     description: {
@@ -396,21 +413,16 @@ const productData: Record<string, {
       en: "Cleaning brushes and accessories for maintaining burs and instruments. Essential for extending equipment life."
     },
     products: [
-      // CERDAS POLIAMIDA
-      { model: "Cerdas Poliamida", code: "EC-CPR-01", diameter: "20mm", color: "Rosa" },
-      { model: "Cerdas Poliamida", code: "EC-CPL-01", diameter: "20mm", color: "Lilás" },
-      { model: "Cerdas Poliamida", code: "EC-CPB-01", diameter: "20mm", color: "Branca" },
-      // ESCOVA LIMPEZA
-      { model: "Escova Limpeza", code: "EC-ELB-01", diameter: "15mm" },
-      { model: "Escova Limpeza", code: "EC-ELB-02", diameter: "20mm" },
-      { model: "Escova Limpeza", code: "EC-ELB-03", diameter: "25mm" },
-      // ESPONJA POLIDORA
-      { model: "Esponja Polidora", code: "EC-ESP-01", diameter: "20mm" },
-      { model: "Esponja Polidora", code: "EC-ESP-02", diameter: "25mm" },
-      // FELTRO POLIDOR
-      { model: "Feltro Polidor", code: "EC-FP-01", diameter: "15mm" },
-      { model: "Feltro Polidor", code: "EC-FP-02", diameter: "20mm" },
-      { model: "Feltro Polidor", code: "EC-FP-03", diameter: "25mm" },
+      // CERDAS DE POLIAMIDA - ROSA
+      { model: "Rosa", code: "137.190.023", iso: "137.190.023", diameter: "8,00mm", grain: "Finas", activeLength: "5,00mm", color: "Rosa", subcategory: "Cerdas de Poliamida" },
+      // CERDAS DE POLIAMIDA - LILÁS
+      { model: "Lilás", code: "010/805", iso: "010/805", diameter: "8,00mm", grain: "Finas", activeLength: "5,00mm", color: "Lilás", subcategory: "Cerdas de Poliamida" },
+      // BROCAS POLIDORAS - BROCA DE LIMPEZA
+      { model: "Broca de Limpeza", code: "01.01.01", iso: "01.01.01", diameter: "28,00mm", grain: "Aço", activeLength: "44,50mm", subcategory: "Brocas Polidoras" },
+      // BROCAS POLIDORAS - ESPONJA POLIDORA
+      { model: "Esponja Polidora", code: "500.0010.18", iso: "500.0010.18", diameter: "25,00mm", grain: "Polímero Impregnado", activeLength: "50,0mm", subcategory: "Brocas Polidoras" },
+      // BROCAS POLIDORAS - ESPONJA FELTRO
+      { model: "Esponja Feltro", code: "500.0010.20", iso: "500.0010.20", diameter: "25,00mm", grain: "Lã de Carneiro", activeLength: "50,0mm", subcategory: "Brocas Polidoras" },
     ]
   },
   "fibras-enucleadora-mandril": {
@@ -505,6 +517,7 @@ const categoryKeyMap: Record<string, string> = {
 };
 
 // Grain color map with correct colors from catalog
+// Médio = Azul, Grosso = Verde
 const grainColorMap: Record<string, { bg: string; text: string }> = {
   "Extra Grosso": { bg: "#000000", text: "#FFFFFF" },
   "Grosso": { bg: "#4CAF50", text: "#FFFFFF" },  // Verde
