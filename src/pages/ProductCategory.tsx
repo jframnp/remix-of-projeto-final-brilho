@@ -70,7 +70,6 @@ const productData: Record<string, {
       "Alta durabilidade e resistência",
       "Diversas granulometrias disponíveis",
       "Formatos específicos para cada procedimento",
-      "Registro ANVISA",
       "Fabricação 100% nacional"
     ],
     products: [
