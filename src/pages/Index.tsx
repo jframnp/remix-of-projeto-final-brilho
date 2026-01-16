@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/hooks/useLanguage";
 import logoImage from "@/assets/logo-metalurgicabrilho.png";
+import CertificadoAnvisa from "@/assets/certificado-anvisa.jpg";
 
 const Index = () => {
   const { t } = useTranslation();
@@ -148,10 +149,12 @@ const Index = () => {
                 
                 <div className="relative bg-gradient-to-br from-[#720000] to-[#9B0000] rounded-3xl p-10 shadow-2xl">
                   <div className="grid grid-cols-2 gap-6">
-                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/10">
-                      <Shield className="w-10 h-10 text-white mx-auto mb-3" />
-                      <p className="text-white font-montserrat font-bold">ANVISA</p>
-                      <p className="text-white/70 text-sm">{t("home.certified", "Certificado")}</p>
+                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-4 text-center border border-white/10 flex items-center justify-center">
+                      <img 
+                        src={CertificadoAnvisa} 
+                        alt="Certificado ANVISA" 
+                        className="w-20 h-20 object-contain rounded-lg"
+                      />
                     </div>
                     <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center border border-white/10">
                       <Award className="w-10 h-10 text-white mx-auto mb-3" />

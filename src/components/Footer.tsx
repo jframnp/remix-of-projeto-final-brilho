@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "@/hooks/useLanguage";
 import logoImage from "@/assets/logo-metalurgicabrilho.png";
+import CertificadoAnvisa from "@/assets/certificado-anvisa.jpg";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -78,28 +79,12 @@ const Footer = () => {
             </div>
 
             {/* ANVISA Seal */}
-            <div className="bg-white rounded-lg px-4 sm:px-6 py-3 sm:py-4 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3 hover:shadow-lg hover:scale-105 transition-all duration-300">
-              <div className="flex items-center gap-2">
-                <svg viewBox="0 0 40 40" className="w-8 h-8 sm:w-10 sm:h-10">
-                  <circle cx="20" cy="20" r="18" fill="#006341" />
-                  <circle cx="20" cy="20" r="14" fill="#FFC61E" />
-                  <circle cx="20" cy="20" r="10" fill="#003087" />
-                  <text
-                    x="20"
-                    y="24"
-                    textAnchor="middle"
-                    fill="white"
-                    fontSize="8"
-                    fontWeight="bold"
-                  >
-                    BR
-                  </text>
-                </svg>
-                <div className="text-left">
-                  <p className="text-[#006341] font-bold text-xs sm:text-sm">ANVISA</p>
-                  <p className="text-gray-700 text-xs sm:text-sm font-semibold">Nº 8019.208</p>
-                </div>
-              </div>
+            <div className="bg-white rounded-lg p-2 mb-4 sm:mb-6 flex items-center justify-center hover:shadow-lg hover:scale-105 transition-all duration-300">
+              <img 
+                src={CertificadoAnvisa} 
+                alt="Certificado ANVISA - Boas Práticas de Bioequivalência" 
+                className="w-24 h-24 sm:w-28 sm:h-28 object-contain rounded-lg"
+              />
             </div>
 
             {/* Company Description */}
