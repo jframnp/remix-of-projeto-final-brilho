@@ -437,7 +437,7 @@ const productData: Record<string, {
     ]
   },
   "apoio-lixas-afiacao": {
-    subtypes: ["Apoio Rígido", "Apoio Flexível", "Disco Afiação", "Pasta Polimento", "Mandril"],
+    subtypes: ["Apoio Rígido", "Apoio Flexível", "Disco Afiação", "Pasta Polimento"],
     titlePt: "APOIO PARA LIXAS E AFIAÇÃO",
     titleEn: "FILE SUPPORTS & SHARPENING",
     description: {
@@ -460,9 +460,6 @@ const productData: Record<string, {
       // PASTA POLIMENTO
       { model: "Pasta Polimento", code: "AL-PP-01", diameter: "N/A" },
       { model: "Pasta Polimento", code: "AL-PP-02", diameter: "N/A" },
-      // MANDRIL
-      { model: "Mandril", code: "AL-MS-01", diameter: "2.35mm" },
-      { model: "Mandril", code: "AL-MS-02", diameter: "3.0mm" },
     ]
   },
   "linha-gold": {
