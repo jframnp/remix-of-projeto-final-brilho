@@ -44,8 +44,8 @@ const categoryDiagramConfigs: Record<string, CategoryDiagramConfig> = {
     ],
     grainColors: [
       { name: "Extra Grosso", color: "#000000", label: "Preto (Extra Grosso)" },
-      { name: "Grosso", color: "#4CAF50", label: "Verde (Grosso)" },
-      { name: "Médio", color: "#2196F3", label: "Azul (Médio)" },
+      { name: "Grosso", color: "#2196F3", label: "Azul (Grosso)" },
+      { name: "Médio", color: "#4CAF50", label: "Verde (Médio)" },
       { name: "Fino", color: "#FFEB3B", label: "Amarelo (Fino)" },
       { name: "Extra Fino", color: "#E91E63", label: "Rosa (Extra Fino)" },
       { name: "Ultra Fino", color: "#FFFFFF", label: "Branco (Ultra Fino)" },
@@ -64,8 +64,8 @@ const categoryDiagramConfigs: Record<string, CategoryDiagramConfig> = {
     ],
     grainColors: [
       { name: "Extra Grosso", color: "#000000", label: "Preto (Extra Grosso)" },
-      { name: "Grosso", color: "#4CAF50", label: "Verde (Grosso)" },
-      { name: "Médio", color: "#2196F3", label: "Azul (Médio)" },
+      { name: "Grosso", color: "#2196F3", label: "Azul (Grosso)" },
+      { name: "Médio", color: "#4CAF50", label: "Verde (Médio)" },
       { name: "Fino", color: "#FFEB3B", label: "Amarelo (Fino)" },
       { name: "Extra Fino", color: "#E91E63", label: "Rosa (Extra Fino)" },
       { name: "Ultra Fino", color: "#FFFFFF", label: "Branco (Ultra Fino)" },
