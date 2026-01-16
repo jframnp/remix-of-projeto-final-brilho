@@ -190,9 +190,19 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                     {t("products.table.model", "MODELOS").toUpperCase()}
                   </td>
                   {products.map((product, idx) => {
-                    // For Lixas Laminar/Plantar, show model name
-                    const isLixaWithModelName = categorySlug === 'lixas' && 
-                      (typeName.toLowerCase().includes('laminar') || typeName.toLowerCase().includes('plantar'));
+                    // For Lixas, show the variant name (Branca, Green, Fina) or model name
+                    const isLixaCategory = categorySlug === 'lixas';
+                    let displayName = getProductName(product.code);
+                    
+                    if (isLixaCategory) {
+                      // Extract the variant from model name (e.g., "Gota Branca" -> "Branca")
+                      const modelParts = product.model.split(' ');
+                      if (modelParts.length > 1) {
+                        displayName = modelParts.slice(1).join(' '); // Get everything after first word
+                      } else {
+                        displayName = product.model; // For single-word models like "Tubular"
+                      }
+                    }
                     
                     return (
                       <td 
@@ -200,7 +210,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                         className="px-1 sm:px-2 py-2 sm:py-3 text-center font-bold min-w-[60px] sm:min-w-[100px] text-[8px] sm:text-xs"
                         style={{ color: headerTextColor }}
                       >
-                        {isLixaWithModelName ? product.model : getProductName(product.code)}
+                        {displayName}
                       </td>
                     );
                   })}
