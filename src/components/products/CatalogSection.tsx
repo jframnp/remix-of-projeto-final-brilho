@@ -476,9 +476,9 @@ const CatalogSection = ({
   return (
     <section className="bg-white py-8 sm:py-16 border-b border-gray-200">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-          {/* Left side - Title and descriptions */}
-          <div>
+        {/* Centered layout for apoio-lixas-afiacao, grid for others */}
+        {categorySlug === "apoio-lixas-afiacao" ? (
+          <div className="text-center max-w-3xl mx-auto">
             {/* Category title */}
             <h2 className={`font-montserrat font-black text-2xl sm:text-4xl md:text-5xl mb-1 uppercase tracking-tight ${
               isGold ? "text-yellow-500" : "text-primary"
@@ -498,49 +498,73 @@ const CatalogSection = ({
               {description}
             </p>
           </div>
+        ) : (
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+            {/* Left side - Title and descriptions */}
+            <div>
+              {/* Category title */}
+              <h2 className={`font-montserrat font-black text-2xl sm:text-4xl md:text-5xl mb-1 uppercase tracking-tight ${
+                isGold ? "text-yellow-500" : "text-primary"
+              }`}>
+                {categoryTitle}
+              </h2>
+              
+              {/* Subtitle in gray */}
+              {categorySubtitle && (
+                <p className="font-montserrat font-bold text-lg sm:text-2xl md:text-3xl text-gray-400 uppercase tracking-tight mb-4 sm:mb-8">
+                  {categorySubtitle}
+                </p>
+              )}
 
-          {/* Right side - Technical diagram (only for brocas-diamantadas and linha-gold) */}
-          <div className="flex flex-col items-center lg:items-end mt-4 lg:mt-0">
-            {/* Diagram - Only show for diamond burs */}
-            {(categorySlug === "brocas-diamantadas" || categorySlug === "linha-gold") && renderDiagram()}
+              {/* Description - translated */}
+              <p className="text-foreground text-sm sm:text-lg font-semibold leading-relaxed">
+                {description}
+              </p>
+            </div>
 
-            {/* Model prefix - only show for non-shaft types (shaft types have it integrated) */}
-            {config.type !== "shaft" && (
-              <div className="flex justify-between items-end mt-8 w-full max-w-md">
-                {/* Grain/Color legend */}
-                {config.grainColors && config.grainColors.length > 0 && (
-                  <div>
-                    <p className="font-semibold text-foreground mb-2">
-                      {config.type === "polisher" ? t("products.diagram.colors", "Cores") : t("products.diagram.grain", "Grão")}
-                    </p>
-                    <div className="flex flex-col gap-1">
-                      {config.grainColors.slice(0, 4).map((grain) => (
-                        <div key={grain.name} className="flex items-center gap-2">
-                          <div 
-                            className="w-3 h-3 rounded-full"
-                            style={{ 
-                              backgroundColor: grain.color,
-                              border: grain.color === "#FFFFFF" || grain.color === "#FFEB3B" ? "1px solid #999" : "none"
-                            }}
-                          />
-                          <span className="text-sm text-muted-foreground">{grain.label}</span>
-                        </div>
-                      ))}
+            {/* Right side - Technical diagram (only for brocas-diamantadas and linha-gold) */}
+            <div className="flex flex-col items-center lg:items-end mt-4 lg:mt-0">
+              {/* Diagram - Only show for diamond burs */}
+              {(categorySlug === "brocas-diamantadas" || categorySlug === "linha-gold") && renderDiagram()}
+
+              {/* Model prefix - only show for non-shaft types (shaft types have it integrated) */}
+              {config.type !== "shaft" && config.type !== "support" && (
+                <div className="flex justify-between items-end mt-8 w-full max-w-md">
+                  {/* Grain/Color legend */}
+                  {config.grainColors && config.grainColors.length > 0 && (
+                    <div>
+                      <p className="font-semibold text-foreground mb-2">
+                        {config.type === "polisher" ? t("products.diagram.colors", "Cores") : t("products.diagram.grain", "Grão")}
+                      </p>
+                      <div className="flex flex-col gap-1">
+                        {config.grainColors.slice(0, 4).map((grain) => (
+                          <div key={grain.name} className="flex items-center gap-2">
+                            <div 
+                              className="w-3 h-3 rounded-full"
+                              style={{ 
+                                backgroundColor: grain.color,
+                                border: grain.color === "#FFFFFF" || grain.color === "#FFEB3B" ? "1px solid #999" : "none"
+                              }}
+                            />
+                            <span className="text-sm text-muted-foreground">{grain.label}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                {/* Model prefix */}
-                <div className="text-right">
-                  <p className={`text-3xl font-bold ${isGold ? "text-yellow-500" : "text-foreground"}`}>
-                    {config.modelPrefix}
-                  </p>
-                  <p className="text-sm text-muted-foreground">{t("products.diagram.model", "Modelo")}</p>
+                  {/* Model prefix */}
+                  <div className="text-right">
+                    <p className={`text-3xl font-bold ${isGold ? "text-yellow-500" : "text-foreground"}`}>
+                      {config.modelPrefix}
+                    </p>
+                    <p className="text-sm text-muted-foreground">{t("products.diagram.model", "Modelo")}</p>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );
