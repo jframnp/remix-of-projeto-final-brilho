@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "@/hooks/useLanguage";
 import logoImage from "@/assets/logo-metalurgicabrilho.png";
-import CertificadoAnvisa from "@/assets/certificado-anvisa.png";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -79,14 +78,27 @@ const Footer = () => {
             </div>
 
             {/* ANVISA Seal */}
-            <div className="relative group mb-4 sm:mb-6">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#D32F2F]/20 to-[#9B0000]/20 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-all duration-300" />
-              <div className="relative bg-white rounded-xl p-3 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
-                <img 
-                  src={CertificadoAnvisa} 
-                  alt="Certificado ANVISA - Boas Práticas de Bioequivalência" 
-                  className="w-20 h-20 sm:w-24 sm:h-24 object-contain mx-auto"
-                />
+            <div className="bg-white rounded-lg px-4 sm:px-6 py-3 sm:py-4 mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3 hover:shadow-lg hover:scale-105 transition-all duration-300">
+              <div className="flex items-center gap-2">
+                <svg viewBox="0 0 40 40" className="w-8 h-8 sm:w-10 sm:h-10">
+                  <circle cx="20" cy="20" r="18" fill="#006341" />
+                  <circle cx="20" cy="20" r="14" fill="#FFC61E" />
+                  <circle cx="20" cy="20" r="10" fill="#003087" />
+                  <text
+                    x="20"
+                    y="24"
+                    textAnchor="middle"
+                    fill="white"
+                    fontSize="8"
+                    fontWeight="bold"
+                  >
+                    BR
+                  </text>
+                </svg>
+                <div className="text-left">
+                  <p className="text-[#006341] font-bold text-xs sm:text-sm">ANVISA</p>
+                  <p className="text-gray-700 text-xs sm:text-sm font-semibold">Nº 8019.208</p>
+                </div>
               </div>
             </div>
 

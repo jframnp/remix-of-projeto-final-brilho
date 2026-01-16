@@ -50,12 +50,52 @@ import FibraMandril1 from "@/assets/products/fibra-mandril-1.png";
 import FibraMandril2 from "@/assets/products/fibra-mandril-2.png";
 import FibraMandril3 from "@/assets/products/fibra-mandril-3.png";
 
-// Category-specific hero images configuration - ONLY for categories with bur illustrations
+// Category-specific hero images configuration
 const categoryHeroImages: Record<string, { src: string; alt: string }[]> = {
   "brocas-diamantadas": [
     { src: PM718Hero, alt: "Broca PM-718 cônica" },
     { src: PM718Fino, alt: "Broca PM-718 fina" },
     { src: PM718Hero, alt: "Broca PM-718 cônica" },
+  ],
+  "fresas-tungstenio": [
+    { src: FresaTungstenio5, alt: "Fresa de Tungstênio cônica grande" },
+    { src: FresaTungstenio1, alt: "Fresa de Tungstênio ogiva" },
+    { src: FresaTungstenio3, alt: "Fresa de Tungstênio cônica" },
+  ],
+  "fresas-ceramica": [
+    { src: BrocaCeramica3, alt: "Broca cerâmica cônica" },
+    { src: BrocaCeramica1, alt: "Broca cerâmica cilíndrica" },
+    { src: BrocaCeramica2, alt: "Broca cerâmica chama" },
+  ],
+  "lixas": [
+    { src: Lixa1, alt: "Lixa retangular" },
+    { src: Lixa2, alt: "Lixa meia lua" },
+    { src: Lixa3, alt: "Lixa meia lua verde" },
+  ],
+  "lixa-tubular-adesiva": [
+    { src: PM829, alt: "Lixa tubular ogiva" },
+    { src: PM57, alt: "Lixa tubular cilíndrica" },
+    { src: PM744, alt: "Lixa adesiva chama" },
+  ],
+  "polidoras": [
+    { src: PolidoraVerde, alt: "Polidora verde" },
+    { src: PolidoraCinza, alt: "Polidora cinza" },
+    { src: PolidoraAzul, alt: "Polidora azul" },
+  ],
+  "escovas-limpeza": [
+    { src: EscovaLimpeza1, alt: "Escova abrasiva" },
+    { src: EscovaLimpeza2, alt: "Escova de algodão" },
+    { src: EscovaLimpeza3, alt: "Escova de nylon" },
+  ],
+  "fibras-enucleadora-mandril": [
+    { src: FibraMandril1, alt: "Mandril" },
+    { src: FibraMandril2, alt: "Fibra enucleadora" },
+    { src: FibraMandril3, alt: "Fibra" },
+  ],
+  "apoio-lixas-afiacao": [
+    { src: Lixa1, alt: "Apoio para lixas" },
+    { src: Lixa2, alt: "Disco de afiação" },
+    { src: Lixa3, alt: "Disco de polimento" },
   ],
   "linha-gold": [
     { src: PM718Hero, alt: "Broca Gold cônica" },
@@ -101,99 +141,74 @@ const ProductCategoryHero = ({
   // Get translated description
   const description = t(`products.${translationKey}.description`);
 
-  // Get category-specific hero images
-  const heroBurs = categoryHeroImages[category] || [];
-  
-  // Only show images for categories that have them configured
-  const hasHeroImages = heroBurs.length > 0;
+  // Get category-specific hero images or fallback to default
+  const heroBurs = categoryHeroImages[category] || categoryHeroImages["brocas-diamantadas"];
 
   return (
-    <section className="relative min-h-[400px] md:min-h-[500px] overflow-hidden bg-white">
-      <div className="container mx-auto px-4 relative z-20 h-full flex items-center py-12">
-        {hasHeroImages ? (
-          // Two-column layout with images
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center w-full">
-            {/* Left side - Content */}
-            <div className="max-w-xl">
-              <Link
-                to={getLocalizedPath("/produtos")}
-                className="inline-flex items-center gap-2 mb-6 text-gray-500 hover:text-gray-700 transition-colors group"
-              >
-                <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-                {t("products.backToCategories")}
-              </Link>
+    <section className="relative min-h-[500px] md:min-h-[600px] overflow-hidden bg-[#1a1a1a]">
+      {/* Background gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#1a1a1a] via-[#1a1a1a]/95 to-transparent z-10" />
+      
+      {/* Gold shimmer effect for gold line */}
+      {isGold && (
+        <div className="absolute inset-0 animate-shimmer opacity-20" style={{
+          background: 'linear-gradient(45deg, transparent 25%, rgba(255,215,0,0.3) 50%, transparent 75%)',
+          backgroundSize: '400% 100%',
+        }} />
+      )}
 
-              {/* Main title */}
-              <h1 className={`font-montserrat font-black text-3xl md:text-4xl lg:text-5xl mb-2 leading-tight ${
-                isGold ? "text-yellow-500" : "text-primary"
-              }`}>
-                {isGold && <Sparkles className="inline w-10 h-10 mr-2 animate-pulse" />}
-                {t("products.heroTitle")}
-              </h1>
-              
-              {/* English subtitle */}
-              <p className="text-gray-500 text-lg font-medium mb-6">
-                {t(`products.${translationKey}.titleEn`) || translationKey.toUpperCase()}
-              </p>
-
-              {/* Description */}
-              <p className="text-gray-600 text-base leading-relaxed">
-                {description}
-              </p>
-            </div>
-
-            {/* Right side - 3 burs horizontally arranged with animations */}
-            <div className="relative hidden lg:flex items-center justify-center h-[400px] gap-4">
-              {heroBurs.map((bur, index) => (
-                <img
-                  key={index}
-                  src={bur.src}
-                  alt={bur.alt}
-                  className="object-contain transition-all duration-500 hover:scale-110 hover:-translate-y-4"
-                  style={{
-                    width: '180px',
-                    height: '300px',
-                    filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.2))',
-                    animation: `float 3s ease-in-out ${index * 0.3}s infinite`,
-                  }}
-                />
-              ))}
-            </div>
-          </div>
-        ) : (
-          // Centered layout - clean and simple, no side info
-          <div className="w-full max-w-3xl">
+      <div className="container mx-auto px-4 relative z-20 h-full flex items-center py-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center w-full">
+          {/* Left side - Content */}
+          <div className="max-w-xl">
             <Link
               to={getLocalizedPath("/produtos")}
-              className="inline-flex items-center gap-2 mb-6 text-gray-500 hover:text-gray-700 transition-colors group"
+              className="inline-flex items-center gap-2 mb-6 text-white/70 hover:text-white transition-colors group"
             >
               <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
               {t("products.backToCategories")}
             </Link>
-            
+
+            {/* "Alta Performance" label */}
+            <p className={`text-sm font-semibold uppercase tracking-wider mb-4 ${
+              isGold ? "text-yellow-400" : "text-primary"
+            }`}>
+              {t("products.highPerformance")}
+            </p>
+
             {/* Main title */}
-            <h1 className={`font-montserrat font-black text-3xl md:text-4xl lg:text-5xl mb-2 leading-tight ${
-              isGold ? "text-yellow-500" : "text-primary"
+            <h1 className={`font-montserrat font-black text-3xl md:text-4xl lg:text-5xl mb-6 leading-tight ${
+              isGold ? "text-yellow-400" : "text-white"
             }`}>
               {isGold && <Sparkles className="inline w-10 h-10 mr-2 animate-pulse" />}
               {t("products.heroTitle")}
             </h1>
-            
-            {/* English subtitle */}
-            <p className="text-gray-500 text-lg font-medium mb-6">
-              {t(`products.${translationKey}.titleEn`) || translationKey.toUpperCase()}
-            </p>
 
             {/* Description */}
-            <p className="text-gray-600 text-base leading-relaxed">
+            <p className="text-gray-300 text-lg leading-relaxed">
               {description}
             </p>
           </div>
-        )}
+
+          {/* Right side - 3 burs horizontally arranged with animations */}
+          <div className="relative hidden lg:flex items-center justify-center h-[500px] gap-4">
+            {heroBurs.map((bur, index) => (
+              <img
+                key={index}
+                src={bur.src}
+                alt={bur.alt}
+                className="object-contain transition-all duration-500 hover:scale-110 hover:-translate-y-4"
+                style={{
+                  width: '180px',
+                  height: '300px',
+                  filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))',
+                  animation: `float 3s ease-in-out ${index * 0.3}s infinite`,
+                }}
+              />
+            ))}
+          </div>
+        </div>
       </div>
-      
-      {/* Bottom border */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary" />
     </section>
   );
 };

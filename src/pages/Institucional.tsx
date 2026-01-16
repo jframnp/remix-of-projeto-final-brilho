@@ -2,7 +2,6 @@ import Layout from "@/components/Layout";
 import { useTranslation } from "react-i18next";
 import { Shield, Target, Heart, Eye, Award, Users, Factory, Globe, CheckCircle } from "lucide-react";
 import logoImage from "@/assets/logo-metalurgicabrilho.png";
-import CertificadoAnvisa from "@/assets/certificado-anvisa.png";
 
 const Institucional = () => {
   const { t } = useTranslation();
@@ -115,20 +114,17 @@ const Institucional = () => {
                     className="h-20 w-auto mx-auto mb-8 opacity-90"
                   />
                   
-                  {/* ANVISA Badge - Beautiful Card */}
-                  <div className="relative group">
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-white/5 rounded-2xl blur-sm group-hover:blur-md transition-all duration-300" />
-                    <div className="relative bg-gradient-to-br from-[#1a0a0a] to-[#2a0a0a] rounded-2xl p-6 border border-white/10 shadow-xl">
-                      <div className="bg-white rounded-xl p-4 shadow-lg transform group-hover:scale-105 transition-all duration-300">
-                        <img 
-                          src={CertificadoAnvisa} 
-                          alt="Certificado ANVISA - Boas Práticas de Bioequivalência" 
-                          className="w-36 h-36 object-contain mx-auto"
-                        />
+                  {/* ANVISA Badge */}
+                  <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                    <div className="flex items-center gap-4">
+                      <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center flex-shrink-0">
+                        <Shield className="w-8 h-8 text-[#006341]" />
                       </div>
-                      <p className="text-white/80 font-inter text-xs text-center mt-4 tracking-wider uppercase">
-                        Certificado de Qualidade
-                      </p>
+                      <div>
+                        <p className="text-white font-montserrat font-bold text-lg">ANVISA</p>
+                        <p className="text-white/70 font-inter text-sm">Nº 8019.208</p>
+                        <p className="text-white/50 font-inter text-xs mt-1">{t("institutional.anvisaCert", "Certificação Nacional")}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
