@@ -474,12 +474,11 @@ const CatalogSection = ({
   };
 
   // Categories that should be centered without model prefix/legend
-  const centeredCategories = ["apoio-lixas-afiacao", "polidoras", "escovas-limpeza", "fibras-enucleadora-mandril"];
+  const centeredCategories = ["apoio-lixas-afiacao", "polidoras", "escovas-limpeza", "fibras-enucleadora-mandril", "fresas-tungstenio", "fresas-ceramica", "lixas"];
   const shouldCenter = centeredCategories.includes(categorySlug);
   
-  // Categories that should hide model prefix but keep layout (lixas)
-  const hideModelPrefixOnly = ["lixas"];
-  const shouldHideModelPrefix = hideModelPrefixOnly.includes(categorySlug) || shouldCenter;
+  // Categories that should hide model prefix
+  const shouldHideModelPrefix = shouldCenter;
 
   return (
     <section className="bg-white py-8 sm:py-16 border-b border-gray-200">
