@@ -473,11 +473,19 @@ const CatalogSection = ({
     }
   };
 
+  // Categories that should be centered without model prefix/legend
+  const centeredCategories = ["apoio-lixas-afiacao", "polidoras", "escovas-limpeza", "fibras-enucleadora-mandril"];
+  const shouldCenter = centeredCategories.includes(categorySlug);
+  
+  // Categories that should hide model prefix but keep layout (lixas)
+  const hideModelPrefixOnly = ["lixas"];
+  const shouldHideModelPrefix = hideModelPrefixOnly.includes(categorySlug) || shouldCenter;
+
   return (
     <section className="bg-white py-8 sm:py-16 border-b border-gray-200">
       <div className="container mx-auto px-4">
-        {/* Centered layout for apoio-lixas-afiacao, grid for others */}
-        {categorySlug === "apoio-lixas-afiacao" ? (
+        {/* Centered layout for specific categories */}
+        {shouldCenter ? (
           <div className="text-center max-w-3xl mx-auto">
             {/* Category title */}
             <h2 className={`font-montserrat font-black text-2xl sm:text-4xl md:text-5xl mb-1 uppercase tracking-tight ${
@@ -527,8 +535,8 @@ const CatalogSection = ({
               {/* Diagram - Only show for diamond burs */}
               {(categorySlug === "brocas-diamantadas" || categorySlug === "linha-gold") && renderDiagram()}
 
-              {/* Model prefix - only show for non-shaft types (shaft types have it integrated) */}
-              {config.type !== "shaft" && config.type !== "support" && (
+              {/* Model prefix - hide for specific categories */}
+              {config.type !== "shaft" && !shouldHideModelPrefix && (
                 <div className="flex justify-between items-end mt-8 w-full max-w-md">
                   {/* Grain/Color legend */}
                   {config.grainColors && config.grainColors.length > 0 && (
