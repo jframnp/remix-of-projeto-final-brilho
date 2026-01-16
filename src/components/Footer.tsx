@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "@/hooks/useLanguage";
 import logoImage from "@/assets/logo-metalurgicabrilho.png";
-import CertificadoAnvisa from "@/assets/certificado-anvisa.jpg";
+import CertificadoAnvisa from "@/assets/certificado-anvisa.png";
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -79,12 +79,15 @@ const Footer = () => {
             </div>
 
             {/* ANVISA Seal */}
-            <div className="bg-white rounded-lg p-2 mb-4 sm:mb-6 flex items-center justify-center hover:shadow-lg hover:scale-105 transition-all duration-300">
-              <img 
-                src={CertificadoAnvisa} 
-                alt="Certificado ANVISA - Boas Práticas de Bioequivalência" 
-                className="w-24 h-24 sm:w-28 sm:h-28 object-contain rounded-lg"
-              />
+            <div className="relative group mb-4 sm:mb-6">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#D32F2F]/20 to-[#9B0000]/20 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-all duration-300" />
+              <div className="relative bg-white rounded-xl p-3 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
+                <img 
+                  src={CertificadoAnvisa} 
+                  alt="Certificado ANVISA - Boas Práticas de Bioequivalência" 
+                  className="w-20 h-20 sm:w-24 sm:h-24 object-contain mx-auto"
+                />
+              </div>
             </div>
 
             {/* Company Description */}
