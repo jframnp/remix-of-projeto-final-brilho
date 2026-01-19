@@ -14,6 +14,7 @@ import Fresa1520 from "@/assets/products/fresa-1520.png";
 import Fresa92 from "@/assets/products/fresa-92.png";
 import Fresa95 from "@/assets/products/fresa-95.png";
 import Fresa1251 from "@/assets/products/fresa-1251.png";
+import Fresa3029 from "@/assets/products/fresa-3029.png";
 
 // Map tungsten bur model numbers to their images
 const tungstenBurImages: Record<string, string> = {
@@ -26,6 +27,7 @@ const tungstenBurImages: Record<string, string> = {
   "92": Fresa92,
   "95": Fresa95,
   "1251": Fresa1251,
+  "3029": Fresa3029,
 };
 
 interface Product {
@@ -67,12 +69,12 @@ const diamantadasGrainColorMap: Record<string, { color: string; border?: boolean
   "Fino": { color: "#0066CC" },                   // Azul
 };
 
-// Default grain color map for other categories (verde, azul, vermelho, amarelo)
+// Default grain color map for other categories - Médio=Azul, Grosso=Verde, Extra Grosso=Roxo
 const defaultGrainColorMap: Record<string, { color: string; border?: boolean }> = {
-  "Extra Grosso": { color: "#1B7D3A" },           // Verde
-  "Grosso": { color: "#0066CC" },                 // Azul
+  "Extra Grosso": { color: "#8B5CF6" },           // Roxo
+  "Grosso": { color: "#1B7D3A" },                 // Verde
   "Médio-Grosso": { color: "#FFFFFF", border: true }, // Branco com borda
-  "Médio": { color: "#1B7D3A" },                  // Verde
+  "Médio": { color: "#0066CC" },                  // Azul
   "Fino": { color: "#C62828" },                   // Vermelho
   "Extra Fino": { color: "#FFD700" },             // Amarelo
   "Ultra Fino": { color: "#C62828" },             // Vermelho
