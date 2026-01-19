@@ -532,6 +532,7 @@ const ProductCategory = () => {
   const { currentLang } = useLanguage();
   const [activeGrain, setActiveGrain] = useState<string | null>(null);
   const [selectedType, setSelectedType] = useState<string | null>(null);
+  const [selectedSubcategory, setSelectedSubcategory] = useState<string | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   
   const pathParts = window.location.pathname.split("/");
@@ -618,9 +619,15 @@ const ProductCategory = () => {
     );
   }
 
-  // Get products for selected type, filtered by grain if active
-  const getProductsForType = (typeName: string) => {
-    let products = productsByType[typeName] || [];
+  // Get products for selected type, filtered by grain and subcategory if active
+  const getProductsForType = (typeName: string, subcategory?: string | null) => {
+    let products = data?.products.filter(p => p.model.startsWith(typeName)) || [];
+    
+    // Filter by subcategory if provided (for Maxi Cut / Mini Cut distinction)
+    if (subcategory) {
+      products = products.filter(p => p.subcategory === subcategory);
+    }
+    
     if (activeGrain) {
       products = products.filter(p => p.grain === activeGrain);
     }
@@ -633,8 +640,9 @@ const ProductCategory = () => {
     return products?.[0]?.image;
   };
 
-  const handleTypeClick = (typeName: string) => {
+  const handleTypeClick = (typeName: string, subcategory?: string) => {
     setSelectedType(typeName);
+    setSelectedSubcategory(subcategory || null);
     setIsModalOpen(true);
   };
 
@@ -729,7 +737,10 @@ const ProductCategory = () => {
                     {/* Type Cards Grid for this subcategory */}
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
                       {subcatData.types.map((typeName, idx) => {
-                        const typeProducts = data.products.filter(p => p.model.startsWith(typeName));
+                        // Filter products by both type AND subcategory
+                        const typeProducts = data.products.filter(p => 
+                          p.model.startsWith(typeName) && p.subcategory === subcatName
+                        );
                         return (
                           <div
                             key={typeName}
@@ -740,7 +751,7 @@ const ProductCategory = () => {
                               typeName={typeName}
                               image={typeProducts[0]?.image}
                               productCount={typeProducts.length}
-                              onClick={() => handleTypeClick(typeName)}
+                              onClick={() => handleTypeClick(typeName, subcatName)}
                               isGold={isGold}
                               categorySlug={category}
                             />
@@ -851,7 +862,7 @@ const ProductCategory = () => {
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
           typeName={selectedType}
-          products={getProductsForType(selectedType)}
+          products={getProductsForType(selectedType, selectedSubcategory)}
           typeImage={getTypeImage(selectedType)}
           isGold={isGold}
           categorySlug={category}
