@@ -212,7 +212,7 @@ const productData: Record<string, {
       { model: "Corte Cruzado Extra Fino", code: "500.002.1511XEF", iso: "292.140.023", diameter: "6,0mm", grain: "Extra Fino", activeLength: "14,00mm", subcategory: "Mini Cut" },
       { model: "Corte Cruzado Extra Fino", code: "500.002.1571XEF", iso: "175.110.023", diameter: "2,3mm", grain: "Extra Fino", activeLength: "15,00mm", subcategory: "Mini Cut" },
       // MINI CUT - CORTE CRUZADO GROSSO (Ponta Dupla)
-      { model: "Corte Cruzado Grosso", code: "500.002.PONTA DUPLA", iso: "137.140.023 / 292.140.023", diameter: "2,3mm", grain: "Grosso", activeLength: "14,00mm", subcategory: "Mini Cut" },
+      { model: "Corte Cruzado Grosso", code: "500.002.1503G/1511G", iso: "137.140.023 / 292.140.023", diameter: "2,3mm", grain: "Grosso", activeLength: "14,00mm", subcategory: "Mini Cut" },
     ]
   },
   "fresas-ceramica": {
