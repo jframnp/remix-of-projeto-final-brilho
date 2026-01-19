@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogHeader } from "@/components/ui/dialog";
 import LixaTubular from "@/assets/products/lixa-tubular.png";
 import LixaAdesiva from "@/assets/products/lixa-adesiva-circular.png";
 
-// Tungsten bur images by model number
+// Tungsten bur images by model number - Corte Cruzado Médio
 import Fresa1507 from "@/assets/products/fresa-1507.png";
 import Fresa1508 from "@/assets/products/fresa-1508.png";
 import Fresa1509 from "@/assets/products/fresa-1509.png";
@@ -15,6 +15,17 @@ import Fresa92 from "@/assets/products/fresa-92.png";
 import Fresa95 from "@/assets/products/fresa-95.png";
 import Fresa1251 from "@/assets/products/fresa-1251.png";
 import Fresa3029 from "@/assets/products/fresa-3029.png";
+
+// Tungsten bur images - Corte Cruzado Fino
+import Fresa1507F from "@/assets/products/fresa-1507F.png";
+import Fresa1508F from "@/assets/products/fresa-1508F.png";
+import Fresa1509F from "@/assets/products/fresa-1509F.png";
+import Fresa1510F from "@/assets/products/fresa-1510F.png";
+import Fresa1517F from "@/assets/products/fresa-1517F.png";
+import Fresa1520F from "@/assets/products/fresa-1520F.png";
+import Fresa92F from "@/assets/products/fresa-92F.png";
+import Fresa95F from "@/assets/products/fresa-95F.png";
+import Fresa1251F from "@/assets/products/fresa-1251F.png";
 
 // Map tungsten bur model numbers to their images
 const tungstenBurImages: Record<string, string> = {
@@ -28,6 +39,15 @@ const tungstenBurImages: Record<string, string> = {
   "95": Fresa95,
   "1251": Fresa1251,
   "3029": Fresa3029,
+  "1507F": Fresa1507F,
+  "1508F": Fresa1508F,
+  "1509F": Fresa1509F,
+  "1510F": Fresa1510F,
+  "1517F": Fresa1517F,
+  "1520F": Fresa1520F,
+  "92F": Fresa92F,
+  "95F": Fresa95F,
+  "1251F": Fresa1251F,
 };
 
 interface Product {
