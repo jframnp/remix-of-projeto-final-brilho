@@ -754,6 +754,7 @@ const ProductCategory = () => {
                               onClick={() => handleTypeClick(typeName, subcatName)}
                               isGold={isGold}
                               categorySlug={category}
+                              subcategoryName={subcatName}
                             />
                           </div>
                         );

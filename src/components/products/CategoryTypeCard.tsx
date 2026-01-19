@@ -13,6 +13,13 @@ import BrocaRoda from "@/assets/products/broca-roda.png";
 import BrocaCilindricaTopoArredondado from "@/assets/products/broca-cilindrica-topo-arredondado.png";
 import BrocaChama from "@/assets/products/broca-chama.png";
 
+// Import tungsten bur Maxi Cut type images
+import MaxiCutMedio from "@/assets/products/maxi-cut-medio.png";
+import MaxiCutFino from "@/assets/products/maxi-cut-fino.png";
+import MaxiCutExtraFino from "@/assets/products/maxi-cut-extra-fino.png";
+import MaxiCutReto from "@/assets/products/maxi-cut-reto.png";
+import MaxiCutGrosso from "@/assets/products/maxi-cut-grosso.png";
+
 // Map type names to images for diamond burs
 const diamondBurImages: Record<string, string> = {
   "cônica topo invertido": BrocaConicaInvertida,
@@ -31,6 +38,15 @@ const diamondBurImages: Record<string, string> = {
   "cônica topo chama": BrocaChama,
 };
 
+// Map type names to images for tungsten bur Maxi Cut
+const tungstenMaxiCutImages: Record<string, string> = {
+  "corte cruzado médio": MaxiCutMedio,
+  "corte cruzado fino": MaxiCutFino,
+  "corte cruzado extra fino": MaxiCutExtraFino,
+  "corte reto": MaxiCutReto,
+  "corte cruzado grosso": MaxiCutGrosso,
+};
+
 interface CategoryTypeCardProps {
   typeName: string;
   image?: string;
@@ -39,9 +55,10 @@ interface CategoryTypeCardProps {
   isGold?: boolean;
   availableGrains?: string[];
   categorySlug?: string;
+  subcategoryName?: string;
 }
 
-const CategoryTypeCard = ({ typeName, image, productCount, onClick, isGold = false, categorySlug }: CategoryTypeCardProps) => {
+const CategoryTypeCard = ({ typeName, image, productCount, onClick, isGold = false, categorySlug, subcategoryName }: CategoryTypeCardProps) => {
   const { t, i18n } = useTranslation();
   
   // Get translated type name
@@ -53,11 +70,15 @@ const CategoryTypeCard = ({ typeName, image, productCount, onClick, isGold = fal
   
   const translatedName = getTranslatedTypeName(typeName);
   
-  // Get the appropriate image for diamond burs
+  // Get the appropriate image for diamond burs and tungsten burs
   const getTypeImage = (): string | undefined => {
     if (categorySlug === "brocas-diamantadas") {
       const normalizedTypeName = typeName.toLowerCase().trim();
       return diamondBurImages[normalizedTypeName] || image;
+    }
+    if (categorySlug === "fresas-tungstenio" && subcategoryName === "Maxi Cut") {
+      const normalizedTypeName = typeName.toLowerCase().trim();
+      return tungstenMaxiCutImages[normalizedTypeName] || image;
     }
     return image;
   };
