@@ -50,6 +50,13 @@ import Fresa1571 from "@/assets/products/fresa-1571.png";
 import Fresa3022 from "@/assets/products/fresa-3022.png";
 import Fresa4061 from "@/assets/products/fresa-4061.png";
 
+// Tungsten bur images - Mini Cut - Corte Cruzado Fino
+import Fresa1503F from "@/assets/products/fresa-1503F.png";
+import Fresa1511F from "@/assets/products/fresa-1511F.png";
+import Fresa1512F from "@/assets/products/fresa-1512F.png";
+import Fresa1571F from "@/assets/products/fresa-1571F.png";
+import Fresa3022F from "@/assets/products/fresa-3022F.png";
+
 // Map tungsten bur model numbers to their images
 const tungstenBurImages: Record<string, string> = {
   "1507": Fresa1507,
@@ -86,6 +93,11 @@ const tungstenBurImages: Record<string, string> = {
   "1571": Fresa1571,
   "3022": Fresa3022,
   "4061": Fresa4061,
+  "1503F": Fresa1503F,
+  "1511F": Fresa1511F,
+  "1512F": Fresa1512F,
+  "1571F": Fresa1571F,
+  "3022F": Fresa3022F,
 };
 
 interface Product {
