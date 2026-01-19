@@ -137,7 +137,12 @@ const getProductName = (code: string, model?: string): string => {
   // For tungsten burs with format "500.002.XXXX" -> show model suffix (e.g., "1507", "1507F", "717")
   const tungstenMatch = code.match(/500\.002\.(.+)$/);
   if (tungstenMatch) {
-    return tungstenMatch[1].toUpperCase();
+    const modelName = tungstenMatch[1].toUpperCase();
+    // Special case for Ponta Dupla - show as 1503/1511
+    if (modelName === 'PONTA DUPLA') {
+      return '1503/1511';
+    }
+    return modelName;
   }
   
   // For ceramic burs with format "500.004.XXXX" -> show model suffix (e.g., "1508C", "717C")
