@@ -32,6 +32,9 @@ import Fresa1508XEF from "@/assets/products/fresa-1508XEF.png";
 import Fresa1510XEF from "@/assets/products/fresa-1510XEF.png";
 import Fresa1520XEF from "@/assets/products/fresa-1520XEF.png";
 
+// Tungsten bur images - Corte Cruzado Grosso
+import Fresa1508G from "@/assets/products/fresa-1508G.png";
+
 // Map tungsten bur model numbers to their images
 const tungstenBurImages: Record<string, string> = {
   "1507": Fresa1507,
@@ -56,6 +59,7 @@ const tungstenBurImages: Record<string, string> = {
   "1508XEF": Fresa1508XEF,
   "1510XEF": Fresa1510XEF,
   "1520XEF": Fresa1520XEF,
+  "1508G": Fresa1508G,
 };
 
 interface Product {
