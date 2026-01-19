@@ -4,6 +4,30 @@ import { Dialog, DialogContent, DialogHeader } from "@/components/ui/dialog";
 import LixaTubular from "@/assets/products/lixa-tubular.png";
 import LixaAdesiva from "@/assets/products/lixa-adesiva-circular.png";
 
+// Tungsten bur images by model number
+import Fresa1507 from "@/assets/products/fresa-1507.png";
+import Fresa1508 from "@/assets/products/fresa-1508.png";
+import Fresa1509 from "@/assets/products/fresa-1509.png";
+import Fresa1510 from "@/assets/products/fresa-1510.png";
+import Fresa1517 from "@/assets/products/fresa-1517.png";
+import Fresa1520 from "@/assets/products/fresa-1520.png";
+import Fresa92 from "@/assets/products/fresa-92.png";
+import Fresa95 from "@/assets/products/fresa-95.png";
+import Fresa1251 from "@/assets/products/fresa-1251.png";
+
+// Map tungsten bur model numbers to their images
+const tungstenBurImages: Record<string, string> = {
+  "1507": Fresa1507,
+  "1508": Fresa1508,
+  "1509": Fresa1509,
+  "1510": Fresa1510,
+  "1517": Fresa1517,
+  "1520": Fresa1520,
+  "92": Fresa92,
+  "95": Fresa95,
+  "1251": Fresa1251,
+};
+
 interface Product {
   model: string;
   code: string;
@@ -558,6 +582,35 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                       }
                       
                       return <td key={idx}></td>;
+                    })}
+                  </tr>
+                )}
+
+                {/* IMAGE Row - For Fresas Tungstênio */}
+                {categorySlug === 'fresas-tungstenio' && (
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3" style={{ color: headerBgColor }}></td>
+                    {products.map((product, idx) => {
+                      // Extract model number from product code (e.g., "500.002.1507" -> "1507")
+                      const modelMatch = product.code.match(/500\.002\.(.+)$/);
+                      const modelNumber = modelMatch ? modelMatch[1].toUpperCase() : product.model;
+                      const imageUrl = tungstenBurImages[modelNumber];
+                      
+                      return (
+                        <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
+                          <div className="flex justify-center">
+                            {imageUrl ? (
+                              <img 
+                                src={imageUrl} 
+                                alt={`Fresa ${modelNumber}`}
+                                className="max-h-[60px] sm:max-h-[80px] object-contain"
+                              />
+                            ) : (
+                              <div className="w-8 h-16 bg-gray-200 rounded" />
+                            )}
+                          </div>
+                        </td>
+                      );
                     })}
                   </tr>
                 )}
