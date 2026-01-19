@@ -207,7 +207,6 @@ const productData: Record<string, {
       { model: "Corte Cruzado Fino", code: "500.002.1512F", iso: "194.190.050", diameter: "5,0mm", grain: "Fino", activeLength: "15,00mm", subcategory: "Mini Cut" },
       { model: "Corte Cruzado Fino", code: "500.002.1571F", iso: "175.110.023", diameter: "2,3mm", grain: "Fino", activeLength: "15,00mm", subcategory: "Mini Cut" },
       { model: "Corte Cruzado Fino", code: "500.002.3022F", iso: "289.140.019", diameter: "1,9mm", grain: "Fino", activeLength: "11,00mm", subcategory: "Mini Cut" },
-      { model: "Corte Cruzado Fino", code: "500.002.4061F", iso: "141.140.022", diameter: "2,2mm", grain: "Fino", activeLength: "10,00mm", subcategory: "Mini Cut" },
       // MINI CUT - CORTE CRUZADO EXTRA FINO
       { model: "Corte Cruzado Extra Fino", code: "500.002.1503XEF", iso: "144.110.023", diameter: "2,3mm", grain: "Extra Fino", activeLength: "14,00mm", subcategory: "Mini Cut" },
       { model: "Corte Cruzado Extra Fino", code: "500.002.1511XEF", iso: "292.140.023", diameter: "6,0mm", grain: "Extra Fino", activeLength: "14,00mm", subcategory: "Mini Cut" },
