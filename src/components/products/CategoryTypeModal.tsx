@@ -43,6 +43,14 @@ import PolidoraChama70205 from "@/assets/products/polidora-chama-70205.png";
 import PolidoraChama70305 from "@/assets/products/polidora-chama-70305.png";
 import PolidoraChama70605 from "@/assets/products/polidora-chama-70605.png";
 import PolidoraChama70405 from "@/assets/products/polidora-chama-70405.png";
+// Cônica polisher images
+import PolidoraConica70106 from "@/assets/products/polidora-conica-70106.png";
+import PolidoraConica70506 from "@/assets/products/polidora-conica-70506.png";
+import PolidoraConica70706 from "@/assets/products/polidora-conica-70706.png";
+import PolidoraConica70206 from "@/assets/products/polidora-conica-70206.png";
+import PolidoraConica70306 from "@/assets/products/polidora-conica-70306.png";
+import PolidoraConica70606 from "@/assets/products/polidora-conica-70606.png";
+import PolidoraConica70406 from "@/assets/products/polidora-conica-70406.png";
 
 // Map polisher codes to their images
 const polisherCodeImages: Record<string, string> = {
@@ -82,6 +90,14 @@ const polisherCodeImages: Record<string, string> = {
   "70305": PolidoraChama70305,
   "70605": PolidoraChama70605,
   "70405": PolidoraChama70405,
+  // Cônica
+  "70106": PolidoraConica70106,
+  "70506": PolidoraConica70506,
+  "70706": PolidoraConica70706,
+  "70206": PolidoraConica70206,
+  "70306": PolidoraConica70306,
+  "70606": PolidoraConica70606,
+  "70406": PolidoraConica70406,
 };
 
 // Sandpaper manual type images
