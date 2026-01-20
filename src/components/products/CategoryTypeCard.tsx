@@ -52,8 +52,8 @@ import LixaMandrilTubular from "@/assets/products/lixa-mandril-tubular.png";
 import LixaMandrilAdesiva from "@/assets/products/lixa-mandril-adesiva.png";
 
 // Import cleaning brush type images
-import EscovaCerdasPoliamida from "@/assets/products/escova-cerdas-poliamida.png";
-import EscovaBrocasPolidoras from "@/assets/products/escova-brocas-polidoras.png";
+import HeroCerdasPoliamida from "@/assets/products/hero-cerdas-poliamida.png";
+import HeroBrocasPolidoras from "@/assets/products/hero-brocas-polidoras.png";
 
 // Import fiber/enucleator/mandril type images
 import FibraMolecular from "@/assets/products/fibra-molecular.png";
@@ -134,8 +134,8 @@ const sandpaperMandrilImages: Record<string, string> = {
 
 // Map type names to images for cleaning brushes
 const cleaningBrushImages: Record<string, string> = {
-  "cerdas de poliamida": EscovaCerdasPoliamida,
-  "brocas polidoras": EscovaBrocasPolidoras,
+  "cerdas de poliamida": HeroCerdasPoliamida,
+  "brocas polidoras": HeroBrocasPolidoras,
 };
 
 // Map type names to images for fibers/enucleator/mandril
