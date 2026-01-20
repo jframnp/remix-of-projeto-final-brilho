@@ -9,6 +9,11 @@ import FibraMolecularProduct from "@/assets/products/fibra-molecular-product.png
 import EnucleadoraP from "@/assets/products/enucleadora-p.png";
 import EnucleadoraM from "@/assets/products/enucleadora-m.png";
 import EnucleadoraG from "@/assets/products/enucleadora-g.png";
+// Mandril PM images by type
+import MandrilReforcado from "@/assets/products/mandril-reforcado.png";
+import MandrilStandart from "@/assets/products/mandril-standart.png";
+import MandrilTubular from "@/assets/products/mandril-tubular.png";
+import MandrilRoda from "@/assets/products/mandril-roda.png";
 
 // Torpedo polisher images by code suffix
 import PolidoraTorpedo70101 from "@/assets/products/polidora-torpedo-70101.png";
@@ -991,6 +996,36 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
             <div className="min-w-max">
               <table className="w-full border-collapse text-xs sm:text-sm">
                 <tbody>
+                  {/* IMAGE Row - Shows product images */}
+                  <tr style={{ backgroundColor: '#ffffff' }}>
+                    <td 
+                      className="w-[80px] sm:w-[140px] px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm tracking-wider"
+                      style={{ color: headerBgColor }}
+                    >
+                      
+                    </td>
+                    {products.map((product, idx) => {
+                      const subtype = (product as any).subtype?.toLowerCase();
+                      let mandrilImage = MandrilStandart;
+                      if (subtype === 'reforçado') mandrilImage = MandrilReforcado;
+                      if (subtype === 'standart') mandrilImage = MandrilStandart;
+                      if (subtype === 'tubular') mandrilImage = MandrilTubular;
+                      if (subtype === 'roda') mandrilImage = MandrilRoda;
+                      return (
+                        <td 
+                          key={idx}
+                          className="px-1 sm:px-2 py-2 sm:py-3 text-center min-w-[70px] sm:min-w-[90px]"
+                        >
+                          <img 
+                            src={product.image || mandrilImage} 
+                            alt={`Mandril ${subtype}`}
+                            className="h-[80px] sm:h-[120px] w-auto mx-auto object-contain"
+                          />
+                        </td>
+                      );
+                    })}
+                  </tr>
+
                   {/* MODELOS Row - Reforçado, Standart, Tubular, Roda */}
                   <tr style={{ backgroundColor: headerBgColor }}>
                     <td 
