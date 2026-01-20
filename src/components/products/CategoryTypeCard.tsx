@@ -60,7 +60,7 @@ import CardFibraMolecular from "@/assets/products/card-fibra-molecular.png";
 import CardEnucleadora from "@/assets/products/card-enucleadora.png";
 import CardMandrilPM from "@/assets/products/card-mandril-pm.png";
 
-// Import apoio lixas/afiação type card images
+// Import apoio lixas/afiação type card images - updated 2026-01-20
 import CardApoioLixas from "@/assets/products/card-apoio-lixas.png";
 import CardAfiacaoInstrumentos from "@/assets/products/card-afiacao-instrumentos.png";
 
