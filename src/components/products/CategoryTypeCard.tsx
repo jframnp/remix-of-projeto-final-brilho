@@ -34,6 +34,7 @@ import CeramicaMaxiCutGrosso from "@/assets/products/ceramica-maxi-cut-grosso.pn
 
 // Import ceramic bur Mini Cut type images
 import CeramicaMiniCutMedio from "@/assets/products/ceramica-mini-cut-medio.png";
+import CeramicaMiniCutFino from "@/assets/products/ceramica-mini-cut-fino.png";
 
 // Map type names to images for diamond burs
 const diamondBurImages: Record<string, string> = {
@@ -81,6 +82,7 @@ const ceramicMaxiCutImages: Record<string, string> = {
 // Map type names to images for ceramic bur Mini Cut
 const ceramicMiniCutImages: Record<string, string> = {
   "corte cruzado médio": CeramicaMiniCutMedio,
+  "corte cruzado fino": CeramicaMiniCutFino,
 };
 
 interface CategoryTypeCardProps {
