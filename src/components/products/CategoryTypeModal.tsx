@@ -17,6 +17,10 @@ import LixaFormatoQuadrada from "@/assets/products/lixa-formato-quadrada.png";
 import LixaFormatoCaixao from "@/assets/products/lixa-formato-caixao.png";
 import LixaFormatoGota from "@/assets/products/lixa-formato-gota.png";
 
+// Cleaning brush images - Cerdas de Poliamida
+import EscovaPoliamidaRosa from "@/assets/products/escova-poliamida-rosa.png";
+import EscovaPoliamidaLilas from "@/assets/products/escova-poliamida-lilas.png";
+
 // Map sandpaper manual types to images
 const sandpaperManualImages: Record<string, string> = {
   "nails verde": LixaManualNailsVerde,
@@ -33,6 +37,12 @@ const sandpaperShapeImages: Record<string, string> = {
   "caixão": LixaFormatoCaixao,
   "gota": LixaFormatoGota,
   "base inox": LixaManualBaseInox,
+};
+
+// Map cleaning brush model colors to images
+const cleaningBrushModelImages: Record<string, string> = {
+  "rosa": EscovaPoliamidaRosa,
+  "lilás": EscovaPoliamidaLilas,
 };
 
 // Tungsten bur images by model number - Corte Cruzado Médio
@@ -413,8 +423,120 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
               />
             </div>
           )}
+
+          {/* Special Table for Cerdas de Poliamida */}
+          {categorySlug === 'escovas-limpeza' && typeName.toLowerCase().includes('cerdas de poliamida') ? (
+            <div className="min-w-max">
+              <table className="w-full border-collapse text-xs sm:text-sm">
+                <tbody>
+                  {/* MODELOS Row */}
+                  <tr style={{ backgroundColor: headerBgColor }}>
+                    <td 
+                      className="w-[80px] sm:w-[140px] px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm tracking-wider"
+                      style={{ color: headerTextColor }}
+                    >
+                      MODELOS
+                    </td>
+                    {products.map((product, idx) => (
+                      <td 
+                        key={idx}
+                        className="px-1 sm:px-2 py-2 sm:py-3 text-center font-bold min-w-[80px] sm:min-w-[120px] text-[10px] sm:text-sm"
+                        style={{ color: headerTextColor }}
+                      >
+                        {product.color?.toUpperCase() || '—'}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* IMAGEM Row - Display product images */}
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3" style={{ color: headerBgColor }}></td>
+                    {products.map((product, idx) => {
+                      const colorKey = product.color?.toLowerCase() || '';
+                      const productImage = cleaningBrushModelImages[colorKey];
+                      return (
+                        <td key={idx} className="px-1 sm:px-2 py-4 sm:py-6 text-center">
+                          {productImage && (
+                            <div className="flex justify-center">
+                              <img 
+                                src={productImage} 
+                                alt={product.color || 'Produto'} 
+                                className="max-h-[100px] sm:max-h-[140px] object-contain"
+                              />
+                            </div>
+                          )}
+                        </td>
+                      );
+                    })}
+                  </tr>
+
+                  {/* DIÂMETRO Row */}
+                  <tr style={{ backgroundColor: rowBgLight }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      DIÂMETRO ∅(MM)
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
+                        {product.diameter?.replace('mm', '') || '—'}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* COMPRIMENTO DE ÁREA ATIVA Row */}
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      <span className="block leading-tight">COMPRIMENTO DE</span>
+                      <span className="block leading-tight">ÁREA ATIVA ∅(MM)</span>
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
+                        {product.activeLength?.replace('mm', '') || '—'}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* COMPRIMENTO TOTAL Row */}
+                  <tr style={{ backgroundColor: rowBgLight }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      <span className="block leading-tight">COMPRIMENTO</span>
+                      <span className="block leading-tight">TOTAL</span>
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
+                        {(product as any).totalLength?.replace('mm', '') || '45,0'}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* CERDAS Row */}
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      CERDAS
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
+                        {(product as any).bristleType?.toUpperCase() || 'FINAS'}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* ISO Row */}
+                  <tr style={{ backgroundColor: rowBgLight }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      ISO
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
+                        {product.iso || product.code || '—'}
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          ) : (
           
-          {/* Catalog-Style Horizontal Table */}
+          /* Catalog-Style Horizontal Table */
           <div className="min-w-max">
             {/* Table Rows - Catalog Style */}
             <table className="w-full border-collapse text-xs sm:text-sm">
@@ -1095,6 +1217,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
               </tbody>
             </table>
           </div>
+          )}
 
           {/* Grain Legend - Only show for categories with grain */}
           {hasGrain && (
