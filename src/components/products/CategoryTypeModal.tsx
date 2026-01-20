@@ -65,6 +65,15 @@ import Fresa1571XEF from "@/assets/products/fresa-1571XEF.png";
 // Tungsten bur images - Mini Cut - Corte Cruzado Grosso
 import Fresa1503G1511G from "@/assets/products/fresa-1503G-1511G.png";
 
+// Ceramic bur images - Maxi Cut - Corte Cruzado Médio
+import FresaCeramica1508C from "@/assets/products/fresa-ceramica-1508C.png";
+import FresaCeramica1509C from "@/assets/products/fresa-ceramica-1509C.png";
+import FresaCeramica1510C from "@/assets/products/fresa-ceramica-1510C.png";
+import FresaCeramica1517C from "@/assets/products/fresa-ceramica-1517C.png";
+import FresaCeramica85C from "@/assets/products/fresa-ceramica-85C.png";
+import FresaCeramica95C from "@/assets/products/fresa-ceramica-95C.png";
+import FresaCeramica717C from "@/assets/products/fresa-ceramica-717C.png";
+
 // Map tungsten bur model numbers to their images
 const tungstenBurImages: Record<string, string> = {
   "1507": Fresa1507,
@@ -110,6 +119,17 @@ const tungstenBurImages: Record<string, string> = {
   "1511XEF": Fresa1511XEF,
   "1571XEF": Fresa1571XEF,
   "1503G/1511G": Fresa1503G1511G,
+};
+
+// Map ceramic bur model numbers to their images
+const ceramicBurImages: Record<string, string> = {
+  "1508C": FresaCeramica1508C,
+  "1509C": FresaCeramica1509C,
+  "1510C": FresaCeramica1510C,
+  "1517C": FresaCeramica1517C,
+  "85C": FresaCeramica85C,
+  "95C": FresaCeramica95C,
+  "717C": FresaCeramica717C,
 };
 
 interface Product {
@@ -692,6 +712,35 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                               <img 
                                 src={imageUrl} 
                                 alt={`Fresa ${modelNumber}`}
+                                className="max-h-[60px] sm:max-h-[80px] object-contain"
+                              />
+                            ) : (
+                              <div className="w-8 h-16 bg-gray-200 rounded" />
+                            )}
+                          </div>
+                        </td>
+                      );
+                    })}
+                  </tr>
+                )}
+
+                {/* IMAGE Row - For Fresas Cerâmica */}
+                {categorySlug === 'fresas-ceramica' && (
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3" style={{ color: headerBgColor }}></td>
+                    {products.map((product, idx) => {
+                      // Extract model number from product code (e.g., "500.004.1508C" -> "1508C")
+                      const modelMatch = product.code.match(/500\.004\.(.+)$/);
+                      const modelNumber = modelMatch ? modelMatch[1].toUpperCase() : product.model;
+                      const imageUrl = ceramicBurImages[modelNumber];
+                      
+                      return (
+                        <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
+                          <div className="flex justify-center">
+                            {imageUrl ? (
+                              <img 
+                                src={imageUrl} 
+                                alt={`Fresa Cerâmica ${modelNumber}`}
                                 className="max-h-[60px] sm:max-h-[80px] object-contain"
                               />
                             ) : (

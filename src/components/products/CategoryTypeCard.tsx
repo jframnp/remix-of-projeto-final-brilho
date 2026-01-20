@@ -26,6 +26,9 @@ import MiniCutFino from "@/assets/products/mini-cut-fino.png";
 import MiniCutExtraFino from "@/assets/products/mini-cut-extra-fino.png";
 import MiniCutGrosso from "@/assets/products/mini-cut-grosso.png";
 
+// Import ceramic bur Maxi Cut type images
+import CeramicaMaxiCutMedio from "@/assets/products/ceramica-maxi-cut-medio.png";
+
 // Map type names to images for diamond burs
 const diamondBurImages: Record<string, string> = {
   "cônica topo invertido": BrocaConicaInvertida,
@@ -59,6 +62,11 @@ const tungstenMiniCutImages: Record<string, string> = {
   "corte cruzado fino": MiniCutFino,
   "corte cruzado extra fino": MiniCutExtraFino,
   "corte cruzado grosso": MiniCutGrosso,
+};
+
+// Map type names to images for ceramic bur Maxi Cut
+const ceramicMaxiCutImages: Record<string, string> = {
+  "corte cruzado médio": CeramicaMaxiCutMedio,
 };
 
 interface CategoryTypeCardProps {
@@ -97,6 +105,10 @@ const CategoryTypeCard = ({ typeName, image, productCount, onClick, isGold = fal
     if (categorySlug === "fresas-tungstenio" && subcategoryName === "Mini Cut") {
       const normalizedTypeName = typeName.toLowerCase().trim();
       return tungstenMiniCutImages[normalizedTypeName] || image;
+    }
+    if (categorySlug === "fresas-ceramica" && subcategoryName === "Maxi Cut") {
+      const normalizedTypeName = typeName.toLowerCase().trim();
+      return ceramicMaxiCutImages[normalizedTypeName] || image;
     }
     return image;
   };
