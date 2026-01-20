@@ -55,13 +55,6 @@ const Produtos = () => {
       color: "from-red-600 to-red-800"
     },
     { 
-      key: "goldLine", 
-      path: "/produtos/linha-gold", 
-      badge: "PREMIUM",
-      icon: <Sparkles className="w-10 h-10" />,
-      color: "from-yellow-500 to-amber-600"
-    },
-    { 
       key: "tungstenBurs", 
       path: "/produtos/fresas-tungstenio", 
       badge: null,
