@@ -30,11 +30,11 @@ import PolidoraCinza from "@/assets/products/polidora-cinza.png";
 import PolidoraAzul from "@/assets/products/polidora-azul.png";
 // Sandpaper images
 import LixaTubular from "@/assets/products/lixa-tubular.png";
-import LixaNailsVerde from "@/assets/products/lixa-nails-verde.png";
-import LixaNailsBranca from "@/assets/products/lixa-nails-branca.png";
-import LixaBoomerangWhiteFina from "@/assets/products/lixa-boomerang-white-fina.png";
-import LixaNailsDescartavel from "@/assets/products/lixa-nails-descartavel-branca.png";
-import BaseInoxBoomerang from "@/assets/products/base-inox-boomerang.png";
+import LixaManualNailsVerde from "@/assets/products/lixa-manual-nails-verde.png";
+import LixaManualNailsBranca from "@/assets/products/lixa-manual-nails-branca.png";
+import LixaManualWhiteFina from "@/assets/products/lixa-manual-white-fina.png";
+import LixaManualDescartavelBranca from "@/assets/products/lixa-manual-descartavel-branca.png";
+import LixaManualBaseInox from "@/assets/products/lixa-manual-base-inox.png";
 
 // Product data based on PDF catalog - exact specs
 const productData: Record<string, {
@@ -302,24 +302,24 @@ const productData: Record<string, {
     },
     products: [
       // NAILS VERDE - Alta Performance
-      { model: "Boomerang", code: "500.0015.01", diameter: "3,0mm", grain: "180/100", activeLength: "18,0mm", subcategory: "Lixas Manuais", image: LixaNailsVerde, cut: "Nails Verde" },
+      { model: "Boomerang", code: "500.0015.01", diameter: "3,0mm", grain: "180/100", activeLength: "18,0mm", subcategory: "Lixas Manuais", image: LixaManualNailsVerde, cut: "Nails Verde" },
       { model: "Quadrada", code: "500.0015.02", diameter: "2,8mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais", cut: "Nails Verde" },
       { model: "Caixão", code: "500.0015.03", diameter: "2,5mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais", cut: "Nails Verde" },
       { model: "Gota", code: "500.0015.004", diameter: "3,0mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais", cut: "Nails Verde" },
       // NAILS BRANCA
-      { model: "Boomerang", code: "500.0015.05", diameter: "3,0mm", grain: "180/100", activeLength: "18,0mm", subcategory: "Lixas Manuais", image: LixaNailsBranca, cut: "Nails Branca" },
+      { model: "Boomerang", code: "500.0015.05", diameter: "3,0mm", grain: "180/100", activeLength: "18,0mm", subcategory: "Lixas Manuais", image: LixaManualNailsBranca, cut: "Nails Branca" },
       { model: "Quadrada", code: "500.009.06", diameter: "2,8mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais", cut: "Nails Branca" },
       { model: "Caixão", code: "500.009.07", diameter: "2,5mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais", cut: "Nails Branca" },
       { model: "Gota", code: "500.009.08", diameter: "3,0mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais", cut: "Nails Branca" },
       // WHITE FINA 2MM
-      { model: "Boomerang", code: "500.009.09", diameter: "3,0mm", grain: "180/100", activeLength: "18,0mm", subcategory: "Lixas Manuais", image: LixaBoomerangWhiteFina, cut: "White Fina 2mm" },
+      { model: "Boomerang", code: "500.009.09", diameter: "3,0mm", grain: "180/100", activeLength: "18,0mm", subcategory: "Lixas Manuais", image: LixaManualWhiteFina, cut: "White Fina 2mm" },
       { model: "Quadrada", code: "500.009.10", diameter: "2,8mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais", cut: "White Fina 2mm" },
       { model: "Caixão", code: "500.009.11", diameter: "2,5mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais", cut: "White Fina 2mm" },
       { model: "Gota", code: "500.009.12", diameter: "3,0mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais", cut: "White Fina 2mm" },
       // DESCARTÁVEL BRANCA
-      { model: "Boomerang", code: "500.012.073", diameter: "3,0mm", grain: "180/100", activeLength: "18,0mm", subcategory: "Lixas Manuais", image: LixaNailsDescartavel, cut: "Descartável Branca" },
+      { model: "Boomerang", code: "500.012.073", diameter: "3,0mm", grain: "180/100", activeLength: "18,0mm", subcategory: "Lixas Manuais", image: LixaManualDescartavelBranca, cut: "Descartável Branca" },
       // BASE INOX REFIL BOOMERANG
-      { model: "Base Inox", code: "500.009.05", diameter: "---", grain: "---", activeLength: "17,5mm", subcategory: "Lixas Manuais", image: BaseInoxBoomerang, cut: "Base Inox Refil" },
+      { model: "Base Inox", code: "500.009.05", diameter: "---", grain: "---", activeLength: "17,5mm", subcategory: "Lixas Manuais", image: LixaManualBaseInox, cut: "Base Inox Refil" },
       // Lixas com Mandril - LAMINAR
       { model: "Laminar Premium (Norton)", code: "500.012.14", diameter: "23,00mm", grain: "100/120/150/180/220/320/400/600", activeLength: "0,15mm", subcategory: "Lixas com Mandril" },
       { model: "Laminar (Alcar)", code: "500.012.20", diameter: "17,00mm", grain: "100/120/150/180/220/320/400/600", activeLength: "0,10mm", subcategory: "Lixas com Mandril" },
