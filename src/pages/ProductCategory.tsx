@@ -30,6 +30,11 @@ import PolidoraCinza from "@/assets/products/polidora-cinza.png";
 import PolidoraAzul from "@/assets/products/polidora-azul.png";
 // Sandpaper images
 import LixaTubular from "@/assets/products/lixa-tubular.png";
+import LixaNailsVerde from "@/assets/products/lixa-nails-verde.png";
+import LixaNailsBranca from "@/assets/products/lixa-nails-branca.png";
+import LixaBoomerangWhiteFina from "@/assets/products/lixa-boomerang-white-fina.png";
+import LixaNailsDescartavel from "@/assets/products/lixa-nails-descartavel-branca.png";
+import BaseInoxBoomerang from "@/assets/products/base-inox-boomerang.png";
 
 // Product data based on PDF catalog - exact specs
 const productData: Record<string, {
@@ -278,11 +283,11 @@ const productData: Record<string, {
     ]
   },
   "lixas": {
-    subtypes: ["Gota", "Boomerang", "Quadrada", "Caixão", "Laminar", "Plantar", "Tubular", "Adesiva"],
+    subtypes: ["Nails Verde", "Nails Branca", "White Fina 2mm", "Descartável Branca", "Base Inox Refil", "Laminar", "Plantar", "Tubular", "Adesiva"],
     subcategories: {
       "Lixas Manuais": {
         description: "Lixas tradicionais para nail design - formatos ergonômicos para acabamento perfeito",
-        types: ["Gota", "Boomerang", "Quadrada", "Caixão"]
+        types: ["Nails Verde", "Nails Branca", "White Fina 2mm", "Descartável Branca", "Base Inox Refil"]
       },
       "Lixas com Mandril": {
         description: "Lixas para uso com motor/mandril - ideais para podologia e procedimentos profissionais",
@@ -296,30 +301,25 @@ const productData: Record<string, {
       en: "High-quality professional files for podiatry and nail design. Available in various grits and shapes for different applications."
     },
     products: [
-      // GOTA - Branca
-      { model: "Gota Branca", code: "500.009.08", diameter: "3,0mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais" },
-      // GOTA - Green (Alta Performance)
-      { model: "Gota Green", code: "500.0015.004", diameter: "3,0mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais" },
-      // GOTA - Fina (2mm)
-      { model: "Gota Fina", code: "500.009.12", diameter: "3,0mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais" },
-      // BOOMERANG - Branca
-      { model: "Boomerang Branca", code: "500.0015.05", diameter: "3,0mm", grain: "180/100", activeLength: "18,0mm", subcategory: "Lixas Manuais" },
-      // BOOMERANG - Green (Alta Performance)
-      { model: "Boomerang Green", code: "500.0015.01", diameter: "3,0mm", grain: "180/100", activeLength: "18,0mm", subcategory: "Lixas Manuais" },
-      // BOOMERANG - Fina (2mm)
-      { model: "Boomerang Fina", code: "500.009.09", diameter: "3,0mm", grain: "180/100", activeLength: "18,0mm", subcategory: "Lixas Manuais" },
-      // QUADRADA - Branca
-      { model: "Quadrada Branca", code: "500.009.06", diameter: "2,8mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais" },
-      // QUADRADA - Green (Alta Performance)
-      { model: "Quadrada Green", code: "500.0015.02", diameter: "2,8mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais" },
-      // QUADRADA - Fina (2mm)
-      { model: "Quadrada Fina", code: "500.009.10", diameter: "2,8mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais" },
-      // CAIXÃO - Branca
-      { model: "Caixão Branca", code: "500.009.07", diameter: "2,5mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais" },
-      // CAIXÃO - Green (Alta Performance)
-      { model: "Caixão Green", code: "500.0015.03", diameter: "2,5mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais" },
-      // CAIXÃO - Fina (2mm)
-      { model: "Caixão Fina", code: "500.009.11", diameter: "2,5mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais" },
+      // NAILS VERDE - Alta Performance
+      { model: "Boomerang", code: "500.0015.01", diameter: "3,0mm", grain: "180/100", activeLength: "18,0mm", subcategory: "Lixas Manuais", image: LixaNailsVerde, cut: "Nails Verde" },
+      { model: "Quadrada", code: "500.0015.02", diameter: "2,8mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais", cut: "Nails Verde" },
+      { model: "Caixão", code: "500.0015.03", diameter: "2,5mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais", cut: "Nails Verde" },
+      { model: "Gota", code: "500.0015.004", diameter: "3,0mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais", cut: "Nails Verde" },
+      // NAILS BRANCA
+      { model: "Boomerang", code: "500.0015.05", diameter: "3,0mm", grain: "180/100", activeLength: "18,0mm", subcategory: "Lixas Manuais", image: LixaNailsBranca, cut: "Nails Branca" },
+      { model: "Quadrada", code: "500.009.06", diameter: "2,8mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais", cut: "Nails Branca" },
+      { model: "Caixão", code: "500.009.07", diameter: "2,5mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais", cut: "Nails Branca" },
+      { model: "Gota", code: "500.009.08", diameter: "3,0mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais", cut: "Nails Branca" },
+      // WHITE FINA 2MM
+      { model: "Boomerang", code: "500.009.09", diameter: "3,0mm", grain: "180/100", activeLength: "18,0mm", subcategory: "Lixas Manuais", image: LixaBoomerangWhiteFina, cut: "White Fina 2mm" },
+      { model: "Quadrada", code: "500.009.10", diameter: "2,8mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais", cut: "White Fina 2mm" },
+      { model: "Caixão", code: "500.009.11", diameter: "2,5mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais", cut: "White Fina 2mm" },
+      { model: "Gota", code: "500.009.12", diameter: "3,0mm", grain: "180/100", activeLength: "17,5mm", subcategory: "Lixas Manuais", cut: "White Fina 2mm" },
+      // DESCARTÁVEL BRANCA
+      { model: "Boomerang", code: "500.012.073", diameter: "3,0mm", grain: "180/100", activeLength: "18,0mm", subcategory: "Lixas Manuais", image: LixaNailsDescartavel, cut: "Descartável Branca" },
+      // BASE INOX REFIL BOOMERANG
+      { model: "Base Inox", code: "500.009.05", diameter: "---", grain: "---", activeLength: "17,5mm", subcategory: "Lixas Manuais", image: BaseInoxBoomerang, cut: "Base Inox Refil" },
       // Lixas com Mandril - LAMINAR
       { model: "Laminar Premium (Norton)", code: "500.012.14", diameter: "23,00mm", grain: "100/120/150/180/220/320/400/600", activeLength: "0,15mm", subcategory: "Lixas com Mandril" },
       { model: "Laminar (Alcar)", code: "500.012.20", diameter: "17,00mm", grain: "100/120/150/180/220/320/400/600", activeLength: "0,10mm", subcategory: "Lixas com Mandril" },
@@ -621,7 +621,12 @@ const ProductCategory = () => {
 
   // Get products for selected type, filtered by grain and subcategory if active
   const getProductsForType = (typeName: string, subcategory?: string | null) => {
-    let products = data?.products.filter(p => p.model.startsWith(typeName)) || [];
+    let products = data?.products.filter(p => {
+      // For lixas manuais, use the 'cut' field for filtering
+      if (p.cut) return p.cut === typeName;
+      // Otherwise use model matching
+      return p.model.startsWith(typeName);
+    }) || [];
     
     // Filter by subcategory if provided (for Maxi Cut / Mini Cut distinction)
     if (subcategory) {
@@ -738,9 +743,14 @@ const ProductCategory = () => {
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
                       {subcatData.types.map((typeName, idx) => {
                         // Filter products by both type AND subcategory
-                        const typeProducts = data.products.filter(p => 
-                          p.model.startsWith(typeName) && p.subcategory === subcatName
-                        );
+                        // For lixas manuais, use the 'cut' field for filtering
+                        const typeProducts = data.products.filter(p => {
+                          if (p.subcategory !== subcatName) return false;
+                          // For lixas manuais, check the 'cut' field
+                          if (p.cut) return p.cut === typeName;
+                          // Otherwise fall back to model matching
+                          return p.model.startsWith(typeName);
+                        });
                         return (
                           <div
                             key={typeName}
