@@ -83,6 +83,8 @@ import LixaManualNailsBranca from "@/assets/products/lixa-manual-nails-branca.pn
 import LixaManualWhiteFina from "@/assets/products/lixa-manual-white-fina.png";
 import LixaManualDescartavelBranca from "@/assets/products/lixa-manual-descartavel-branca.png";
 import LixaManualBaseInox from "@/assets/products/lixa-manual-base-inox.png";
+// Fibra Molecular image
+import FibraMolecularProduct from "@/assets/products/fibra-molecular-product.png";
 
 // Product data based on PDF catalog - exact specs
 const productData: Record<string, {
@@ -471,12 +473,12 @@ const productData: Record<string, {
     },
     products: [
       // FIBRA MOLECULAR - 6 variations based on width
-      { model: "Fibra Molecular", code: "500.013.04", diameter: "0,16", activeLength: "10", totalLength: "120", iso: "3", subtype: "fibra" },
-      { model: "Fibra Molecular", code: "500.013.05", diameter: "0,18", activeLength: "10", totalLength: "120", iso: "3", subtype: "fibra" },
-      { model: "Fibra Molecular", code: "500.013.01", diameter: "0,20", activeLength: "10", totalLength: "120", iso: "3", subtype: "fibra" },
-      { model: "Fibra Molecular", code: "500.013.02", diameter: "0,22", activeLength: "10", totalLength: "120", iso: "3", subtype: "fibra" },
-      { model: "Fibra Molecular", code: "500.013.03", diameter: "0,25", activeLength: "10", totalLength: "120", iso: "3", subtype: "fibra" },
-      { model: "Fibra Molecular", code: "500.013.06", diameter: "0,30", activeLength: "10", totalLength: "120", iso: "3", subtype: "fibra" },
+      { model: "Fibra Molecular", code: "500.013.04", diameter: "0,16", activeLength: "10", totalLength: "120", iso: "3", subtype: "fibra", image: FibraMolecularProduct },
+      { model: "Fibra Molecular", code: "500.013.05", diameter: "0,18", activeLength: "10", totalLength: "120", iso: "3", subtype: "fibra", image: FibraMolecularProduct },
+      { model: "Fibra Molecular", code: "500.013.01", diameter: "0,20", activeLength: "10", totalLength: "120", iso: "3", subtype: "fibra", image: FibraMolecularProduct },
+      { model: "Fibra Molecular", code: "500.013.02", diameter: "0,22", activeLength: "10", totalLength: "120", iso: "3", subtype: "fibra", image: FibraMolecularProduct },
+      { model: "Fibra Molecular", code: "500.013.03", diameter: "0,25", activeLength: "10", totalLength: "120", iso: "3", subtype: "fibra", image: FibraMolecularProduct },
+      { model: "Fibra Molecular", code: "500.013.06", diameter: "0,30", activeLength: "10", totalLength: "120", iso: "3", subtype: "fibra", image: FibraMolecularProduct },
       // ENUCLEADORA DE CALOS DE AÇO INOXIDÁVEL - 3 sizes P, M, G
       { model: "Enucleadora", code: "500.004.01", diameter: "2,00", activeLength: "7,00", totalLength: "44,50", iso: "2,35", subtype: "P" },
       { model: "Enucleadora", code: "500.004.02", diameter: "2,30", activeLength: "7,50", totalLength: "44,50", iso: "2,35", subtype: "M" },
