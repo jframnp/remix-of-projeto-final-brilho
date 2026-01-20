@@ -24,13 +24,6 @@ const Contato = () => {
 
   const contactMethods = [
     {
-      icon: <Phone className="w-6 h-6" />,
-      title: t("contact.phone", "Telefone"),
-      value: "(11) 3931-6343",
-      href: "tel:+551139316343",
-      color: "from-blue-500 to-blue-600"
-    },
-    {
       icon: <MessageCircle className="w-6 h-6" />,
       title: t("contact.whatsapp", "WhatsApp"),
       value: "(11) 94010-1807",

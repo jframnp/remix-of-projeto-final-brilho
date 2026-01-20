@@ -124,23 +124,13 @@ const Footer = () => {
               <p>São Paulo – SP – 05508-020</p>
             </div>
 
-            {/* Phones */}
+            {/* WhatsApp */}
             <h3 className="text-[#EEEEEE] font-montserrat font-bold text-base sm:text-lg mb-3 sm:mb-6 tracking-wider">
-              {t("footer.phonesTitle", "TELEFONES")}
+              WHATSAPP
             </h3>
             <div className="text-[#EEEEEE]/90 font-inter text-sm sm:text-base leading-relaxed mb-6 sm:mb-8 space-y-1 sm:space-y-2">
-              <p>
-                <a href="tel:+551139316343" className="hover:text-[#EEEEEE] transition-colors hover:underline">
-                  (11) 3931-6343
-                </a>
-              </p>
-              <p>
-                <a href="tel:+551138316943" className="hover:text-[#EEEEEE] transition-colors hover:underline">
-                  (11) 3831-6943
-                </a>
-              </p>
               <p className="flex items-center justify-center sm:justify-start gap-2">
-                <span className="text-green-500">WhatsApp:</span>
+                <span className="text-green-500">📱</span>
                 <a 
                   href="https://wa.me/5511940101807" 
                   target="_blank" 
@@ -151,7 +141,7 @@ const Footer = () => {
                 </a>
               </p>
               <p className="flex items-center justify-center sm:justify-start gap-2">
-                <span className="text-green-500">WhatsApp:</span>
+                <span className="text-green-500">📱</span>
                 <a 
                   href="https://wa.me/5511983304765" 
                   target="_blank" 
