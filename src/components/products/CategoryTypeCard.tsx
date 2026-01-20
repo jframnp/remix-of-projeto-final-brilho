@@ -60,6 +60,10 @@ import FibraMolecular from "@/assets/products/fibra-molecular.png";
 import Enucleadora from "@/assets/products/enucleadora.png";
 import MandrilPM from "@/assets/products/mandril-pm.png";
 
+// Import apoio lixas/afiação type images
+import ApoioLixasPodologia from "@/assets/products/apoio-lixas-podologia.png";
+import AfiacaoInstrumentos from "@/assets/products/afiacao-instrumentos.png";
+
 // Map type names to images for diamond burs
 const diamondBurImages: Record<string, string> = {
   "cônica topo invertido": BrocaConicaInvertida,
@@ -141,6 +145,12 @@ const fiberMandrilImages: Record<string, string> = {
   "mandril pm": MandrilPM,
 };
 
+// Map type names to images for apoio lixas/afiação
+const apoioAfiacaoImages: Record<string, string> = {
+  "apoio para lixas de podologia": ApoioLixasPodologia,
+  "afiação de instrumentos": AfiacaoInstrumentos,
+};
+
 interface CategoryTypeCardProps {
   typeName: string;
   image?: string;
@@ -201,6 +211,10 @@ const CategoryTypeCard = ({ typeName, image, productCount, onClick, isGold = fal
     if (categorySlug === "fibras-enucleadora-mandril") {
       const normalizedTypeName = typeName.toLowerCase().trim();
       return fiberMandrilImages[normalizedTypeName] || image;
+    }
+    if (categorySlug === "apoio-lixas-afiacao") {
+      const normalizedTypeName = typeName.toLowerCase().trim();
+      return apoioAfiacaoImages[normalizedTypeName] || image;
     }
     return image;
   };

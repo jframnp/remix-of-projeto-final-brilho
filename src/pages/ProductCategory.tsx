@@ -449,7 +449,7 @@ const productData: Record<string, {
     ]
   },
   "apoio-lixas-afiacao": {
-    subtypes: ["Apoio Rígido", "Apoio Flexível", "Disco Afiação", "Pasta Polimento"],
+    subtypes: ["Apoio para Lixas de Podologia", "Afiação de Instrumentos"],
     titlePt: "APOIO PARA LIXAS E AFIAÇÃO",
     titleEn: "FILE SUPPORTS & SHARPENING",
     description: {
@@ -457,21 +457,18 @@ const productData: Record<string, {
       en: "File supports and professional sharpening materials. Ensure precision and safety in procedures."
     },
     products: [
-      // APOIO RÍGIDO
-      { model: "Apoio Rígido", code: "AL-ARP-01", diameter: "25mm" },
-      { model: "Apoio Rígido", code: "AL-ARL-01", diameter: "15mm" },
-      { model: "Apoio Rígido", code: "AL-ARL-02", diameter: "20mm" },
-      // APOIO FLEXÍVEL
-      { model: "Apoio Flexível", code: "AL-AFP-01", diameter: "25mm" },
-      { model: "Apoio Flexível", code: "AL-AFL-01", diameter: "15mm" },
-      { model: "Apoio Flexível", code: "AL-AFL-02", diameter: "20mm" },
-      // DISCO AFIAÇÃO
-      { model: "Disco Afiação", code: "AL-DCA-01", diameter: "75mm" },
-      { model: "Disco Afiação", code: "AL-DAB-01", diameter: "75mm" },
-      { model: "Disco Afiação", code: "AL-DAB-02", diameter: "100mm" },
-      // PASTA POLIMENTO
-      { model: "Pasta Polimento", code: "AL-PP-01", diameter: "N/A" },
-      { model: "Pasta Polimento", code: "AL-PP-02", diameter: "N/A" },
+      // APOIO PARA LIXAS DE PODOLOGIA - RÍGIDO FIBRA GLASS
+      { model: "Apoio para Lixas de Podologia", code: "500.013.07", diameter: "16/29", activeLength: "0,30", iso: "3", subtype: "Rígido Fibra Glass" },
+      // APOIO PARA LIXAS DE PODOLOGIA - FLEXÍVEL SILICONE
+      { model: "Apoio para Lixas de Podologia", code: "500.012.32", diameter: "16/29", activeLength: "1,00", iso: "3", subtype: "Flexível Silicone" },
+      // AFIAÇÃO DE INSTRUMENTOS - DISCO COURO
+      { model: "Afiação de Instrumentos", code: "500.008.12", diameter: "44,00", activeLength: "4,00", iso: "1", subtype: "Disco Couro" },
+      // AFIAÇÃO DE INSTRUMENTOS - DISCO ABRASIVO
+      { model: "Afiação de Instrumentos", code: "500.008.13", diameter: "34,00", activeLength: "1,40", iso: "1", subtype: "Disco Abrasivo" },
+      // AFIAÇÃO DE INSTRUMENTOS - PASTA DE POLIMENTO
+      { model: "Afiação de Instrumentos", code: "500.007.11", diameter: "5 GRAMAS", activeLength: "", iso: "1", subtype: "Pasta de Polimento" },
+      // AFIAÇÃO DE INSTRUMENTOS - MANDRIL STANDART
+      { model: "Afiação de Instrumentos", code: "500.009.01", diameter: "4,50", activeLength: "", iso: "1", subtype: "Mandril Standart" },
     ]
   },
   "linha-gold": {
