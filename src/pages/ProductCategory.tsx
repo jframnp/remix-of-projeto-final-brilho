@@ -35,6 +35,14 @@ import PolidoraTorpedo70701 from "@/assets/products/polidora-torpedo-70701.png";
 import PolidoraTorpedo70201 from "@/assets/products/polidora-torpedo-70201.png";
 import PolidoraTorpedo70301 from "@/assets/products/polidora-torpedo-70301.png";
 import PolidoraTorpedo70601 from "@/assets/products/polidora-torpedo-70601.png";
+// Torpedo Grande polisher images by code
+import PolidoraTorpedo70102 from "@/assets/products/polidora-torpedo-70102.png";
+import PolidoraTorpedo70502 from "@/assets/products/polidora-torpedo-70502.png";
+import PolidoraTorpedo70702 from "@/assets/products/polidora-torpedo-70702.png";
+import PolidoraTorpedo70202 from "@/assets/products/polidora-torpedo-70202.png";
+import PolidoraTorpedo70302 from "@/assets/products/polidora-torpedo-70302.png";
+import PolidoraTorpedo70602 from "@/assets/products/polidora-torpedo-70602.png";
+import PolidoraTorpedo70402 from "@/assets/products/polidora-torpedo-70402.png";
 // Sandpaper images
 import LixaTubular from "@/assets/products/lixa-tubular.png";
 import LixaManualNailsVerde from "@/assets/products/lixa-manual-nails-verde.png";
@@ -361,13 +369,13 @@ const productData: Record<string, {
       { model: "Polidora Torpedo Ogival", code: "500.008.70601", diameter: "10,0mm", grain: "Extra Fino", color: "Amarelo", activeLength: "24,0mm", image: PolidoraTorpedo70601 },
       { model: "Polidora Torpedo Ogival", code: "500.008.70401", diameter: "10,0mm", grain: "Ultra Fino", color: "Lilás", activeLength: "24,0mm" },
       // POLIDORA TORPEDO GRANDE
-      { model: "Polidora Torpedo Grande", code: "500.008.70102", diameter: "12,0mm", grain: "Extra Grosso", color: "Marrom", activeLength: "28,0mm" },
-      { model: "Polidora Torpedo Grande", code: "500.008.70502", diameter: "12,0mm", grain: "Grosso", color: "Cinza", activeLength: "28,0mm" },
-      { model: "Polidora Torpedo Grande", code: "500.008.70702", diameter: "12,0mm", grain: "Médio-Grosso", color: "Branco", activeLength: "28,0mm" },
-      { model: "Polidora Torpedo Grande", code: "500.008.70202", diameter: "12,0mm", grain: "Médio", color: "Verde", activeLength: "28,0mm" },
-      { model: "Polidora Torpedo Grande", code: "500.008.70302", diameter: "12,0mm", grain: "Fino", color: "Azul", activeLength: "28,0mm" },
-      { model: "Polidora Torpedo Grande", code: "500.008.70602", diameter: "12,0mm", grain: "Extra Fino", color: "Amarelo", activeLength: "28,0mm" },
-      { model: "Polidora Torpedo Grande", code: "500.008.70402", diameter: "12,0mm", grain: "Ultra Fino", color: "Lilás", activeLength: "28,0mm" },
+      { model: "Polidora Torpedo Grande", code: "500.008.70102", diameter: "12,0mm", grain: "Extra Grosso", color: "Marrom", activeLength: "28,0mm", image: PolidoraTorpedo70102 },
+      { model: "Polidora Torpedo Grande", code: "500.008.70502", diameter: "12,0mm", grain: "Grosso", color: "Cinza", activeLength: "28,0mm", image: PolidoraTorpedo70502 },
+      { model: "Polidora Torpedo Grande", code: "500.008.70702", diameter: "12,0mm", grain: "Médio-Grosso", color: "Branco", activeLength: "28,0mm", image: PolidoraTorpedo70702 },
+      { model: "Polidora Torpedo Grande", code: "500.008.70202", diameter: "12,0mm", grain: "Médio", color: "Verde", activeLength: "28,0mm", image: PolidoraTorpedo70202 },
+      { model: "Polidora Torpedo Grande", code: "500.008.70302", diameter: "12,0mm", grain: "Fino", color: "Azul", activeLength: "28,0mm", image: PolidoraTorpedo70302 },
+      { model: "Polidora Torpedo Grande", code: "500.008.70602", diameter: "12,0mm", grain: "Extra Fino", color: "Amarelo", activeLength: "28,0mm", image: PolidoraTorpedo70602 },
+      { model: "Polidora Torpedo Grande", code: "500.008.70402", diameter: "12,0mm", grain: "Ultra Fino", color: "Lilás", activeLength: "28,0mm", image: PolidoraTorpedo70402 },
       // POLIDORA TORPEDO MÉDIA
       { model: "Polidora Torpedo Média", code: "500.008.70103", diameter: "8,0mm", grain: "Extra Grosso", color: "Marrom", activeLength: "20,0mm" },
       { model: "Polidora Torpedo Média", code: "500.008.70503", diameter: "8,0mm", grain: "Grosso", color: "Cinza", activeLength: "20,0mm" },
