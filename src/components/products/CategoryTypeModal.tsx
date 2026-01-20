@@ -74,6 +74,15 @@ import FresaCeramica85C from "@/assets/products/fresa-ceramica-85C.png";
 import FresaCeramica95C from "@/assets/products/fresa-ceramica-95C.png";
 import FresaCeramica717C from "@/assets/products/fresa-ceramica-717C.png";
 
+// Ceramic bur images - Maxi Cut - Corte Cruzado Fino
+import FresaCeramica1508CF from "@/assets/products/fresa-ceramica-1508CF.png";
+import FresaCeramica1509CF from "@/assets/products/fresa-ceramica-1509CF.png";
+import FresaCeramica1510CF from "@/assets/products/fresa-ceramica-1510CF.png";
+import FresaCeramica1517CF from "@/assets/products/fresa-ceramica-1517CF.png";
+import FresaCeramica85CF from "@/assets/products/fresa-ceramica-85CF.png";
+import FresaCeramica95CF from "@/assets/products/fresa-ceramica-95CF.png";
+import FresaCeramica717CF from "@/assets/products/fresa-ceramica-717CF.png";
+
 // Map tungsten bur model numbers to their images
 const tungstenBurImages: Record<string, string> = {
   "1507": Fresa1507,
@@ -130,6 +139,13 @@ const ceramicBurImages: Record<string, string> = {
   "85C": FresaCeramica85C,
   "95C": FresaCeramica95C,
   "717C": FresaCeramica717C,
+  "1508CF": FresaCeramica1508CF,
+  "1509CF": FresaCeramica1509CF,
+  "1510CF": FresaCeramica1510CF,
+  "1517CF": FresaCeramica1517CF,
+  "85CF": FresaCeramica85CF,
+  "95CF": FresaCeramica95CF,
+  "717CF": FresaCeramica717CF,
 };
 
 interface Product {
