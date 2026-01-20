@@ -3,6 +3,8 @@ import { X, Download, MessageCircle } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader } from "@/components/ui/dialog";
 import LixaTubular from "@/assets/products/lixa-tubular.png";
 import LixaAdesiva from "@/assets/products/lixa-adesiva-circular.png";
+// Fibra Molecular product image
+import FibraMolecularProduct from "@/assets/products/fibra-molecular-product.png";
 
 // Torpedo polisher images by code suffix
 import PolidoraTorpedo70101 from "@/assets/products/polidora-torpedo-70101.png";
@@ -770,21 +772,24 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
             <div className="min-w-max">
               <table className="w-full border-collapse text-xs sm:text-sm">
                 <tbody>
-                  {/* MODELOS Row - Empty for Fibra, shows variation numbers */}
-                  <tr style={{ backgroundColor: headerBgColor }}>
+                  {/* IMAGE Row - Shows product images */}
+                  <tr style={{ backgroundColor: '#ffffff' }}>
                     <td 
                       className="w-[80px] sm:w-[140px] px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm tracking-wider"
-                      style={{ color: headerTextColor }}
+                      style={{ color: headerBgColor }}
                     >
                       
                     </td>
-                    {products.map((_, idx) => (
+                    {products.map((product, idx) => (
                       <td 
                         key={idx}
-                        className="px-1 sm:px-2 py-2 sm:py-3 text-center font-bold min-w-[60px] sm:min-w-[80px] text-[10px] sm:text-sm"
-                        style={{ color: headerTextColor }}
+                        className="px-1 sm:px-2 py-2 sm:py-3 text-center min-w-[60px] sm:min-w-[80px]"
                       >
-                        
+                        <img 
+                          src={product.image || FibraMolecularProduct} 
+                          alt={`Fibra ${product.diameter}`}
+                          className="h-[60px] sm:h-[80px] w-auto mx-auto object-contain"
+                        />
                       </td>
                     ))}
                   </tr>
