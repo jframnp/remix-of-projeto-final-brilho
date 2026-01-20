@@ -21,6 +21,11 @@ import LixaFormatoGota from "@/assets/products/lixa-formato-gota.png";
 import EscovaPoliamidaRosa from "@/assets/products/escova-poliamida-rosa.png";
 import EscovaPoliamidaLilas from "@/assets/products/escova-poliamida-lilas.png";
 
+// Cleaning brush images - Brocas Polidoras
+import BrocaLimpezaAco from "@/assets/products/broca-limpeza-aco.png";
+import EsponjaPolidora from "@/assets/products/esponja-polidora.png";
+import EsponjaFeltro from "@/assets/products/esponja-feltro.png";
+
 // Map sandpaper manual types to images
 const sandpaperManualImages: Record<string, string> = {
   "nails verde": LixaManualNailsVerde,
@@ -43,6 +48,13 @@ const sandpaperShapeImages: Record<string, string> = {
 const cleaningBrushModelImages: Record<string, string> = {
   "rosa": EscovaPoliamidaRosa,
   "lilás": EscovaPoliamidaLilas,
+};
+
+// Map polishing brush model subtypes to images
+const polishingBrushImages: Record<string, string> = {
+  "broca de limpeza": BrocaLimpezaAco,
+  "esponja polidora": EsponjaPolidora,
+  "esponja feltro": EsponjaFeltro,
 };
 
 // Tungsten bur images by model number - Corte Cruzado Médio
@@ -528,6 +540,129 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
                         {product.iso || product.code || '—'}
+                      </td>
+                    ))}
+                    </tr>
+                </tbody>
+              </table>
+            </div>
+          ) : categorySlug === 'escovas-limpeza' && typeName.toLowerCase().includes('brocas polidoras') ? (
+            /* Special Table for Brocas Polidoras */
+            <div className="min-w-max">
+              <table className="w-full border-collapse text-xs sm:text-sm">
+                <tbody>
+                  {/* MODELOS Row */}
+                  <tr style={{ backgroundColor: headerBgColor }}>
+                    <td 
+                      className="w-[80px] sm:w-[140px] px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm tracking-wider"
+                      style={{ color: headerTextColor }}
+                    >
+                      MODELOS
+                    </td>
+                    {products.map((product, idx) => (
+                      <td 
+                        key={idx}
+                        className="px-1 sm:px-2 py-2 sm:py-3 text-center font-bold min-w-[80px] sm:min-w-[120px] text-[8px] sm:text-xs"
+                        style={{ color: headerTextColor }}
+                      >
+                        {(product as any).subtype?.toUpperCase() || '—'}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* IMAGEM Row - Display product images */}
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3" style={{ color: headerBgColor }}></td>
+                    {products.map((product, idx) => {
+                      const subtypeKey = ((product as any).subtype || '').toLowerCase();
+                      const productImage = polishingBrushImages[subtypeKey];
+                      return (
+                        <td key={idx} className="px-1 sm:px-2 py-4 sm:py-6 text-center">
+                          {productImage && (
+                            <div className="flex justify-center">
+                              <img 
+                                src={productImage} 
+                                alt={(product as any).subtype || 'Produto'} 
+                                className="max-h-[80px] sm:max-h-[120px] object-contain"
+                              />
+                            </div>
+                          )}
+                        </td>
+                      );
+                    })}
+                  </tr>
+
+                  {/* DIÂMETRO DE ÁREA ATIVA Row */}
+                  <tr style={{ backgroundColor: rowBgLight }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      <span className="block leading-tight">DIÂMETRO DE ÁREA</span>
+                      <span className="block leading-tight">ATIVA ∅(MM)</span>
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
+                        {product.diameter?.replace('mm', '') || '—'}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* COMPRIMENTO DE ÁREA ATIVA Row */}
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      <span className="block leading-tight">COMPRIMENTO DE</span>
+                      <span className="block leading-tight">ÁREA ATIVA ∅(MM)</span>
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
+                        ----
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* COMPRIMENTO TOTAL Row */}
+                  <tr style={{ backgroundColor: rowBgLight }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      <span className="block leading-tight">COMPRIMENTO</span>
+                      <span className="block leading-tight">TOTAL</span>
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
+                        {(product as any).totalLength?.replace('mm', '') || '—'}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* EMBALAGEM Row */}
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      EMBALAGEM
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
+                        1
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* CERDAS Row */}
+                  <tr style={{ backgroundColor: rowBgLight }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      CERDAS
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[8px] sm:text-xs">
+                        {(product as any).bristleType?.toUpperCase() || '—'}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* CÓDIGO Row */}
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      CÓDIGO
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm font-semibold" style={{ color: headerBgColor }}>
+                        {product.code || '—'}
                       </td>
                     ))}
                   </tr>
