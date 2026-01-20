@@ -5,6 +5,10 @@ import LixaTubular from "@/assets/products/lixa-tubular.png";
 import LixaAdesiva from "@/assets/products/lixa-adesiva-circular.png";
 // Fibra Molecular product image
 import FibraMolecularProduct from "@/assets/products/fibra-molecular-product.png";
+// Enucleadora images by size
+import EnucleadoraP from "@/assets/products/enucleadora-p.png";
+import EnucleadoraM from "@/assets/products/enucleadora-m.png";
+import EnucleadoraG from "@/assets/products/enucleadora-g.png";
 
 // Torpedo polisher images by code suffix
 import PolidoraTorpedo70101 from "@/assets/products/polidora-torpedo-70101.png";
@@ -861,6 +865,34 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
             <div className="min-w-max">
               <table className="w-full border-collapse text-xs sm:text-sm">
                 <tbody>
+                  {/* IMAGE Row - Shows product images */}
+                  <tr style={{ backgroundColor: '#ffffff' }}>
+                    <td 
+                      className="w-[80px] sm:w-[140px] px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm tracking-wider"
+                      style={{ color: headerBgColor }}
+                    >
+                      
+                    </td>
+                    {products.map((product, idx) => {
+                      const subtype = (product as any).subtype?.toUpperCase();
+                      let enucleadoraImage = EnucleadoraP;
+                      if (subtype === 'M') enucleadoraImage = EnucleadoraM;
+                      if (subtype === 'G') enucleadoraImage = EnucleadoraG;
+                      return (
+                        <td 
+                          key={idx}
+                          className="px-1 sm:px-2 py-2 sm:py-3 text-center min-w-[80px] sm:min-w-[100px]"
+                        >
+                          <img 
+                            src={product.image || enucleadoraImage} 
+                            alt={`Enucleadora ${subtype}`}
+                            className="h-[80px] sm:h-[120px] w-auto mx-auto object-contain"
+                          />
+                        </td>
+                      );
+                    })}
+                  </tr>
+
                   {/* MODELOS Row - P, M, G */}
                   <tr style={{ backgroundColor: headerBgColor }}>
                     <td 

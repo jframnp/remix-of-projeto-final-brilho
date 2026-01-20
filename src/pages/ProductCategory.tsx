@@ -85,6 +85,10 @@ import LixaManualDescartavelBranca from "@/assets/products/lixa-manual-descartav
 import LixaManualBaseInox from "@/assets/products/lixa-manual-base-inox.png";
 // Fibra Molecular image
 import FibraMolecularProduct from "@/assets/products/fibra-molecular-product.png";
+// Enucleadora images by size
+import EnucleadoraP from "@/assets/products/enucleadora-p.png";
+import EnucleadoraM from "@/assets/products/enucleadora-m.png";
+import EnucleadoraG from "@/assets/products/enucleadora-g.png";
 
 // Product data based on PDF catalog - exact specs
 const productData: Record<string, {
@@ -480,9 +484,9 @@ const productData: Record<string, {
       { model: "Fibra Molecular", code: "500.013.03", diameter: "0,25", activeLength: "10", totalLength: "120", iso: "3", subtype: "fibra", image: FibraMolecularProduct },
       { model: "Fibra Molecular", code: "500.013.06", diameter: "0,30", activeLength: "10", totalLength: "120", iso: "3", subtype: "fibra", image: FibraMolecularProduct },
       // ENUCLEADORA DE CALOS DE AÇO INOXIDÁVEL - 3 sizes P, M, G
-      { model: "Enucleadora", code: "500.004.01", diameter: "2,00", activeLength: "7,00", totalLength: "44,50", iso: "2,35", subtype: "P" },
-      { model: "Enucleadora", code: "500.004.02", diameter: "2,30", activeLength: "7,50", totalLength: "44,50", iso: "2,35", subtype: "M" },
-      { model: "Enucleadora", code: "500.004.03", diameter: "3,15", activeLength: "7,90", totalLength: "44,50", iso: "2,35", subtype: "G" },
+      { model: "Enucleadora", code: "500.004.01", diameter: "2,00", activeLength: "7,00", totalLength: "44,50", iso: "2,35", subtype: "P", image: EnucleadoraP },
+      { model: "Enucleadora", code: "500.004.02", diameter: "2,30", activeLength: "7,50", totalLength: "44,50", iso: "2,35", subtype: "M", image: EnucleadoraM },
+      { model: "Enucleadora", code: "500.004.03", diameter: "3,15", activeLength: "7,90", totalLength: "44,50", iso: "2,35", subtype: "G", image: EnucleadoraG },
       // MANDRIL PM - 4 types: Reforçado, Standart, Tubular, Roda
       { model: "Mandril PM", code: "500.009.03", diameter: "6,0", totalLength: "50,0", iso: "2,35", subtype: "Reforçado" },
       { model: "Mandril PM", code: "500.009.01", diameter: "4,5", totalLength: "44,50", iso: "2,35", subtype: "Standart" },
