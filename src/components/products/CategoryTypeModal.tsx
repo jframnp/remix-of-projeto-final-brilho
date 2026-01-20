@@ -1132,6 +1132,51 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                     ))}
                   </tr>
 
+                  {/* PLANTAR/LAMINAR Images Section */}
+                  <tr style={{ backgroundColor: rowBgLight }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      PLANTAR
+                    </td>
+                    {products.map((_, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
+                        <div className="flex justify-center gap-2 sm:gap-4">
+                          <div className="flex flex-col items-center">
+                            <div className="w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] rounded-full bg-gradient-to-b from-gray-200 to-gray-400 shadow-md flex items-center justify-center">
+                              <span className="text-[8px] sm:text-[10px] font-semibold text-gray-700">Ø29</span>
+                            </div>
+                          </div>
+                          <div className="flex flex-col items-center">
+                            <div className="w-[40px] h-[40px] sm:w-[60px] sm:h-[60px] rounded-full bg-gradient-to-b from-gray-100 to-gray-300 shadow-md flex items-center justify-center" style={{ boxShadow: 'inset 2px 2px 4px rgba(0,0,0,0.1)' }}>
+                              <span className="text-[8px] sm:text-[10px] font-semibold text-gray-600">Ø29</span>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    ))}
+                  </tr>
+
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      LAMINAR
+                    </td>
+                    {products.map((_, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
+                        <div className="flex justify-center gap-2 sm:gap-4">
+                          <div className="flex flex-col items-center">
+                            <div className="w-[30px] h-[30px] sm:w-[45px] sm:h-[45px] rounded-full bg-gradient-to-b from-gray-200 to-gray-400 shadow-md flex items-center justify-center">
+                              <span className="text-[7px] sm:text-[9px] font-semibold text-gray-700">Ø16</span>
+                            </div>
+                          </div>
+                          <div className="flex flex-col items-center">
+                            <div className="w-[30px] h-[30px] sm:w-[45px] sm:h-[45px] rounded-full bg-gradient-to-b from-gray-100 to-gray-300 shadow-md flex items-center justify-center" style={{ boxShadow: 'inset 2px 2px 4px rgba(0,0,0,0.1)' }}>
+                              <span className="text-[7px] sm:text-[9px] font-semibold text-gray-600">Ø16</span>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    ))}
+                  </tr>
+
                   {/* MODELO Row */}
                   <tr style={{ backgroundColor: rowBgLight }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
