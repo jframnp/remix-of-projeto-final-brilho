@@ -772,12 +772,16 @@ const ProductCategory = () => {
             </div>
           ) : (
             /* Default Type Cards Grid - centered */
-            <div className="flex justify-center">
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16">
+            <div className="flex justify-center w-full">
+              <div className={`grid gap-6 mb-16 ${
+                Object.keys(productsByType).length <= 3 
+                  ? 'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-3xl mx-auto justify-items-center' 
+                  : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
+              }`}>
                 {Object.keys(productsByType).map((typeName, idx) => (
                   <div
                     key={typeName}
-                    className="animate-fade-in"
+                    className="animate-fade-in w-full max-w-[250px]"
                     style={{ animationDelay: `${idx * 0.1}s` }}
                   >
                     <CategoryTypeCard
