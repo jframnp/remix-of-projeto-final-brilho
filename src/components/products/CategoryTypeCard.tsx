@@ -39,11 +39,11 @@ import CeramicaMiniCutExtraFino from "@/assets/products/ceramica-mini-cut-extra-
 import CeramicaMiniCutGrosso from "@/assets/products/ceramica-mini-cut-grosso.png";
 
 // Import sandpaper manual type images
-import LixaNailsVerde from "@/assets/products/lixa-nails-verde.png";
-import LixaNailsBranca from "@/assets/products/lixa-nails-branca.png";
-import LixaBoomerangWhiteFina from "@/assets/products/lixa-boomerang-white-fina.png";
-import LixaNailsDescartavel from "@/assets/products/lixa-nails-descartavel-branca.png";
-import BaseInoxBoomerang from "@/assets/products/base-inox-boomerang.png";
+import LixaManualNailsVerde from "@/assets/products/lixa-manual-nails-verde.png";
+import LixaManualWhiteFina from "@/assets/products/lixa-manual-white-fina.png";
+import LixaManualDescartavelBranca from "@/assets/products/lixa-manual-descartavel-branca.png";
+import LixaManualNailsBranca from "@/assets/products/lixa-manual-nails-branca.png";
+import LixaManualBaseInox from "@/assets/products/lixa-manual-base-inox.png";
 
 // Map type names to images for diamond burs
 const diamondBurImages: Record<string, string> = {
@@ -98,11 +98,11 @@ const ceramicMiniCutImages: Record<string, string> = {
 
 // Map type names to images for sandpaper manual types
 const sandpaperManualImages: Record<string, string> = {
-  "nails verde": LixaNailsVerde,
-  "nails branca": LixaNailsBranca,
-  "white fina 2mm": LixaBoomerangWhiteFina,
-  "descartável branca": LixaNailsDescartavel,
-  "base inox refil": BaseInoxBoomerang,
+  "nails verde": LixaManualNailsVerde,
+  "nails branca": LixaManualNailsBranca,
+  "white fina 2mm": LixaManualWhiteFina,
+  "descartável branca": LixaManualDescartavelBranca,
+  "base inox refil": LixaManualBaseInox,
 };
 
 interface CategoryTypeCardProps {
