@@ -52,6 +52,14 @@ import PolidoraTorpedo70203 from "@/assets/products/polidora-torpedo-70203.png";
 import PolidoraTorpedo70303 from "@/assets/products/polidora-torpedo-70303.png";
 import PolidoraTorpedo70603 from "@/assets/products/polidora-torpedo-70603.png";
 import PolidoraTorpedo70403 from "@/assets/products/polidora-torpedo-70403.png";
+// Cilíndrica polisher images by code
+import PolidoraCilindrica70104 from "@/assets/products/polidora-cilindrica-70104.png";
+import PolidoraCilindrica70504 from "@/assets/products/polidora-cilindrica-70504.png";
+import PolidoraCilindrica70704 from "@/assets/products/polidora-cilindrica-70704.png";
+import PolidoraCilindrica70204 from "@/assets/products/polidora-cilindrica-70204.png";
+import PolidoraCilindrica70304 from "@/assets/products/polidora-cilindrica-70304.png";
+import PolidoraCilindrica70604 from "@/assets/products/polidora-cilindrica-70604.png";
+import PolidoraCilindrica70404 from "@/assets/products/polidora-cilindrica-70404.png";
 // Sandpaper images
 import LixaTubular from "@/assets/products/lixa-tubular.png";
 import LixaManualNailsVerde from "@/assets/products/lixa-manual-nails-verde.png";
@@ -394,13 +402,13 @@ const productData: Record<string, {
       { model: "Polidora Torpedo Média", code: "500.008.70603", diameter: "8,0mm", grain: "Extra Fino", color: "Amarelo", activeLength: "20,0mm", image: PolidoraTorpedo70603 },
       { model: "Polidora Torpedo Média", code: "500.008.70403", diameter: "8,0mm", grain: "Ultra Fino", color: "Lilás", activeLength: "20,0mm", image: PolidoraTorpedo70403 },
       // POLIDORA CILÍNDRICA
-      { model: "Polidora Cilíndrica", code: "500.008.70104", diameter: "6,0mm", grain: "Extra Grosso", color: "Marrom", activeLength: "18,0mm" },
-      { model: "Polidora Cilíndrica", code: "500.008.70504", diameter: "6,0mm", grain: "Grosso", color: "Cinza", activeLength: "18,0mm" },
-      { model: "Polidora Cilíndrica", code: "500.008.70704", diameter: "6,0mm", grain: "Médio-Grosso", color: "Branco", activeLength: "18,0mm" },
-      { model: "Polidora Cilíndrica", code: "500.008.70204", diameter: "6,0mm", grain: "Médio", color: "Verde", activeLength: "18,0mm" },
-      { model: "Polidora Cilíndrica", code: "500.008.70304", diameter: "6,0mm", grain: "Fino", color: "Azul", activeLength: "18,0mm" },
-      { model: "Polidora Cilíndrica", code: "500.008.70604", diameter: "6,0mm", grain: "Extra Fino", color: "Amarelo", activeLength: "18,0mm" },
-      { model: "Polidora Cilíndrica", code: "500.008.70404", diameter: "6,0mm", grain: "Ultra Fino", color: "Lilás", activeLength: "18,0mm", image: PolidoraCinza },
+      { model: "Polidora Cilíndrica", code: "500.008.70104", diameter: "6,0mm", grain: "Extra Grosso", color: "Marrom", activeLength: "18,0mm", image: PolidoraCilindrica70104 },
+      { model: "Polidora Cilíndrica", code: "500.008.70504", diameter: "6,0mm", grain: "Grosso", color: "Cinza", activeLength: "18,0mm", image: PolidoraCilindrica70504 },
+      { model: "Polidora Cilíndrica", code: "500.008.70704", diameter: "6,0mm", grain: "Médio-Grosso", color: "Branco", activeLength: "18,0mm", image: PolidoraCilindrica70704 },
+      { model: "Polidora Cilíndrica", code: "500.008.70204", diameter: "6,0mm", grain: "Médio", color: "Verde", activeLength: "18,0mm", image: PolidoraCilindrica70204 },
+      { model: "Polidora Cilíndrica", code: "500.008.70304", diameter: "6,0mm", grain: "Fino", color: "Azul", activeLength: "18,0mm", image: PolidoraCilindrica70304 },
+      { model: "Polidora Cilíndrica", code: "500.008.70604", diameter: "6,0mm", grain: "Extra Fino", color: "Amarelo", activeLength: "18,0mm", image: PolidoraCilindrica70604 },
+      { model: "Polidora Cilíndrica", code: "500.008.70404", diameter: "6,0mm", grain: "Ultra Fino", color: "Lilás", activeLength: "18,0mm", image: PolidoraCilindrica70404 },
       // POLIDORA CHAMA
       { model: "Polidora Chama", code: "500.008.70105", diameter: "5,0mm", grain: "Extra Grosso", color: "Marrom", activeLength: "15,0mm" },
       { model: "Polidora Chama", code: "500.008.70505", diameter: "5,0mm", grain: "Grosso", color: "Cinza", activeLength: "15,0mm" },
