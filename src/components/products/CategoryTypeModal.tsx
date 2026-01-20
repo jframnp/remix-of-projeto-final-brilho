@@ -4,6 +4,38 @@ import { Dialog, DialogContent, DialogHeader } from "@/components/ui/dialog";
 import LixaTubular from "@/assets/products/lixa-tubular.png";
 import LixaAdesiva from "@/assets/products/lixa-adesiva-circular.png";
 
+// Torpedo polisher images by code suffix
+import PolidoraTorpedo70101 from "@/assets/products/polidora-torpedo-70101.png";
+import PolidoraTorpedo70501 from "@/assets/products/polidora-torpedo-70501.png";
+import PolidoraTorpedo70701 from "@/assets/products/polidora-torpedo-70701.png";
+import PolidoraTorpedo70201 from "@/assets/products/polidora-torpedo-70201.png";
+import PolidoraTorpedo70301 from "@/assets/products/polidora-torpedo-70301.png";
+import PolidoraTorpedo70601 from "@/assets/products/polidora-torpedo-70601.png";
+import PolidoraTorpedo70102 from "@/assets/products/polidora-torpedo-70102.png";
+import PolidoraTorpedo70502 from "@/assets/products/polidora-torpedo-70502.png";
+import PolidoraTorpedo70702 from "@/assets/products/polidora-torpedo-70702.png";
+import PolidoraTorpedo70202 from "@/assets/products/polidora-torpedo-70202.png";
+import PolidoraTorpedo70302 from "@/assets/products/polidora-torpedo-70302.png";
+import PolidoraTorpedo70602 from "@/assets/products/polidora-torpedo-70602.png";
+import PolidoraTorpedo70402 from "@/assets/products/polidora-torpedo-70402.png";
+
+// Map polisher codes to their images
+const polisherCodeImages: Record<string, string> = {
+  "70101": PolidoraTorpedo70101,
+  "70501": PolidoraTorpedo70501,
+  "70701": PolidoraTorpedo70701,
+  "70201": PolidoraTorpedo70201,
+  "70301": PolidoraTorpedo70301,
+  "70601": PolidoraTorpedo70601,
+  "70102": PolidoraTorpedo70102,
+  "70502": PolidoraTorpedo70502,
+  "70702": PolidoraTorpedo70702,
+  "70202": PolidoraTorpedo70202,
+  "70302": PolidoraTorpedo70302,
+  "70602": PolidoraTorpedo70602,
+  "70402": PolidoraTorpedo70402,
+};
+
 // Sandpaper manual type images
 import LixaManualNailsVerde from "@/assets/products/lixa-manual-nails-verde.png";
 import LixaManualNailsBranca from "@/assets/products/lixa-manual-nails-branca.png";
@@ -1137,6 +1169,33 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                     );
                   })}
                 </tr>
+
+                {/* PRODUCT IMAGE Row - For Polidoras */}
+                {categorySlug === 'polidoras' && (
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3" style={{ color: headerBgColor }}></td>
+                    {products.map((product, idx) => {
+                      // Extract code suffix from product code (e.g., "500.008.70102" -> "70102")
+                      const codeMatch = product.code.match(/500\.008\.(\d+)$/);
+                      const codeSuffix = codeMatch ? codeMatch[1] : '';
+                      const productImage = polisherCodeImages[codeSuffix] || (product as any).image;
+                      
+                      return (
+                        <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
+                          {productImage && (
+                            <div className="flex justify-center">
+                              <img 
+                                src={productImage} 
+                                alt={product.model || 'Produto'} 
+                                className="max-h-[60px] sm:max-h-[90px] object-contain"
+                              />
+                            </div>
+                          )}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                )}
 
                 {/* DIAGRAM Row - For Brocas Diamantadas and Lixas */}
                 {(categorySlug === 'brocas-diamantadas' || categorySlug === 'lixas') && (
