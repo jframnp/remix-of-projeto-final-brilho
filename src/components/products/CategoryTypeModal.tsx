@@ -4,6 +4,22 @@ import { Dialog, DialogContent, DialogHeader } from "@/components/ui/dialog";
 import LixaTubular from "@/assets/products/lixa-tubular.png";
 import LixaAdesiva from "@/assets/products/lixa-adesiva-circular.png";
 
+// Sandpaper manual type images
+import LixaNailsVerde from "@/assets/products/lixa-nails-verde.png";
+import LixaNailsBranca from "@/assets/products/lixa-nails-branca.png";
+import LixaBoomerangWhiteFina from "@/assets/products/lixa-boomerang-white-fina.png";
+import LixaNailsDescartavel from "@/assets/products/lixa-nails-descartavel-branca.png";
+import BaseInoxBoomerang from "@/assets/products/base-inox-boomerang.png";
+
+// Map sandpaper manual types to images
+const sandpaperManualImages: Record<string, string> = {
+  "nails verde": LixaNailsVerde,
+  "nails branca": LixaNailsBranca,
+  "white fina 2mm": LixaBoomerangWhiteFina,
+  "descartável branca": LixaNailsDescartavel,
+  "base inox refil": BaseInoxBoomerang,
+};
+
 // Tungsten bur images by model number - Corte Cruzado Médio
 import Fresa1507 from "@/assets/products/fresa-1507.png";
 import Fresa1508 from "@/assets/products/fresa-1508.png";
@@ -364,13 +380,21 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
         </DialogHeader>
 
         <div className="px-3 sm:px-6 pb-4 sm:pb-6 overflow-x-auto">
-          {/* Product Image - Show for Tubular and Adesiva at top */}
-          {categorySlug === 'lixas' && (typeName.toLowerCase().includes('tubular') || typeName.toLowerCase().includes('adesiva')) && (
+          {/* Product Image - Show for Tubular, Adesiva, and Manual sandpaper types at top */}
+          {categorySlug === 'lixas' && (
+            typeName.toLowerCase().includes('tubular') || 
+            typeName.toLowerCase().includes('adesiva') ||
+            sandpaperManualImages[typeName.toLowerCase()]
+          ) && (
             <div className="flex justify-center items-center p-4 mb-4">
               <img 
-                src={typeName.toLowerCase().includes('adesiva') ? LixaAdesiva : LixaTubular}
+                src={
+                  typeName.toLowerCase().includes('adesiva') ? LixaAdesiva : 
+                  typeName.toLowerCase().includes('tubular') ? LixaTubular :
+                  sandpaperManualImages[typeName.toLowerCase()] || LixaTubular
+                }
                 alt={translatedTypeName}
-                className="max-w-full max-h-[160px] sm:max-h-[200px] object-contain rounded-lg"
+                className="max-w-full max-h-[200px] sm:max-h-[280px] object-contain rounded-lg"
               />
             </div>
           )}
@@ -389,18 +413,13 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                     {t("products.table.model", "MODELOS").toUpperCase()}
                   </td>
                   {products.map((product, idx) => {
-                    // For Lixas, show the variant name (Branca, Green, Fina) or model name
+                    // For Lixas, show the model name (Boomerang, Quadrada, Caixão, Gota, etc.)
                     const isLixaCategory = categorySlug === 'lixas';
                     let displayName = getProductName(product.code);
                     
                     if (isLixaCategory) {
-                      // Extract the variant from model name (e.g., "Gota Branca" -> "Branca")
-                      const modelParts = product.model.split(' ');
-                      if (modelParts.length > 1) {
-                        displayName = modelParts.slice(1).join(' '); // Get everything after first word
-                      } else {
-                        displayName = product.model; // For single-word models like "Tubular"
-                      }
+                      // For manual sandpaper types, show the model name directly (Boomerang, Quadrada, etc.)
+                      displayName = product.model;
                     }
                     
                     return (
@@ -819,10 +838,13 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   </tr>
                 )}
 
-                {/* DIÂMETRO Row */}
+                {/* DIÂMETRO/LARGURA Row */}
                 <tr style={{ backgroundColor: rowBgLight }}>
                   <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                    {t("products.table.diameter", "DIÂMETRO")} ∅ (MM)
+                    {categorySlug === 'lixas' && sandpaperManualImages[typeName.toLowerCase()]
+                      ? t("products.table.width", "LARGURA") + " (MM)"
+                      : t("products.table.diameter", "DIÂMETRO") + " ∅ (MM)"
+                    }
                   </td>
                   {products.map((product, idx) => (
                     <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -831,23 +853,13 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   ))}
                 </tr>
 
-                {/* ESPESSURA Row - Only for Lixas Laminar/Plantar */}
-                {categorySlug === 'lixas' && (typeName.toLowerCase().includes('laminar') || typeName.toLowerCase().includes('plantar')) && (
+                {/* GRANULOMETRIA Row - For Lixas Manuais and Laminar/Plantar */}
+                {categorySlug === 'lixas' && (
+                  typeName.toLowerCase().includes('laminar') || 
+                  typeName.toLowerCase().includes('plantar') ||
+                  sandpaperManualImages[typeName.toLowerCase()]
+                ) && (
                   <tr style={{ backgroundColor: rowBgWhite }}>
-                    <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      {t("products.table.thickness", "ESPESSURA")} (MM)
-                    </td>
-                    {products.map((product, idx) => (
-                      <td key={idx} className="px-1 sm:px-2 py-1.5 sm:py-2 text-center text-[10px] sm:text-sm">
-                        {product.activeLength?.replace('mm', '') || '—'}
-                      </td>
-                    ))}
-                  </tr>
-                )}
-
-                {/* GRANULOMETRIA Row - Only for Lixas Laminar/Plantar */}
-                {categorySlug === 'lixas' && (typeName.toLowerCase().includes('laminar') || typeName.toLowerCase().includes('plantar')) && (
-                  <tr style={{ backgroundColor: rowBgLight }}>
                     <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
                       {t("products.table.granulometry", "GRANULOMETRIA")} (MESH)
                     </td>
@@ -859,15 +871,94 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   </tr>
                 )}
 
-                {/* EMBALAGEM Row - Only for Lixas Laminar/Plantar */}
-                {categorySlug === 'lixas' && (typeName.toLowerCase().includes('laminar') || typeName.toLowerCase().includes('plantar')) && (
-                  <tr style={{ backgroundColor: rowBgWhite }}>
+                {/* COMPRIMENTO TOTAL Row - For Lixas Manuais */}
+                {categorySlug === 'lixas' && sandpaperManualImages[typeName.toLowerCase()] && (
+                  <tr style={{ backgroundColor: rowBgLight }}>
                     <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      {t("products.table.packaging", "EMBALAGEM")} (UNIT)
+                      {t("products.table.totalLength", "COMPRIMENTO TOTAL")} (MM)
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-1.5 sm:py-2 text-center text-[10px] sm:text-sm">
-                        100
+                        {product.activeLength?.replace('mm', '') || '—'}
+                      </td>
+                    ))}
+                  </tr>
+                )}
+
+                {/* EMBALAGEM Row - For Lixas Manuais and Laminar/Plantar */}
+                {categorySlug === 'lixas' && (
+                  typeName.toLowerCase().includes('laminar') || 
+                  typeName.toLowerCase().includes('plantar') ||
+                  sandpaperManualImages[typeName.toLowerCase()]
+                ) && (
+                  <tr style={{ backgroundColor: sandpaperManualImages[typeName.toLowerCase()] ? rowBgWhite : rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      {t("products.table.packaging", "EMBALAGEM")}
+                    </td>
+                    {products.map((product, idx) => {
+                      // Determine packaging based on type
+                      let packaging = "1";
+                      if (typeName.toLowerCase().includes('laminar') || typeName.toLowerCase().includes('plantar')) {
+                        packaging = "100";
+                      } else if (typeName.toLowerCase().includes('nails branca') || typeName.toLowerCase().includes('white fina')) {
+                        packaging = "20";
+                      } else if (typeName.toLowerCase().includes('descartável')) {
+                        packaging = "12";
+                      }
+                      return (
+                        <td key={idx} className="px-1 sm:px-2 py-1.5 sm:py-2 text-center text-[10px] sm:text-sm">
+                          {packaging}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                )}
+
+                {/* TIPO ABRASIVO Row - For Lixas Manuais */}
+                {categorySlug === 'lixas' && sandpaperManualImages[typeName.toLowerCase()] && !typeName.toLowerCase().includes('base inox') && (
+                  <tr style={{ backgroundColor: rowBgLight }}>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      {t("products.table.abrasiveType", "TIPO ABRASIVO")}
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-1.5 sm:py-2 text-center text-[8px] sm:text-xs">
+                        ÓXIDO DE ALUMÍNIO
+                      </td>
+                    ))}
+                  </tr>
+                )}
+
+                {/* MATERIAL Row - For Lixas Manuais */}
+                {categorySlug === 'lixas' && sandpaperManualImages[typeName.toLowerCase()] && (
+                  <tr style={{ backgroundColor: typeName.toLowerCase().includes('base inox') ? rowBgLight : rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      {t("products.table.material", "MATERIAL")}
+                    </td>
+                    {products.map((product, idx) => {
+                      let material = "ABS/EVA/POLIESTER";
+                      if (typeName.toLowerCase().includes('white fina') || typeName.toLowerCase().includes('descartável')) {
+                        material = "MADEIRA";
+                      } else if (typeName.toLowerCase().includes('base inox')) {
+                        material = "AÇO INOXIDÁVEL AISI420";
+                      }
+                      return (
+                        <td key={idx} className="px-1 sm:px-2 py-1.5 sm:py-2 text-center text-[8px] sm:text-xs">
+                          {material}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                )}
+
+                {/* ESPESSURA Row - Only for Lixas Laminar/Plantar */}
+                {categorySlug === 'lixas' && (typeName.toLowerCase().includes('laminar') || typeName.toLowerCase().includes('plantar')) && (
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      {t("products.table.thickness", "ESPESSURA")} (MM)
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-1.5 sm:py-2 text-center text-[10px] sm:text-sm">
+                        {product.activeLength?.replace('mm', '') || '—'}
                       </td>
                     ))}
                   </tr>

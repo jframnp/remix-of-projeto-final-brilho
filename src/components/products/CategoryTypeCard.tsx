@@ -38,6 +38,13 @@ import CeramicaMiniCutFino from "@/assets/products/ceramica-mini-cut-fino.png";
 import CeramicaMiniCutExtraFino from "@/assets/products/ceramica-mini-cut-extra-fino.png";
 import CeramicaMiniCutGrosso from "@/assets/products/ceramica-mini-cut-grosso.png";
 
+// Import sandpaper manual type images
+import LixaNailsVerde from "@/assets/products/lixa-nails-verde.png";
+import LixaNailsBranca from "@/assets/products/lixa-nails-branca.png";
+import LixaBoomerangWhiteFina from "@/assets/products/lixa-boomerang-white-fina.png";
+import LixaNailsDescartavel from "@/assets/products/lixa-nails-descartavel-branca.png";
+import BaseInoxBoomerang from "@/assets/products/base-inox-boomerang.png";
+
 // Map type names to images for diamond burs
 const diamondBurImages: Record<string, string> = {
   "cônica topo invertido": BrocaConicaInvertida,
@@ -89,6 +96,15 @@ const ceramicMiniCutImages: Record<string, string> = {
   "corte cruzado grosso": CeramicaMiniCutGrosso,
 };
 
+// Map type names to images for sandpaper manual types
+const sandpaperManualImages: Record<string, string> = {
+  "nails verde": LixaNailsVerde,
+  "nails branca": LixaNailsBranca,
+  "white fina 2mm": LixaBoomerangWhiteFina,
+  "descartável branca": LixaNailsDescartavel,
+  "base inox refil": BaseInoxBoomerang,
+};
+
 interface CategoryTypeCardProps {
   typeName: string;
   image?: string;
@@ -133,6 +149,10 @@ const CategoryTypeCard = ({ typeName, image, productCount, onClick, isGold = fal
     if (categorySlug === "fresas-ceramica" && subcategoryName === "Mini Cut") {
       const normalizedTypeName = typeName.toLowerCase().trim();
       return ceramicMiniCutImages[normalizedTypeName] || image;
+    }
+    if (categorySlug === "lixas" && subcategoryName === "Lixas Manuais") {
+      const normalizedTypeName = typeName.toLowerCase().trim();
+      return sandpaperManualImages[normalizedTypeName] || image;
     }
     return image;
   };
