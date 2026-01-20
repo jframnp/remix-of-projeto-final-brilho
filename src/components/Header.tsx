@@ -78,11 +78,13 @@ const Header = () => {
           {/* Contact Info - Desktop */}
           <div className="hidden md:flex items-center gap-8">
             <a
-              href="tel:+551139316343"
+              href="https://wa.me/5511940101807"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 text-white font-montserrat font-bold text-xl md:text-2xl hover:scale-105 transition-transform"
             >
               <Phone className="w-6 h-6" />
-              <span>(11) 3931-6343</span>
+              <span>(11) 94010-1807</span>
             </a>
             <a
               href="mailto:metalurgicabrilho@gmail.com"
@@ -266,11 +268,13 @@ const Header = () => {
               BRILHO-NAILS
             </a>
             <a
-              href="tel:+551139316343"
+              href="https://wa.me/5511940101807"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 text-white font-montserrat font-bold text-lg py-2"
             >
               <Phone className="w-5 h-5" />
-              <span>(11) 3931-6343</span>
+              <span>(11) 94010-1807</span>
             </a>
             <a
               href="mailto:metalurgicabrilho@gmail.com"
