@@ -5,19 +5,34 @@ import LixaTubular from "@/assets/products/lixa-tubular.png";
 import LixaAdesiva from "@/assets/products/lixa-adesiva-circular.png";
 
 // Sandpaper manual type images
-import LixaNailsVerde from "@/assets/products/lixa-nails-verde.png";
-import LixaNailsBranca from "@/assets/products/lixa-nails-branca.png";
-import LixaBoomerangWhiteFina from "@/assets/products/lixa-boomerang-white-fina.png";
-import LixaNailsDescartavel from "@/assets/products/lixa-nails-descartavel-branca.png";
-import BaseInoxBoomerang from "@/assets/products/base-inox-boomerang.png";
+import LixaManualNailsVerde from "@/assets/products/lixa-manual-nails-verde.png";
+import LixaManualNailsBranca from "@/assets/products/lixa-manual-nails-branca.png";
+import LixaManualWhiteFina from "@/assets/products/lixa-manual-white-fina.png";
+import LixaManualDescartavelBranca from "@/assets/products/lixa-manual-descartavel-branca.png";
+import LixaManualBaseInox from "@/assets/products/lixa-manual-base-inox.png";
+
+// Sandpaper shape/model images (Boomerang, Quadrada, Caixão, Gota)
+import LixaFormatoBoomerang from "@/assets/products/lixa-formato-boomerang.png";
+import LixaFormatoQuadrada from "@/assets/products/lixa-formato-quadrada.png";
+import LixaFormatoCaixao from "@/assets/products/lixa-formato-caixao.png";
+import LixaFormatoGota from "@/assets/products/lixa-formato-gota.png";
 
 // Map sandpaper manual types to images
 const sandpaperManualImages: Record<string, string> = {
-  "nails verde": LixaNailsVerde,
-  "nails branca": LixaNailsBranca,
-  "white fina 2mm": LixaBoomerangWhiteFina,
-  "descartável branca": LixaNailsDescartavel,
-  "base inox refil": BaseInoxBoomerang,
+  "nails verde": LixaManualNailsVerde,
+  "nails branca": LixaManualNailsBranca,
+  "white fina 2mm": LixaManualWhiteFina,
+  "descartável branca": LixaManualDescartavelBranca,
+  "base inox refil": LixaManualBaseInox,
+};
+
+// Map sandpaper shape/model names to images
+const sandpaperShapeImages: Record<string, string> = {
+  "boomerang": LixaFormatoBoomerang,
+  "quadrada": LixaFormatoQuadrada,
+  "caixão": LixaFormatoCaixao,
+  "gota": LixaFormatoGota,
+  "base inox": LixaManualBaseInox,
 };
 
 // Tungsten bur images by model number - Corte Cruzado Médio
@@ -826,6 +841,36 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                               <img 
                                 src={imageUrl} 
                                 alt={`Fresa Cerâmica ${modelNumber}`}
+                                className="max-h-[60px] sm:max-h-[80px] object-contain"
+                              />
+                            ) : (
+                              <div className="w-8 h-16 bg-gray-200 rounded" />
+                            )}
+                          </div>
+                        </td>
+                      );
+                    })}
+                  </tr>
+                )}
+
+                {/* IMAGE Row - For Lixas Manuais (Nails Verde, Nails Branca, White Fina 2mm) */}
+                {categorySlug === 'lixas' && sandpaperManualImages[typeName.toLowerCase()] && 
+                  (typeName.toLowerCase() === 'nails verde' || 
+                   typeName.toLowerCase() === 'nails branca' || 
+                   typeName.toLowerCase() === 'white fina 2mm') && (
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3" style={{ color: headerBgColor }}></td>
+                    {products.map((product, idx) => {
+                      const modelLower = product.model.toLowerCase();
+                      const shapeImage = sandpaperShapeImages[modelLower];
+                      
+                      return (
+                        <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
+                          <div className="flex justify-center">
+                            {shapeImage ? (
+                              <img 
+                                src={shapeImage} 
+                                alt={product.model}
                                 className="max-h-[60px] sm:max-h-[80px] object-contain"
                               />
                             ) : (
