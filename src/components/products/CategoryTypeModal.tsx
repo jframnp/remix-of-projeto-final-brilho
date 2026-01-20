@@ -669,6 +669,277 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                 </tbody>
               </table>
             </div>
+          ) : categorySlug === 'fibras-enucleadora-mandril' && typeName.toLowerCase().includes('fibra molecular') ? (
+            /* Special Table for Fibra Molecular */
+            <div className="min-w-max">
+              <table className="w-full border-collapse text-xs sm:text-sm">
+                <tbody>
+                  {/* MODELOS Row - Empty for Fibra, shows variation numbers */}
+                  <tr style={{ backgroundColor: headerBgColor }}>
+                    <td 
+                      className="w-[80px] sm:w-[140px] px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm tracking-wider"
+                      style={{ color: headerTextColor }}
+                    >
+                      
+                    </td>
+                    {products.map((_, idx) => (
+                      <td 
+                        key={idx}
+                        className="px-1 sm:px-2 py-2 sm:py-3 text-center font-bold min-w-[60px] sm:min-w-[80px] text-[10px] sm:text-sm"
+                        style={{ color: headerTextColor }}
+                      >
+                        
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* LARGURA (MM) Row - First row showing widths */}
+                  <tr style={{ backgroundColor: rowBgLight }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      LARGURA (MM)
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
+                        {product.diameter || '—'}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* LARGURA (MM) Row - Second row (width 10) */}
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      LARGURA (MM)
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
+                        {product.activeLength || '10'}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* COMPRIMENTO (MM) Row */}
+                  <tr style={{ backgroundColor: rowBgLight }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      COMPRIMENTO (MM)
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
+                        {(product as any).totalLength || '120'}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* EMBALAGEM (UNIT) Row */}
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      EMBALAGEM (UNIT)
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
+                        {product.iso || '3'}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* CÓDIGO Row */}
+                  <tr style={{ backgroundColor: rowBgLight }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      CÓDIGO
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm font-semibold" style={{ color: headerBgColor }}>
+                        {product.code || '—'}
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          ) : categorySlug === 'fibras-enucleadora-mandril' && typeName.toLowerCase().includes('enucleadora') ? (
+            /* Special Table for Enucleadora */
+            <div className="min-w-max">
+              <table className="w-full border-collapse text-xs sm:text-sm">
+                <tbody>
+                  {/* MODELOS Row - P, M, G */}
+                  <tr style={{ backgroundColor: headerBgColor }}>
+                    <td 
+                      className="w-[80px] sm:w-[140px] px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm tracking-wider"
+                      style={{ color: headerTextColor }}
+                    >
+                      MODELOS
+                    </td>
+                    {products.map((product, idx) => (
+                      <td 
+                        key={idx}
+                        className="px-1 sm:px-2 py-2 sm:py-3 text-center font-bold min-w-[80px] sm:min-w-[100px] text-[10px] sm:text-sm"
+                        style={{ color: headerTextColor }}
+                      >
+                        {(product as any).subtype?.toUpperCase() || '—'}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* DIÂMETRO ÁREA ATIVA Row */}
+                  <tr style={{ backgroundColor: rowBgLight }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      DIÂMETRO ÁREA ATIVA ∅ (MM)
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
+                        {product.diameter || '—'}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* COMPRIMENTO ÁREA ATIVA Row */}
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      COMPRIMENTO ÁREA ATIVA (MM)
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
+                        {product.activeLength || '—'}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* COMPRIMENTO TOTAL Row */}
+                  <tr style={{ backgroundColor: rowBgLight }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      COMPRIMENTO TOTAL (MM)
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
+                        {(product as any).totalLength || '—'}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* DIÂMETRO DA HASTE Row */}
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      DIÂMETRO DA HASTE ∅ (MM)
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
+                        {product.iso || '2,35'}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* EMBALAGEM Row */}
+                  <tr style={{ backgroundColor: rowBgLight }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      EMBALAGEM (UNIT)
+                    </td>
+                    {products.map((_, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
+                        1
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* CÓDIGO Row */}
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      CÓDIGO
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm font-semibold" style={{ color: headerBgColor }}>
+                        {product.code || '—'}
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          ) : categorySlug === 'fibras-enucleadora-mandril' && typeName.toLowerCase().includes('mandril') ? (
+            /* Special Table for Mandril PM */
+            <div className="min-w-max">
+              <table className="w-full border-collapse text-xs sm:text-sm">
+                <tbody>
+                  {/* MODELOS Row - Reforçado, Standart, Tubular, Roda */}
+                  <tr style={{ backgroundColor: headerBgColor }}>
+                    <td 
+                      className="w-[80px] sm:w-[140px] px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm tracking-wider"
+                      style={{ color: headerTextColor }}
+                    >
+                      MODELOS
+                    </td>
+                    {products.map((product, idx) => (
+                      <td 
+                        key={idx}
+                        className="px-1 sm:px-2 py-2 sm:py-3 text-center font-bold min-w-[70px] sm:min-w-[90px] text-[8px] sm:text-xs"
+                        style={{ color: headerTextColor }}
+                      >
+                        {(product as any).subtype?.toUpperCase() || '—'}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* DIÂMETRO ÁREA DE ENCAIXE Row */}
+                  <tr style={{ backgroundColor: rowBgLight }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      <span className="block leading-tight">DIÂMETRO ÁREA DE</span>
+                      <span className="block leading-tight">ENCAIXE ∅ (MM)</span>
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
+                        {product.diameter || '—'}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* COMPRIMENTO TOTAL Row */}
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      COMPRIMENTO TOTAL (MM)
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
+                        {(product as any).totalLength || '—'}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* DIÂMETRO DA HASTE Row */}
+                  <tr style={{ backgroundColor: rowBgLight }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      DIÂMETRO DA HASTE ∅ (MM)
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
+                        {product.iso || '2,35'}
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* EMBALAGEM Row */}
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      EMBALAGEM (UNIT)
+                    </td>
+                    {products.map((_, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
+                        1
+                      </td>
+                    ))}
+                  </tr>
+
+                  {/* CÓDIGO Row */}
+                  <tr style={{ backgroundColor: rowBgLight }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
+                      CÓDIGO
+                    </td>
+                    {products.map((product, idx) => (
+                      <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm font-semibold" style={{ color: headerBgColor }}>
+                        {product.code || '—'}
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           ) : (
           
           /* Catalog-Style Horizontal Table */

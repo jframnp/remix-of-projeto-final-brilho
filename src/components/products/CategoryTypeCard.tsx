@@ -55,6 +55,11 @@ import LixaMandrilAdesiva from "@/assets/products/lixa-mandril-adesiva.png";
 import EscovaCerdasPoliamida from "@/assets/products/escova-cerdas-poliamida.png";
 import EscovaBrocasPolidoras from "@/assets/products/escova-brocas-polidoras.png";
 
+// Import fiber/enucleator/mandril type images
+import FibraMolecular from "@/assets/products/fibra-molecular.png";
+import Enucleadora from "@/assets/products/enucleadora.png";
+import MandrilPM from "@/assets/products/mandril-pm.png";
+
 // Map type names to images for diamond burs
 const diamondBurImages: Record<string, string> = {
   "cônica topo invertido": BrocaConicaInvertida,
@@ -129,6 +134,13 @@ const cleaningBrushImages: Record<string, string> = {
   "brocas polidoras": EscovaBrocasPolidoras,
 };
 
+// Map type names to images for fibers/enucleator/mandril
+const fiberMandrilImages: Record<string, string> = {
+  "fibra molecular": FibraMolecular,
+  "enucleadora": Enucleadora,
+  "mandril pm": MandrilPM,
+};
+
 interface CategoryTypeCardProps {
   typeName: string;
   image?: string;
@@ -185,6 +197,10 @@ const CategoryTypeCard = ({ typeName, image, productCount, onClick, isGold = fal
     if (categorySlug === "escovas-limpeza") {
       const normalizedTypeName = typeName.toLowerCase().trim();
       return cleaningBrushImages[normalizedTypeName] || image;
+    }
+    if (categorySlug === "fibras-enucleadora-mandril") {
+      const normalizedTypeName = typeName.toLowerCase().trim();
+      return fiberMandrilImages[normalizedTypeName] || image;
     }
     return image;
   };

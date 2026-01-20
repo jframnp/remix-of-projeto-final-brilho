@@ -422,7 +422,7 @@ const productData: Record<string, {
     ]
   },
   "fibras-enucleadora-mandril": {
-    subtypes: ["Fibra Molecular", "Enucleadora", "Mandril"],
+    subtypes: ["Fibra Molecular", "Enucleadora", "Mandril PM"],
     titlePt: "FIBRAS, ENUCLEADORA E MANDRIL",
     titleEn: "FIBERS, ENUCLEATORS & MANDRELS",
     description: {
@@ -430,18 +430,22 @@ const productData: Record<string, {
       en: "High-quality molecular fibers, enucleators and mandrels. Essential components for various procedures."
     },
     products: [
-      // FIBRA MOLECULAR
-      { model: "Fibra Molecular", code: "FE-FMP-01", diameter: "2.0mm" },
-      { model: "Fibra Molecular", code: "FE-FMM-01", diameter: "3.0mm" },
-      { model: "Fibra Molecular", code: "FE-FMG-01", diameter: "4.0mm" },
-      { model: "Fibra Molecular", code: "FE-FMG-02", diameter: "5.0mm" },
-      // ENUCLEADORA
-      { model: "Enucleadora", code: "FE-ECI-01", diameter: "5mm" },
-      { model: "Enucleadora", code: "FE-ECI-02", diameter: "6mm" },
-      { model: "Enucleadora", code: "FE-ECI-03", diameter: "8mm" },
-      // MANDRIL
-      { model: "Mandril", code: "FE-MPC-01", diameter: "2.35mm" },
-      { model: "Mandril", code: "FE-MPC-02", diameter: "3.0mm" },
+      // FIBRA MOLECULAR - 6 variations based on width
+      { model: "Fibra Molecular", code: "500.013.04", diameter: "0,16", activeLength: "10", totalLength: "120", iso: "3", subtype: "fibra" },
+      { model: "Fibra Molecular", code: "500.013.05", diameter: "0,18", activeLength: "10", totalLength: "120", iso: "3", subtype: "fibra" },
+      { model: "Fibra Molecular", code: "500.013.01", diameter: "0,20", activeLength: "10", totalLength: "120", iso: "3", subtype: "fibra" },
+      { model: "Fibra Molecular", code: "500.013.02", diameter: "0,22", activeLength: "10", totalLength: "120", iso: "3", subtype: "fibra" },
+      { model: "Fibra Molecular", code: "500.013.03", diameter: "0,25", activeLength: "10", totalLength: "120", iso: "3", subtype: "fibra" },
+      { model: "Fibra Molecular", code: "500.013.06", diameter: "0,30", activeLength: "10", totalLength: "120", iso: "3", subtype: "fibra" },
+      // ENUCLEADORA DE CALOS DE AÇO INOXIDÁVEL - 3 sizes P, M, G
+      { model: "Enucleadora", code: "500.004.01", diameter: "2,00", activeLength: "7,00", totalLength: "44,50", iso: "2,35", subtype: "P" },
+      { model: "Enucleadora", code: "500.004.02", diameter: "2,30", activeLength: "7,50", totalLength: "44,50", iso: "2,35", subtype: "M" },
+      { model: "Enucleadora", code: "500.004.03", diameter: "3,15", activeLength: "7,90", totalLength: "44,50", iso: "2,35", subtype: "G" },
+      // MANDRIL PM - 4 types: Reforçado, Standart, Tubular, Roda
+      { model: "Mandril PM", code: "500.009.03", diameter: "6,0", totalLength: "50,0", iso: "2,35", subtype: "Reforçado" },
+      { model: "Mandril PM", code: "500.009.01", diameter: "4,5", totalLength: "44,50", iso: "2,35", subtype: "Standart" },
+      { model: "Mandril PM", code: "500.009.02", diameter: "6,6", totalLength: "44,50", iso: "2,35", subtype: "Tubular" },
+      { model: "Mandril PM", code: "500.009.04", diameter: "25,0", totalLength: "32,0", iso: "2,35", subtype: "Roda" },
     ]
   },
   "apoio-lixas-afiacao": {
