@@ -110,6 +110,10 @@ import FresaCeramica859CF from "@/assets/products/fresa-ceramica-859CF.png";
 import FresaCeramica1571CXF from "@/assets/products/fresa-ceramica-1571CXF.png";
 import FresaCeramica859CXF from "@/assets/products/fresa-ceramica-859CXF.png";
 
+// Ceramic bur images - Mini Cut - Corte Cruzado Grosso
+import FresaCeramica1571CG from "@/assets/products/fresa-ceramica-1571CG.png";
+import FresaCeramica859CG from "@/assets/products/fresa-ceramica-859CG.png";
+
 // Map tungsten bur model numbers to their images
 const tungstenBurImages: Record<string, string> = {
   "1507": Fresa1507,
@@ -190,6 +194,8 @@ const ceramicBurImages: Record<string, string> = {
   "859CF": FresaCeramica859CF,
   "1571CXF": FresaCeramica1571CXF,
   "859CXF": FresaCeramica859CXF,
+  "1571CG": FresaCeramica1571CG,
+  "859CG": FresaCeramica859CG,
 };
 
 interface Product {
