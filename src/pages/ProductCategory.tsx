@@ -35,6 +35,7 @@ import PolidoraTorpedo70701 from "@/assets/products/polidora-torpedo-70701.png";
 import PolidoraTorpedo70201 from "@/assets/products/polidora-torpedo-70201.png";
 import PolidoraTorpedo70301 from "@/assets/products/polidora-torpedo-70301.png";
 import PolidoraTorpedo70601 from "@/assets/products/polidora-torpedo-70601.png";
+import PolidoraTorpedo70401 from "@/assets/products/polidora-torpedo-70401.png";
 // Torpedo Grande polisher images by code
 import PolidoraTorpedo70102 from "@/assets/products/polidora-torpedo-70102.png";
 import PolidoraTorpedo70502 from "@/assets/products/polidora-torpedo-70502.png";
@@ -367,7 +368,7 @@ const productData: Record<string, {
       { model: "Polidora Torpedo Ogival", code: "500.008.70201", diameter: "10,0mm", grain: "Médio", color: "Verde", activeLength: "24,0mm", image: PolidoraTorpedo70201 },
       { model: "Polidora Torpedo Ogival", code: "500.008.70301", diameter: "10,0mm", grain: "Fino", color: "Azul", activeLength: "24,0mm", image: PolidoraTorpedo70301 },
       { model: "Polidora Torpedo Ogival", code: "500.008.70601", diameter: "10,0mm", grain: "Extra Fino", color: "Amarelo", activeLength: "24,0mm", image: PolidoraTorpedo70601 },
-      { model: "Polidora Torpedo Ogival", code: "500.008.70401", diameter: "10,0mm", grain: "Ultra Fino", color: "Lilás", activeLength: "24,0mm" },
+      { model: "Polidora Torpedo Ogival", code: "500.008.70401", diameter: "10,0mm", grain: "Ultra Fino", color: "Lilás", activeLength: "24,0mm", image: PolidoraTorpedo70401 },
       // POLIDORA TORPEDO GRANDE
       { model: "Polidora Torpedo Grande", code: "500.008.70102", diameter: "12,0mm", grain: "Extra Grosso", color: "Marrom", activeLength: "28,0mm", image: PolidoraTorpedo70102 },
       { model: "Polidora Torpedo Grande", code: "500.008.70502", diameter: "12,0mm", grain: "Grosso", color: "Cinza", activeLength: "28,0mm", image: PolidoraTorpedo70502 },

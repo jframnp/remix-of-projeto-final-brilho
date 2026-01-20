@@ -11,6 +11,7 @@ import PolidoraTorpedo70701 from "@/assets/products/polidora-torpedo-70701.png";
 import PolidoraTorpedo70201 from "@/assets/products/polidora-torpedo-70201.png";
 import PolidoraTorpedo70301 from "@/assets/products/polidora-torpedo-70301.png";
 import PolidoraTorpedo70601 from "@/assets/products/polidora-torpedo-70601.png";
+import PolidoraTorpedo70401 from "@/assets/products/polidora-torpedo-70401.png";
 import PolidoraTorpedo70102 from "@/assets/products/polidora-torpedo-70102.png";
 import PolidoraTorpedo70502 from "@/assets/products/polidora-torpedo-70502.png";
 import PolidoraTorpedo70702 from "@/assets/products/polidora-torpedo-70702.png";
@@ -27,6 +28,7 @@ const polisherCodeImages: Record<string, string> = {
   "70201": PolidoraTorpedo70201,
   "70301": PolidoraTorpedo70301,
   "70601": PolidoraTorpedo70601,
+  "70401": PolidoraTorpedo70401,
   "70102": PolidoraTorpedo70102,
   "70502": PolidoraTorpedo70502,
   "70702": PolidoraTorpedo70702,
