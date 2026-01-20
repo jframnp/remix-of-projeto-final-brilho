@@ -60,9 +60,9 @@ import CardFibraMolecular from "@/assets/products/card-fibra-molecular.png";
 import CardEnucleadora from "@/assets/products/card-enucleadora.png";
 import CardMandrilPM from "@/assets/products/card-mandril-pm.png";
 
-// Import apoio lixas/afiação type images
-import ApoioLixasPodologia from "@/assets/products/apoio-lixas-podologia.png";
-import AfiacaoInstrumentos from "@/assets/products/afiacao-instrumentos.png";
+// Import apoio lixas/afiação type card images
+import CardApoioLixas from "@/assets/products/card-apoio-lixas.png";
+import CardAfiacaoInstrumentos from "@/assets/products/card-afiacao-instrumentos.png";
 
 // Map type names to images for diamond burs
 const diamondBurImages: Record<string, string> = {
@@ -147,8 +147,8 @@ const fiberMandrilImages: Record<string, string> = {
 
 // Map type names to images for apoio lixas/afiação
 const apoioAfiacaoImages: Record<string, string> = {
-  "apoio para lixas de podologia": ApoioLixasPodologia,
-  "afiação de instrumentos": AfiacaoInstrumentos,
+  "apoio para lixas de podologia": CardApoioLixas,
+  "afiação de instrumentos": CardAfiacaoInstrumentos,
 };
 
 interface CategoryTypeCardProps {
