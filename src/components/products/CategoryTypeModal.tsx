@@ -27,6 +27,14 @@ import PolidoraTorpedo70203 from "@/assets/products/polidora-torpedo-70203.png";
 import PolidoraTorpedo70303 from "@/assets/products/polidora-torpedo-70303.png";
 import PolidoraTorpedo70603 from "@/assets/products/polidora-torpedo-70603.png";
 import PolidoraTorpedo70403 from "@/assets/products/polidora-torpedo-70403.png";
+// Cilíndrica polisher images
+import PolidoraCilindrica70104 from "@/assets/products/polidora-cilindrica-70104.png";
+import PolidoraCilindrica70504 from "@/assets/products/polidora-cilindrica-70504.png";
+import PolidoraCilindrica70704 from "@/assets/products/polidora-cilindrica-70704.png";
+import PolidoraCilindrica70204 from "@/assets/products/polidora-cilindrica-70204.png";
+import PolidoraCilindrica70304 from "@/assets/products/polidora-cilindrica-70304.png";
+import PolidoraCilindrica70604 from "@/assets/products/polidora-cilindrica-70604.png";
+import PolidoraCilindrica70404 from "@/assets/products/polidora-cilindrica-70404.png";
 
 // Map polisher codes to their images
 const polisherCodeImages: Record<string, string> = {
@@ -51,6 +59,13 @@ const polisherCodeImages: Record<string, string> = {
   "70303": PolidoraTorpedo70303,
   "70603": PolidoraTorpedo70603,
   "70403": PolidoraTorpedo70403,
+  "70104": PolidoraCilindrica70104,
+  "70504": PolidoraCilindrica70504,
+  "70704": PolidoraCilindrica70704,
+  "70204": PolidoraCilindrica70204,
+  "70304": PolidoraCilindrica70304,
+  "70604": PolidoraCilindrica70604,
+  "70404": PolidoraCilindrica70404,
 };
 
 // Sandpaper manual type images
