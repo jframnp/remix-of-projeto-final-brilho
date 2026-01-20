@@ -45,6 +45,12 @@ import LixaManualDescartavelBranca from "@/assets/products/lixa-manual-descartav
 import LixaManualNailsBranca from "@/assets/products/lixa-manual-nails-branca.png";
 import LixaManualBaseInox from "@/assets/products/lixa-manual-base-inox.png";
 
+// Import sandpaper mandril type images
+import LixaMandrilLaminar from "@/assets/products/lixa-mandril-laminar.png";
+import LixaMandrilPlantar from "@/assets/products/lixa-mandril-plantar.png";
+import LixaMandrilTubular from "@/assets/products/lixa-mandril-tubular.png";
+import LixaMandrilAdesiva from "@/assets/products/lixa-mandril-adesiva.png";
+
 // Map type names to images for diamond burs
 const diamondBurImages: Record<string, string> = {
   "cônica topo invertido": BrocaConicaInvertida,
@@ -105,6 +111,14 @@ const sandpaperManualImages: Record<string, string> = {
   "base inox refil": LixaManualBaseInox,
 };
 
+// Map type names to images for sandpaper mandril types
+const sandpaperMandrilImages: Record<string, string> = {
+  "laminar": LixaMandrilLaminar,
+  "plantar": LixaMandrilPlantar,
+  "tubular": LixaMandrilTubular,
+  "adesiva": LixaMandrilAdesiva,
+};
+
 interface CategoryTypeCardProps {
   typeName: string;
   image?: string;
@@ -153,6 +167,10 @@ const CategoryTypeCard = ({ typeName, image, productCount, onClick, isGold = fal
     if (categorySlug === "lixas" && subcategoryName === "Lixas Manuais") {
       const normalizedTypeName = typeName.toLowerCase().trim();
       return sandpaperManualImages[normalizedTypeName] || image;
+    }
+    if (categorySlug === "lixas" && subcategoryName === "Lixas com Mandril") {
+      const normalizedTypeName = typeName.toLowerCase().trim();
+      return sandpaperMandrilImages[normalizedTypeName] || image;
     }
     return image;
   };
