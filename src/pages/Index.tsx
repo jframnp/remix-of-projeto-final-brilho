@@ -313,10 +313,10 @@ const Index = () => {
                 color: "from-red-500 to-rose-600"
               },
               { 
-                name: t("home.product2", "Linha Gold"), 
-                category: t("home.product2Cat", "Premium"),
-                path: "/produtos/linha-gold",
-                color: "from-amber-400 to-yellow-500"
+                name: t("home.product2New", "Fresas de Cerâmica"), 
+                category: t("home.product2CatNew", "Precisão"),
+                path: "/produtos/fresas-ceramica",
+                color: "from-sky-400 to-blue-500"
               },
               { 
                 name: t("home.product3", "Fresas de Tungstênio"), 
