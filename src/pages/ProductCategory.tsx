@@ -49,6 +49,9 @@ const productData: Record<string, {
     activeLength?: string;
     image?: string;
     subcategory?: string;
+    totalLength?: string;
+    bristleType?: string;
+    subtype?: string;
   }>;
   features?: string[];
   hasGoldLine?: boolean;
@@ -401,7 +404,7 @@ const productData: Record<string, {
     ]
   },
   "escovas-limpeza": {
-    subtypes: ["Cerdas Poliamida", "Escova Limpeza", "Esponja Polidora", "Feltro Polidor"],
+    subtypes: ["Cerdas de Poliamida", "Brocas Polidoras"],
     titlePt: "ESCOVAS DE LIMPEZA",
     titleEn: "CLEANING BRUSHES",
     description: {
@@ -409,21 +412,13 @@ const productData: Record<string, {
       en: "Cleaning brushes and accessories for maintaining burs and instruments. Essential for extending equipment life."
     },
     products: [
-      // CERDAS POLIAMIDA
-      { model: "Cerdas Poliamida", code: "EC-CPR-01", diameter: "20mm", color: "Rosa" },
-      { model: "Cerdas Poliamida", code: "EC-CPL-01", diameter: "20mm", color: "Lilás" },
-      { model: "Cerdas Poliamida", code: "EC-CPB-01", diameter: "20mm", color: "Branca" },
-      // ESCOVA LIMPEZA
-      { model: "Escova Limpeza", code: "EC-ELB-01", diameter: "15mm" },
-      { model: "Escova Limpeza", code: "EC-ELB-02", diameter: "20mm" },
-      { model: "Escova Limpeza", code: "EC-ELB-03", diameter: "25mm" },
-      // ESPONJA POLIDORA
-      { model: "Esponja Polidora", code: "EC-ESP-01", diameter: "20mm" },
-      { model: "Esponja Polidora", code: "EC-ESP-02", diameter: "25mm" },
-      // FELTRO POLIDOR
-      { model: "Feltro Polidor", code: "EC-FP-01", diameter: "15mm" },
-      { model: "Feltro Polidor", code: "EC-FP-02", diameter: "20mm" },
-      { model: "Feltro Polidor", code: "EC-FP-03", diameter: "25mm" },
+      // CERDAS DE POLIAMIDA - POLYAMIDE BRISTLES
+      { model: "Cerdas de Poliamida", code: "137.190.023", iso: "137.190.023", diameter: "8,00mm", activeLength: "5,00mm", totalLength: "45,0mm", bristleType: "Finas", color: "Rosa" },
+      { model: "Cerdas de Poliamida", code: "010/805", iso: "010/805", diameter: "8,00mm", activeLength: "5,00mm", totalLength: "45,0mm", bristleType: "Finas", color: "Lilás" },
+      // BROCAS POLIDORAS - POLISHING DRILLS
+      { model: "Brocas Polidoras", code: "01.01.01", diameter: "28,00mm", totalLength: "44,50mm", bristleType: "Aço", subtype: "Broca de Limpeza" },
+      { model: "Brocas Polidoras", code: "500.0010.18", diameter: "25,00mm", totalLength: "50,0mm", bristleType: "Polímero Impregnado", subtype: "Esponja Polidora" },
+      { model: "Brocas Polidoras", code: "500.0010.20", diameter: "25,00mm", totalLength: "50,0mm", bristleType: "Lã de Carneiro", subtype: "Esponja Feltro" },
     ]
   },
   "fibras-enucleadora-mandril": {

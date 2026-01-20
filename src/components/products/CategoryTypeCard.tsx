@@ -51,6 +51,10 @@ import LixaMandrilPlantar from "@/assets/products/lixa-mandril-plantar.png";
 import LixaMandrilTubular from "@/assets/products/lixa-mandril-tubular.png";
 import LixaMandrilAdesiva from "@/assets/products/lixa-mandril-adesiva.png";
 
+// Import cleaning brush type images
+import EscovaCerdasPoliamida from "@/assets/products/escova-cerdas-poliamida.png";
+import EscovaBrocasPolidoras from "@/assets/products/escova-brocas-polidoras.png";
+
 // Map type names to images for diamond burs
 const diamondBurImages: Record<string, string> = {
   "cônica topo invertido": BrocaConicaInvertida,
@@ -119,6 +123,12 @@ const sandpaperMandrilImages: Record<string, string> = {
   "adesiva": LixaMandrilAdesiva,
 };
 
+// Map type names to images for cleaning brushes
+const cleaningBrushImages: Record<string, string> = {
+  "cerdas de poliamida": EscovaCerdasPoliamida,
+  "brocas polidoras": EscovaBrocasPolidoras,
+};
+
 interface CategoryTypeCardProps {
   typeName: string;
   image?: string;
@@ -171,6 +181,10 @@ const CategoryTypeCard = ({ typeName, image, productCount, onClick, isGold = fal
     if (categorySlug === "lixas" && subcategoryName === "Lixas com Mandril") {
       const normalizedTypeName = typeName.toLowerCase().trim();
       return sandpaperMandrilImages[normalizedTypeName] || image;
+    }
+    if (categorySlug === "escovas-limpeza") {
+      const normalizedTypeName = typeName.toLowerCase().trim();
+      return cleaningBrushImages[normalizedTypeName] || image;
     }
     return image;
   };
