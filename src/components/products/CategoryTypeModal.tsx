@@ -133,6 +133,12 @@ import BrocaLimpezaAco from "@/assets/products/broca-limpeza-aco.png";
 import EsponjaPolidora from "@/assets/products/esponja-polidora.png";
 import EsponjaFeltro from "@/assets/products/esponja-feltro.png";
 
+// Afiação de Instrumentos images
+import DiscoCouro from "@/assets/products/hero-disco-couro.png";
+import DiscoAbrasivo from "@/assets/products/hero-disco-abrasivo.png";
+import PastaPolimento from "@/assets/products/hero-pasta-polimento.png";
+import MandrilAfiacaoStandart from "@/assets/products/mandril-afiacao-standart.png";
+
 // Map sandpaper manual types to images
 const sandpaperManualImages: Record<string, string> = {
   "nails verde": LixaManualNailsVerde,
@@ -162,6 +168,14 @@ const polishingBrushImages: Record<string, string> = {
   "broca de limpeza": BrocaLimpezaAco,
   "esponja polidora": EsponjaPolidora,
   "esponja feltro": EsponjaFeltro,
+};
+
+// Map afiação de instrumentos subtypes to images
+const afiacaoImages: Record<string, string> = {
+  "disco couro": DiscoCouro,
+  "disco abrasivo": DiscoAbrasivo,
+  "pasta de polimento": PastaPolimento,
+  "mandril standart": MandrilAfiacaoStandart,
 };
 
 // Tungsten bur images by model number - Corte Cruzado Médio
@@ -1261,6 +1275,28 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                         {(product as any).subtype?.toUpperCase() || '—'}
                       </td>
                     ))}
+                  </tr>
+
+                  {/* IMAGEM Row - Display product images */}
+                  <tr style={{ backgroundColor: rowBgWhite }}>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3" style={{ color: headerBgColor }}></td>
+                    {products.map((product, idx) => {
+                      const subtypeKey = ((product as any).subtype || '').toLowerCase();
+                      const productImage = afiacaoImages[subtypeKey];
+                      return (
+                        <td key={idx} className="px-1 sm:px-2 py-4 sm:py-6 text-center">
+                          {productImage && (
+                            <div className="flex justify-center">
+                              <img 
+                                src={productImage} 
+                                alt={(product as any).subtype || 'Produto'} 
+                                className="max-h-[60px] sm:max-h-[90px] object-contain"
+                              />
+                            </div>
+                          )}
+                        </td>
+                      );
+                    })}
                   </tr>
 
                   {/* DIÂMETRO ÁREA ATIVA Row */}
