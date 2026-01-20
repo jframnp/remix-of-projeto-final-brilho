@@ -35,6 +35,14 @@ import PolidoraCilindrica70204 from "@/assets/products/polidora-cilindrica-70204
 import PolidoraCilindrica70304 from "@/assets/products/polidora-cilindrica-70304.png";
 import PolidoraCilindrica70604 from "@/assets/products/polidora-cilindrica-70604.png";
 import PolidoraCilindrica70404 from "@/assets/products/polidora-cilindrica-70404.png";
+// Chama polisher images
+import PolidoraChama70105 from "@/assets/products/polidora-chama-70105.png";
+import PolidoraChama70505 from "@/assets/products/polidora-chama-70505.png";
+import PolidoraChama70705 from "@/assets/products/polidora-chama-70705.png";
+import PolidoraChama70205 from "@/assets/products/polidora-chama-70205.png";
+import PolidoraChama70305 from "@/assets/products/polidora-chama-70305.png";
+import PolidoraChama70605 from "@/assets/products/polidora-chama-70605.png";
+import PolidoraChama70405 from "@/assets/products/polidora-chama-70405.png";
 
 // Map polisher codes to their images
 const polisherCodeImages: Record<string, string> = {
@@ -66,6 +74,14 @@ const polisherCodeImages: Record<string, string> = {
   "70304": PolidoraCilindrica70304,
   "70604": PolidoraCilindrica70604,
   "70404": PolidoraCilindrica70404,
+  // Chama
+  "70105": PolidoraChama70105,
+  "70505": PolidoraChama70505,
+  "70705": PolidoraChama70705,
+  "70205": PolidoraChama70205,
+  "70305": PolidoraChama70305,
+  "70605": PolidoraChama70605,
+  "70405": PolidoraChama70405,
 };
 
 // Sandpaper manual type images
