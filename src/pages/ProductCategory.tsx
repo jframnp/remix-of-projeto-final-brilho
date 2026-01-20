@@ -60,6 +60,14 @@ import PolidoraCilindrica70204 from "@/assets/products/polidora-cilindrica-70204
 import PolidoraCilindrica70304 from "@/assets/products/polidora-cilindrica-70304.png";
 import PolidoraCilindrica70604 from "@/assets/products/polidora-cilindrica-70604.png";
 import PolidoraCilindrica70404 from "@/assets/products/polidora-cilindrica-70404.png";
+// Chama polisher images by code
+import PolidoraChama70105 from "@/assets/products/polidora-chama-70105.png";
+import PolidoraChama70505 from "@/assets/products/polidora-chama-70505.png";
+import PolidoraChama70705 from "@/assets/products/polidora-chama-70705.png";
+import PolidoraChama70205 from "@/assets/products/polidora-chama-70205.png";
+import PolidoraChama70305 from "@/assets/products/polidora-chama-70305.png";
+import PolidoraChama70605 from "@/assets/products/polidora-chama-70605.png";
+import PolidoraChama70405 from "@/assets/products/polidora-chama-70405.png";
 // Sandpaper images
 import LixaTubular from "@/assets/products/lixa-tubular.png";
 import LixaManualNailsVerde from "@/assets/products/lixa-manual-nails-verde.png";
@@ -410,13 +418,13 @@ const productData: Record<string, {
       { model: "Polidora Cilíndrica", code: "500.008.70604", diameter: "6,0mm", grain: "Extra Fino", color: "Amarelo", activeLength: "18,0mm", image: PolidoraCilindrica70604 },
       { model: "Polidora Cilíndrica", code: "500.008.70404", diameter: "6,0mm", grain: "Ultra Fino", color: "Lilás", activeLength: "18,0mm", image: PolidoraCilindrica70404 },
       // POLIDORA CHAMA
-      { model: "Polidora Chama", code: "500.008.70105", diameter: "5,0mm", grain: "Extra Grosso", color: "Marrom", activeLength: "15,0mm" },
-      { model: "Polidora Chama", code: "500.008.70505", diameter: "5,0mm", grain: "Grosso", color: "Cinza", activeLength: "15,0mm" },
-      { model: "Polidora Chama", code: "500.008.70705", diameter: "5,0mm", grain: "Médio-Grosso", color: "Branco", activeLength: "15,0mm" },
-      { model: "Polidora Chama", code: "500.008.70205", diameter: "5,0mm", grain: "Médio", color: "Verde", activeLength: "15,0mm" },
-      { model: "Polidora Chama", code: "500.008.70305", diameter: "5,0mm", grain: "Fino", color: "Azul", activeLength: "15,0mm" },
-      { model: "Polidora Chama", code: "500.008.70605", diameter: "5,0mm", grain: "Extra Fino", color: "Amarelo", activeLength: "15,0mm" },
-      { model: "Polidora Chama", code: "500.008.70405", diameter: "5,0mm", grain: "Ultra Fino", color: "Lilás", activeLength: "15,0mm" },
+      { model: "Polidora Chama", code: "500.008.70105", diameter: "5,0mm", grain: "Extra Grosso", color: "Marrom", activeLength: "15,0mm", image: PolidoraChama70105 },
+      { model: "Polidora Chama", code: "500.008.70505", diameter: "5,0mm", grain: "Grosso", color: "Cinza", activeLength: "15,0mm", image: PolidoraChama70505 },
+      { model: "Polidora Chama", code: "500.008.70705", diameter: "5,0mm", grain: "Médio-Grosso", color: "Branco", activeLength: "15,0mm", image: PolidoraChama70705 },
+      { model: "Polidora Chama", code: "500.008.70205", diameter: "5,0mm", grain: "Médio", color: "Verde", activeLength: "15,0mm", image: PolidoraChama70205 },
+      { model: "Polidora Chama", code: "500.008.70305", diameter: "5,0mm", grain: "Fino", color: "Azul", activeLength: "15,0mm", image: PolidoraChama70305 },
+      { model: "Polidora Chama", code: "500.008.70605", diameter: "5,0mm", grain: "Extra Fino", color: "Amarelo", activeLength: "15,0mm", image: PolidoraChama70605 },
+      { model: "Polidora Chama", code: "500.008.70405", diameter: "5,0mm", grain: "Ultra Fino", color: "Lilás", activeLength: "15,0mm", image: PolidoraChama70405 },
       // POLIDORA CÔNICA
       { model: "Polidora Cônica", code: "500.008.70106", diameter: "6,0mm", grain: "Extra Grosso", color: "Marrom", activeLength: "16,0mm" },
       { model: "Polidora Cônica", code: "500.008.70506", diameter: "6,0mm", grain: "Grosso", color: "Cinza", activeLength: "16,0mm" },
