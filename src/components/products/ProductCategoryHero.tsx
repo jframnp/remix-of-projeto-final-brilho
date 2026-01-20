@@ -30,9 +30,9 @@ import BrocaCeramica3 from "@/assets/products/broca-ceramica-3.png";
 import BrocaCeramica4 from "@/assets/products/broca-ceramica-4.png";
 
 // Import lixas images
-import Lixa1 from "@/assets/products/lixa-1.png";
-import Lixa2 from "@/assets/products/lixa-2.png";
-import Lixa3 from "@/assets/products/lixa-3.png";
+import LixaHeroVerde from "@/assets/products/lixa-hero-verde.png";
+import LixaHeroBranca from "@/assets/products/lixa-hero-branca.png";
+import LixaHeroFina from "@/assets/products/lixa-hero-fina.png";
 
 // Import escovas de limpeza images
 import EscovaLimpeza1 from "@/assets/products/escova-limpeza-1.png";
@@ -68,9 +68,9 @@ const categoryHeroImages: Record<string, { src: string; alt: string }[]> = {
     { src: BrocaCeramica2, alt: "Broca cerâmica chama" },
   ],
   "lixas": [
-    { src: Lixa1, alt: "Lixa retangular" },
-    { src: Lixa2, alt: "Lixa meia lua" },
-    { src: Lixa3, alt: "Lixa meia lua verde" },
+    { src: LixaHeroVerde, alt: "Lixa verde" },
+    { src: LixaHeroBranca, alt: "Lixa branca" },
+    { src: LixaHeroFina, alt: "Lixa fina" },
   ],
   "lixa-tubular-adesiva": [
     { src: PM829, alt: "Lixa tubular ogiva" },
@@ -93,9 +93,9 @@ const categoryHeroImages: Record<string, { src: string; alt: string }[]> = {
     { src: FibraMandril3, alt: "Fibra" },
   ],
   "apoio-lixas-afiacao": [
-    { src: Lixa1, alt: "Apoio para lixas" },
-    { src: Lixa2, alt: "Disco de afiação" },
-    { src: Lixa3, alt: "Disco de polimento" },
+    { src: LixaHeroVerde, alt: "Apoio para lixas" },
+    { src: LixaHeroBranca, alt: "Disco de afiação" },
+    { src: LixaHeroFina, alt: "Disco de polimento" },
   ],
   "linha-gold": [
     { src: PM718Hero, alt: "Broca Gold cônica" },
