@@ -55,10 +55,10 @@ import LixaMandrilAdesiva from "@/assets/products/lixa-mandril-adesiva.png";
 import HeroCerdasPoliamida from "@/assets/products/hero-cerdas-poliamida.png";
 import HeroBrocasPolidoras from "@/assets/products/hero-brocas-polidoras.png";
 
-// Import fiber/enucleator/mandril type images
-import FibraMolecular from "@/assets/products/fibra-molecular.png";
-import Enucleadora from "@/assets/products/enucleadora.png";
-import MandrilPM from "@/assets/products/mandril-pm.png";
+// Import fiber/enucleator/mandril type card images
+import CardFibraMolecular from "@/assets/products/card-fibra-molecular.png";
+import CardEnucleadora from "@/assets/products/card-enucleadora.png";
+import CardMandrilPM from "@/assets/products/card-mandril-pm.png";
 
 // Import apoio lixas/afiação type images
 import ApoioLixasPodologia from "@/assets/products/apoio-lixas-podologia.png";
@@ -140,9 +140,9 @@ const cleaningBrushImages: Record<string, string> = {
 
 // Map type names to images for fibers/enucleator/mandril
 const fiberMandrilImages: Record<string, string> = {
-  "fibra molecular": FibraMolecular,
-  "enucleadora": Enucleadora,
-  "mandril pm": MandrilPM,
+  "fibra molecular": CardFibraMolecular,
+  "enucleadora": CardEnucleadora,
+  "mandril pm": CardMandrilPM,
 };
 
 // Map type names to images for apoio lixas/afiação
