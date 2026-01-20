@@ -50,6 +50,11 @@ import FibraMandril1 from "@/assets/products/fibra-mandril-1.png";
 import FibraMandril2 from "@/assets/products/fibra-mandril-2.png";
 import FibraMandril3 from "@/assets/products/fibra-mandril-3.png";
 
+// Import apoio lixas / afiação images
+import HeroDiscoCouro from "@/assets/products/hero-disco-couro.png";
+import HeroDiscoAbrasivo from "@/assets/products/hero-disco-abrasivo.png";
+import HeroPastaPolimento from "@/assets/products/hero-pasta-polimento.png";
+
 // Category-specific hero images configuration
 const categoryHeroImages: Record<string, { src: string; alt: string }[]> = {
   "brocas-diamantadas": [
@@ -93,9 +98,9 @@ const categoryHeroImages: Record<string, { src: string; alt: string }[]> = {
     { src: FibraMandril3, alt: "Fibra" },
   ],
   "apoio-lixas-afiacao": [
-    { src: LixaHeroVerde, alt: "Apoio para lixas" },
-    { src: LixaHeroBranca, alt: "Disco de afiação" },
-    { src: LixaHeroFina, alt: "Disco de polimento" },
+    { src: HeroDiscoCouro, alt: "Disco de couro" },
+    { src: HeroDiscoAbrasivo, alt: "Disco abrasivo" },
+    { src: HeroPastaPolimento, alt: "Pasta de polimento" },
   ],
   "linha-gold": [
     { src: PM718Hero, alt: "Broca Gold cônica" },
