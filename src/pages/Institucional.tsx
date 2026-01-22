@@ -96,7 +96,7 @@ const Institucional = () => {
               <p className="text-gray-600 font-inter text-lg leading-relaxed mb-8">
                 {t(
                   "institutional.certText2",
-                  "Nosso compromisso com a inovação e a satisfação dos clientes nos levou a conquistar certificações internacionais e a exportar para mais de 50 países.",
+                  "Nosso compromisso com a inovação e a satisfação dos clientes nos levou a conquistar certificações internacionais e a exportar para mais de 15 países.",
                 )}
               </p>
 
@@ -109,7 +109,7 @@ const Institucional = () => {
                   </div>
                 </div>
                 <div className="bg-gray-50 rounded-2xl p-6">
-                  <div className="text-3xl font-montserrat font-black text-[#D32F2F]">50+</div>
+                  <div className="text-3xl font-montserrat font-black text-[#D32F2F]">15+</div>
                   <div className="text-gray-600 font-inter text-sm">
                     {t("institutional.countries", "Países atendidos")}
                   </div>

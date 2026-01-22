@@ -20,7 +20,7 @@ const Index = () => {
     { value: "20+", label: t("home.stats.years", "Anos de Experiência") },
     { value: "500+", label: t("home.stats.products", "Produtos") },
     { value: "10K+", label: t("home.stats.clients", "Clientes Satisfeitos") },
-    { value: "50+", label: t("home.stats.countries", "Países Atendidos") },
+    { value: "15+", label: t("home.stats.countries", "Países Atendidos") },
   ];
 
   return (
