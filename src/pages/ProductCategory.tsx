@@ -137,14 +137,14 @@ const productData: Record<string, {
     ],
     products: [
       // ESFÉRICA (ROUND)
-      { model: "Esférica", code: "500.001.01", iso: "001.801.010", diameter: "1,0mm", grain: "Médio", image: PM07 },
+      { model: "Esférica", code: "500.001.01", iso: "001.801.010", diameter: "1,0mm", grain: "Médio" },
       { model: "Esférica", code: "500.001.03", iso: "001.801.016", diameter: "1,6mm", grain: "Médio" },
       { model: "Esférica", code: "500.001.05", iso: "001.801.017", diameter: "1,7mm", grain: "Médio" },
       { model: "Esférica", code: "500.001.06", iso: "001.801.026", diameter: "2,6mm", grain: "Médio" },
-      { model: "Esférica", code: "500.001.096", iso: "001.801.029", diameter: "2,9mm", grain: "Médio" },
-      { model: "Esférica", code: "500.001.07", iso: "001.801.040", diameter: "4,0mm", grain: "Médio" },
-      { model: "Esférica", code: "500.001.08", iso: "001.801.048", diameter: "4,8mm", grain: "Médio" },
-      { model: "Esférica", code: "500.001.10", iso: "001.801.052", diameter: "5,2mm", grain: "Médio" },
+      { model: "Esférica", code: "500.001.07", iso: "001.801.029", diameter: "2,9mm", grain: "Médio" },
+      { model: "Esférica", code: "500.001.08", iso: "001.801.040", diameter: "4,0mm", grain: "Médio" },
+      { model: "Esférica", code: "500.001.10", iso: "001.801.048", diameter: "4,8mm", grain: "Médio" },
+      { model: "Esférica", code: "500.001.12", iso: "001.801.052", diameter: "5,2mm", grain: "Médio" },
       // RODA (WHEEL)
       { model: "Roda", code: "500.001.17", iso: "040.815.065", diameter: "6,5mm", grain: "Médio", activeLength: "1,0mm" },
       { model: "Roda", code: "500.001.19", iso: "040.815.050", diameter: "5,0mm", grain: "Médio", activeLength: "1,0mm" },
