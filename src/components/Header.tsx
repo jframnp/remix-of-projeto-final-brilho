@@ -4,6 +4,7 @@ import { Phone, Mail, Menu, X, ChevronDown } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "@/hooks/useLanguage";
 import logoImage from "@/assets/logo-metalurgicabrilho.png";
+import FlagIcon from "@/components/FlagIcon";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -170,35 +171,35 @@ const Header = () => {
             {/* Brazil - Portuguese */}
             <button
               onClick={() => changeLanguage("pt")}
-              className={`w-8 h-8 flex items-center justify-center text-2xl transition-all hover:scale-110 ${
+              className={`w-8 h-8 flex items-center justify-center transition-all hover:scale-110 ${
                 currentLang === "pt" ? "opacity-100 drop-shadow-[0_0_4px_rgba(255,255,255,0.8)]" : "opacity-60 hover:opacity-100"
               }`}
               aria-label="Português"
               title="Português"
             >
-              🇧🇷
+              <FlagIcon country="br" className="w-7 h-7" />
             </button>
             {/* Spain - Spanish */}
             <button
               onClick={() => changeLanguage("es")}
-              className={`w-8 h-8 flex items-center justify-center text-2xl transition-all hover:scale-110 ${
+              className={`w-8 h-8 flex items-center justify-center transition-all hover:scale-110 ${
                 currentLang === "es" ? "opacity-100 drop-shadow-[0_0_4px_rgba(255,255,255,0.8)]" : "opacity-60 hover:opacity-100"
               }`}
               aria-label="Español"
               title="Español"
             >
-              🇪🇸
+              <FlagIcon country="es" className="w-7 h-7" />
             </button>
             {/* USA - English */}
             <button
               onClick={() => changeLanguage("en")}
-              className={`w-8 h-8 flex items-center justify-center text-2xl transition-all hover:scale-110 ${
+              className={`w-8 h-8 flex items-center justify-center transition-all hover:scale-110 ${
                 currentLang === "en" ? "opacity-100 drop-shadow-[0_0_4px_rgba(255,255,255,0.8)]" : "opacity-60 hover:opacity-100"
               }`}
               aria-label="English"
               title="English"
             >
-              🇺🇸
+              <FlagIcon country="us" className="w-7 h-7" />
             </button>
           </div>
         </div>
@@ -290,12 +291,12 @@ const Header = () => {
                   changeLanguage("pt");
                   setIsMenuOpen(false);
                 }}
-                className={`text-3xl transition-all ${
+                className={`transition-all ${
                   currentLang === "pt" ? "opacity-100 drop-shadow-[0_0_4px_rgba(255,255,255,0.8)]" : "opacity-60"
                 }`}
                 title="Português"
               >
-                🇧🇷
+                <FlagIcon country="br" className="w-8 h-8" />
               </button>
               {/* Spain */}
               <button
@@ -303,12 +304,12 @@ const Header = () => {
                   changeLanguage("es");
                   setIsMenuOpen(false);
                 }}
-                className={`text-3xl transition-all ${
+                className={`transition-all ${
                   currentLang === "es" ? "opacity-100 drop-shadow-[0_0_4px_rgba(255,255,255,0.8)]" : "opacity-60"
                 }`}
                 title="Español"
               >
-                🇪🇸
+                <FlagIcon country="es" className="w-8 h-8" />
               </button>
               {/* USA */}
               <button
@@ -316,12 +317,12 @@ const Header = () => {
                   changeLanguage("en");
                   setIsMenuOpen(false);
                 }}
-                className={`text-3xl transition-all ${
+                className={`transition-all ${
                   currentLang === "en" ? "opacity-100 drop-shadow-[0_0_4px_rgba(255,255,255,0.8)]" : "opacity-60"
                 }`}
                 title="English"
               >
-                🇺🇸
+                <FlagIcon country="us" className="w-8 h-8" />
               </button>
             </div>
           </nav>
