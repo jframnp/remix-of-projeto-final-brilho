@@ -10,8 +10,8 @@ const Institucional = () => {
   const timeline = [
     { year: "2003", event: t("institutional.timeline.2003", "Fundação da Metalúrgica Brilho") },
     { year: "2008", event: t("institutional.timeline.2008", "Certificação ANVISA") },
-    { year: "2012", event: t("institutional.timeline.2018", "Expansão internacional") },
-    { year: "2018", event: t("institutional.timeline.2020", "Lançamento Linha Gold") },
+    { year: "2018", event: t("institutional.timeline.2018", "Expansão internacional") },
+    { year: "2020", event: t("institutional.timeline.2020", "Lançamento Linha Gold") },
     { year: "2023", event: t("institutional.timeline.2023", "20 anos de excelência") },
   ];
 
@@ -110,7 +110,7 @@ const Institucional = () => {
                   </div>
                 </div>
                 <div className="bg-gray-50 rounded-2xl p-6">
-                  <div className="text-3xl font-montserrat font-black text-[#D32F2F]">15+</div>
+                  <div className="text-3xl font-montserrat font-black text-[#D32F2F]">50+</div>
                   <div className="text-gray-600 font-inter text-sm">
                     {t("institutional.countries", "Países atendidos")}
                   </div>
