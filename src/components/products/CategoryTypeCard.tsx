@@ -6,7 +6,7 @@ import BrocaConicaInvertida from "@/assets/products/broca-conica-invertida.png";
 import BrocaConica from "@/assets/products/broca-conica.png";
 import BrocaConicaTopoArredondado from "@/assets/products/broca-conica-topo-arredondado.png";
 import BrocaConicaTopoPlano from "@/assets/products/broca-conica-topo-plano.png";
-import BrocaEsferica from "@/assets/products/broca-esferica.png";
+import BrocaEsferica from "@/assets/products/diamantada-esferica-PM01.png";
 import BrocaLentilha from "@/assets/products/broca-lentilha.png";
 import BrocaCilindrica from "@/assets/products/broca-cilindrica.png";
 import BrocaRoda from "@/assets/products/broca-roda.png";
