@@ -10,8 +10,8 @@ const Institucional = () => {
   const timeline = [
     { year: "2003", event: t("institutional.timeline.2003", "Fundação da Metalúrgica Brilho") },
     { year: "2008", event: t("institutional.timeline.2008", "Certificação ANVISA") },
-    { year: "2012", event: t("institutional.timeline.2012", "Expansão internacional") },
-    { year: "2018", event: t("institutional.timeline.2018", "Lançamento Linha Gold") },
+    { year: "2012", event: t("institutional.timeline.2018", "Expansão internacional") },
+    { year: "2018", event: t("institutional.timeline.2020", "Lançamento Linha Gold") },
     { year: "2023", event: t("institutional.timeline.2023", "20 anos de excelência") },
   ];
 
@@ -19,22 +19,22 @@ const Institucional = () => {
     {
       icon: <CheckCircle className="w-6 h-6" />,
       title: t("institutional.value1", "Qualidade"),
-      desc: t("institutional.value1Desc", "Produtos certificados com padrão internacional")
+      desc: t("institutional.value1Desc", "Produtos certificados com padrão internacional"),
     },
     {
       icon: <Users className="w-6 h-6" />,
       title: t("institutional.value2", "Compromisso"),
-      desc: t("institutional.value2Desc", "Dedicação total aos nossos clientes")
+      desc: t("institutional.value2Desc", "Dedicação total aos nossos clientes"),
     },
     {
       icon: <Factory className="w-6 h-6" />,
       title: t("institutional.value3", "Inovação"),
-      desc: t("institutional.value3Desc", "Tecnologia de ponta em nossos processos")
+      desc: t("institutional.value3Desc", "Tecnologia de ponta em nossos processos"),
     },
     {
       icon: <Globe className="w-6 h-6" />,
       title: t("institutional.value4", "Sustentabilidade"),
-      desc: t("institutional.value4Desc", "Respeito ao meio ambiente")
+      desc: t("institutional.value4Desc", "Respeito ao meio ambiente"),
     },
   ];
 
@@ -47,13 +47,14 @@ const Institucional = () => {
           <div className="absolute top-20 right-20 w-96 h-96 bg-[#D32F2F]/20 rounded-full blur-[120px]" />
           <div className="absolute bottom-20 left-20 w-72 h-72 bg-[#9B0000]/30 rounded-full blur-[100px]" />
         </div>
-        
+
         {/* Grid Pattern */}
-        <div 
+        <div
           className="absolute inset-0 opacity-5"
           style={{
-            backgroundImage: 'linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)',
-            backgroundSize: '50px 50px'
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)",
+            backgroundSize: "50px 50px",
           }}
         />
 
@@ -64,8 +65,14 @@ const Institucional = () => {
           <h1 className="text-white font-montserrat font-black text-4xl md:text-6xl lg:text-7xl mb-6 animate-fade-in">
             {t("institutional.title", "Institucional")}
           </h1>
-          <p className="text-white/80 font-inter text-lg md:text-xl max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            {t("institutional.subtitle", "Há mais de 20 anos fabricando produtos de alta precisão para profissionais que exigem qualidade.")}
+          <p
+            className="text-white/80 font-inter text-lg md:text-xl max-w-3xl mx-auto animate-fade-in"
+            style={{ animationDelay: "0.2s" }}
+          >
+            {t(
+              "institutional.subtitle",
+              "Há mais de 20 anos fabricando produtos de alta precisão para profissionais que exigem qualidade.",
+            )}
           </p>
         </div>
       </section>
@@ -82,51 +89,59 @@ const Institucional = () => {
                 {t("institutional.aboutTitle", "Mais de duas décadas de excelência")}
               </h2>
               <p className="text-gray-600 font-inter text-lg leading-relaxed mb-6">
-                {t("institutional.certText1", "A Metalúrgica Brilho nasceu da paixão pela precisão e qualidade. Desde 2003, desenvolvemos produtos que se tornaram referência no mercado de podologia, odontologia e estética.")}
+                {t(
+                  "institutional.certText1",
+                  "A Metalúrgica Brilho nasceu da paixão pela precisão e qualidade. Desde 2003, desenvolvemos produtos que se tornaram referência no mercado de podologia, odontologia e estética.",
+                )}
               </p>
               <p className="text-gray-600 font-inter text-lg leading-relaxed mb-8">
-                {t("institutional.certText2", "Nosso compromisso com a inovação e a satisfação dos clientes nos levou a conquistar certificações internacionais e a exportar para mais de 50 países.")}
+                {t(
+                  "institutional.certText2",
+                  "Nosso compromisso com a inovação e a satisfação dos clientes nos levou a conquistar certificações internacionais e a exportar para mais de 50 países.",
+                )}
               </p>
-              
+
               {/* Stats Grid */}
               <div className="grid grid-cols-2 gap-6">
                 <div className="bg-gray-50 rounded-2xl p-6">
                   <div className="text-3xl font-montserrat font-black text-[#D32F2F]">20+</div>
-                  <div className="text-gray-600 font-inter text-sm">{t("institutional.yearsExp", "Anos de experiência")}</div>
+                  <div className="text-gray-600 font-inter text-sm">
+                    {t("institutional.yearsExp", "Anos de experiência")}
+                  </div>
                 </div>
                 <div className="bg-gray-50 rounded-2xl p-6">
-                  <div className="text-3xl font-montserrat font-black text-[#D32F2F]">50+</div>
-                  <div className="text-gray-600 font-inter text-sm">{t("institutional.countries", "Países atendidos")}</div>
+                  <div className="text-3xl font-montserrat font-black text-[#D32F2F]">15+</div>
+                  <div className="text-gray-600 font-inter text-sm">
+                    {t("institutional.countries", "Países atendidos")}
+                  </div>
                 </div>
               </div>
             </div>
-            
+
             <div className="lg:w-1/2">
               <div className="relative">
                 {/* Decorative Elements */}
                 <div className="absolute -top-4 -left-4 w-20 h-20 bg-[#D32F2F]/10 rounded-xl" />
                 <div className="absolute -bottom-4 -right-4 w-28 h-28 bg-[#9B0000]/10 rounded-xl" />
-                
+
                 {/* Main Card */}
                 <div className="relative bg-gradient-to-br from-[#720000] to-[#9B0000] rounded-3xl p-12 shadow-2xl">
-                  <img 
-                    src={logoImage} 
-                    alt="Metalúrgica Brilho" 
-                    className="h-20 w-auto mx-auto mb-8 opacity-90"
-                  />
-                  
+                  <img src={logoImage} alt="Metalúrgica Brilho" className="h-20 w-auto mx-auto mb-8 opacity-90" />
+
                   {/* ANVISA Badge */}
                   <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-lg">
                     <div className="flex items-center gap-5">
-                      <img 
-                        src={anvisaCertificado} 
-                        alt="Certificado ANVISA - Boas Práticas de Bioequivalência" 
+                      <img
+                        src={anvisaCertificado}
+                        alt="Certificado ANVISA - Boas Práticas de Bioequivalência"
                         className="w-20 h-20 object-contain flex-shrink-0"
                       />
                       <div>
                         <p className="text-[#006341] font-montserrat font-bold text-lg">Certificado ANVISA</p>
                         <p className="text-gray-700 font-inter text-sm">Nº 8019.208</p>
-                        <p className="text-gray-500 font-inter text-xs mt-1">{t("institutional.anvisaCert", "Boas Práticas de Bioequivalência")}</p>
+                        <p className="text-gray-500 font-inter text-xs mt-1">
+                          {t("institutional.anvisaCert", "Boas Práticas de Bioequivalência")}
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -148,27 +163,27 @@ const Institucional = () => {
               {t("institutional.timelineTitle", "Marcos da Nossa História")}
             </h2>
           </div>
-          
+
           <div className="relative max-w-4xl mx-auto">
             {/* Timeline Line */}
             <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#D32F2F] to-[#9B0000] hidden md:block" />
-            
+
             <div className="space-y-12">
               {timeline.map((item, index) => (
-                <div 
+                <div
                   key={index}
-                  className={`flex flex-col md:flex-row items-center gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+                  className={`flex flex-col md:flex-row items-center gap-8 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
                 >
-                  <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
+                  <div className={`md:w-1/2 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
                     <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
                       <span className="text-[#D32F2F] font-montserrat font-black text-2xl">{item.year}</span>
                       <p className="text-gray-700 font-inter mt-2">{item.event}</p>
                     </div>
                   </div>
-                  
+
                   {/* Center Dot */}
                   <div className="w-4 h-4 bg-[#D32F2F] rounded-full border-4 border-white shadow-lg z-10 hidden md:block" />
-                  
+
                   <div className="md:w-1/2" />
                 </div>
               ))}
@@ -190,7 +205,10 @@ const Institucional = () => {
                 {t("institutional.missionTitle", "Missão")}
               </h3>
               <p className="text-gray-600 font-inter leading-relaxed">
-                {t("institutional.missionText", "Fornecer produtos de alta qualidade que atendam às necessidades dos profissionais de saúde e estética, contribuindo para o sucesso de nossos clientes.")}
+                {t(
+                  "institutional.missionText",
+                  "Fornecer produtos de alta qualidade que atendam às necessidades dos profissionais de saúde e estética, contribuindo para o sucesso de nossos clientes.",
+                )}
               </p>
             </div>
 
@@ -203,7 +221,10 @@ const Institucional = () => {
                 {t("institutional.visionTitle", "Visão")}
               </h3>
               <p className="text-gray-600 font-inter leading-relaxed">
-                {t("institutional.visionText", "Ser reconhecida como a principal referência em instrumentos de precisão para podologia e odontologia na América Latina.")}
+                {t(
+                  "institutional.visionText",
+                  "Ser reconhecida como a principal referência em instrumentos de precisão para podologia e odontologia na América Latina.",
+                )}
               </p>
             </div>
 
@@ -216,7 +237,10 @@ const Institucional = () => {
                 {t("institutional.valuesTitle", "Valores")}
               </h3>
               <p className="text-gray-600 font-inter leading-relaxed">
-                {t("institutional.valuesText", "Ética, transparência, inovação contínua e respeito aos nossos colaboradores, clientes e parceiros.")}
+                {t(
+                  "institutional.valuesText",
+                  "Ética, transparência, inovação contínua e respeito aos nossos colaboradores, clientes e parceiros.",
+                )}
               </p>
             </div>
           </div>
@@ -234,10 +258,10 @@ const Institucional = () => {
               {t("institutional.principlesTitle", "O que nos guia")}
             </h2>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {values.map((value, index) => (
-              <div 
+              <div
                 key={index}
                 className="bg-white rounded-2xl p-6 text-center hover:shadow-xl transition-all duration-300 border border-gray-100"
               >
@@ -258,7 +282,7 @@ const Institucional = () => {
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#D32F2F]/20 rounded-full blur-[150px]" />
           <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#9B0000]/30 rounded-full blur-[100px]" />
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10 text-center">
           <h2 className="text-white font-montserrat font-bold text-3xl md:text-5xl mb-6">
             {t("institutional.ctaTitle", "Pronto para conhecer nossos produtos?")}
