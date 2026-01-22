@@ -63,6 +63,27 @@ import PolidoraConica70306 from "@/assets/products/polidora-conica-70306.png";
 import PolidoraConica70606 from "@/assets/products/polidora-conica-70606.png";
 import PolidoraConica70406 from "@/assets/products/polidora-conica-70406.png";
 
+// Diamond bur spherical images by model
+import DiamantadaEsfericaPM01 from "@/assets/products/diamantada-esferica-PM01.png";
+import DiamantadaEsfericaPM03 from "@/assets/products/diamantada-esferica-PM03.png";
+import DiamantadaEsfericaPM05 from "@/assets/products/diamantada-esferica-PM05.png";
+import DiamantadaEsfericaPM06 from "@/assets/products/diamantada-esferica-PM06.png";
+import DiamantadaEsfericaPM07 from "@/assets/products/diamantada-esferica-PM07.png";
+import DiamantadaEsfericaPM10 from "@/assets/products/diamantada-esferica-PM10.png";
+import DiamantadaEsfericaPM12 from "@/assets/products/diamantada-esferica-PM12.png";
+
+// Map diamond bur spherical model codes to their images
+const diamondBurSphericalImages: Record<string, string> = {
+  "PM01": DiamantadaEsfericaPM01,
+  "PM03": DiamantadaEsfericaPM03,
+  "PM05": DiamantadaEsfericaPM05,
+  "PM06": DiamantadaEsfericaPM06,
+  "PM07": DiamantadaEsfericaPM07,
+  "PM08": DiamantadaEsfericaPM07, // PM08 uses same image as PM07
+  "PM10": DiamantadaEsfericaPM10,
+  "PM12": DiamantadaEsfericaPM12,
+};
+
 // Map polisher codes to their images
 const polisherCodeImages: Record<string, string> = {
   "70101": PolidoraTorpedo70101,
@@ -1427,19 +1448,23 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                       const stemWidth = 4;
                       const stemHeight = 30;
                       
-                      // Esférica (Spherical)
+                      // Esférica (Spherical) - Use real product images
                       if (typeNameLower.includes('esférica')) {
-                        const sphereSize = Math.max(6, Math.min(28, diameterValue * 2.5));
-                        const svgHeight = stemHeight + sphereSize + 4;
-                        const svgWidth = Math.max(sphereSize + 8, 36);
+                        const modelCode = getProductName(product.code);
+                        const imageUrl = diamondBurSphericalImages[modelCode];
                         
                         return (
                           <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
                             <div className="flex justify-center">
-                              <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
-                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 1} ${sphereSize + 4} L${svgWidth/2 + 1} ${sphereSize + 4} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
-                                <circle cx={svgWidth/2} cy={sphereSize/2 + 2} r={sphereSize/2} fill="#1a1a1a"/>
-                              </svg>
+                              {imageUrl ? (
+                                <img 
+                                  src={imageUrl} 
+                                  alt={modelCode}
+                                  className="max-h-[60px] sm:max-h-[90px] object-contain"
+                                />
+                              ) : (
+                                <div className="w-8 h-16 bg-gray-200 rounded" />
+                              )}
                             </div>
                           </td>
                         );
