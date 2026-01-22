@@ -14,6 +14,7 @@ import ProductCategoryHero from "@/components/products/ProductCategoryHero";
 import CatalogSection from "@/components/products/CatalogSection";
 
 // Import product images
+import PM01 from "@/assets/products/diamantada-esferica-PM01.png";
 import PM07 from "@/assets/products/PM07_AZUL.webp";
 import PM42 from "@/assets/products/PM42_AZUL.jpg";
 import PM57 from "@/assets/products/PM57_AZUL.webp";
@@ -137,7 +138,7 @@ const productData: Record<string, {
     ],
     products: [
       // ESFÉRICA (ROUND)
-      { model: "Esférica", code: "500.001.01", iso: "001.801.010", diameter: "1,0mm", grain: "Médio" },
+      { model: "Esférica", code: "500.001.01", iso: "001.801.010", diameter: "1,0mm", grain: "Médio", image: PM01 },
       { model: "Esférica", code: "500.001.03", iso: "001.801.016", diameter: "1,6mm", grain: "Médio" },
       { model: "Esférica", code: "500.001.05", iso: "001.801.017", diameter: "1,7mm", grain: "Médio" },
       { model: "Esférica", code: "500.001.06", iso: "001.801.026", diameter: "2,6mm", grain: "Médio" },
