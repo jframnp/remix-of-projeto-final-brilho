@@ -279,7 +279,6 @@ const Index = () => {
                         className="h-20 w-auto mx-auto mb-6 opacity-80"
                       />
                       <p className="text-white font-montserrat font-bold text-xl">CATÁLOGO</p>
-                      <p className="text-white/60 font-inter text-sm mt-2">2024</p>
                     </div>
                   </div>
                 </div>
