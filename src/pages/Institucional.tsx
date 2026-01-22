@@ -9,9 +9,8 @@ const Institucional = () => {
 
   const timeline = [
     { year: "2003", event: t("institutional.timeline.2003", "Fundação da Metalúrgica Brilho") },
-    { year: "2008", event: t("institutional.timeline.2008", "Certificação ANVISA") },
-    { year: "2018", event: t("institutional.timeline.2018", "Expansão internacional") },
-    { year: "2020", event: t("institutional.timeline.2020", "Lançamento Linha Gold") },
+    { year: "2018", event: t("institutional.timeline.2018", "Certificação Anvisa") },
+    { year: "2020", event: t("institutional.timeline.2020", "Expansão Internacional") },
     { year: "2023", event: t("institutional.timeline.2023", "20 anos de excelência") },
   ];
 
