@@ -220,6 +220,18 @@ const diamondBurChamaImages: Record<string, string> = {
   "PM858": DiamantadaChamaPM858,
 };
 
+// Diamond bur cônica topo chama images by model
+import DiamantadaConicaChamaPM859 from "@/assets/products/diamantada-conica-chama-PM859.png";
+import DiamantadaConicaChamaPM3203 from "@/assets/products/diamantada-conica-chama-PM3203.png";
+import DiamantadaConicaChamaPM3195 from "@/assets/products/diamantada-conica-chama-PM3195.png";
+
+// Map diamond bur cônica topo chama model codes to their images
+const diamondBurConicaChamaImages: Record<string, string> = {
+  "PM859": DiamantadaConicaChamaPM859,
+  "PM3203": DiamantadaConicaChamaPM3203,
+  "PM3195": DiamantadaConicaChamaPM3195,
+};
+
 // Map polisher codes to their images
 const polisherCodeImages: Record<string, string> = {
   "70101": PolidoraTorpedo70101,
@@ -1822,20 +1834,25 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                         );
                       }
                       
-                      // Cônica Topo Chama (Conical Flame End) - thin pointed triangle
+                      // Cônica Topo Chama (Conical Flame End) - use product images
                       if (typeNameLower.includes('cônica topo chama') || typeNameLower.includes('conica topo chama')) {
-                        const baseWidth = Math.max(4, Math.min(12, diameterValue * 2.5));
-                        const coneHeight = Math.max(24, Math.min(44, activeLengthValue * 2.8));
-                        const svgWidth = baseWidth + 16;
-                        const svgHeight = stemHeight + coneHeight + 4;
+                        const modelCode = getProductName(product.code);
+                        const conicaChamaImage = diamondBurConicaChamaImages[modelCode];
                         
                         return (
                           <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
                             <div className="flex justify-center">
-                              <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
-                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
-                                <path d={`M${svgWidth/2} 2 L${(svgWidth + baseWidth)/2} ${coneHeight + 2} L${(svgWidth - baseWidth)/2} ${coneHeight + 2} Z`} fill="#1a1a1a"/>
-                              </svg>
+                              {conicaChamaImage ? (
+                                <img 
+                                  src={conicaChamaImage} 
+                                  alt={modelCode}
+                                  className="h-16 w-auto object-contain"
+                                />
+                              ) : (
+                                <div className="w-10 h-16 bg-muted rounded flex items-center justify-center">
+                                  <span className="text-xs text-muted-foreground">{modelCode}</span>
+                                </div>
+                              )}
                             </div>
                           </td>
                         );

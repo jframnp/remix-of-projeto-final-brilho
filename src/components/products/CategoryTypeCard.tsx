@@ -12,6 +12,7 @@ import BrocaCilindrica from "@/assets/products/broca-cilindrica.png";
 import BrocaRoda from "@/assets/products/broca-roda.png";
 import BrocaCilindricaTopoArredondado from "@/assets/products/broca-cilindrica-topo-arredondado.png";
 import BrocaChama from "@/assets/products/broca-chama.png";
+import BrocaConicaTopoChama from "@/assets/products/card-conica-topo-chama.png";
 
 // Import tungsten bur Maxi Cut type images
 import MaxiCutMedio from "@/assets/products/maxi-cut-medio.png";
@@ -79,7 +80,7 @@ const diamondBurImages: Record<string, string> = {
   "roda": BrocaRoda,
   "cilíndrica topo arredondado": BrocaCilindricaTopoArredondado,
   "chama": BrocaChama,
-  "cônica topo chama": BrocaChama,
+  "cônica topo chama": BrocaConicaTopoChama,
 };
 
 // Map type names to images for tungsten bur Maxi Cut
