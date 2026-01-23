@@ -166,8 +166,133 @@ interface CategoryTypeCardProps {
 const CategoryTypeCard = ({ typeName, image, productCount, onClick, isGold = false, categorySlug, subcategoryName }: CategoryTypeCardProps) => {
   const { t, i18n } = useTranslation();
   
-  // Get translated type name
+  // Get translated type name based on category
   const getTranslatedTypeName = (name: string): string => {
+    const nameLower = name.toLowerCase().trim();
+    const currentLang = i18n.language?.substring(0, 2) || "pt";
+    
+    // Card type translations map
+    const cardTranslations: Record<string, Record<string, string>> = {
+      // Cleaning brushes
+      "cerdas de poliamida": {
+        pt: "Cerdas de Poliamida",
+        en: "Polyamide Bristles",
+        es: "Cerdas de Poliamida"
+      },
+      "brocas polidoras": {
+        pt: "Brocas Polidoras",
+        en: "Polishing Burs",
+        es: "Fresas Pulidoras"
+      },
+      // Fiber/Enucleator/Mandril
+      "fibra molecular": {
+        pt: "Fibra Molecular",
+        en: "Molecular Fiber",
+        es: "Fibra Molecular"
+      },
+      "enucleadora": {
+        pt: "Enucleadora",
+        en: "Enucleator",
+        es: "Enucleadora"
+      },
+      "mandril pm": {
+        pt: "Mandril PM",
+        en: "PM Mandril",
+        es: "Mandril PM"
+      },
+      // Support/Sharpening
+      "apoio para lixas de podologia": {
+        pt: "Apoio para Lixas de Podologia",
+        en: "Podiatry File Support",
+        es: "Apoyo para Lijas de Podología"
+      },
+      "afiação de instrumentos": {
+        pt: "Afiação de Instrumentos",
+        en: "Instrument Sharpening",
+        es: "Afilado de Instrumentos"
+      },
+      // Sandpaper manual types
+      "nails verde": {
+        pt: "Nails Verde",
+        en: "Nails Green",
+        es: "Nails Verde"
+      },
+      "nails branca": {
+        pt: "Nails Branca",
+        en: "Nails White",
+        es: "Nails Blanca"
+      },
+      "white fina 2mm": {
+        pt: "White Fina 2mm",
+        en: "White Fine 2mm",
+        es: "White Fina 2mm"
+      },
+      "descartável branca": {
+        pt: "Descartável Branca",
+        en: "Disposable White",
+        es: "Desechable Blanca"
+      },
+      "base inox refil": {
+        pt: "Base Inox Refil",
+        en: "Stainless Base Refill",
+        es: "Base Inox Repuesto"
+      },
+      // Sandpaper mandril types
+      "laminar": {
+        pt: "Laminar",
+        en: "Laminar",
+        es: "Laminar"
+      },
+      "plantar": {
+        pt: "Plantar",
+        en: "Plantar",
+        es: "Plantar"
+      },
+      "tubular": {
+        pt: "Tubular",
+        en: "Tubular",
+        es: "Tubular"
+      },
+      "adesiva": {
+        pt: "Adesiva",
+        en: "Adhesive",
+        es: "Adhesiva"
+      },
+      // Tungsten/Ceramic cut types
+      "corte cruzado médio": {
+        pt: "Corte Cruzado Médio",
+        en: "Medium Cross Cut",
+        es: "Corte Cruzado Medio"
+      },
+      "corte cruzado fino": {
+        pt: "Corte Cruzado Fino",
+        en: "Fine Cross Cut",
+        es: "Corte Cruzado Fino"
+      },
+      "corte cruzado extra fino": {
+        pt: "Corte Cruzado Extra Fino",
+        en: "Extra Fine Cross Cut",
+        es: "Corte Cruzado Extra Fino"
+      },
+      "corte cruzado grosso": {
+        pt: "Corte Cruzado Grosso",
+        en: "Coarse Cross Cut",
+        es: "Corte Cruzado Grueso"
+      },
+      "corte reto": {
+        pt: "Corte Reto",
+        en: "Straight Cut",
+        es: "Corte Recto"
+      }
+    };
+    
+    // Check if we have a direct translation
+    const translation = cardTranslations[nameLower];
+    if (translation) {
+      return translation[currentLang] || name;
+    }
+    
+    // Fallback to existing translation system for diamond burs
     const translationKey = `products.diamondBurs.types.${name}`;
     const translated = t(translationKey, name);
     return translated !== translationKey ? translated : name;
@@ -265,7 +390,7 @@ const CategoryTypeCard = ({ typeName, image, productCount, onClick, isGold = fal
       
       {/* Product Count Badge */}
       <span className="text-sm text-muted-foreground mt-1">
-        {productCount} {productCount === 1 ? t("products.model", "modelo") : t("products.models", "modelos")}
+        {productCount} {productCount === 1 ? t("products.model", "model") : t("products.models", "models")}
       </span>
     </button>
   );
