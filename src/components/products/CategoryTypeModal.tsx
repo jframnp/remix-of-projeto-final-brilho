@@ -690,8 +690,8 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-[95vw] sm:max-w-[90vw] max-h-[90vh] p-0 overflow-hidden">
-        <DialogHeader className="p-0">
+      <DialogContent className="max-w-[95vw] sm:max-w-[90vw] max-h-[90vh] p-0 flex flex-col">
+        <DialogHeader className="p-0 shrink-0">
           {/* Title Header - Catalog Style */}
           <div className="p-4 sm:p-6 pb-2 sm:pb-4">
             <h2 
@@ -706,7 +706,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
           </div>
         </DialogHeader>
 
-        <div className="px-3 sm:px-6 pb-4 sm:pb-6 overflow-x-auto">
+        <div className="px-3 sm:px-6 pb-4 sm:pb-6 overflow-auto flex-1">
           {/* Product Image - Show for Tubular, Adesiva, and Manual sandpaper types at top */}
           {categorySlug === 'lixas' && (
             typeName.toLowerCase().includes('tubular') || 
@@ -737,7 +737,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                       className="w-[80px] sm:w-[140px] px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm tracking-wider"
                       style={{ color: headerTextColor }}
                     >
-                      MODELOS
+                      {t("products.table.models", "MODELOS")}
                     </td>
                     {products.map((product, idx) => (
                       <td 
@@ -775,7 +775,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* DIÂMETRO Row */}
                   <tr style={{ backgroundColor: rowBgLight }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      DIÂMETRO ∅(MM)
+                      {t("products.table.diameter", "DIÂMETRO")} ∅(MM)
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -787,8 +787,8 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* COMPRIMENTO DE ÁREA ATIVA Row */}
                   <tr style={{ backgroundColor: rowBgWhite }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      <span className="block leading-tight">COMPRIMENTO DE</span>
-                      <span className="block leading-tight">ÁREA ATIVA ∅(MM)</span>
+                      <span className="block leading-tight">{t("products.table.activeAreaLength", "COMPRIMENTO DE")}</span>
+                      <span className="block leading-tight">{t("products.table.activeArea", "ÁREA ATIVA")} ∅(MM)</span>
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -800,8 +800,8 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* COMPRIMENTO TOTAL Row */}
                   <tr style={{ backgroundColor: rowBgLight }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      <span className="block leading-tight">COMPRIMENTO</span>
-                      <span className="block leading-tight">TOTAL</span>
+                      <span className="block leading-tight">{t("products.table.totalLengthShort", "COMPRIMENTO")}</span>
+                      <span className="block leading-tight">{t("products.table.total", "TOTAL")}</span>
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -813,7 +813,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* CERDAS Row */}
                   <tr style={{ backgroundColor: rowBgWhite }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      CERDAS
+                      {t("products.table.bristles", "CERDAS")}
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -847,7 +847,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                       className="w-[80px] sm:w-[140px] px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm tracking-wider"
                       style={{ color: headerTextColor }}
                     >
-                      MODELOS
+                      {t("products.table.models", "MODELOS")}
                     </td>
                     {products.map((product, idx) => (
                       <td 
@@ -885,8 +885,8 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* DIÂMETRO DE ÁREA ATIVA Row */}
                   <tr style={{ backgroundColor: rowBgLight }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      <span className="block leading-tight">DIÂMETRO DE ÁREA</span>
-                      <span className="block leading-tight">ATIVA ∅(MM)</span>
+                      <span className="block leading-tight">{t("products.table.activeAreaDiameter", "DIÂMETRO DE ÁREA")}</span>
+                      <span className="block leading-tight">{t("products.table.activeArea", "ATIVA")} ∅(MM)</span>
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -898,8 +898,8 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* COMPRIMENTO DE ÁREA ATIVA Row */}
                   <tr style={{ backgroundColor: rowBgWhite }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      <span className="block leading-tight">COMPRIMENTO DE</span>
-                      <span className="block leading-tight">ÁREA ATIVA ∅(MM)</span>
+                      <span className="block leading-tight">{t("products.table.activeAreaLength", "COMPRIMENTO DE")}</span>
+                      <span className="block leading-tight">{t("products.table.activeArea", "ÁREA ATIVA")} ∅(MM)</span>
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -911,8 +911,8 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* COMPRIMENTO TOTAL Row */}
                   <tr style={{ backgroundColor: rowBgLight }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      <span className="block leading-tight">COMPRIMENTO</span>
-                      <span className="block leading-tight">TOTAL</span>
+                      <span className="block leading-tight">{t("products.table.totalLengthShort", "COMPRIMENTO")}</span>
+                      <span className="block leading-tight">{t("products.table.total", "TOTAL")}</span>
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -924,7 +924,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* EMBALAGEM Row */}
                   <tr style={{ backgroundColor: rowBgWhite }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      EMBALAGEM
+                      {t("products.table.packaging", "EMBALAGEM")}
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -936,7 +936,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* CERDAS Row */}
                   <tr style={{ backgroundColor: rowBgLight }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      CERDAS
+                      {t("products.table.bristles", "CERDAS")}
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[8px] sm:text-xs">
@@ -948,7 +948,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* CÓDIGO Row */}
                   <tr style={{ backgroundColor: rowBgWhite }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      CÓDIGO
+                      {t("products.table.code", "CÓDIGO")}
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm font-semibold" style={{ color: headerBgColor }}>
@@ -989,7 +989,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* LARGURA (MM) Row - First row showing widths */}
                   <tr style={{ backgroundColor: rowBgLight }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      LARGURA (MM)
+                      {t("products.table.width", "LARGURA")} (MM)
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -1001,7 +1001,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* LARGURA (MM) Row - Second row (width 10) */}
                   <tr style={{ backgroundColor: rowBgWhite }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      LARGURA (MM)
+                      {t("products.table.width", "LARGURA")} (MM)
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -1013,7 +1013,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* COMPRIMENTO (MM) Row */}
                   <tr style={{ backgroundColor: rowBgLight }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      COMPRIMENTO (MM)
+                      {t("products.table.length", "COMPRIMENTO")} (MM)
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -1025,7 +1025,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* EMBALAGEM (UNIT) Row */}
                   <tr style={{ backgroundColor: rowBgWhite }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      EMBALAGEM (UNIT)
+                      {t("products.table.packaging", "EMBALAGEM")} (UNIT)
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -1037,7 +1037,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* CÓDIGO Row */}
                   <tr style={{ backgroundColor: rowBgLight }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      CÓDIGO
+                      {t("products.table.code", "CÓDIGO")}
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm font-semibold" style={{ color: headerBgColor }}>
@@ -1087,7 +1087,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                       className="w-[80px] sm:w-[140px] px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm tracking-wider"
                       style={{ color: headerTextColor }}
                     >
-                      MODELOS
+                      {t("products.table.models", "MODELOS")}
                     </td>
                     {products.map((product, idx) => (
                       <td 
@@ -1103,7 +1103,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* DIÂMETRO ÁREA ATIVA Row */}
                   <tr style={{ backgroundColor: rowBgLight }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      DIÂMETRO ÁREA ATIVA ∅ (MM)
+                      {t("products.table.activeAreaDiameterShort", "DIÂMETRO ÁREA ATIVA")} ∅ (MM)
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -1115,7 +1115,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* COMPRIMENTO ÁREA ATIVA Row */}
                   <tr style={{ backgroundColor: rowBgWhite }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      COMPRIMENTO ÁREA ATIVA (MM)
+                      {t("products.table.activeAreaLengthShort", "COMPRIMENTO ÁREA ATIVA")} (MM)
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -1127,7 +1127,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* COMPRIMENTO TOTAL Row */}
                   <tr style={{ backgroundColor: rowBgLight }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      COMPRIMENTO TOTAL (MM)
+                      {t("products.table.totalLength", "COMPRIMENTO TOTAL")} (MM)
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -1139,7 +1139,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* DIÂMETRO DA HASTE Row */}
                   <tr style={{ backgroundColor: rowBgWhite }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      DIÂMETRO DA HASTE ∅ (MM)
+                      {t("products.table.shaftDiameter", "DIÂMETRO DA HASTE")} ∅ (MM)
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -1151,7 +1151,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* EMBALAGEM Row */}
                   <tr style={{ backgroundColor: rowBgLight }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      EMBALAGEM (UNIT)
+                      {t("products.table.packaging", "EMBALAGEM")} (UNIT)
                     </td>
                     {products.map((_, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -1163,7 +1163,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* CÓDIGO Row */}
                   <tr style={{ backgroundColor: rowBgWhite }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      CÓDIGO
+                      {t("products.table.code", "CÓDIGO")}
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm font-semibold" style={{ color: headerBgColor }}>
@@ -1215,7 +1215,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                       className="w-[80px] sm:w-[140px] px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm tracking-wider"
                       style={{ color: headerTextColor }}
                     >
-                      MODELOS
+                      {t("products.table.models", "MODELOS")}
                     </td>
                     {products.map((product, idx) => (
                       <td 
@@ -1231,8 +1231,8 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* DIÂMETRO ÁREA DE ENCAIXE Row */}
                   <tr style={{ backgroundColor: rowBgLight }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      <span className="block leading-tight">DIÂMETRO ÁREA DE</span>
-                      <span className="block leading-tight">ENCAIXE ∅ (MM)</span>
+                      <span className="block leading-tight">{t("products.table.fitAreaDiameter", "DIÂMETRO ÁREA DE")}</span>
+                      <span className="block leading-tight">{t("products.table.fit", "ENCAIXE")} ∅ (MM)</span>
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -1244,7 +1244,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* COMPRIMENTO TOTAL Row */}
                   <tr style={{ backgroundColor: rowBgWhite }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      COMPRIMENTO TOTAL (MM)
+                      {t("products.table.totalLength", "COMPRIMENTO TOTAL")} (MM)
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -1256,7 +1256,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* DIÂMETRO DA HASTE Row */}
                   <tr style={{ backgroundColor: rowBgLight }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      DIÂMETRO DA HASTE ∅ (MM)
+                      {t("products.table.shaftDiameter", "DIÂMETRO DA HASTE")} ∅ (MM)
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -1268,7 +1268,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* EMBALAGEM Row */}
                   <tr style={{ backgroundColor: rowBgWhite }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      EMBALAGEM (UNIT)
+                      {t("products.table.packaging", "EMBALAGEM")} (UNIT)
                     </td>
                     {products.map((_, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -1280,7 +1280,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* CÓDIGO Row */}
                   <tr style={{ backgroundColor: rowBgLight }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      CÓDIGO
+                      {t("products.table.code", "CÓDIGO")}
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm font-semibold" style={{ color: headerBgColor }}>
@@ -1302,7 +1302,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                       className="w-[80px] sm:w-[140px] px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm tracking-wider"
                       style={{ color: headerTextColor }}
                     >
-                      CATEGORIA
+                      {t("products.table.category", "CATEGORIA")}
                     </td>
                     {products.map((product, idx) => (
                       <td 
@@ -1363,7 +1363,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* MODELO Row */}
                   <tr style={{ backgroundColor: rowBgLight }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      MODELO
+                      {t("products.table.model", "MODELO")}
                     </td>
                     {products.map((_, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -1375,7 +1375,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* DIÂMETRO ÁREA ATIVA Row */}
                   <tr style={{ backgroundColor: rowBgWhite }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      DIÂMETRO ÁREA ATIVA ∅ (MM)
+                      {t("products.table.activeAreaDiameterShort", "DIÂMETRO ÁREA ATIVA")} ∅ (MM)
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -1387,7 +1387,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* ESPESSURA Row */}
                   <tr style={{ backgroundColor: rowBgLight }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      ESPESSURA (MM)
+                      {t("products.table.thickness", "ESPESSURA")} (MM)
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -1399,7 +1399,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* EMBALAGEM Row */}
                   <tr style={{ backgroundColor: rowBgWhite }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      EMBALAGEM (UNIT)
+                      {t("products.table.packaging", "EMBALAGEM")} (UNIT)
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -1411,7 +1411,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* CÓDIGO Row */}
                   <tr style={{ backgroundColor: rowBgLight }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      CÓDIGO
+                      {t("products.table.code", "CÓDIGO")}
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm font-semibold" style={{ color: headerBgColor }}>
@@ -1433,7 +1433,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                       className="w-[80px] sm:w-[140px] px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm tracking-wider"
                       style={{ color: headerTextColor }}
                     >
-                      CATEGORIA
+                      {t("products.table.category", "CATEGORIA")}
                     </td>
                     {products.map((product, idx) => (
                       <td 
@@ -1471,8 +1471,8 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* DIÂMETRO ÁREA ATIVA Row */}
                   <tr style={{ backgroundColor: rowBgLight }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      <span className="block leading-tight">DIÂMETRO ÁREA</span>
-                      <span className="block leading-tight">ATIVA ∅(MM)</span>
+                      <span className="block leading-tight">{t("products.table.activeAreaDiameter", "DIÂMETRO ÁREA")}</span>
+                      <span className="block leading-tight">{t("products.table.activeArea", "ATIVA")} ∅(MM)</span>
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -1484,7 +1484,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* ESPESSURA Row */}
                   <tr style={{ backgroundColor: rowBgWhite }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      ESPESSURA (MM)
+                      {t("products.table.thickness", "ESPESSURA")} (MM)
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -1496,7 +1496,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* EMBALAGEM Row */}
                   <tr style={{ backgroundColor: rowBgLight }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      EMBALAGEM (UNIT)
+                      {t("products.table.packaging", "EMBALAGEM")} (UNIT)
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm">
@@ -1508,7 +1508,7 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                   {/* CÓDIGO Row */}
                   <tr style={{ backgroundColor: rowBgWhite }}>
                     <td className="px-2 sm:px-4 py-2 sm:py-3 font-bold text-[10px] sm:text-sm" style={{ color: headerBgColor }}>
-                      CÓDIGO
+                      {t("products.table.code", "CÓDIGO")}
                     </td>
                     {products.map((product, idx) => (
                       <td key={idx} className="px-1 sm:px-2 py-2 sm:py-3 text-center text-[10px] sm:text-sm font-semibold" style={{ color: headerBgColor }}>
