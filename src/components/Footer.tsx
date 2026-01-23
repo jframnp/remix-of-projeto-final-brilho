@@ -55,7 +55,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="text-[#EEEEEE]/90 font-inter text-sm sm:text-base hover:text-[#EEEEEE] hover:translate-x-1 transition-all leading-relaxed"
               >
-                Brilho-Nails
+                {t("nav.shopNow", "Compre Agora")}
               </a>
             </nav>
           </div>
