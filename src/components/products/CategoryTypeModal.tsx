@@ -148,6 +148,14 @@ const diamondBurConicaPlanoImages: Record<string, string> = {
   "PM717": DiamantadaConicaPlanoPM717,
 };
 
+// Diamond bur cônica image
+import DiamantadaConicaPM730 from "@/assets/products/diamantada-conica-PM730.png";
+
+// Map diamond bur cônica model codes to their images
+const diamondBurConicaImages: Record<string, string> = {
+  "PM730": DiamantadaConicaPM730,
+};
+
 // Map polisher codes to their images
 const polisherCodeImages: Record<string, string> = {
   "70101": PolidoraTorpedo70101,
@@ -1630,20 +1638,25 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                         );
                       }
                       
-                      // Cônica (Conical) - pointed triangle
+                      // Cônica (Conical) - use product image
                       if (typeNameLower === 'cônica') {
-                        const baseWidth = Math.max(10, Math.min(28, diameterValue * 3));
-                        const coneHeight = Math.max(20, Math.min(40, activeLengthValue * 2.5));
-                        const svgWidth = baseWidth + 12;
-                        const svgHeight = stemHeight + coneHeight + 4;
+                        const modelCode = getProductName(product.code);
+                        const conicaImage = diamondBurConicaImages[modelCode];
                         
                         return (
                           <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
                             <div className="flex justify-center">
-                              <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
-                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
-                                <path d={`M${svgWidth/2} 2 L${(svgWidth + baseWidth)/2} ${coneHeight + 2} L${(svgWidth - baseWidth)/2} ${coneHeight + 2} Z`} fill="#1a1a1a"/>
-                              </svg>
+                              {conicaImage ? (
+                                <img 
+                                  src={conicaImage} 
+                                  alt={modelCode}
+                                  className="h-16 w-auto object-contain"
+                                />
+                              ) : (
+                                <div className="w-10 h-16 bg-muted rounded flex items-center justify-center">
+                                  <span className="text-xs text-muted-foreground">{modelCode}</span>
+                                </div>
+                              )}
                             </div>
                           </td>
                         );
