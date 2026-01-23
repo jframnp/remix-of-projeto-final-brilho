@@ -176,6 +176,16 @@ const diamondBurCilindricaPlanoImages: Record<string, string> = {
   "PM87": DiamantadaCilindricaPlanoPM87,
 };
 
+// Diamond bur cilíndrica topo arredondado images by model
+import DiamantadaCilindricaArredondadoPM92 from "@/assets/products/diamantada-cilindrica-arredondado-PM92.png";
+import DiamantadaCilindricaArredondadoPM95 from "@/assets/products/diamantada-cilindrica-arredondado-PM95.png";
+
+// Map diamond bur cilíndrica topo arredondado model codes to their images
+const diamondBurCilindricaArredondadoImages: Record<string, string> = {
+  "PM92": DiamantadaCilindricaArredondadoPM92,
+  "PM95": DiamantadaCilindricaArredondadoPM95,
+};
+
 // Map polisher codes to their images
 const polisherCodeImages: Record<string, string> = {
   "70101": PolidoraTorpedo70101,
@@ -1706,21 +1716,25 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                         );
                       }
                       
-                      // Cilíndrica Topo Arredondado (Cylinder Rounded End)
+                      // Cilíndrica Topo Arredondado (Cylinder Rounded End) - use product images
                       if (typeNameLower.includes('cilíndrica topo arredondado')) {
-                        const rectWidth = Math.max(8, Math.min(22, diameterValue * 3));
-                        const rectHeight = Math.max(16, Math.min(36, activeLengthValue * 2.5));
-                        const radius = rectWidth / 2;
-                        const svgWidth = rectWidth + 12;
-                        const svgHeight = stemHeight + rectHeight + 4;
+                        const modelCode = getProductName(product.code);
+                        const cilindricaArredondadoImage = diamondBurCilindricaArredondadoImages[modelCode];
                         
                         return (
                           <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
                             <div className="flex justify-center">
-                              <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
-                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${rectHeight + 4} L${svgWidth/2 + 2} ${rectHeight + 4} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
-                                <path d={`M${(svgWidth - rectWidth)/2} ${radius + 2} L${(svgWidth - rectWidth)/2} ${rectHeight + 2} L${(svgWidth + rectWidth)/2} ${rectHeight + 2} L${(svgWidth + rectWidth)/2} ${radius + 2} A${radius} ${radius} 0 0 0 ${(svgWidth - rectWidth)/2} ${radius + 2} Z`} fill="#1a1a1a"/>
-                              </svg>
+                              {cilindricaArredondadoImage ? (
+                                <img 
+                                  src={cilindricaArredondadoImage} 
+                                  alt={modelCode}
+                                  className="h-16 w-auto object-contain"
+                                />
+                              ) : (
+                                <div className="w-10 h-16 bg-muted rounded flex items-center justify-center">
+                                  <span className="text-xs text-muted-foreground">{modelCode}</span>
+                                </div>
+                              )}
                             </div>
                           </td>
                         );
