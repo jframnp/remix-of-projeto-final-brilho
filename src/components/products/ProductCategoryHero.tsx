@@ -23,11 +23,10 @@ import FresaTungstenio3 from "@/assets/products/fresa-tungstenio-3.png";
 import FresaTungstenio4 from "@/assets/products/fresa-tungstenio-4.png";
 import FresaTungstenio5 from "@/assets/products/fresa-tungstenio-5.png";
 
-// Import brocas de cerâmica images
-import BrocaCeramica1 from "@/assets/products/broca-ceramica-1.png";
-import BrocaCeramica2 from "@/assets/products/broca-ceramica-2.png";
-import BrocaCeramica3 from "@/assets/products/broca-ceramica-3.png";
-import BrocaCeramica4 from "@/assets/products/broca-ceramica-4.png";
+// Import fresas de cerâmica images for hero
+import FresaCeramicaHero1 from "@/assets/products/fresa-ceramica-hero-1.png";
+import FresaCeramicaHero2 from "@/assets/products/fresa-ceramica-hero-2.png";
+import FresaCeramicaHero3 from "@/assets/products/fresa-ceramica-hero-3.png";
 
 // Import lixas images
 import LixaHeroVerde from "@/assets/products/lixa-hero-verde.png";
@@ -68,9 +67,9 @@ const categoryHeroImages: Record<string, { src: string; alt: string }[]> = {
     { src: FresaTungstenio3, alt: "Fresa de Tungstênio cônica" },
   ],
   "fresas-ceramica": [
-    { src: BrocaCeramica3, alt: "Broca cerâmica cônica" },
-    { src: BrocaCeramica1, alt: "Broca cerâmica cilíndrica" },
-    { src: BrocaCeramica2, alt: "Broca cerâmica chama" },
+    { src: FresaCeramicaHero1, alt: "Fresa cerâmica cilíndrica" },
+    { src: FresaCeramicaHero2, alt: "Fresa cerâmica chama" },
+    { src: FresaCeramicaHero3, alt: "Fresa cerâmica cônica" },
   ],
   "lixas": [
     { src: LixaHeroVerde, alt: "Lixa verde" },
