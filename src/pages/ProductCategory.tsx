@@ -667,7 +667,12 @@ const ProductCategory = () => {
     let products = data?.products.filter(p => {
       // For lixas manuais, use the 'cut' field for filtering
       if (p.cut) return p.cut === typeName;
-      // Otherwise use model matching
+      // For exact match types (single word types that could be prefix of longer types)
+      const exactMatchTypes = ["Cônica", "Chama", "Cilíndrica", "Esférica", "Roda", "Lentilha"];
+      if (exactMatchTypes.includes(typeName)) {
+        return p.model === typeName;
+      }
+      // Otherwise use model matching with startsWith
       return p.model.startsWith(typeName);
     }) || [];
     
