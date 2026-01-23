@@ -82,6 +82,12 @@ import DiamantadaConicaInvertidoPM17 from "@/assets/products/diamantada-conica-i
 import DiamantadaConicaInvertidoPM19 from "@/assets/products/diamantada-conica-invertido-PM19.png";
 import DiamantadaConicaInvertidoPM21 from "@/assets/products/diamantada-conica-invertido-PM21.png";
 
+// Diamond bur cônica topo arredondado images by model
+import DiamantadaConicaArredondadoPM718 from "@/assets/products/diamantada-conica-arredondado-PM718.png";
+import DiamantadaConicaArredondadoPM720 from "@/assets/products/diamantada-conica-arredondado-PM720.png";
+import DiamantadaConicaArredondadoPM720L from "@/assets/products/diamantada-conica-arredondado-PM720L.png";
+import DiamantadaConicaArredondadoPM721 from "@/assets/products/diamantada-conica-arredondado-PM721.png";
+
 // Map diamond bur spherical model codes to their images
 const diamondBurSphericalImages: Record<string, string> = {
   "PM01": DiamantadaEsfericaPM01,
@@ -106,6 +112,14 @@ const diamondBurConicaInvertidoImages: Record<string, string> = {
   "PM17": DiamantadaConicaInvertidoPM17,
   "PM19": DiamantadaConicaInvertidoPM19,
   "PM21": DiamantadaConicaInvertidoPM21,
+};
+
+// Map diamond bur cônica topo arredondado model codes to their images
+const diamondBurConicaArredondadoImages: Record<string, string> = {
+  "PM718": DiamantadaConicaArredondadoPM718,
+  "PM720": DiamantadaConicaArredondadoPM720,
+  "PM720L": DiamantadaConicaArredondadoPM720L,
+  "PM721": DiamantadaConicaArredondadoPM721,
 };
 
 // Map polisher codes to their images
@@ -1542,59 +1556,28 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                         );
                       }
                       
-                      // Cônica Topo Arredondado (Conical Rounded Top)
+                      // Cônica Topo Arredondado (Conical Rounded Top) - use product images
                       if (typeNameLower.includes('cônica topo arredondado')) {
                         const modelCode = getProductName(product.code);
-                        const is721 = modelCode.includes('721');
+                        const conicaArredondadoImage = diamondBurConicaArredondadoImages[modelCode];
                         
-                        const width = Math.max(8, Math.min(20, diameterValue * 4));
-                        const bodyHeight = Math.max(24, Math.min(50, activeLengthValue * 3));
-                        const svgWidth = width + 16;
-                        const svgHeight = stemHeight + bodyHeight + 6;
-                        
-                        if (is721) {
-                          // PM721: Tapered - wider at bottom, narrower at top
-                          const bottomWidth = width;
-                          const topWidth = bottomWidth * 0.55;
-                          const topRadius = topWidth / 2;
-                          
-                          return (
-                            <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
-                              <div className="flex justify-center">
-                                <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
-                                  <rect x={svgWidth/2 - 1.5} y={bodyHeight + 6} width={3} height={stemHeight} fill="#1a1a1a"/>
-                                  <path d={`
-                                    M${svgWidth/2 - bottomWidth/2} ${bodyHeight + 4}
-                                    L${svgWidth/2 - topWidth/2} ${topRadius + 4}
-                                    A${topRadius} ${topRadius} 0 0 1 ${svgWidth/2 + topWidth/2} ${topRadius + 4}
-                                    L${svgWidth/2 + bottomWidth/2} ${bodyHeight + 4}
-                                    Z
-                                  `} fill="#1a1a1a"/>
-                                </svg>
-                              </div>
-                            </td>
-                          );
-                        } else {
-                          // PM718, PM720, PM720L: Cylinder with straight sides and rounded top
-                          const radius = width / 2;
-                          
-                          return (
-                            <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
-                              <div className="flex justify-center">
-                                <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
-                                  <rect x={svgWidth/2 - 1.5} y={bodyHeight + 6} width={3} height={stemHeight} fill="#1a1a1a"/>
-                                  <path d={`
-                                    M${svgWidth/2 - width/2} ${bodyHeight + 4}
-                                    L${svgWidth/2 - width/2} ${radius + 4}
-                                    A${radius} ${radius} 0 0 1 ${svgWidth/2 + width/2} ${radius + 4}
-                                    L${svgWidth/2 + width/2} ${bodyHeight + 4}
-                                    Z
-                                  `} fill="#1a1a1a"/>
-                                </svg>
-                              </div>
-                            </td>
-                          );
-                        }
+                        return (
+                          <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
+                            <div className="flex justify-center">
+                              {conicaArredondadoImage ? (
+                                <img 
+                                  src={conicaArredondadoImage} 
+                                  alt={modelCode}
+                                  className="h-16 w-auto object-contain"
+                                />
+                              ) : (
+                                <div className="w-10 h-16 bg-muted rounded flex items-center justify-center">
+                                  <span className="text-xs text-muted-foreground">{modelCode}</span>
+                                </div>
+                              )}
+                            </div>
+                          </td>
+                        );
                       }
                       
                       // Cônica Topo Plano (Tapered Flat End)
