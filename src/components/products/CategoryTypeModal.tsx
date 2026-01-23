@@ -151,9 +151,29 @@ const diamondBurConicaPlanoImages: Record<string, string> = {
 // Diamond bur cônica image
 import DiamantadaConicaPM730 from "@/assets/products/diamantada-conica-PM730.png";
 
+// Diamond bur cilíndrica topo plano images by model
+import DiamantadaCilindricaPlanoPM56 from "@/assets/products/diamantada-cilindrica-plano-PM56.png";
+import DiamantadaCilindricaPlanoPM57 from "@/assets/products/diamantada-cilindrica-plano-PM57.png";
+import DiamantadaCilindricaPlanoPM61 from "@/assets/products/diamantada-cilindrica-plano-PM61.png";
+import DiamantadaCilindricaPlanoPM82 from "@/assets/products/diamantada-cilindrica-plano-PM82.png";
+import DiamantadaCilindricaPlanoPM85 from "@/assets/products/diamantada-cilindrica-plano-PM85.png";
+import DiamantadaCilindricaPlanoPM85L from "@/assets/products/diamantada-cilindrica-plano-PM85L.png";
+import DiamantadaCilindricaPlanoPM87 from "@/assets/products/diamantada-cilindrica-plano-PM87.png";
+
 // Map diamond bur cônica model codes to their images
 const diamondBurConicaImages: Record<string, string> = {
   "PM730": DiamantadaConicaPM730,
+};
+
+// Map diamond bur cilíndrica topo plano model codes to their images
+const diamondBurCilindricaPlanoImages: Record<string, string> = {
+  "PM56": DiamantadaCilindricaPlanoPM56,
+  "PM57": DiamantadaCilindricaPlanoPM57,
+  "PM61": DiamantadaCilindricaPlanoPM61,
+  "PM82": DiamantadaCilindricaPlanoPM82,
+  "PM85": DiamantadaCilindricaPlanoPM85,
+  "PM85L": DiamantadaCilindricaPlanoPM85L,
+  "PM87": DiamantadaCilindricaPlanoPM87,
 };
 
 // Map polisher codes to their images
@@ -1662,20 +1682,25 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                         );
                       }
                       
-                      // Cilíndrica Topo Plano (Cylindrical Flat End)
+                      // Cilíndrica Topo Plano (Cylindrical Flat End) - use product images
                       if (typeNameLower.includes('cilíndrica topo plano')) {
-                        const rectWidth = Math.max(6, Math.min(24, diameterValue * 3));
-                        const rectHeight = Math.max(12, Math.min(40, activeLengthValue * 2.5));
-                        const svgWidth = rectWidth + 12;
-                        const svgHeight = stemHeight + rectHeight + 4;
+                        const modelCode = getProductName(product.code);
+                        const cilindricaPlanoImage = diamondBurCilindricaPlanoImages[modelCode];
                         
                         return (
                           <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
                             <div className="flex justify-center">
-                              <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
-                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${rectHeight + 4} L${svgWidth/2 + 2} ${rectHeight + 4} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
-                                <rect x={(svgWidth - rectWidth)/2} y={2} width={rectWidth} height={rectHeight} fill="#1a1a1a"/>
-                              </svg>
+                              {cilindricaPlanoImage ? (
+                                <img 
+                                  src={cilindricaPlanoImage} 
+                                  alt={modelCode}
+                                  className="h-16 w-auto object-contain"
+                                />
+                              ) : (
+                                <div className="w-10 h-16 bg-muted rounded flex items-center justify-center">
+                                  <span className="text-xs text-muted-foreground">{modelCode}</span>
+                                </div>
+                              )}
                             </div>
                           </td>
                         );
