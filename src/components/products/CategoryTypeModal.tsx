@@ -77,6 +77,11 @@ import DiamantadaRodaPM17 from "@/assets/products/diamantada-roda-PM17.png";
 import DiamantadaRodaPM19 from "@/assets/products/diamantada-roda-PM19.png";
 import DiamantadaRodaPM21 from "@/assets/products/diamantada-roda-PM21.png";
 
+// Diamond bur cônica topo invertido images by model
+import DiamantadaConicaInvertidoPM17 from "@/assets/products/diamantada-conica-invertido-PM17.png";
+import DiamantadaConicaInvertidoPM19 from "@/assets/products/diamantada-conica-invertido-PM19.png";
+import DiamantadaConicaInvertidoPM21 from "@/assets/products/diamantada-conica-invertido-PM21.png";
+
 // Map diamond bur spherical model codes to their images
 const diamondBurSphericalImages: Record<string, string> = {
   "PM01": DiamantadaEsfericaPM01,
@@ -94,6 +99,13 @@ const diamondBurRodaImages: Record<string, string> = {
   "PM17": DiamantadaRodaPM17,
   "PM19": DiamantadaRodaPM19,
   "PM21": DiamantadaRodaPM21,
+};
+
+// Map diamond bur cônica topo invertido model codes to their images
+const diamondBurConicaInvertidoImages: Record<string, string> = {
+  "PM17": DiamantadaConicaInvertidoPM17,
+  "PM19": DiamantadaConicaInvertidoPM19,
+  "PM21": DiamantadaConicaInvertidoPM21,
 };
 
 // Map polisher codes to their images
@@ -1482,21 +1494,25 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                         );
                       }
                       
-                      // Cônica Topo Invertido (Inverted Cone)
+                      // Cônica Topo Invertido (Inverted Cone) - use product images
                       if (typeNameLower.includes('cônica topo invertido')) {
-                        const topWidth = Math.max(8, Math.min(32, diameterValue * 2.8));
-                        const bottomWidth = Math.max(4, topWidth * 0.4);
-                        const coneHeight = Math.max(10, Math.min(24, diameterValue * 1.8));
-                        const svgWidth = topWidth + 12;
-                        const svgHeight = stemHeight + coneHeight + 4;
+                        const modelCode = getProductName(product.code);
+                        const conicaInvertidoImage = diamondBurConicaInvertidoImages[modelCode];
                         
                         return (
                           <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
                             <div className="flex justify-center">
-                              <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
-                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
-                                <path d={`M${(svgWidth - topWidth)/2} 2 L${(svgWidth + topWidth)/2} 2 L${(svgWidth + bottomWidth)/2} ${coneHeight + 2} L${(svgWidth - bottomWidth)/2} ${coneHeight + 2} Z`} fill="#1a1a1a"/>
-                              </svg>
+                              {conicaInvertidoImage ? (
+                                <img 
+                                  src={conicaInvertidoImage} 
+                                  alt={modelCode}
+                                  className="h-16 w-auto object-contain"
+                                />
+                              ) : (
+                                <div className="w-10 h-16 bg-muted rounded flex items-center justify-center">
+                                  <span className="text-xs text-muted-foreground">{modelCode}</span>
+                                </div>
+                              )}
                             </div>
                           </td>
                         );
