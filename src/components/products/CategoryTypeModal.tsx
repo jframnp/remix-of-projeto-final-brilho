@@ -88,6 +88,18 @@ import DiamantadaConicaArredondadoPM720 from "@/assets/products/diamantada-conic
 import DiamantadaConicaArredondadoPM720L from "@/assets/products/diamantada-conica-arredondado-PM720L.png";
 import DiamantadaConicaArredondadoPM721 from "@/assets/products/diamantada-conica-arredondado-PM721.png";
 
+// Diamond bur cônica topo plano images by model
+import DiamantadaConicaPlanoPM700 from "@/assets/products/diamantada-conica-plano-PM700.png";
+import DiamantadaConicaPlanoPM703 from "@/assets/products/diamantada-conica-plano-PM703.png";
+import DiamantadaConicaPlanoPM705 from "@/assets/products/diamantada-conica-plano-PM705.png";
+import DiamantadaConicaPlanoPM707 from "@/assets/products/diamantada-conica-plano-PM707.png";
+import DiamantadaConicaPlanoPM708 from "@/assets/products/diamantada-conica-plano-PM708.png";
+import DiamantadaConicaPlanoPM710 from "@/assets/products/diamantada-conica-plano-PM710.png";
+import DiamantadaConicaPlanoPM715 from "@/assets/products/diamantada-conica-plano-PM715.png";
+import DiamantadaConicaPlanoPM716 from "@/assets/products/diamantada-conica-plano-PM716.png";
+import DiamantadaConicaPlanoPM716L from "@/assets/products/diamantada-conica-plano-PM716L.png";
+import DiamantadaConicaPlanoPM717 from "@/assets/products/diamantada-conica-plano-PM717.png";
+
 // Map diamond bur spherical model codes to their images
 const diamondBurSphericalImages: Record<string, string> = {
   "PM01": DiamantadaEsfericaPM01,
@@ -120,6 +132,20 @@ const diamondBurConicaArredondadoImages: Record<string, string> = {
   "PM720": DiamantadaConicaArredondadoPM720,
   "PM720L": DiamantadaConicaArredondadoPM720L,
   "PM721": DiamantadaConicaArredondadoPM721,
+};
+
+// Map diamond bur cônica topo plano model codes to their images
+const diamondBurConicaPlanoImages: Record<string, string> = {
+  "PM700": DiamantadaConicaPlanoPM700,
+  "PM703": DiamantadaConicaPlanoPM703,
+  "PM705": DiamantadaConicaPlanoPM705,
+  "PM707": DiamantadaConicaPlanoPM707,
+  "PM708": DiamantadaConicaPlanoPM708,
+  "PM710": DiamantadaConicaPlanoPM710,
+  "PM715": DiamantadaConicaPlanoPM715,
+  "PM716": DiamantadaConicaPlanoPM716,
+  "PM716L": DiamantadaConicaPlanoPM716L,
+  "PM717": DiamantadaConicaPlanoPM717,
 };
 
 // Map polisher codes to their images
@@ -1580,21 +1606,25 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                         );
                       }
                       
-                      // Cônica Topo Plano (Tapered Flat End)
+                      // Cônica Topo Plano (Tapered Flat End) - use product images
                       if (typeNameLower.includes('cônica topo plano')) {
-                        const topWidth = Math.max(6, Math.min(24, diameterValue * 3));
-                        const coneHeight = Math.max(12, Math.min(32, activeLengthValue * 2.2));
-                        const bottomWidth = Math.max(4, topWidth * 0.3);
-                        const svgWidth = topWidth + 12;
-                        const svgHeight = stemHeight + coneHeight + 4;
+                        const modelCode = getProductName(product.code);
+                        const conicaPlanoImage = diamondBurConicaPlanoImages[modelCode];
                         
                         return (
                           <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
                             <div className="flex justify-center">
-                              <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
-                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${coneHeight + 4} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
-                                <path d={`M${(svgWidth - topWidth)/2} 2 L${(svgWidth + topWidth)/2} 2 L${(svgWidth + bottomWidth)/2} ${coneHeight + 2} L${(svgWidth - bottomWidth)/2} ${coneHeight + 2} Z`} fill="#1a1a1a"/>
-                              </svg>
+                              {conicaPlanoImage ? (
+                                <img 
+                                  src={conicaPlanoImage} 
+                                  alt={modelCode}
+                                  className="h-16 w-auto object-contain"
+                                />
+                              ) : (
+                                <div className="w-10 h-16 bg-muted rounded flex items-center justify-center">
+                                  <span className="text-xs text-muted-foreground">{modelCode}</span>
+                                </div>
+                              )}
                             </div>
                           </td>
                         );
