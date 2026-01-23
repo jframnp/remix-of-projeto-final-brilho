@@ -186,6 +186,16 @@ const diamondBurCilindricaArredondadoImages: Record<string, string> = {
   "PM95": DiamantadaCilindricaArredondadoPM95,
 };
 
+// Diamond bur lentilha images by model
+import DiamantadaLentilhaPM23 from "@/assets/products/diamantada-lentilha-PM23.png";
+import DiamantadaLentilhaPM25 from "@/assets/products/diamantada-lentilha-PM25.png";
+
+// Map diamond bur lentilha model codes to their images
+const diamondBurLentilhaImages: Record<string, string> = {
+  "PM23": DiamantadaLentilhaPM23,
+  "PM25": DiamantadaLentilhaPM25,
+};
+
 // Map polisher codes to their images
 const polisherCodeImages: Record<string, string> = {
   "70101": PolidoraTorpedo70101,
@@ -1740,20 +1750,25 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                         );
                       }
                       
-                      // Lentilha (Lentil) - lens/ellipse shape
+                      // Lentilha (Lentil) - use product images
                       if (typeNameLower.includes('lentilha')) {
-                        const lensWidth = Math.max(14, Math.min(36, diameterValue * 3.5));
-                        const lensHeight = Math.max(4, Math.min(10, activeLengthValue * 3));
-                        const svgWidth = lensWidth + 12;
-                        const svgHeight = stemHeight + lensHeight + 8;
+                        const modelCode = getProductName(product.code);
+                        const lentilhaImage = diamondBurLentilhaImages[modelCode];
                         
                         return (
                           <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
                             <div className="flex justify-center">
-                              <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
-                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${lensHeight + 8} L${svgWidth/2 + 2} ${lensHeight + 8} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
-                                <ellipse cx={svgWidth/2} cy={lensHeight/2 + 3} rx={lensWidth/2} ry={lensHeight/2} fill="#1a1a1a"/>
-                              </svg>
+                              {lentilhaImage ? (
+                                <img 
+                                  src={lentilhaImage} 
+                                  alt={modelCode}
+                                  className="h-16 w-auto object-contain"
+                                />
+                              ) : (
+                                <div className="w-10 h-16 bg-muted rounded flex items-center justify-center">
+                                  <span className="text-xs text-muted-foreground">{modelCode}</span>
+                                </div>
+                              )}
                             </div>
                           </td>
                         );
