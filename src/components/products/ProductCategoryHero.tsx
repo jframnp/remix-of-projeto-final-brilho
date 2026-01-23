@@ -194,20 +194,27 @@ const ProductCategoryHero = ({
 
           {/* Right side - 3 burs horizontally arranged with animations */}
           <div className="relative hidden lg:flex items-center justify-center h-[500px] gap-4">
-            {heroBurs.map((bur, index) => (
-              <img
-                key={index}
-                src={bur.src}
-                alt={bur.alt}
-                className="object-contain transition-all duration-500 hover:scale-110 hover:-translate-y-4"
-                style={{
-                  width: '180px',
-                  height: '300px',
-                  filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))',
-                  animation: `float 3s ease-in-out ${index * 0.3}s infinite`,
-                }}
-              />
-            ))}
+            {heroBurs.map((bur, index) => {
+              // Brocas diamantadas need larger display since they're thin
+              const isDiamond = category === "brocas-diamantadas" || category === "linha-gold";
+              const imageWidth = isDiamond ? '120px' : '180px';
+              const imageHeight = isDiamond ? '420px' : '300px';
+              
+              return (
+                <img
+                  key={index}
+                  src={bur.src}
+                  alt={bur.alt}
+                  className="object-contain transition-all duration-500 hover:scale-110 hover:-translate-y-4"
+                  style={{
+                    width: imageWidth,
+                    height: imageHeight,
+                    filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.5))',
+                    animation: `float 3s ease-in-out ${index * 0.3}s infinite`,
+                  }}
+                />
+              );
+            })}
           </div>
         </div>
       </div>
