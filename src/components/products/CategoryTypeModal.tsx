@@ -196,6 +196,30 @@ const diamondBurLentilhaImages: Record<string, string> = {
   "PM25": DiamantadaLentilhaPM25,
 };
 
+// Diamond bur chama images by model
+import DiamantadaChamaPM740 from "@/assets/products/diamantada-chama-PM740.png";
+import DiamantadaChamaPM741 from "@/assets/products/diamantada-chama-PM741.png";
+import DiamantadaChamaPM743 from "@/assets/products/diamantada-chama-PM743.png";
+import DiamantadaChamaPM744 from "@/assets/products/diamantada-chama-PM744.png";
+import DiamantadaChamaPM829 from "@/assets/products/diamantada-chama-PM829.png";
+import DiamantadaChamaPM830 from "@/assets/products/diamantada-chama-PM830.png";
+import DiamantadaChamaPM837 from "@/assets/products/diamantada-chama-PM837.png";
+import DiamantadaChamaPM838 from "@/assets/products/diamantada-chama-PM838.png";
+import DiamantadaChamaPM858 from "@/assets/products/diamantada-chama-PM858.png";
+
+// Map diamond bur chama model codes to their images
+const diamondBurChamaImages: Record<string, string> = {
+  "PM740": DiamantadaChamaPM740,
+  "PM741": DiamantadaChamaPM741,
+  "PM743": DiamantadaChamaPM743,
+  "PM744": DiamantadaChamaPM744,
+  "PM829": DiamantadaChamaPM829,
+  "PM830": DiamantadaChamaPM830,
+  "PM837": DiamantadaChamaPM837,
+  "PM838": DiamantadaChamaPM838,
+  "PM858": DiamantadaChamaPM858,
+};
+
 // Map polisher codes to their images
 const polisherCodeImages: Record<string, string> = {
   "70101": PolidoraTorpedo70101,
@@ -1774,20 +1798,25 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                         );
                       }
                       
-                      // Chama (Flame) - teardrop/flame shape
+                      // Chama (Flame) - use product images
                       if (typeNameLower === 'chama') {
-                        const flameWidth = Math.max(6, Math.min(18, diameterValue * 3));
-                        const flameHeight = Math.max(14, Math.min(32, activeLengthValue * 2.5));
-                        const svgWidth = flameWidth + 12;
-                        const svgHeight = stemHeight + flameHeight + 4;
+                        const modelCode = getProductName(product.code);
+                        const chamaImage = diamondBurChamaImages[modelCode];
                         
                         return (
                           <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
                             <div className="flex justify-center">
-                              <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
-                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${flameHeight + 4} L${svgWidth/2 + 2} ${flameHeight + 4} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
-                                <path d={`M${svgWidth/2} 2 Q${svgWidth/2 - flameWidth/2 - 2} ${flameHeight * 0.4} ${svgWidth/2 - flameWidth/2} ${flameHeight * 0.7} Q${svgWidth/2 - flameWidth/2} ${flameHeight + 2} ${svgWidth/2} ${flameHeight + 2} Q${svgWidth/2 + flameWidth/2} ${flameHeight + 2} ${svgWidth/2 + flameWidth/2} ${flameHeight * 0.7} Q${svgWidth/2 + flameWidth/2 + 2} ${flameHeight * 0.4} ${svgWidth/2} 2 Z`} fill="#1a1a1a"/>
-                              </svg>
+                              {chamaImage ? (
+                                <img 
+                                  src={chamaImage} 
+                                  alt={modelCode}
+                                  className="h-16 w-auto object-contain"
+                                />
+                              ) : (
+                                <div className="w-10 h-16 bg-muted rounded flex items-center justify-center">
+                                  <span className="text-xs text-muted-foreground">{modelCode}</span>
+                                </div>
+                              )}
                             </div>
                           </td>
                         );
