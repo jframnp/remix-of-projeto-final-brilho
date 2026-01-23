@@ -72,6 +72,11 @@ import DiamantadaEsfericaPM07 from "@/assets/products/diamantada-esferica-PM07.p
 import DiamantadaEsfericaPM10 from "@/assets/products/diamantada-esferica-PM10.png";
 import DiamantadaEsfericaPM12 from "@/assets/products/diamantada-esferica-PM12.png";
 
+// Diamond bur roda (wheel) images by model
+import DiamantadaRodaPM17 from "@/assets/products/diamantada-roda-PM17.png";
+import DiamantadaRodaPM19 from "@/assets/products/diamantada-roda-PM19.png";
+import DiamantadaRodaPM21 from "@/assets/products/diamantada-roda-PM21.png";
+
 // Map diamond bur spherical model codes to their images
 const diamondBurSphericalImages: Record<string, string> = {
   "PM01": DiamantadaEsfericaPM01,
@@ -82,6 +87,13 @@ const diamondBurSphericalImages: Record<string, string> = {
   "PM08": DiamantadaEsfericaPM07, // PM08 uses same image as PM07
   "PM10": DiamantadaEsfericaPM10,
   "PM12": DiamantadaEsfericaPM12,
+};
+
+// Map diamond bur roda (wheel) model codes to their images
+const diamondBurRodaImages: Record<string, string> = {
+  "PM17": DiamantadaRodaPM17,
+  "PM19": DiamantadaRodaPM19,
+  "PM21": DiamantadaRodaPM21,
 };
 
 // Map polisher codes to their images
@@ -1490,20 +1502,25 @@ const CategoryTypeModal = ({ isOpen, onClose, typeName, products, typeImage, isG
                         );
                       }
                       
-                      // Roda (Wheel) - flat disc
+                      // Roda (Wheel) - use product images
                       if (typeNameLower.includes('roda')) {
-                        const discWidth = Math.max(12, Math.min(36, diameterValue * 3));
-                        const discHeight = Math.max(4, Math.min(10, activeLengthValue * 3));
-                        const svgWidth = discWidth + 12;
-                        const svgHeight = stemHeight + discHeight + 6;
+                        const modelCode = getProductName(product.code);
+                        const rodaImage = diamondBurRodaImages[modelCode];
                         
                         return (
                           <td key={idx} className="px-1 sm:px-2 py-3 sm:py-4 text-center">
                             <div className="flex justify-center">
-                              <svg width={svgWidth} height={svgHeight} viewBox={`0 0 ${svgWidth} ${svgHeight}`}>
-                                <path d={`M${svgWidth/2 - 2} ${svgHeight} L${svgWidth/2 - 2} ${discHeight + 6} L${svgWidth/2 + 2} ${discHeight + 6} L${svgWidth/2 + 2} ${svgHeight} Z`} fill="#1a1a1a"/>
-                                <rect x={(svgWidth - discWidth)/2} y={2} width={discWidth} height={discHeight} fill="#1a1a1a"/>
-                              </svg>
+                              {rodaImage ? (
+                                <img 
+                                  src={rodaImage} 
+                                  alt={modelCode}
+                                  className="h-16 w-auto object-contain"
+                                />
+                              ) : (
+                                <div className="w-10 h-16 bg-muted rounded flex items-center justify-center">
+                                  <span className="text-xs text-muted-foreground">{modelCode}</span>
+                                </div>
+                              )}
                             </div>
                           </td>
                         );
