@@ -16,12 +16,10 @@ import PM829 from "@/assets/products/PM829_AZUL.webp";
 import PM838 from "@/assets/products/PM838_AZUL.webp";
 import PM859 from "@/assets/products/PM859_AZUL.webp";
 
-// Import fresas de tungstênio images
-import FresaTungstenio1 from "@/assets/products/fresa-tungstenio-1.png";
-import FresaTungstenio2 from "@/assets/products/fresa-tungstenio-2.png";
-import FresaTungstenio3 from "@/assets/products/fresa-tungstenio-3.png";
-import FresaTungstenio4 from "@/assets/products/fresa-tungstenio-4.png";
-import FresaTungstenio5 from "@/assets/products/fresa-tungstenio-5.png";
+// Import fresas de tungstênio images for hero
+import FresaTungstenioHero1 from "@/assets/products/fresa-tungstenio-hero-1.png";
+import FresaTungstenioHero2 from "@/assets/products/fresa-tungstenio-hero-2.png";
+import FresaTungstenioHero3 from "@/assets/products/fresa-tungstenio-hero-3.png";
 
 // Import fresas de cerâmica images for hero
 import FresaCeramicaHero1 from "@/assets/products/fresa-ceramica-hero-1.png";
@@ -62,9 +60,9 @@ const categoryHeroImages: Record<string, { src: string; alt: string }[]> = {
     { src: PM718Hero, alt: "Broca PM-718 cônica" },
   ],
   "fresas-tungstenio": [
-    { src: FresaTungstenio5, alt: "Fresa de Tungstênio cônica grande" },
-    { src: FresaTungstenio1, alt: "Fresa de Tungstênio ogiva" },
-    { src: FresaTungstenio3, alt: "Fresa de Tungstênio cônica" },
+    { src: FresaTungstenioHero1, alt: "Fresa de Tungstênio vermelha" },
+    { src: FresaTungstenioHero2, alt: "Fresa de Tungstênio roxa" },
+    { src: FresaTungstenioHero3, alt: "Fresa de Tungstênio amarela" },
   ],
   "fresas-ceramica": [
     { src: FresaCeramicaHero1, alt: "Fresa cerâmica cilíndrica" },
