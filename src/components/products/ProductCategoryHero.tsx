@@ -197,8 +197,8 @@ const ProductCategoryHero = ({
             {heroBurs.map((bur, index) => {
               // Brocas diamantadas need larger display since they're thin
               const isDiamond = category === "brocas-diamantadas" || category === "linha-gold";
-              const imageWidth = isDiamond ? '120px' : '180px';
-              const imageHeight = isDiamond ? '420px' : '300px';
+              const imageWidth = isDiamond ? '200px' : '180px';
+              const imageHeight = isDiamond ? '450px' : '300px';
               
               return (
                 <img
