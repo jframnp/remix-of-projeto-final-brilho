@@ -155,14 +155,14 @@ const Header = () => {
                 </Link>
               ),
             )}
-            {/* External Brilho-Nails link */}
+            {/* External Shop link */}
             <a
               href="https://www.brilhonails.com.br"
               target="_blank"
               rel="noopener noreferrer"
               className="text-white font-inter text-lg font-medium transition-all duration-300 relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[3px] after:bg-[#FF6B6B] after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300"
             >
-              BRILHO-NAILS
+              {t("nav.shopNow", "COMPRE AGORA")}
             </a>
           </nav>
 
@@ -266,7 +266,7 @@ const Header = () => {
               rel="noopener noreferrer"
               className="text-white font-inter text-base font-medium py-2 border-b border-white/20 block"
             >
-              BRILHO-NAILS
+              {t("nav.shopNow", "COMPRE AGORA")}
             </a>
             <a
               href="https://wa.me/5511940101807"
