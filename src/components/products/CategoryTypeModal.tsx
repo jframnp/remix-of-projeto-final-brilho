@@ -81,6 +81,12 @@ import DiamantadaRodaPM21 from "@/assets/products/diamantada-roda-PM21.png";
 import DiamantadaConicaInvertidoPM17 from "@/assets/products/diamantada-conica-invertido-PM17.png";
 import DiamantadaConicaInvertidoPM19 from "@/assets/products/diamantada-conica-invertido-PM19.png";
 import DiamantadaConicaInvertidoPM21 from "@/assets/products/diamantada-conica-invertido-PM21.png";
+import DiamantadaConicaInvertidoPM33 from "@/assets/products/diamantada-conica-invertido-PM33.png";
+import DiamantadaConicaInvertidoPM35 from "@/assets/products/diamantada-conica-invertido-PM35.png";
+import DiamantadaConicaInvertidoPM38 from "@/assets/products/diamantada-conica-invertido-PM38.png";
+import DiamantadaConicaInvertidoPM42 from "@/assets/products/diamantada-conica-invertido-PM42.png";
+import DiamantadaConicaInvertidoPM46 from "@/assets/products/diamantada-conica-invertido-PM46.png";
+import DiamantadaConicaInvertidoPM49 from "@/assets/products/diamantada-conica-invertido-PM49.png";
 
 // Diamond bur cônica topo arredondado images by model
 import DiamantadaConicaArredondadoPM718 from "@/assets/products/diamantada-conica-arredondado-PM718.png";
@@ -124,6 +130,12 @@ const diamondBurConicaInvertidoImages: Record<string, string> = {
   "PM17": DiamantadaConicaInvertidoPM17,
   "PM19": DiamantadaConicaInvertidoPM19,
   "PM21": DiamantadaConicaInvertidoPM21,
+  "PM33": DiamantadaConicaInvertidoPM33,
+  "PM35": DiamantadaConicaInvertidoPM35,
+  "PM38": DiamantadaConicaInvertidoPM38,
+  "PM42": DiamantadaConicaInvertidoPM42,
+  "PM46": DiamantadaConicaInvertidoPM46,
+  "PM49": DiamantadaConicaInvertidoPM49,
 };
 
 // Map diamond bur cônica topo arredondado model codes to their images
